@@ -9,33 +9,24 @@
 import UIKit
 import Foundation
 
-let WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)
+let WHITE = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0) //F9F9F9
 let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
 let GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var cloudsView: UIImageView!
     @IBOutlet weak var cloudsViewLeading: NSLayoutConstraint!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-//        logInButton.backgroundColor = TRANSPARENT_WHITE
-//        logInButton.layer.cornerRadius = 20
-//        logInButton.layer.borderWidth = 2
-//        logInButton.layer.borderColor = WHITE.cgColor
-        
-
-        
+        designButton(button: registerButton)
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.cloudsAnimation()
+        self.animateClouds(seconds: 8)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -44,16 +35,30 @@ class ViewController: UIViewController {
         self.cloudsView.layer.removeAllAnimations()
         self.view.layoutIfNeeded()
     }
-
-
-    func cloudsAnimation() {
-        let distance = self.view.bounds.width - self.cloudsView.bounds.width
-        self.cloudsViewLeading.constant = distance
-        UIView.animate(withDuration: 5, delay: 0, options: [.repeat, .curveLinear], animations: {
-            self.view.layoutIfNeeded()
-        })
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent     // .default
     }
 
+
+    func animateClouds(seconds: Double) {
+        
+        let distance = self.view.bounds.width - self.cloudsView.bounds.width
+        self.cloudsViewLeading.constant = distance
+        UIView.animate(withDuration: seconds, delay: 0, options: [.curveLinear, .autoreverse, .repeat], animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+    }
+    
+    func designButton(button: UIButton) {
+        
+        button.backgroundColor = TRANSPARENT_WHITE
+        button.layer.cornerRadius = 20
+        button.layer.borderWidth = 2
+        button.layer.borderColor = WHITE.cgColor
+        
+    }
 
 }
 
