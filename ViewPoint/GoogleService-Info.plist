@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>527429109988-im365rql83eqkcmo364iu4hi97r5l908.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.527429109988-im365rql83eqkcmo364iu4hi97r5l908</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCalp_nR3pqTbI7FtAES45DEPch4KhFbbk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>527429109988</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.shreyasagnihotri.viewPoint</string>
+	<key>PROJECT_ID</key>
+	<string>viewpoint-chat</string>
+	<key>STORAGE_BUCKET</key>
+	<string>viewpoint-chat.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:527429109988:ios:a7c82b7cf18043fe</string>
+	<key>DATABASE_URL</key>
+	<string>https://viewpoint-chat.firebaseio.com</string>
+</dict>
+</plist>
