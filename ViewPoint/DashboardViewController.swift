@@ -21,15 +21,15 @@ class DashboardViewController: UIViewController {
         
         print("\nAttempting to sign out\n")
         
+        GIDSignIn.sharedInstance()?.signOut()
+        
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
             return
         }
-        
-        GIDSignIn.sharedInstance()?.signOut()
-        
+
         print("\nSigned out\n")
         performSegue(withIdentifier: "goToLogIn", sender: self)
         

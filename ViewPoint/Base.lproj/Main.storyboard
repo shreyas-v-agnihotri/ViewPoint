@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="58l-uB-5ld">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -114,6 +114,22 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="122.66009852216749"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IxH-KZ-ADu">
+            <objects>
+                <navigationController id="58l-uB-5ld" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aEU-5W-ews">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="CFC-rh-pUO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rQZ-uj-zLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-778" y="123"/>
+        </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="6WV-TA-lRC">
             <objects>
@@ -123,7 +139,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk5-cg-EtJ" userLabel="Sign Out Button">
-                                <rect key="frame" x="95" y="194" width="185" height="60"/>
+                                <rect key="frame" x="95" y="238" width="185" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="99T-dj-ftF"/>
                                     <constraint firstAttribute="width" constant="185" id="CAq-mH-ODg"/>
@@ -166,4 +182,7 @@
         <image name="horizontalGradient" width="200" height="200"/>
         <image name="verticalGradient" width="200" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CFC-rh-pUO"/>
+    </inferredMetricsTieBreakers>
 </document>
