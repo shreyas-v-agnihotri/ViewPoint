@@ -14,6 +14,7 @@
 		B114ACFF223AE7E400319479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B114ACFE223AE7E400319479 /* Assets.xcassets */; };
 		B114AD02223AE7E400319479 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B114AD00223AE7E400319479 /* LaunchScreen.storyboard */; };
 		B114AD0A223B697100319479 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B114AD09223B697100319479 /* GoogleService-Info.plist */; };
+		B114AD0C223C9C7900319479 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD0B223C9C7800319479 /* DashboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B114AD01223AE7E400319479 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B114AD03223AE7E400319479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B114AD09223B697100319479 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B114AD0B223C9C7800319479 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		DB61583ED81DD1FDD94CCF07 /* Pods-ViewPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewPoint.debug.xcconfig"; path = "Target Support Files/Pods-ViewPoint/Pods-ViewPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		F517DAEBC88B6202FA45B091 /* Pods_ViewPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 			children = (
 				B114ACF7223AE7DF00319479 /* AppDelegate.swift */,
 				B114ACF9223AE7DF00319479 /* LogInViewController.swift */,
+				B114AD0B223C9C7800319479 /* DashboardViewController.swift */,
 				B114ACFB223AE7DF00319479 /* Main.storyboard */,
 				B114ACFE223AE7E400319479 /* Assets.xcassets */,
 				B114AD00223AE7E400319479 /* LaunchScreen.storyboard */,
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B114ACFA223AE7DF00319479 /* LogInViewController.swift in Sources */,
+				B114AD0C223C9C7900319479 /* DashboardViewController.swift in Sources */,
 				B114ACF8223AE7DF00319479 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
