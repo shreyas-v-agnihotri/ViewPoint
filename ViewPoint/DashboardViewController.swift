@@ -9,11 +9,26 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import Kingfisher
 
 class DashboardViewController: UIViewController {
     
+    @IBOutlet weak var profilePicture: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.isHidden = false
+        
+        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            self.profilePicture.kf.setImage(with: user?.photoURL)
+
+        }
+
+
+
     }
     
     

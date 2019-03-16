@@ -10,5 +10,6 @@ target 'ViewPoint' do
   pod 'GoogleSignIn'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Kingfisher'
 
 end

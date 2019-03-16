@@ -65,6 +65,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.4.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
+  - Kingfisher (5.2.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - GoogleSignIn
+  - Kingfisher
   - SVProgressHUD
 
 SPEC REPOS:
@@ -91,6 +93,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
+    - Kingfisher
     - nanopb
     - SVProgressHUD
 
@@ -106,9 +109,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: fa768ad04b264be250ee9edf9f378ad006f7a560
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: af1bb478fc6547a2b578ec2dd6b79a504008aa24
+PODFILE CHECKSUM: dc41be59c63f334e1029b93d82b217c51822967c
 
 COCOAPODS: 1.6.1

@@ -9,25 +9,22 @@
 import UIKit
 import Firebase
 import GoogleSignIn
-import SVProgressHUD
 
 let WHITE = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0) //F9F9F9
 let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
 let GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)
 
 class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
-
+    
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var cloudsView: UIImageView!
     @IBOutlet weak var cloudsViewLeading: NSLayoutConstraint!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("\nOn log-in screen\n")
-        
+        self.navigationController?.navigationBar.isHidden = true
+
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self    // Set the UI delegate of the GIDSignIn object
         GIDSignIn.sharedInstance()?.signInSilently()    // Sign in silently when possible
@@ -73,33 +70,46 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     // Present a sign-in with Google window
     @IBAction func googleSignIn(sender: AnyObject) {
-        
         GIDSignIn.sharedInstance().signIn()
-        
     }
     
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor googleUser: GIDGoogleUser!, withError error: Error!) {
         
         if let error = error {
             print(error.localizedDescription)
             return
         }
-        guard let authentication = user.authentication else { return }
+        guard let authentication = googleUser.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: (authentication.idToken)!, accessToken: (authentication.accessToken)!)
                 
-        // When user is signed in
-        Auth.auth().signInAndRetrieveData(with: credential, completion: { (user, error) in
+        // Sign user in to Firebase
+        Auth.auth().signInAndRetrieveData(with: credential, completion: { (firebaseUser, error) in
             if let error = error {
                 print("\nLogin error: \(error.localizedDescription)\n")
                 return
             }
-            else {
-                print("\nLogged in successfully\n")
+            
+            _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+                
+                if user?.photoURL == nil {
+                    
+                    let changeRequest = user?.createProfileChangeRequest()
+                    
+                    if let googleImageURL = googleUser.profile.imageURL(withDimension: 250) {
+                        changeRequest?.photoURL = googleImageURL
+                    }
+                    
+                    changeRequest?.commitChanges { (error) in
+                        print("\nFailed to set URL\n")
+                    }
+                }
+                
             }
+            
         })
         
-        print("\nShould segue\n")
+        
         performSegue(withIdentifier: "goToDashboard", sender: self)
 
     }
