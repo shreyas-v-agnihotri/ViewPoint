@@ -22,12 +22,8 @@ class DashboardViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
-            
             self.profilePicture.kf.setImage(with: user?.photoURL)
-
         }
-
-
 
     }
     

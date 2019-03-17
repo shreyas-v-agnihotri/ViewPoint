@@ -39,13 +39,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.cloudsViewLeading.constant = 0
-        self.cloudsView.layer.removeAllAnimations()
-        self.view.layoutIfNeeded()
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent     // .default
+        resetClouds()
     }
 
     func animateClouds(seconds: Double) {
@@ -56,6 +50,12 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             self.view.layoutIfNeeded()
         })
         
+    }
+    
+    func resetClouds() {
+        self.cloudsViewLeading.constant = 0
+        self.cloudsView.layer.removeAllAnimations()
+        self.view.layoutIfNeeded()
     }
     
     func designButton(button: UIButton) {
@@ -80,6 +80,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             print(error.localizedDescription)
             return
         }
+        
         guard let authentication = googleUser.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: (authentication.idToken)!, accessToken: (authentication.accessToken)!)
                 
@@ -90,35 +91,28 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 return
             }
             
-            _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+            _ = Auth.auth().addStateDidChangeListener { (auth, currentFirebaseUser) in
                 
-                if user?.photoURL == nil {
-                    
-                    let changeRequest = user?.createProfileChangeRequest()
-                    
+                if currentFirebaseUser?.photoURL == nil {
+                    let changeRequest = currentFirebaseUser?.createProfileChangeRequest()
                     if let googleImageURL = googleUser.profile.imageURL(withDimension: 250) {
                         changeRequest?.photoURL = googleImageURL
                     }
-                    
                     changeRequest?.commitChanges { (error) in
                         print("\nFailed to set URL\n")
                     }
                 }
-                
             }
-            
         })
         
-        
         performSegue(withIdentifier: "goToDashboard", sender: self)
-
     }
     
     
     // Start Google OAuth2 Authentication
     func sign(_ signIn: GIDSignIn?, present viewController: UIViewController?) {
         
-        // Showing OAuth2 authentication window
+        // Show OAuth2 authentication window
         if let aController = viewController {
             present(aController, animated: true) {() -> Void in }
         }
