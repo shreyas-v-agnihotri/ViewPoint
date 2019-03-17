@@ -37,7 +37,7 @@ class DashboardViewController: UIViewController {
         let profileButton = UIButton(type: .custom)
         profileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: .touchUpInside)
 
-        let profileButtonSize = CGFloat(integerLiteral: GlobalVariables.statusProfilePicSize)
+        let profileButtonSize = CGFloat(integerLiteral: MyDimensions.statusProfilePicSize)
         
         let defaultProfileImage = UIImage(named: "profilePicWhite")
         let defaultProfileImageScaled = defaultProfileImage!.af_imageAspectScaled(toFit: CGSize(width: profileButtonSize, height: profileButtonSize))
@@ -45,7 +45,7 @@ class DashboardViewController: UIViewController {
         
         if let photoURL = user.photoURL {
 
-            let profilePicRadius = CGFloat(integerLiteral: GlobalVariables.profilePicSize/2)
+            let profilePicRadius = CGFloat(integerLiteral: MyDimensions.profilePicSize/2)
 
             let processor = RoundCornerImageProcessor(cornerRadius: profilePicRadius) >> DownsamplingImageProcessor(size: CGSize(width: profileButtonSize, height: profileButtonSize))
             
@@ -62,7 +62,7 @@ class DashboardViewController: UIViewController {
         
         profileButton.layer.cornerRadius = profileButtonSize/2
         profileButton.layer.borderWidth = 1
-        profileButton.layer.borderColor = GlobalVariables.WHITE.cgColor
+        profileButton.layer.borderColor = MyColors.WHITE.cgColor
         
         let profileBarButton = UIBarButtonItem(customView: profileButton)
         self.navigationItem.leftBarButtonItem = profileBarButton

@@ -54,10 +54,10 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     func designButton(button: UIButton) {
         
-        button.backgroundColor = GlobalVariables.TRANSPARENT_WHITE
+        button.backgroundColor = MyColors.TRANSPARENT_WHITE
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 2
-        button.layer.borderColor = GlobalVariables.WHITE.cgColor
+        button.layer.borderColor = MyColors.WHITE.cgColor
         
     }
 
@@ -89,14 +89,19 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 
                 if currentFirebaseUser?.photoURL == nil {
                     let changeRequest = currentFirebaseUser?.createProfileChangeRequest()
-                    let profilePictureSize = UInt(exactly: GlobalVariables.profilePicSize)
+                    let profilePictureSize = UInt(exactly: MyDimensions.profilePicSize)
                     
                     if let googleImageURL = googleUser.profile.imageURL(withDimension: profilePictureSize!) {
                         changeRequest?.photoURL = googleImageURL
                         print("\n\(googleImageURL)\n")
                     }
                     changeRequest?.commitChanges { (error) in
-                        if error != nil { print(error!) }
+                        if let error = error {
+                            print("\nFailed to save Photo URL: \(error)\n")
+                        }
+                        else {
+                            print("\nSaved photo URL\n")
+                        }
                     }
                 }
             }
