@@ -116,30 +116,20 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DJS-rQ-NMF"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Debates" id="8gz-mM-Q4L"/>
+                    <navigationItem key="navigationItem" title="Debates" id="8gz-mM-Q4L">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="1me-iH-ATf">
+                            <connections>
+                                <segue destination="f7a-pa-qi1" kind="presentation" identifier="goToTopics" id="UYx-Wx-KEF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="VVp-Uz-Jc4" kind="show" identifier="goToTopics" id="4j1-fU-fhg"/>
-                        <segue destination="37h-yA-qT2" kind="show" identifier="goToProfile" id="hWy-gj-PA1"/>
+                        <segue destination="37h-yA-qT2" kind="presentation" identifier="goToProfile" id="hWy-gj-PA1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Zj-vb-Wcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1711" y="-246"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="gLX-4H-Cuu">
-            <objects>
-                <viewController id="VVp-Uz-Jc4" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Eq0-4i-CtS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Qc1-W7-nfD"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7SJ-Wo-2F6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2137" y="575"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="vXS-yS-za1">
@@ -163,6 +153,17 @@
                                     <action selector="signOutPressed:" destination="37h-yA-qT2" eventType="touchUpInside" id="0Xb-nG-y3G"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8B-gZ-Ru3">
+                                <rect key="frame" x="16" y="44" width="63" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="343-rI-lTg" kind="presentation" id="w80-X0-xvv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -179,10 +180,41 @@
             </objects>
             <point key="canvasLocation" x="1322" y="575"/>
         </scene>
+        <!--Topics View Controller-->
+        <scene sceneID="19r-Kt-ctf">
+            <objects>
+                <viewController id="f7a-pa-qi1" customClass="TopicsViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i2S-ev-Xg7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dz7-N0-UuM">
+                                <rect key="frame" x="28" y="48" width="63" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="343-rI-lTg" kind="presentation" id="2uM-gN-3z2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15686274510000001" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Zm4-bc-RD1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="syh-UG-5cW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2336.8000000000002" y="574.8768472906404"/>
+        </scene>
     </scenes>
     <resources>
         <image name="clouds" width="500" height="73.333335876464844"/>
         <image name="googleLogo" width="170.66667175292969" height="170.66667175292969"/>
         <image name="verticalGradient" width="200" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="w80-X0-xvv"/>
+    </inferredMetricsTieBreakers>
 </document>

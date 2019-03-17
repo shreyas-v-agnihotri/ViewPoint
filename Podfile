@@ -9,7 +9,7 @@ target 'ViewPoint' do
   pod 'SVProgressHUD'
   pod 'Kingfisher'
   pod 'AlamofireImage'
-  pod 'FoldingCell'
+  pod 'Navigation-Toolbar'
   
   # Authentication pods
   pod 'GoogleSignIn'

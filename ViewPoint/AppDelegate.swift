@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
-        let database = Firestore.firestore()
+        // let database = Firestore.firestore()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
 
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
