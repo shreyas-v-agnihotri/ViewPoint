@@ -22,12 +22,10 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.isHidden = true
 
         GIDSignIn.sharedInstance()?.delegate = self
-        GIDSignIn.sharedInstance()?.uiDelegate = self    // Set the UI delegate of the GIDSignIn object
-        GIDSignIn.sharedInstance()?.signInSilently()    // Sign in silently when possible
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.signInSilently()
         
         designButton(button: signInButton)
     }
@@ -97,9 +95,10 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                     let changeRequest = currentFirebaseUser?.createProfileChangeRequest()
                     if let googleImageURL = googleUser.profile.imageURL(withDimension: 250) {
                         changeRequest?.photoURL = googleImageURL
+                        print("\n\(googleImageURL)\n")
                     }
                     changeRequest?.commitChanges { (error) in
-                        print("\nFailed to set URL\n")
+                        if error != nil { print(error!) }
                     }
                 }
             }

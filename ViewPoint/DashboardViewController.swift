@@ -12,40 +12,50 @@ import GoogleSignIn
 import Kingfisher
 
 class DashboardViewController: UIViewController {
-    
-    @IBOutlet weak var profilePicture: UIImageView!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.hidesBackButton = true
-        self.navigationController?.navigationBar.isHidden = false
-        
-        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
-            self.profilePicture.kf.setImage(with: user?.photoURL)
+        _ = Auth.auth().addStateDidChangeListener { (auth, currentFirebaseUser) in
+            
+            if let photoURL = currentFirebaseUser?.photoURL {
+                
+                let processor = RoundCornerImageProcessor(cornerRadius: 125) >> DownsamplingImageProcessor(size: CGSize(width: 30, height: 30))
+                
+                KingfisherManager.shared.retrieveImage(with: photoURL, options: [.processor(processor)]) { result in
+                    // Do something with `result`
+                    
+                    switch result {
+                    case .success(let value):
+                        
+                        // If the `cacheType is `.none`, `image` will be `nil`.
+                        let button = UIButton(type: .custom)
+                        button.setImage(value.image, for: .normal)
+                        button.addTarget(self, action: #selector(self.profileButtonPressed), for: .touchUpInside)
+                        
+                        let barButton = UIBarButtonItem(customView: button)
+                        self.navigationItem.leftBarButtonItem = barButton
+                        
+                    case .failure(let error):
+                        print(error)
+                    }
+                    
+                    
+                }
+                
+            }
+            
+            
+            
         }
 
     }
     
-    
-    @IBAction func signOutPressed(_ sender: Any) {
+    @objc func profileButtonPressed(sender: UIButton!) {
         
-        print("\nAttempting to sign out\n")
-        
-        GIDSignIn.sharedInstance()?.signOut()
-        
-        do {
-            try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-            return
-        }
-
-        print("\nSigned out\n")
-        performSegue(withIdentifier: "goToLogIn", sender: self)
+        performSegue(withIdentifier: "goToProfile", sender: self)
         
     }
-    
     
     
 }

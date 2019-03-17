@@ -113,9 +113,44 @@
                     <view key="view" contentMode="scaleToFill" id="QfO-Sy-fHd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="DJS-rQ-NMF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Debates" id="8gz-mM-Q4L"/>
+                    <connections>
+                        <segue destination="VVp-Uz-Jc4" kind="show" identifier="goToTopics" id="4j1-fU-fhg"/>
+                        <segue destination="37h-yA-qT2" kind="show" identifier="goToProfile" id="hWy-gj-PA1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Zj-vb-Wcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1711" y="-246"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gLX-4H-Cuu">
+            <objects>
+                <viewController id="VVp-Uz-Jc4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eq0-4i-CtS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Qc1-W7-nfD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7SJ-Wo-2F6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2137" y="575"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="vXS-yS-za1">
+            <objects>
+                <viewController id="37h-yA-qT2" customClass="ProfileViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Obv-f1-yUA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk5-cg-EtJ" userLabel="Sign Out Button">
-                                <rect key="frame" x="95" y="618" width="185" height="60"/>
+                                <rect key="frame" x="95" y="598" width="185" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="99T-dj-ftF"/>
                                     <constraint firstAttribute="width" constant="185" id="CAq-mH-ODg"/>
@@ -125,52 +160,24 @@
                                     <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="signOutPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DC9-EB-0ga"/>
-                                    <action selector="signOutPressed:" destination="3qO-Wx-qaW" eventType="touchUpInside" id="Ftw-E6-Lza"/>
+                                    <action selector="signOutPressed:" destination="37h-yA-qT2" eventType="touchUpInside" id="0Xb-nG-y3G"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Spb-LL-Z8q">
-                                <rect key="frame" x="67.666666666666686" y="286" width="240" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="TTu-EK-OUH"/>
-                                    <constraint firstAttribute="height" constant="240" id="xIN-aR-tfe"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Spb-LL-Z8q" firstAttribute="centerY" secondItem="QfO-Sy-fHd" secondAttribute="centerY" id="2Z2-bU-L9B"/>
-                            <constraint firstItem="Qk5-cg-EtJ" firstAttribute="centerX" secondItem="QfO-Sy-fHd" secondAttribute="centerX" id="2q6-9X-b50"/>
-                            <constraint firstItem="DJS-rQ-NMF" firstAttribute="bottom" secondItem="Qk5-cg-EtJ" secondAttribute="bottom" constant="100" id="Xky-fc-S2B"/>
-                            <constraint firstItem="Spb-LL-Z8q" firstAttribute="centerX" secondItem="QfO-Sy-fHd" secondAttribute="centerX" id="fDA-hR-Pgs"/>
+                            <constraint firstItem="Qk5-cg-EtJ" firstAttribute="centerX" secondItem="Obv-f1-yUA" secondAttribute="centerX" id="SMj-ag-Dwr"/>
+                            <constraint firstItem="AfH-1p-zOZ" firstAttribute="bottom" secondItem="Qk5-cg-EtJ" secondAttribute="bottom" constant="120" id="lvJ-0C-9dO"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="DJS-rQ-NMF"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="8gz-mM-Q4L"/>
-                    <connections>
-                        <outlet property="profilePicture" destination="Spb-LL-Z8q" id="3LB-58-kS0"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToLogIn" id="PpM-XZ-YEv"/>
-                        <segue destination="37h-yA-qT2" kind="show" identifier="goToTopics" id="xei-pb-uwn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Zj-vb-Wcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1711" y="-246"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="vXS-yS-za1">
-            <objects>
-                <viewController id="37h-yA-qT2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Obv-f1-yUA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="AfH-1p-zOZ"/>
                     </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToLogIn" id="6J8-5Y-rfp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFb-8j-DoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2642" y="-246"/>
+            <point key="canvasLocation" x="1322" y="575"/>
         </scene>
     </scenes>
     <resources>
