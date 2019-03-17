@@ -44,13 +44,13 @@ class DashboardViewController: UIViewController {
         profileButton.setImage(defaultProfileImageScaled, for: .normal)
         
         if let photoURL = user.photoURL {
-            
+
             let profilePicRadius = CGFloat(integerLiteral: GlobalVariables.profilePicSize/2)
-            
+
             let processor = RoundCornerImageProcessor(cornerRadius: profilePicRadius) >> DownsamplingImageProcessor(size: CGSize(width: profileButtonSize, height: profileButtonSize))
             
             KingfisherManager.shared.retrieveImage(with: photoURL, options: [.processor(processor)]) { result in
-                
+
                 switch result {
                 case .success(let value):
                     profileButton.setImage(value.image, for: .normal)

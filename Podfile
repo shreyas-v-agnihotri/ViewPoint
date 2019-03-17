@@ -5,12 +5,19 @@ target 'ViewPoint' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for ViewPoint
+  # UI and Networking Pods
   pod 'SVProgressHUD'
-  pod 'GoogleSignIn'
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
   pod 'Kingfisher'
   pod 'AlamofireImage'
+  
+  # Authentication pods
+  pod 'GoogleSignIn'
+  pod 'Firebase/Auth'
+
+  # Database pods
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  
+
 
 end
