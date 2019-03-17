@@ -10,54 +10,63 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import Kingfisher
+import AlamofireImage
 
 class DashboardViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = Auth.auth().addStateDidChangeListener { (auth, currentFirebaseUser) in
+        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             
-            if let photoURL = currentFirebaseUser?.photoURL {
-                
-                let processor = RoundCornerImageProcessor(cornerRadius: 125) >> DownsamplingImageProcessor(size: CGSize(width: 30, height: 30))
-                
-                KingfisherManager.shared.retrieveImage(with: photoURL, options: [.processor(processor)]) { result in
-                    // Do something with `result`
-                    
-                    switch result {
-                    case .success(let value):
-                        
-                        // If the `cacheType is `.none`, `image` will be `nil`.
-                        let button = UIButton(type: .custom)
-                        button.setImage(value.image, for: .normal)
-                        button.addTarget(self, action: #selector(self.profileButtonPressed), for: .touchUpInside)
-                        
-                        let barButton = UIBarButtonItem(customView: button)
-                        self.navigationItem.leftBarButtonItem = barButton
-                        
-                    case .failure(let error):
-                        print(error)
-                    }
-                    
-                    
-                }
-                
+            if let currentFirebaseUser = user {
+                self.setProfileButton(user: currentFirebaseUser)
             }
-            
-            
             
         }
 
     }
     
     @objc func profileButtonPressed(sender: UIButton!) {
-        
         performSegue(withIdentifier: "goToProfile", sender: self)
-        
     }
     
     
+    func setProfileButton(user: User) {
+        
+        let profileButton = UIButton(type: .custom)
+        profileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: .touchUpInside)
+
+        let profileButtonSize = CGFloat(integerLiteral: GlobalVariables.statusProfilePicSize)
+        
+        let defaultProfileImage = UIImage(named: "profilePicWhite")
+        let defaultProfileImageScaled = defaultProfileImage!.af_imageAspectScaled(toFit: CGSize(width: profileButtonSize, height: profileButtonSize))
+        profileButton.setImage(defaultProfileImageScaled, for: .normal)
+        
+        if let photoURL = user.photoURL {
+            
+            let profilePicRadius = CGFloat(integerLiteral: GlobalVariables.profilePicSize/2)
+            
+            let processor = RoundCornerImageProcessor(cornerRadius: profilePicRadius) >> DownsamplingImageProcessor(size: CGSize(width: profileButtonSize, height: profileButtonSize))
+            
+            KingfisherManager.shared.retrieveImage(with: photoURL, options: [.processor(processor)]) { result in
+                
+                switch result {
+                case .success(let value):
+                    profileButton.setImage(value.image, for: .normal)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
+        profileButton.layer.cornerRadius = profileButtonSize/2
+        profileButton.layer.borderWidth = 1
+        profileButton.layer.borderColor = GlobalVariables.WHITE.cgColor
+        
+        let profileBarButton = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.leftBarButtonItem = profileBarButton
+    }
 }
 
 

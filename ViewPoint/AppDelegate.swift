@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
 
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: GlobalVariables.WHITE, NSAttributedString.Key.font: UIFont(name: "AvenirNext-Medium", size: 20)!]
         
         return true
     }

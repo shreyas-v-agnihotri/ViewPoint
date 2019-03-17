@@ -10,10 +10,6 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-let WHITE = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0) //F9F9F9
-let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
-let GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)
-
 class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var signInButton: UIButton!
@@ -58,10 +54,10 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     func designButton(button: UIButton) {
         
-        button.backgroundColor = TRANSPARENT_WHITE
+        button.backgroundColor = GlobalVariables.TRANSPARENT_WHITE
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 2
-        button.layer.borderColor = WHITE.cgColor
+        button.layer.borderColor = GlobalVariables.WHITE.cgColor
         
     }
 
@@ -93,7 +89,9 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 
                 if currentFirebaseUser?.photoURL == nil {
                     let changeRequest = currentFirebaseUser?.createProfileChangeRequest()
-                    if let googleImageURL = googleUser.profile.imageURL(withDimension: 250) {
+                    let profilePictureSize = UInt(exactly: GlobalVariables.profilePicSize)
+                    
+                    if let googleImageURL = googleUser.profile.imageURL(withDimension: profilePictureSize!) {
                         changeRequest?.photoURL = googleImageURL
                         print("\n\(googleImageURL)\n")
                     }
