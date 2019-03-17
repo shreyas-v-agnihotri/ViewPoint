@@ -27,7 +27,7 @@ class MiddleView: UIView {
     private func setup() {
         backgroundColor = .white
         
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = MyColors.GRAY.cgColor
         layer.shadowRadius = 10.0
         layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize.zero
@@ -39,8 +39,8 @@ class MiddleView: UIView {
         leftButton.setTitle("Left", for: .normal)
         rightButton.setTitle("Right", for: .normal)
         
-        leftButton.setTitleColor(.gray, for: .normal)
-        rightButton.setTitleColor(.gray, for: .normal)
+        leftButton.setTitleColor(MyColors.GRAY, for: .normal)
+        rightButton.setTitleColor(MyColors.GRAY, for: .normal)
         
         self.addSubview(separatorView)
         self.addSubview(leftButton)

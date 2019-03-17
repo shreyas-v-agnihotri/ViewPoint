@@ -17,6 +17,10 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+        
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             
             if let currentFirebaseUser = user {
