@@ -17,14 +17,12 @@
 		B114AD0C223C9C7900319479 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD0B223C9C7800319479 /* DashboardViewController.swift */; };
 		B114AD0E223E0A4A00319479 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD0D223E0A4900319479 /* ProfileViewController.swift */; };
 		B114AD10223E21E500319479 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD0F223E21E500319479 /* Global.swift */; };
-		B114AD19223F02CA00319479 /* TopicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD18223F02CA00319479 /* TopicsTableViewController.swift */; };
 		B114AD22223F371F00319479 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD20223F371F00319479 /* DetailViewController.swift */; };
-		B114AD23223F371F00319479 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD21223F371F00319479 /* ViewController.swift */; };
+		B114AD23223F371F00319479 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD21223F371F00319479 /* TopicsViewController.swift */; };
 		B114AD26223F389000319479 /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD25223F389000319479 /* GridViewCell.swift */; };
-		B114AD28223F38BA00319479 /* GridViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B114AD27223F38BA00319479 /* GridViewCell.xib */; };
 		B114AD2C223F38EF00319479 /* DemoElongationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B114AD2A223F38EE00319479 /* DemoElongationCell.xib */; };
 		B114AD2D223F38EF00319479 /* DemoElongationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD2B223F38EF00319479 /* DemoElongationCell.swift */; };
-		B114AD2F223F3A3900319479 /* Villa.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD2E223F3A3800319479 /* Villa.swift */; };
+		B114AD34223F536F00319479 /* GridViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B114AD33223F536F00319479 /* GridViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,14 +38,12 @@
 		B114AD0B223C9C7800319479 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		B114AD0D223E0A4900319479 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B114AD0F223E21E500319479 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		B114AD18223F02CA00319479 /* TopicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsTableViewController.swift; sourceTree = "<group>"; };
 		B114AD20223F371F00319479 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		B114AD21223F371F00319479 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B114AD21223F371F00319479 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		B114AD25223F389000319479 /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
-		B114AD27223F38BA00319479 /* GridViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GridViewCell.xib; path = "../../../elongation-preview-master/ElongationPreviewDemo/Views/GridViewCell/GridViewCell.xib"; sourceTree = "<group>"; };
 		B114AD2A223F38EE00319479 /* DemoElongationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoElongationCell.xib; sourceTree = "<group>"; };
 		B114AD2B223F38EF00319479 /* DemoElongationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoElongationCell.swift; sourceTree = "<group>"; };
-		B114AD2E223F3A3800319479 /* Villa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Villa.swift; sourceTree = "<group>"; };
+		B114AD33223F536F00319479 /* GridViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GridViewCell.xib; path = "../../../../elongation-preview-master/ElongationPreviewDemo/Views/GridViewCell/GridViewCell.xib"; sourceTree = "<group>"; };
 		DB61583ED81DD1FDD94CCF07 /* Pods-ViewPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewPoint.debug.xcconfig"; path = "Target Support Files/Pods-ViewPoint/Pods-ViewPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		F517DAEBC88B6202FA45B091 /* Pods_ViewPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -102,19 +98,9 @@
 		B114ACF6223AE7DF00319479 /* ViewPoint */ = {
 			isa = PBXGroup;
 			children = (
-				B114AD29223F38D600319479 /* DemoElongationCell */,
-				B114AD24223F387600319479 /* GridViewCell */,
-				B114AD20223F371F00319479 /* DetailViewController.swift */,
-				B114AD21223F371F00319479 /* ViewController.swift */,
-				B114AD2E223F3A3800319479 /* Villa.swift */,
-				B114ACF7223AE7DF00319479 /* AppDelegate.swift */,
-				B114AD0F223E21E500319479 /* Global.swift */,
-				B114ACF9223AE7DF00319479 /* LogInViewController.swift */,
-				B114AD0B223C9C7800319479 /* DashboardViewController.swift */,
-				B114AD0D223E0A4900319479 /* ProfileViewController.swift */,
-				B114AD18223F02CA00319479 /* TopicsTableViewController.swift */,
-				B114ACFB223AE7DF00319479 /* Main.storyboard */,
-				B114AD00223AE7E400319479 /* LaunchScreen.storyboard */,
+				B114AD32223F522900319479 /* Controller */,
+				B114AD31223F521300319479 /* View */,
+				B114AD30223F51A000319479 /* Model */,
 				B114ACFE223AE7E400319479 /* Assets.xcassets */,
 				B114AD03223AE7E400319479 /* Info.plist */,
 				B114AD09223B697100319479 /* GoogleService-Info.plist */,
@@ -126,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				B114AD25223F389000319479 /* GridViewCell.swift */,
-				B114AD27223F38BA00319479 /* GridViewCell.xib */,
+				B114AD33223F536F00319479 /* GridViewCell.xib */,
 			);
 			name = GridViewCell;
 			path = "New Group";
@@ -140,6 +126,38 @@
 			);
 			name = DemoElongationCell;
 			path = "New Group1";
+			sourceTree = "<group>";
+		};
+		B114AD30223F51A000319479 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B114AD0F223E21E500319479 /* Global.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B114AD31223F521300319479 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B114AD29223F38D600319479 /* DemoElongationCell */,
+				B114AD24223F387600319479 /* GridViewCell */,
+				B114ACFB223AE7DF00319479 /* Main.storyboard */,
+				B114AD00223AE7E400319479 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B114AD32223F522900319479 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B114ACF7223AE7DF00319479 /* AppDelegate.swift */,
+				B114ACF9223AE7DF00319479 /* LogInViewController.swift */,
+				B114AD0B223C9C7800319479 /* DashboardViewController.swift */,
+				B114AD0D223E0A4900319479 /* ProfileViewController.swift */,
+				B114AD21223F371F00319479 /* TopicsViewController.swift */,
+				B114AD20223F371F00319479 /* DetailViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,9 +223,9 @@
 			files = (
 				B114AD02223AE7E400319479 /* LaunchScreen.storyboard in Resources */,
 				B114AD2C223F38EF00319479 /* DemoElongationCell.xib in Resources */,
+				B114AD34223F536F00319479 /* GridViewCell.xib in Resources */,
 				B114AD0A223B697100319479 /* GoogleService-Info.plist in Resources */,
 				B114ACFF223AE7E400319479 /* Assets.xcassets in Resources */,
-				B114AD28223F38BA00319479 /* GridViewCell.xib in Resources */,
 				B114ACFD223AE7DF00319479 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,12 +339,10 @@
 				B114ACFA223AE7DF00319479 /* LogInViewController.swift in Sources */,
 				B114AD0C223C9C7900319479 /* DashboardViewController.swift in Sources */,
 				B114AD0E223E0A4A00319479 /* ProfileViewController.swift in Sources */,
-				B114AD19223F02CA00319479 /* TopicsTableViewController.swift in Sources */,
 				B114AD2D223F38EF00319479 /* DemoElongationCell.swift in Sources */,
 				B114AD10223E21E500319479 /* Global.swift in Sources */,
-				B114AD2F223F3A3900319479 /* Villa.swift in Sources */,
 				B114ACF8223AE7DF00319479 /* AppDelegate.swift in Sources */,
-				B114AD23223F371F00319479 /* ViewController.swift in Sources */,
+				B114AD23223F371F00319479 /* TopicsViewController.swift in Sources */,
 				B114AD22223F371F00319479 /* DetailViewController.swift in Sources */,
 				B114AD26223F389000319479 /* GridViewCell.swift in Sources */,
 			);

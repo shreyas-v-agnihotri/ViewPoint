@@ -9,8 +9,6 @@ target 'ViewPoint' do
   pod 'SVProgressHUD'
   pod 'Kingfisher'
   pod 'AlamofireImage'
-  pod 'Navigation-Toolbar'
-  pod 'FoldingCell'
   pod 'ElongationPreview'
   
   # Authentication pods
