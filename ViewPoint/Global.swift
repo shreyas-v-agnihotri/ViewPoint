@@ -26,4 +26,13 @@ struct MyDimensions {
     static let statusProfilePicSize = 30    // Use smaller icon for status bar
 }
 
+struct Topic {
+    var title: String
+}
+    
+let iOSvsAndroid = Topic(title: "iOS vs Android")
+let Abortion = Topic(title: "Pro-Choice vs Pro-Life")
+
+var topics = [iOSvsAndroid, Abortion]
+
 
