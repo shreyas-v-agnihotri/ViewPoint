@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import ElongationPreview
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: "AvenirNext-Medium", size: 20)!]
+        
+        // Customize ElongationConfig
+        var config = ElongationConfig()
+        config.scaleViewScaleFactor = 0.9
+        config.topViewHeight = 190
+        config.bottomViewHeight = 170
+        config.bottomViewOffset = 20
+        config.parallaxFactor = 100
+        config.separatorHeight = 0.5
+        config.separatorColor = UIColor.white
+        
+        // Durations for presenting/dismissing detail screen
+        config.detailPresentingDuration = 0.4
+        config.detailDismissingDuration = 0.4
+        
+        // Customize behaviour
+        config.headerTouchAction = .collpaseOnBoth
+        
+        // Save created appearance object as default
+        ElongationConfig.shared = config
         
         return true
     }

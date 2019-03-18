@@ -106,6 +106,34 @@
             </objects>
             <point key="canvasLocation" x="782" y="-246"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="I5t-z8-nEI">
+            <objects>
+                <viewController id="l2W-La-EIZ" customClass="ViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VPz-qO-8sM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tableView>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vjw-OC-Qvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2378" y="-950"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="hM7-6d-q9x">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="cTM-7I-j5a" customClass="DetailViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2sL-tO-Zqd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tableView>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IIs-SC-ffu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3135" y="-950"/>
+        </scene>
         <!--Debates-->
         <scene sceneID="6WV-TA-lRC">
             <objects>
@@ -117,11 +145,18 @@
                         <viewLayoutGuide key="safeArea" id="DJS-rQ-NMF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Debates" id="8gz-mM-Q4L">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="V50-58-RlX">
-                            <connections>
-                                <segue destination="fXt-Yq-hS4" kind="show" id="MHv-g4-kjT"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="V50-58-RlX">
+                                <connections>
+                                    <segue destination="fXt-Yq-hS4" kind="show" id="MHv-g4-kjT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Test" id="N5n-e5-NJb">
+                                <connections>
+                                    <segue destination="l2W-La-EIZ" kind="show" id="XQi-Dv-nYh"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="37h-yA-qT2" kind="presentation" identifier="goToProfile" id="hWy-gj-PA1"/>
@@ -250,7 +285,6 @@
         <image name="verticalGradient" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hWy-gj-PA1"/>
-        <segue reference="w80-X0-xvv"/>
+        <segue reference="ORt-B4-obM"/>
     </inferredMetricsTieBreakers>
 </document>
