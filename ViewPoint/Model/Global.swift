@@ -23,7 +23,7 @@ struct MyColors {
 struct MyDimensions {
     
     static let profilePicSize = 500         // Request 500x500 image from Google profile
-    static let statusProfilePicSize = 30    // Use smaller icon for status bar
+    static let navBarButtonSize = 30        // Use smaller images for nav bar
 }
 
 struct Topic {

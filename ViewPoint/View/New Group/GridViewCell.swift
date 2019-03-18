@@ -14,10 +14,10 @@ final class GridViewCell: UITableViewCell {
 
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
-        iterateSubviews(of: stackView)
-        for case let stack as UIStackView in stackView.arrangedSubviews {
-            iterateSubviews(of: stack)
-        }
+//        iterateSubviews(of: stackView)
+//        for case let stack as UIStackView in stackView.arrangedSubviews {
+//            iterateSubviews(of: stack)
+//        }
     }
 
     private func iterateSubviews(of view: UIStackView) {

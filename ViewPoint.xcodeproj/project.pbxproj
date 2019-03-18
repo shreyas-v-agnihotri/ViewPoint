@@ -139,10 +139,10 @@
 		B114AD31223F521300319479 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B114AD29223F38D600319479 /* DemoElongationCell */,
-				B114AD24223F387600319479 /* GridViewCell */,
 				B114ACFB223AE7DF00319479 /* Main.storyboard */,
 				B114AD00223AE7E400319479 /* LaunchScreen.storyboard */,
+				B114AD29223F38D600319479 /* DemoElongationCell */,
+				B114AD24223F387600319479 /* GridViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
