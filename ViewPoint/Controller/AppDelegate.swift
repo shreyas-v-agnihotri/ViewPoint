@@ -37,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         config.separatorColor = UIColor.white
         
         // Durations for presenting/dismissing detail screen
-        config.detailPresentingDuration = 0.4
-        config.detailDismissingDuration = 0.4
+        config.detailPresentingDuration = 0.6
+        config.detailDismissingDuration = 0.6
         
         // Customize behaviour
         config.headerTouchAction = .collpaseOnBoth

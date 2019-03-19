@@ -34,8 +34,8 @@ final class TopicsViewController: ElongationViewController {
 extension TopicsViewController {
 
     func setup() {
-        // view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
-        tableView.backgroundColor = MyColors.GRAY
+        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
+        // tableView.backgroundColor = MyColors.GRAY
         tableView.register(UINib(nibName: "DemoElongationCell", bundle: nil), forCellReuseIdentifier: "topic")
     }
 }

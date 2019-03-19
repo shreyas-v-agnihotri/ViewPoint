@@ -28,7 +28,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.animateClouds(seconds: 8)
+        self.animateClouds(seconds: 6)
     }
 
     override func viewDidDisappear(_ animated: Bool) {

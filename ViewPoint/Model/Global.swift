@@ -29,10 +29,12 @@ struct MyDimensions {
 struct Topic {
     
     let title: String
+    let category: String
     let imageName: String
     
-    init(title: String, imageName: String) {
+    init(title: String, category: String, imageName: String) {
         self.title = title
+        self.category = category
         self.imageName = imageName
     }
 }
@@ -41,10 +43,10 @@ extension Topic {
     
     static var topicList: [Topic] {
         return [
-            Topic(title: "iOS vs Android", imageName: "iOSvsAndroid"),
-            Topic(title: "Legalizing Marijuana", imageName: "marijuana"),
-            Topic(title: "Abortion", imageName: "abortion"),
-            Topic(title: "Health Care", imageName: "healthcare")
+            Topic(title: "iOS vs Android", category: "Technology", imageName: "iOSvsAndroid"),
+            Topic(title: "Legalizing Marijuana", category: "Public Policy", imageName: "marijuana"),
+            Topic(title: "Abortion", category: "Public Policy", imageName: "abortion"),
+            Topic(title: "Health Care", category: "Public Policy", imageName: "healthcare")
         ]
     }
 }
