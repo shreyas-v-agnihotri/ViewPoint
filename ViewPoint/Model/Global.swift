@@ -24,6 +24,9 @@ struct MyDimensions {
     
     static let profilePicSize = 500         // Request 500x500 image from Google profile
     static let navBarButtonSize = 30        // Use smaller images for nav bar
+    
+    static let topViewHeight = 190
+    static let bottomViewHeight = 170
 }
 
 struct Topic {
@@ -37,6 +40,16 @@ struct Topic {
         self.category = category
         self.imageName = imageName
     }
+}
+
+// Screen width.
+public var screenWidth: CGFloat {
+    return UIScreen.main.bounds.width
+}
+
+// Screen height.
+public var screenHeight: CGFloat {
+    return UIScreen.main.bounds.height
 }
 
 extension Topic {

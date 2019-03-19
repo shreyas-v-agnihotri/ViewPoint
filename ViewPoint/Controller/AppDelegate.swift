@@ -29,16 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Customize ElongationConfig
         var config = ElongationConfig()
         config.scaleViewScaleFactor = 0.9
-        config.topViewHeight = 190
-        config.bottomViewHeight = 170
+        config.topViewHeight = CGFloat(MyDimensions.topViewHeight)
+        config.bottomViewHeight = CGFloat(MyDimensions.bottomViewHeight)
         config.bottomViewOffset = 20
         config.parallaxFactor = 100
         config.separatorHeight = 0.5
-        config.separatorColor = UIColor.white
+        config.separatorColor = MyColors.WHITE
         
         // Durations for presenting/dismissing detail screen
-        config.detailPresentingDuration = 0.6
-        config.detailDismissingDuration = 0.6
+        config.detailPresentingDuration = 0.4
+        config.detailDismissingDuration = 0.4
         
         // Customize behaviour
         config.headerTouchAction = .collpaseOnBoth

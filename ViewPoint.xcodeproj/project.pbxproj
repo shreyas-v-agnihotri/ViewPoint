@@ -23,6 +23,8 @@
 		B114AD2C223F38EF00319479 /* DemoElongationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B114AD2A223F38EE00319479 /* DemoElongationCell.xib */; };
 		B114AD2D223F38EF00319479 /* DemoElongationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD2B223F38EF00319479 /* DemoElongationCell.swift */; };
 		B114AD34223F536F00319479 /* GridViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B114AD33223F536F00319479 /* GridViewCell.xib */; };
+		B114AD3622408E2300319479 /* SurveyQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD3522408E2200319479 /* SurveyQuestionView.swift */; };
+		B114AD3A2240928100319479 /* SurveyQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B114AD392240928000319479 /* SurveyQuestionView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		B114AD2A223F38EE00319479 /* DemoElongationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoElongationCell.xib; sourceTree = "<group>"; };
 		B114AD2B223F38EF00319479 /* DemoElongationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoElongationCell.swift; sourceTree = "<group>"; };
 		B114AD33223F536F00319479 /* GridViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GridViewCell.xib; path = "../../../../elongation-preview-master/ElongationPreviewDemo/Views/GridViewCell/GridViewCell.xib"; sourceTree = "<group>"; };
+		B114AD3522408E2200319479 /* SurveyQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuestionView.swift; sourceTree = "<group>"; };
+		B114AD392240928000319479 /* SurveyQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyQuestionView.xib; sourceTree = "<group>"; };
 		DB61583ED81DD1FDD94CCF07 /* Pods-ViewPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewPoint.debug.xcconfig"; path = "Target Support Files/Pods-ViewPoint/Pods-ViewPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		F517DAEBC88B6202FA45B091 /* Pods_ViewPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,6 +147,7 @@
 				B114AD00223AE7E400319479 /* LaunchScreen.storyboard */,
 				B114AD29223F38D600319479 /* DemoElongationCell */,
 				B114AD24223F387600319479 /* GridViewCell */,
+				B114AD3B2240AA9C00319479 /* SurveyQuestionView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,6 +163,15 @@
 				B114AD20223F371F00319479 /* DetailViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		B114AD3B2240AA9C00319479 /* SurveyQuestionView */ = {
+			isa = PBXGroup;
+			children = (
+				B114AD3522408E2200319479 /* SurveyQuestionView.swift */,
+				B114AD392240928000319479 /* SurveyQuestionView.xib */,
+			);
+			path = SurveyQuestionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B114AD02223AE7E400319479 /* LaunchScreen.storyboard in Resources */,
+				B114AD3A2240928100319479 /* SurveyQuestionView.xib in Resources */,
 				B114AD2C223F38EF00319479 /* DemoElongationCell.xib in Resources */,
 				B114AD34223F536F00319479 /* GridViewCell.xib in Resources */,
 				B114AD0A223B697100319479 /* GoogleService-Info.plist in Resources */,
@@ -343,6 +358,7 @@
 				B114AD10223E21E500319479 /* Global.swift in Sources */,
 				B114ACF8223AE7DF00319479 /* AppDelegate.swift in Sources */,
 				B114AD23223F371F00319479 /* TopicsViewController.swift in Sources */,
+				B114AD3622408E2300319479 /* SurveyQuestionView.swift in Sources */,
 				B114AD22223F371F00319479 /* DetailViewController.swift in Sources */,
 				B114AD26223F389000319479 /* GridViewCell.swift in Sources */,
 			);

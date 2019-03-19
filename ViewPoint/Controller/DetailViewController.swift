@@ -14,8 +14,8 @@ final class DetailViewController: ElongationDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
-        // tableView.backgroundColor = MyColors.WHITE
+        // view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
+        tableView.backgroundColor = MyColors.BLUE
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "GridViewCell", bundle: nil), forCellReuseIdentifier: "survey")
         // tableView.registerNib(GridViewCell.self)
@@ -34,7 +34,8 @@ final class DetailViewController: ElongationDetailViewController {
     override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         let appearance = ElongationConfig.shared
         let headerHeight = appearance.topViewHeight + appearance.bottomViewHeight
-        let screenHeight = UIScreen.main.bounds.height
-        return screenHeight - headerHeight
+        // return screenHeight - headerHeight
+        return 200
     }
 }
+

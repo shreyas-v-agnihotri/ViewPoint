@@ -60,7 +60,7 @@ extension TopicsViewController {
         let topic = datasource[indexPath.row]
         
         let attributedLocality = NSMutableAttributedString(string: topic.title, attributes: [
-            NSAttributedString.Key.kern: 4,
+            NSAttributedString.Key.kern: 2,
         ])
 
         cell.topImageView?.image = UIImage(named: topic.imageName)
