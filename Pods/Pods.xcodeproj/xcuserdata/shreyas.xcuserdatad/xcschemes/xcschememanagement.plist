@@ -59,11 +59,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FoldingCell.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -94,11 +89,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Navigation-Toolbar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-ViewPoint.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -110,6 +100,11 @@
 			<false/>
 		</dict>
 		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TwicketSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

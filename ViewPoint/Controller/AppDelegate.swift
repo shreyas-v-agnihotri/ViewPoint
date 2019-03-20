@@ -25,20 +25,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: "AvenirNext-Medium", size: 20)!]
+        UINavigationBar.appearance().isTranslucent = false
         
         // Customize ElongationConfig
         var config = ElongationConfig()
         config.scaleViewScaleFactor = 0.9
         config.topViewHeight = CGFloat(MyDimensions.topViewHeight)
         config.bottomViewHeight = CGFloat(MyDimensions.bottomViewHeight)
-        config.bottomViewOffset = 20
+        config.bottomViewOffset = 0
         config.parallaxFactor = 100
         config.separatorHeight = 0.5
         config.separatorColor = MyColors.WHITE
         
         // Durations for presenting/dismissing detail screen
-        config.detailPresentingDuration = 0.4
-        config.detailDismissingDuration = 0.4
+        config.detailPresentingDuration = 0.5
+        config.detailDismissingDuration = 0.5
         
         // Customize behaviour
         config.headerTouchAction = .collpaseOnBoth

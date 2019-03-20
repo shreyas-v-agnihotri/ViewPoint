@@ -17,19 +17,14 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
-        self.navigationController?.navigationBar.isTranslucent = false
-        
-        setNewDebateButton()
+        // setNewDebateButton()
         
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
-            
             if let currentFirebaseUser = user {
                 self.setProfileButton(user: currentFirebaseUser)
             }
-            
         }
-
+        
     }
     
     
@@ -74,23 +69,6 @@ class DashboardViewController: UIViewController {
         performSegue(withIdentifier: "goToProfile", sender: self)
     }
     
-    func setNewDebateButton() {
-        
-        let newDebateButton = UIButton(type: .custom)
-        newDebateButton.addTarget(self, action: #selector(self.newDebateButtonPressed), for: .touchUpInside)
-        let newDebateImage = UIImage(named: "paperPlane")
-        let buttonSize = CGFloat(integerLiteral: MyDimensions.navBarButtonSize)
-        let newDebateImageScaled = newDebateImage!.af_imageAspectScaled(toFit: CGSize(width: buttonSize, height: buttonSize))
-        newDebateButton.setImage(newDebateImageScaled, for: .normal)
-        let newDebateBarButton = UIBarButtonItem(customView: newDebateButton)
-        self.navigationItem.rightBarButtonItem = newDebateBarButton
-        
-    }
-    
-    
-    @objc func newDebateButtonPressed(sender: UIButton!) {
-        performSegue(withIdentifier: "goToTopics", sender: self)
-    }
 }
 
 

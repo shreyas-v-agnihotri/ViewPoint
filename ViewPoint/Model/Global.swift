@@ -25,43 +25,23 @@ struct MyDimensions {
     static let profilePicSize = 500         // Request 500x500 image from Google profile
     static let navBarButtonSize = 30        // Use smaller images for nav bar
     
+    static let screenWidth = UIScreen.main.bounds.width
+    static let screenHeight = UIScreen.main.bounds.height
+    static let statusBarHeight = UIApplication.shared.statusBarFrame.height
+    
     static let topViewHeight = 190
-    static let bottomViewHeight = 170
+    static let bottomViewHeight = 223
+    
+    static let detailViewHeight = Int(screenHeight) - Int(statusBarHeight) - topViewHeight - bottomViewHeight - computeDetailViewAdjustment(statusBarHeight: statusBarHeight)
+
 }
 
-struct Topic {
+func computeDetailViewAdjustment(statusBarHeight: CGFloat) -> Int {
     
-    let title: String
-    let category: String
-    let imageName: String
-    
-    init(title: String, category: String, imageName: String) {
-        self.title = title
-        self.category = category
-        self.imageName = imageName
+    var modelDependentDetailViewAdjustment = 0
+    if statusBarHeight > 20 {
+        modelDependentDetailViewAdjustment = Int(statusBarHeight)
     }
+    return modelDependentDetailViewAdjustment
 }
-
-// Screen width.
-public var screenWidth: CGFloat {
-    return UIScreen.main.bounds.width
-}
-
-// Screen height.
-public var screenHeight: CGFloat {
-    return UIScreen.main.bounds.height
-}
-
-extension Topic {
-    
-    static var topicList: [Topic] {
-        return [
-            Topic(title: "iOS vs Android", category: "Technology", imageName: "iOSvsAndroid"),
-            Topic(title: "Legalizing Marijuana", category: "Public Policy", imageName: "marijuana"),
-            Topic(title: "Abortion", category: "Public Policy", imageName: "abortion"),
-            Topic(title: "Health Care", category: "Public Policy", imageName: "healthcare")
-        ]
-    }
-}
-
 

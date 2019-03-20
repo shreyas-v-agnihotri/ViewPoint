@@ -120,11 +120,11 @@
             </objects>
             <point key="canvasLocation" x="2658" y="-246"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Topic Detail View Controller-->
         <scene sceneID="hM7-6d-q9x">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="cTM-7I-j5a" customClass="DetailViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2sL-tO-Zqd">
+                <viewController storyboardIdentifier="topicDetailViewController" id="cTM-7I-j5a" customClass="TopicDetailViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2sL-tO-Zqd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,6 +146,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Debates" id="8gz-mM-Q4L">
                         <barButtonItem key="backBarButtonItem" title=" " id="7yd-LM-gIY"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="wBX-FG-HIh">
+                            <connections>
+                                <segue destination="l2W-La-EIZ" kind="show" id="LBj-rM-doo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="37h-yA-qT2" kind="presentation" identifier="goToProfile" id="hWy-gj-PA1"/>
@@ -217,7 +222,7 @@
         <image name="verticalGradient" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hWy-gj-PA1"/>
+        <segue reference="l7r-rO-LxF"/>
         <segue reference="w80-X0-xvv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -56,7 +56,6 @@ PODS:
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
-  - FoldingCell (4.0.3)
   - GoogleAppMeasurement (5.7.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -117,9 +116,9 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Navigation-Toolbar (1.0.0)
   - Protobuf (3.7.0)
   - SVProgressHUD (2.2.5)
+  - TwicketSegmentedControl (0.1.2)
 
 DEPENDENCIES:
   - AlamofireImage
@@ -127,11 +126,10 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
-  - FoldingCell
   - GoogleSignIn
   - Kingfisher
-  - Navigation-Toolbar
   - SVProgressHUD
+  - TwicketSegmentedControl
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -146,7 +144,6 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseFirestore
     - FirebaseInstanceID
-    - FoldingCell
     - GoogleAppMeasurement
     - GoogleSignIn
     - GoogleToolboxForMac
@@ -157,9 +154,9 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - nanopb
-    - Navigation-Toolbar
     - Protobuf
     - SVProgressHUD
+    - TwicketSegmentedControl
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -173,7 +170,6 @@ SPEC CHECKSUMS:
   FirebaseCore: 52f851b30e11360f1e67cf04b1edfebf0a47a2d3
   FirebaseFirestore: ccdaffb8a73c591ff61872b8f7905ad0c237ef50
   FirebaseInstanceID: bd6fc5a258884e206fd5c474ebe4f5b00e21770e
-  FoldingCell: 617197a8ec9feff741419361e756eea71d60559f
   GoogleAppMeasurement: 6cf307834da065863f9faf4c0de0a936d81dd832
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
@@ -184,10 +180,10 @@ SPEC CHECKSUMS:
   Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Navigation-Toolbar: 48e9b9b7cb2b7c721ddb4051e6139465a04496f5
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: 6f3aae464cdd10042fdd0e9dd3e5aadfa92ef9d7
+PODFILE CHECKSUM: 89ba0d43d7bfe0b1aa3993a4c32b1379c7890d49
 
 COCOAPODS: 1.6.1

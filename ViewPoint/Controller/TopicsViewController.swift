@@ -11,62 +11,48 @@ import UIKit
 
 final class TopicsViewController: ElongationViewController {
 
-    var datasource: [Topic] = Topic.topicList
+    var topicList: [Topic] = TopicDatabase.topicList
 
     // MARK: Lifecycle 🌎
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        
+        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
+        // tableView.backgroundColor = MyColors.GRAY
+        tableView.register(UINib(nibName: "TopicPreviewCell", bundle: nil), forCellReuseIdentifier: "topic")
+        // tableView.alwaysBounceVertical = false
     }
 
     override func openDetailView(for indexPath: IndexPath) {
-        let id = String(describing: DetailViewController.self)
-        guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: id) as? DetailViewController else { return }
-        let topic = datasource[indexPath.row]
-        detailViewController.title = topic.title
-        expand(viewController: detailViewController)
+        guard let topicDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "topicDetailViewController") as? TopicDetailViewController else { return }
+        expand(viewController: topicDetailViewController)
     }
-}
-
-// MARK: - Setup ⛏
-
-extension TopicsViewController {
-
-    func setup() {
-        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
-        // tableView.backgroundColor = MyColors.GRAY
-        tableView.register(UINib(nibName: "DemoElongationCell", bundle: nil), forCellReuseIdentifier: "topic")
-    }
-}
-
-// MARK: - TableView 📚
-
-extension TopicsViewController {
-
+    
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return datasource.count
+        return topicList.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "topic", for: indexPath) as! DemoElongationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "topic", for: indexPath) as! TopicPreviewCell
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         super.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
-        guard let cell = cell as? DemoElongationCell else { return }
-
-        let topic = datasource[indexPath.row]
+        guard let cell = cell as? TopicPreviewCell else { return }
         
-        let attributedLocality = NSMutableAttributedString(string: topic.title, attributes: [
+        let topic = topicList[indexPath.row]
+        
+        let spacedTitle = NSMutableAttributedString(string: topic.title, attributes: [
             NSAttributedString.Key.kern: 2,
-        ])
-
+            ])
+        
         cell.topImageView?.image = UIImage(named: topic.imageName)
-        cell.localityLabel?.attributedText = attributedLocality
-        cell.countryLabel?.text = topic.title
+        cell.localityLabel?.attributedText = spacedTitle
+        cell.countryLabel?.text = topic.category
         cell.aboutTitleLabel?.text = topic.title
         cell.aboutDescriptionLabel?.text = topic.title
     }
+    
 }

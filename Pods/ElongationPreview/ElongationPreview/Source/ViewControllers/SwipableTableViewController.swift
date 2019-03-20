@@ -27,6 +27,8 @@ open class SwipableTableViewController: UITableViewController, UIGestureRecogniz
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(gestureRecognizerSwiped(_:)))
         panGestureRecognizer.delegate = self
         tableView.addGestureRecognizer(panGestureRecognizer)
+        view.layer.borderColor = UIColor.clear.cgColor
+        tableView.layer.borderColor = UIColor.clear.cgColor
     }
 
     @objc func gestureRecognizerSwiped(_: UIPanGestureRecognizer) {}
