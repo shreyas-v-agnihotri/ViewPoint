@@ -8,6 +8,7 @@
 
 import UIKit
 import ElongationPreview
+import TwicketSegmentedControl
 
 final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
 
@@ -40,11 +41,24 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
         for question in topic.survey {
                 
             let questionCell: SurveyQuestionCell = Bundle.main.loadNibNamed("SurveyQuestionCell", owner: self, options: nil)?.first as! SurveyQuestionCell
+            
             questionCell.questionLabel.text = question.question
-            questionCell.firstButton.setTitle(question.answerChoice1, for: .normal)
-            questionCell.secondButton.setTitle(question.answerChoice2, for: .normal)
+            questionCell.questionLabel.font = UIFont(name: MyFont.normal, size: MyFont.questionFontSize)
             questionCell.pageControl.isHidden = true
-                
+            
+            let options = ["Yes", "No"]
+            let frame = CGRect(x: MyDimensions.screenWidth * (1-MyDimensions.answerChoiceWidthRatio) / 2, y: 0, width: MyDimensions.screenWidth * MyDimensions.answerChoiceWidthRatio, height: 40)
+            let segmentedControl = TwicketSegmentedControl(frame: frame)
+            segmentedControl.setSegmentItems(options)
+            segmentedControl.segmentsBackgroundColor = MyColors.TRANSPARENT_WHITE
+            segmentedControl.sliderBackgroundColor = MyColors.WHITE
+            segmentedControl.highlightTextColor = MyColors.BLUE
+            segmentedControl.defaultTextColor = MyColors.WHITE
+            segmentedControl.font = UIFont(name: MyFont.medium, size: MyFont.answerChoiceFontSize)!
+            segmentedControl.backgroundColor = UIColor.clear
+            segmentedControl.isSliderShadowHidden = true
+            questionCell.segmentedControlView.addSubview(segmentedControl)
+            
             questionCells.append(questionCell)
         }
         

@@ -22,28 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="353" height="234.66666666666666"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TTQ-kE-2cg">
-                        <rect key="frame" x="0.0" y="137.66666666666666" width="353" height="60"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJu-cy-dqs">
-                                <rect key="frame" x="0.0" y="12" width="176.66666666666666" height="36"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kl-BM-vt7">
-                                <rect key="frame" x="176.66666666666663" y="12" width="176.33333333333337" height="36"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="60" id="PD3-Qw-nUG"/>
-                        </constraints>
-                    </stackView>
                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="0Nl-gx-xLF">
                         <rect key="frame" x="157" y="197.66666666666666" width="39" height="37"/>
                         <constraints>
@@ -51,28 +29,36 @@
                         </constraints>
                     </pageControl>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHQ-j0-Q1I" userLabel="Question">
-                        <rect key="frame" x="10" y="20.000000000000007" width="333" height="117.66666666666669"/>
-                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                        <rect key="frame" x="10" y="10.000000000000007" width="333" height="117.66666666666669"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msd-0L-kfg">
+                        <rect key="frame" x="0.0" y="137.66666666666666" width="353" height="60"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="b3a-wX-h2Q"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="TTQ-kE-2cg" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" id="11c-4c-OoP"/>
                     <constraint firstAttribute="trailing" secondItem="9bL-wu-ooe" secondAttribute="trailing" id="42D-Av-cDx"/>
+                    <constraint firstAttribute="trailing" secondItem="msd-0L-kfg" secondAttribute="trailing" id="G56-cw-Fwj"/>
                     <constraint firstAttribute="trailing" secondItem="oHQ-j0-Q1I" secondAttribute="trailing" constant="10" id="KO4-Fl-sVO"/>
-                    <constraint firstItem="0Nl-gx-xLF" firstAttribute="top" secondItem="TTQ-kE-2cg" secondAttribute="bottom" id="Wqv-95-9uQ"/>
+                    <constraint firstItem="0Nl-gx-xLF" firstAttribute="top" secondItem="msd-0L-kfg" secondAttribute="bottom" id="SmP-20-lR1"/>
+                    <constraint firstItem="msd-0L-kfg" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" id="Was-Ad-fmk"/>
                     <constraint firstAttribute="bottom" secondItem="9bL-wu-ooe" secondAttribute="bottom" id="aO9-aI-dhD"/>
                     <constraint firstItem="oHQ-j0-Q1I" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="10" id="bRB-ja-9n7"/>
+                    <constraint firstItem="msd-0L-kfg" firstAttribute="top" secondItem="oHQ-j0-Q1I" secondAttribute="bottom" constant="10" id="bil-Aj-bcD"/>
                     <constraint firstAttribute="trailing" secondItem="0Nl-gx-xLF" secondAttribute="trailing" constant="157" id="eZJ-53-DHq"/>
-                    <constraint firstItem="TTQ-kE-2cg" firstAttribute="top" secondItem="oHQ-j0-Q1I" secondAttribute="bottom" id="kIL-ju-EC1"/>
                     <constraint firstItem="0Nl-gx-xLF" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="157" id="l2T-Ct-0xf"/>
-                    <constraint firstItem="oHQ-j0-Q1I" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" constant="20" id="r6z-mV-2Vd"/>
+                    <constraint firstItem="oHQ-j0-Q1I" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" constant="10" id="r6z-mV-2Vd"/>
+                    <constraint firstItem="msd-0L-kfg" firstAttribute="centerX" secondItem="wMU-A7-NkY" secondAttribute="centerX" id="t3Q-VU-lwx"/>
                     <constraint firstItem="9bL-wu-ooe" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" id="t6C-OY-bf4"/>
                     <constraint firstItem="9bL-wu-ooe" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" id="wN3-0H-faw"/>
                     <constraint firstAttribute="bottom" secondItem="0Nl-gx-xLF" secondAttribute="bottom" id="xB7-77-Hnp"/>
-                    <constraint firstAttribute="trailing" secondItem="TTQ-kE-2cg" secondAttribute="trailing" id="ztA-Dy-Soa"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,10 +66,9 @@
             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="firstButton" destination="XJu-cy-dqs" id="NnT-PF-F8w"/>
                 <outlet property="pageControl" destination="0Nl-gx-xLF" id="YYV-ED-pdy"/>
                 <outlet property="questionLabel" destination="oHQ-j0-Q1I" id="o7h-gX-L5s"/>
-                <outlet property="secondButton" destination="3kl-BM-vt7" id="yTO-S6-sMm"/>
+                <outlet property="segmentedControlView" destination="msd-0L-kfg" id="BuJ-2Z-8Hz"/>
             </connections>
             <point key="canvasLocation" x="-8.8000000000000007" y="15.886699507389164"/>
         </tableViewCell>

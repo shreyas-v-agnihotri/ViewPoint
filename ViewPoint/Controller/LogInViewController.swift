@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import SVProgressHUD
 
 class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
@@ -21,14 +22,17 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
 
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self
+        
+        SVProgressHUD.show(withStatus: "Attempting automatic sign in...")
         GIDSignIn.sharedInstance()?.signInSilently()
+        SVProgressHUD.dismiss()
         
         designButton(button: signInButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.animateClouds(seconds: 6)
+        self.animateClouds(seconds: MyAnimations.cloudsDuration)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -55,8 +59,8 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     func designButton(button: UIButton) {
         
         button.backgroundColor = MyColors.TRANSPARENT_WHITE
-        button.layer.cornerRadius = 20
-        button.layer.borderWidth = 2
+        button.layer.cornerRadius = MyDimensions.buttonCornerRadius
+        button.layer.borderWidth = MyDimensions.buttonBorderWidth
         button.layer.borderColor = MyColors.WHITE.cgColor
         
     }
@@ -107,6 +111,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             }
         })
         
+        SVProgressHUD.dismiss()
         performSegue(withIdentifier: "goToDashboard", sender: self)
     }
     

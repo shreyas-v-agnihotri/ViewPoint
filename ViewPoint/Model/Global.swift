@@ -16,7 +16,7 @@ struct MyColors {
     static let PURPLE = UIColor(red:0.64, green:0.45, blue:1.00, alpha:1.0)             // #a472ff
     static let BLUE = UIColor(red:0.51, green:0.56, blue:1.00, alpha:1.0)               // #838eff
     static let GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)               // #40514e
-    static let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
+    static let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.3)
     
 }
 
@@ -25,15 +25,38 @@ struct MyDimensions {
     static let profilePicSize = 500         // Request 500x500 image from Google profile
     static let navBarButtonSize = 30        // Use smaller images for nav bar
     
+    static let buttonCornerRadius = CGFloat(20)
+    static let buttonBorderWidth = CGFloat(2)
+    
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
     static let statusBarHeight = UIApplication.shared.statusBarFrame.height
     
     static let topViewHeight = 190
     static let bottomViewHeight = 223
-    
     static let detailViewHeight = Int(screenHeight) - Int(statusBarHeight) - topViewHeight - bottomViewHeight - computeDetailViewAdjustment(statusBarHeight: statusBarHeight)
+    
+    static let answerChoiceWidthRatio = CGFloat(0.7)
 
+}
+
+struct MyFont {
+    
+    static let normal = "Avenir Next"
+    static let medium = "AvenirNext-Medium"
+    
+    static let navBarFontSize = CGFloat(20)
+    static let questionFontSize = CGFloat(20)
+    static let answerChoiceFontSize = CGFloat(18)
+    
+}
+
+struct MyAnimations {
+    
+    static let cloudsDuration = 6.0
+    static let openTopicPreview = 0.5
+    static let closeTopicPreview = 0.5
+    
 }
 
 func computeDetailViewAdjustment(statusBarHeight: CGFloat) -> Int {

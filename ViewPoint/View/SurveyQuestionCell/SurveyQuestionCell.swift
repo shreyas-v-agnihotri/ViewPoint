@@ -11,8 +11,7 @@ import UIKit
 class SurveyQuestionCell: UITableViewCell {
 
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var firstButton: UIButton!
-    @IBOutlet weak var secondButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
-    
+    @IBOutlet weak var segmentedControlView: UIView!
+        
 }

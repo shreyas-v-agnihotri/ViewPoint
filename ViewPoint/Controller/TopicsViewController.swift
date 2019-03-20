@@ -21,7 +21,6 @@ final class TopicsViewController: ElongationViewController {
         view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
         // tableView.backgroundColor = MyColors.GRAY
         tableView.register(UINib(nibName: "TopicPreviewCell", bundle: nil), forCellReuseIdentifier: "topic")
-        // tableView.alwaysBounceVertical = false
     }
 
     override func openDetailView(for indexPath: IndexPath) {

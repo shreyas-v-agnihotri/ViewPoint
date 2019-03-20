@@ -148,13 +148,12 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="7yd-LM-gIY"/>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="wBX-FG-HIh">
                             <connections>
-                                <segue destination="l2W-La-EIZ" kind="show" id="LBj-rM-doo"/>
+                                <segue destination="l2W-La-EIZ" kind="show" identifier="goToTopics" id="LBj-rM-doo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="37h-yA-qT2" kind="presentation" identifier="goToProfile" id="hWy-gj-PA1"/>
-                        <segue destination="l2W-La-EIZ" kind="show" identifier="goToTopics" id="l7r-rO-LxF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Zj-vb-Wcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -222,7 +221,7 @@
         <image name="verticalGradient" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="l7r-rO-LxF"/>
+        <segue reference="UdK-5o-LgW"/>
         <segue reference="w80-X0-xvv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
