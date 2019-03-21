@@ -81,7 +81,7 @@ extension ElongationDetailViewController {
         }
 
         switch action {
-        case .collpaseOnBoth: dismissViewController()
+        case .collapseOnBoth: dismissViewController()
         case .collapseOnTop:
             if touchedView == headerView.scalableView {
                 dismissViewController()

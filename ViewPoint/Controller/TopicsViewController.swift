@@ -20,6 +20,10 @@ final class TopicsViewController: ElongationViewController {
         
         view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
         // tableView.backgroundColor = MyColors.GRAY
+        
+//        tableView.bounces = false
+//        tableView.alwaysBounceVertical = false
+        
         tableView.register(UINib(nibName: "TopicPreviewCell", bundle: nil), forCellReuseIdentifier: "topic")
     }
 

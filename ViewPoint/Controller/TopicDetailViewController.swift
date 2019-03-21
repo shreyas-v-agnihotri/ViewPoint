@@ -16,10 +16,9 @@ final class TopicDetailViewController: ElongationDetailViewController {
         
         // view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
         tableView.backgroundColor = MyColors.BLUE
-        // tableView.layer.borderColor = UIColor.clear.cgColor
-        // view.layer.borderColor = UIColor.clear.cgColor
+        // tableView.isScrollEnabled = false
+        
         tableView.register(UINib(nibName: "SurveyCell", bundle: nil), forCellReuseIdentifier: "survey")
-        // tableView.alwaysBounceVertical = false
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -29,7 +28,6 @@ final class TopicDetailViewController: ElongationDetailViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "survey", for: indexPath) as! SurveyCell
         cell.topic = TopicDatabase.topicList[indexPath.row]
-        cell.layer.borderColor = UIColor.clear.cgColor
         return cell
     }
     

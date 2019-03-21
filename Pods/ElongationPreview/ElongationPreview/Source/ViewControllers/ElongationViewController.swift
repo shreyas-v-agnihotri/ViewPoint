@@ -288,6 +288,7 @@ private extension ElongationViewController {
     private func setupTableView() {
         tableView.separatorStyle = .none
         tableView.layer.borderColor = UIColor.clear.cgColor
+        tableView.layer.borderWidth = 0
     }
 
     private func setupTapGesture() {

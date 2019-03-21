@@ -35,23 +35,22 @@ struct MyDimensions {
     
     static let topViewHeight = 190
     static let bottomViewHeight = 223
-    static let detailViewHeight = Int(screenHeight) - Int(statusBarHeight) - topViewHeight - bottomViewHeight - computeDetailViewAdjustment(statusBarHeight: statusBarHeight)
+    static let detailViewHeight = Int(screenHeight) - Int(statusBarHeight) - topViewHeight - bottomViewHeight // - computeDetailViewAdjustment(statusBarHeight: statusBarHeight)
     
     static let answerChoiceWidthRatio = CGFloat(0.7)
 
 }
 
 struct MyFont {
-    
+
     static let normal = "Avenir Next"
     static let medium = "AvenirNext-Medium"
     
     static let topicPreviewTitleKern = 2
     
     static let navBarFontSize = CGFloat(20)
-    static let questionFontSize = CGFloat(20)
-    static let answerChoiceFontSize = CGFloat(18)
-    
+    static let surveyFontSize = computeSurveyFontSize()
+
 }
 
 struct MyAnimations {
@@ -69,5 +68,21 @@ func computeDetailViewAdjustment(statusBarHeight: CGFloat) -> Int {
         modelDependentDetailViewAdjustment = Int(statusBarHeight)
     }
     return modelDependentDetailViewAdjustment
+}
+
+func computeSurveyFontSize() -> CGFloat {
+    
+    let height = MyDimensions.screenHeight
+    
+    if height == 480 { return 16 }  // 2G, 3G, 3GS, 4, 4S
+    if height == 568 { return 17 }  // 5, 5S, 5C, SE
+    if height == 667 { return 18 }  // 6, 6S, 7, 8
+    if height == 736 { return 19 }  // 6+, 6S+, 7+, 8+
+    if height == 812 { return 20 }  // X, XS
+    if height == 896 { return 21 }  // XR, XS Max
+    
+    if height > 896 { return 22 }
+    else { return 16 }
+    
 }
 

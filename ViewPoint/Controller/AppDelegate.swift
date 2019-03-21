@@ -92,7 +92,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         config.detailDismissingDuration = MyAnimations.closeTopicPreview
         
         // Customize behaviour
-        config.headerTouchAction = .collpaseOnBoth
+        config.headerTouchAction = .collapseOnBoth
+        config.forceTouchPreviewInteractionEnabled = false
         
         // Save created appearance object as default
         ElongationConfig.shared = config

@@ -14,7 +14,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    var topic: Topic = TopicDatabase.topicList[0]
+    var topic: Topic = TopicDatabase.topicList[0]   // Defaults to first topic; changed on init
     
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -44,18 +44,18 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
             let questionCell: SurveyQuestionCell = Bundle.main.loadNibNamed("SurveyQuestionCell", owner: self, options: nil)?.first as! SurveyQuestionCell
             
             questionCell.questionLabel.text = question.question
-            questionCell.questionLabel.font = UIFont(name: MyFont.normal, size: MyFont.questionFontSize)
+            questionCell.questionLabel.font = UIFont(name: MyFont.normal, size: MyFont.surveyFontSize)
             questionCell.pageControl.isHidden = true
-            
+
             let options = ["Yes", "No"]
-            let frame = CGRect(x: MyDimensions.screenWidth * (1-MyDimensions.answerChoiceWidthRatio) / 2, y: 0, width: MyDimensions.screenWidth * MyDimensions.answerChoiceWidthRatio, height: 40)
+            let frame = CGRect(x: MyDimensions.screenWidth * (1-MyDimensions.answerChoiceWidthRatio) / 2, y: 0, width: MyDimensions.screenWidth * MyDimensions.answerChoiceWidthRatio, height: questionCell.segmentedControlView.frame.height)
             let segmentedControl = TwicketSegmentedControl(frame: frame)
             segmentedControl.setSegmentItems(options)
             segmentedControl.segmentsBackgroundColor = MyColors.TRANSPARENT_WHITE
             segmentedControl.sliderBackgroundColor = MyColors.WHITE
             segmentedControl.highlightTextColor = MyColors.BLUE
             segmentedControl.defaultTextColor = MyColors.WHITE
-            segmentedControl.font = UIFont(name: MyFont.medium, size: MyFont.answerChoiceFontSize)!
+            segmentedControl.font = UIFont(name: MyFont.medium, size: MyFont.surveyFontSize-1)!
             segmentedControl.backgroundColor = UIColor.clear
             segmentedControl.isSliderShadowHidden = true
             questionCell.segmentedControlView.addSubview(segmentedControl)

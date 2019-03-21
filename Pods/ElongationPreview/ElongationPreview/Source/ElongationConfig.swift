@@ -29,7 +29,7 @@ public struct ElongationConfig {
 
     /// :nodoc:
     public enum HeaderTouchAction {
-        case collpaseOnBoth, collapseOnTop, collapseOnBottom, noAction
+        case collapseOnBoth, collapseOnTop, collapseOnBottom, noAction
     }
 
     /// What `elongationHeader` should do on touch
