@@ -44,8 +44,8 @@ final class TopicsViewController: ElongationViewController {
         let topic = topicList[indexPath.row]
         
         let spacedTitle = NSMutableAttributedString(string: topic.title, attributes: [
-            NSAttributedString.Key.kern: 2,
-            ])
+            NSAttributedString.Key.kern: MyFont.topicPreviewTitleKern,
+        ])
         
         cell.topImageView?.image = UIImage(named: topic.imageName)
         cell.localityLabel?.attributedText = spacedTitle

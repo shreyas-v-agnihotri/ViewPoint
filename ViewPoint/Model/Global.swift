@@ -16,7 +16,7 @@ struct MyColors {
     static let PURPLE = UIColor(red:0.64, green:0.45, blue:1.00, alpha:1.0)             // #a472ff
     static let BLUE = UIColor(red:0.51, green:0.56, blue:1.00, alpha:1.0)               // #838eff
     static let GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)               // #40514e
-    static let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.3)
+    static let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
     
 }
 
@@ -27,6 +27,7 @@ struct MyDimensions {
     
     static let buttonCornerRadius = CGFloat(20)
     static let buttonBorderWidth = CGFloat(2)
+    static let profileButtonBorderWidth = CGFloat(1)
     
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
@@ -44,6 +45,8 @@ struct MyFont {
     
     static let normal = "Avenir Next"
     static let medium = "AvenirNext-Medium"
+    
+    static let topicPreviewTitleKern = 2
     
     static let navBarFontSize = CGFloat(20)
     static let questionFontSize = CGFloat(20)

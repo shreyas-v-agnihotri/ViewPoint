@@ -17,35 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
+        // Set up cloud database and third-party sign ins
         FirebaseApp.configure()
         // let database = Firestore.firestore()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
 
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarFontSize)!]
-        UINavigationBar.appearance().isTranslucent = false
+        customizeNavBar()
         
-        // Customize ElongationConfig
-        var config = ElongationConfig()
-        config.scaleViewScaleFactor = 0.9
-        config.topViewHeight = CGFloat(MyDimensions.topViewHeight)
-        config.bottomViewHeight = CGFloat(MyDimensions.bottomViewHeight)
-        config.bottomViewOffset = 0
-        config.parallaxFactor = 100
-        config.separatorHeight = 0.5
-        config.separatorColor = MyColors.WHITE
-        
-        // Durations for presenting/dismissing detail screen
-        config.detailPresentingDuration = 0.5
-        config.detailDismissingDuration = 0.5
-        
-        // Customize behaviour
-        config.headerTouchAction = .collpaseOnBoth
-        
-        // Save created appearance object as default
-        ElongationConfig.shared = config
+        setupElongationConfig()
         
         return true
     }
@@ -84,6 +64,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // For your app to run on iOS 8 and older, also implement the deprecated application:openURL:sourceApplication:annotation: method.
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    func customizeNavBar() {
+        
+        // Customize navigation bar (set gradient background, set font, make opaque)
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarFontSize)!]
+        UINavigationBar.appearance().isTranslucent = false
+        
+    }
+    
+    func setupElongationConfig() {
+        
+        // Customize ElongationConfig properties
+        var config = ElongationConfig()
+        config.scaleViewScaleFactor = 0.9
+        config.topViewHeight = CGFloat(MyDimensions.topViewHeight)
+        config.bottomViewHeight = CGFloat(MyDimensions.bottomViewHeight)
+        config.bottomViewOffset = 0
+        config.parallaxFactor = 100
+        config.separatorHeight = 0.5
+        config.separatorColor = MyColors.WHITE
+        
+        // Set durations for presenting/dismissing detail screen
+        config.detailPresentingDuration = MyAnimations.openTopicPreview
+        config.detailDismissingDuration = MyAnimations.closeTopicPreview
+        
+        // Customize behaviour
+        config.headerTouchAction = .collpaseOnBoth
+        
+        // Save created appearance object as default
+        ElongationConfig.shared = config
+        
     }
 
 

@@ -11,7 +11,7 @@ import ElongationPreview
 import TwicketSegmentedControl
 
 final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     var topic: Topic = TopicDatabase.topicList[0]
@@ -27,13 +27,14 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
         
         pageControl.numberOfPages = questionCells.count
         pageControl.currentPage = 0
+        pageControl.isUserInteractionEnabled = false
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageNumber = round(scrollView.contentOffset.x/MyDimensions.screenWidth)
         pageControl.currentPage = Int(pageNumber)
     }
-
+    
     func createQuestionCells() -> [SurveyQuestionCell] {
         
         var questionCells = [SurveyQuestionCell]()

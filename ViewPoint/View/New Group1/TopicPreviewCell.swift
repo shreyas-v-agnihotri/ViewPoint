@@ -18,5 +18,5 @@ final class TopicPreviewCell: ElongationCell {
     @IBOutlet var aboutTitleLabel: UILabel!
     @IBOutlet var aboutDescriptionLabel: UILabel!
 
-    @IBOutlet var topImageViewTopConstraint: NSLayoutConstraint!
+    // @IBOutlet var topImageViewTopConstraint: NSLayoutConstraint!
 }

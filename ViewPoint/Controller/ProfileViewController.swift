@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import SVProgressHUD
 
 class ProfileViewController: UIViewController {
 
@@ -17,21 +18,12 @@ class ProfileViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func signOutPressed(_ sender: Any) {
         
         print("\nAttempting to sign out\n")
+        SVProgressHUD.show(withStatus: "Signing out...")
         
         GIDSignIn.sharedInstance()?.signOut()
         
@@ -43,6 +35,8 @@ class ProfileViewController: UIViewController {
         }
         
         print("\nSigned out\n")
+        SVProgressHUD.dismiss()
+        
         performSegue(withIdentifier: "goToLogIn", sender: self)
         
     }

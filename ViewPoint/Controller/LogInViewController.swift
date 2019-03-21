@@ -32,7 +32,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.animateClouds(seconds: MyAnimations.cloudsDuration)
+        animateClouds(seconds: MyAnimations.cloudsDuration)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -116,18 +116,16 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     
-    // Start Google OAuth2 Authentication
+    // Start Google OAuth2 Authentication, show authentication window
     func sign(_ signIn: GIDSignIn?, present viewController: UIViewController?) {
         
-        // Show OAuth2 authentication window
         if let aController = viewController {
             present(aController, animated: true) {() -> Void in }
         }
     }
     
-    // After Google OAuth2 authentication
+    // After Google OAuth2 authentication, close authentication window
     func sign(_ signIn: GIDSignIn?, dismiss viewController: UIViewController?) {
-        // Close OAuth2 authentication window
         dismiss(animated: true) {() -> Void in }
     }
     

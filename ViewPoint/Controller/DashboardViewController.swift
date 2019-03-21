@@ -57,7 +57,7 @@ class DashboardViewController: UIViewController {
         }
         
         profileButton.layer.cornerRadius = buttonSize/2
-        profileButton.layer.borderWidth = 1
+        profileButton.layer.borderWidth = MyDimensions.profileButtonBorderWidth
         profileButton.layer.borderColor = MyColors.WHITE.cgColor
         
         let profileBarButton = UIBarButtonItem(customView: profileButton)
