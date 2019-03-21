@@ -205,7 +205,7 @@
         <!--Profile View Controller-->
         <scene sceneID="vXS-yS-za1">
             <objects>
-                <viewController id="37h-yA-qT2" customClass="ProfileViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="37h-yA-qT2" customClass="ProfileViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Obv-f1-yUA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,7 +235,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="343-rI-lTg" kind="presentation" id="w80-X0-xvv"/>
+                                    <action selector="backButtonPressed:" destination="37h-yA-qT2" eventType="touchUpInside" id="rdO-VV-UMG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -254,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFb-8j-DoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-962" y="495"/>
+            <point key="canvasLocation" x="-969" y="502"/>
         </scene>
     </scenes>
     <resources>
@@ -263,8 +263,5 @@
         <image name="googleLogo" width="170.66667175292969" height="170.66667175292969"/>
         <image name="verticalGradient" width="200" height="200"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="ORt-B4-obM"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

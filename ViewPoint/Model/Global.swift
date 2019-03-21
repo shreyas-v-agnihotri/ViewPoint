@@ -38,6 +38,8 @@ struct MyDimensions {
     static let detailViewHeight = Int(screenHeight) - Int(statusBarHeight) - topViewHeight - bottomViewHeight // - computeDetailViewAdjustment(statusBarHeight: statusBarHeight)
     
     static let answerChoiceWidthRatio = CGFloat(0.7)
+    
+    static let profileViewRadius = CGFloat(30)
 
 }
 
@@ -49,7 +51,7 @@ struct MyFont {
     static let topicPreviewTitleKern = 2
     
     static let navBarFontSize = CGFloat(20)
-    static let surveyFontSize = computeSurveyFontSize()
+    static let (questionFontSize, answerFontSize) = computeSurveyFontSize()
 
 }
 
@@ -70,19 +72,18 @@ func computeDetailViewAdjustment(statusBarHeight: CGFloat) -> Int {
     return modelDependentDetailViewAdjustment
 }
 
-func computeSurveyFontSize() -> CGFloat {
+func computeSurveyFontSize() -> (CGFloat, CGFloat) {
     
     let height = MyDimensions.screenHeight
     
-    if height == 480 { return 16 }  // 2G, 3G, 3GS, 4, 4S
-    if height == 568 { return 17 }  // 5, 5S, 5C, SE
-    if height == 667 { return 18 }  // 6, 6S, 7, 8
-    if height == 736 { return 19 }  // 6+, 6S+, 7+, 8+
-    if height == 812 { return 20 }  // X, XS
-    if height == 896 { return 21 }  // XR, XS Max
-    
-    if height > 896 { return 22 }
-    else { return 16 }
+    if height == 480 { return (16, 15) }  // 2G, 3G, 3GS, 4, 4S
+    if height == 568 { return (17, 16) }  // 5, 5S, 5C, SE
+    if height == 667 { return (18, 17) }  // 6, 6S, 7, 8
+    if height == 736 { return (21, 18) }  // 6+, 6S+, 7+, 8+
+    if height == 812 { return (23, 19) }  // X, XS
+    if height == 896 { return (25, 20) }  // XR, XS Max
+    if height > 896 { return (25, 20) }   // Any larger device
+    else { return (16, 15) }              // Any smaller device
     
 }
 

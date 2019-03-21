@@ -116,6 +116,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Presentr (1.9)
   - Protobuf (3.7.0)
   - SVProgressHUD (2.2.5)
   - TwicketSegmentedControl (0.1.2)
@@ -128,6 +129,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - GoogleSignIn
   - Kingfisher
+  - Presentr
   - SVProgressHUD
   - TwicketSegmentedControl
 
@@ -154,6 +156,7 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - nanopb
+    - Presentr
     - Protobuf
     - SVProgressHUD
     - TwicketSegmentedControl
@@ -180,10 +183,11 @@ SPEC CHECKSUMS:
   Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: 89ba0d43d7bfe0b1aa3993a4c32b1379c7890d49
+PODFILE CHECKSUM: 361f6a218a646e6628b9e20a0530c4456907d494
 
 COCOAPODS: 1.6.1

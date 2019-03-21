@@ -28,6 +28,7 @@ final class TopicDetailViewController: ElongationDetailViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "survey", for: indexPath) as! SurveyCell
         cell.topic = TopicDatabase.topicList[indexPath.row]
+        cell.pageControl.isHidden = false
         return cell
     }
     

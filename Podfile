@@ -11,6 +11,7 @@ target 'ViewPoint' do
   pod 'AlamofireImage'
   pod 'ElongationPreview'
   pod 'TwicketSegmentedControl'
+  pod 'Presentr'
   
   # Authentication pods
   pod 'GoogleSignIn'

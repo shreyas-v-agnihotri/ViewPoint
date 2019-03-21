@@ -44,7 +44,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
             let questionCell: SurveyQuestionCell = Bundle.main.loadNibNamed("SurveyQuestionCell", owner: self, options: nil)?.first as! SurveyQuestionCell
             
             questionCell.questionLabel.text = question.question
-            questionCell.questionLabel.font = UIFont(name: MyFont.normal, size: MyFont.surveyFontSize)
+            questionCell.questionLabel.font = UIFont(name: MyFont.normal, size: MyFont.questionFontSize)
             questionCell.pageControl.isHidden = true
 
             let options = ["Yes", "No"]
@@ -55,7 +55,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
             segmentedControl.sliderBackgroundColor = MyColors.WHITE
             segmentedControl.highlightTextColor = MyColors.BLUE
             segmentedControl.defaultTextColor = MyColors.WHITE
-            segmentedControl.font = UIFont(name: MyFont.medium, size: MyFont.surveyFontSize-1)!
+            segmentedControl.font = UIFont(name: MyFont.medium, size: MyFont.answerFontSize)!
             segmentedControl.backgroundColor = UIColor.clear
             segmentedControl.isSliderShadowHidden = true
             questionCell.segmentedControlView.addSubview(segmentedControl)

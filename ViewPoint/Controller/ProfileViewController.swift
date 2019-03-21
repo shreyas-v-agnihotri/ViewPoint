@@ -12,13 +12,17 @@ import GoogleSignIn
 import SVProgressHUD
 
 class ProfileViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
     }
 
+    @IBAction func backButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func signOutPressed(_ sender: Any) {
         
