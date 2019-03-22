@@ -15,7 +15,7 @@ import Presentr
 
 class DashboardViewController: UIViewController {
     
-    var profilePic: UIImage = UIImage(named: "profilePicWhite")!
+    var profilePic: UIImage = UIImage(named: "profilePicWhite")!    // Default profile pic
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +52,9 @@ class DashboardViewController: UIViewController {
         
         if let photoURL = user.photoURL {
 
-            let profilePicRadius = CGFloat(integerLiteral: MyDimensions.profilePicSize/2)
+            let profilePicRadius = CGFloat(MyDimensions.profilePicSize/2)
 
-            let processor = RoundCornerImageProcessor(cornerRadius: profilePicRadius) >> DownsamplingImageProcessor(size: CGSize(width: MyDimensions.navBarButtonSize, height: MyDimensions.navBarButtonSize))
+            let processor = RoundCornerImageProcessor(cornerRadius: profilePicRadius)
             
             KingfisherManager.shared.retrieveImage(with: photoURL, options: [.processor(processor)]) { result in
 
@@ -86,6 +86,10 @@ class DashboardViewController: UIViewController {
         }()
         
         let profileViewController: ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        
+        if (self.profilePic != UIImage(named: "profilePicWhite")) {
+            profileViewController.profilePic = self.profilePic
+        }
         
         customPresentViewController(presenter, viewController: profileViewController, animated: true, completion: nil)
 

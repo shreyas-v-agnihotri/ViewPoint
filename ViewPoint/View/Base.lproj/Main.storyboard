@@ -211,7 +211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk5-cg-EtJ" userLabel="Sign Out Button">
-                                <rect key="frame" x="95" y="598" width="185" height="60"/>
+                                <rect key="frame" x="95" y="546" width="185" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="99T-dj-ftF"/>
                                     <constraint firstAttribute="width" constant="185" id="CAq-mH-ODg"/>
@@ -224,8 +224,15 @@
                                     <action selector="signOutPressed:" destination="37h-yA-qT2" eventType="touchUpInside" id="0Xb-nG-y3G"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vc2-Ji-G6w">
+                                <rect key="frame" x="87.666666666666686" y="306" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Uou-te-p7S"/>
+                                    <constraint firstAttribute="width" constant="200" id="eT2-Pb-0mg"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8B-gZ-Ru3">
-                                <rect key="frame" x="16" y="44" width="44" height="36"/>
+                                <rect key="frame" x="165.66666666666666" y="240" width="44" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="VKh-YV-IcZ"/>
                                     <constraint firstAttribute="height" constant="36" id="uSj-bP-Sdg"/>
@@ -241,20 +248,23 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="L8B-gZ-Ru3" firstAttribute="top" secondItem="AfH-1p-zOZ" secondAttribute="top" id="6wd-K2-SCL"/>
                             <constraint firstItem="Qk5-cg-EtJ" firstAttribute="centerX" secondItem="Obv-f1-yUA" secondAttribute="centerX" id="SMj-ag-Dwr"/>
-                            <constraint firstItem="L8B-gZ-Ru3" firstAttribute="leading" secondItem="AfH-1p-zOZ" secondAttribute="leading" constant="16" id="l8O-Mo-RiO"/>
-                            <constraint firstItem="AfH-1p-zOZ" firstAttribute="bottom" secondItem="Qk5-cg-EtJ" secondAttribute="bottom" constant="120" id="lvJ-0C-9dO"/>
+                            <constraint firstItem="Vc2-Ji-G6w" firstAttribute="top" secondItem="L8B-gZ-Ru3" secondAttribute="bottom" constant="30" id="Ubo-Ds-VUM"/>
+                            <constraint firstItem="Vc2-Ji-G6w" firstAttribute="centerX" secondItem="Obv-f1-yUA" secondAttribute="centerX" id="hoA-R2-cEy"/>
+                            <constraint firstItem="L8B-gZ-Ru3" firstAttribute="centerX" secondItem="Obv-f1-yUA" secondAttribute="centerX" id="mEg-gn-yuN"/>
+                            <constraint firstItem="Qk5-cg-EtJ" firstAttribute="top" secondItem="Vc2-Ji-G6w" secondAttribute="bottom" constant="40" id="upv-G8-D7g"/>
+                            <constraint firstItem="Vc2-Ji-G6w" firstAttribute="centerY" secondItem="Obv-f1-yUA" secondAttribute="centerY" id="zre-ss-AnA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AfH-1p-zOZ"/>
                     </view>
                     <connections>
+                        <outlet property="profilePicView" destination="Vc2-Ji-G6w" id="fa4-Vm-u2P"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToLogIn" id="6J8-5Y-rfp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFb-8j-DoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-969" y="502"/>
+            <point key="canvasLocation" x="-970.39999999999998" y="501.72413793103448"/>
         </scene>
     </scenes>
     <resources>

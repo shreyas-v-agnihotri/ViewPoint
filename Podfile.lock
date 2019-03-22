@@ -111,6 +111,9 @@ PODS:
   - GTMSessionFetcher/Core (1.2.1)
   - Kingfisher (5.2.0)
   - leveldb-library (1.20)
+  - MessageInputBar/Core (0.4.1)
+  - MessageKit (2.0.0):
+    - MessageInputBar/Core
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -129,6 +132,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - GoogleSignIn
   - Kingfisher
+  - MessageKit
   - Presentr
   - SVProgressHUD
   - TwicketSegmentedControl
@@ -155,6 +159,8 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Kingfisher
     - leveldb-library
+    - MessageInputBar
+    - MessageKit
     - nanopb
     - Presentr
     - Protobuf
@@ -182,12 +188,14 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
+  MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: 361f6a218a646e6628b9e20a0530c4456907d494
+PODFILE CHECKSUM: ae059eb6ac51a15dacc917127381d8add56ca378
 
 COCOAPODS: 1.6.1

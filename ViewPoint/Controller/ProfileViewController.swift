@@ -13,10 +13,22 @@ import SVProgressHUD
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet weak var profilePicView: UIImageView!
+    var profilePic: UIImage = UIImage(named: "profilePicGradient")!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // view.layer.contents = #imageLiteral(resourceName: "verticalGradient").cgImage
 
         // Do any additional setup after loading the view.
+        profilePicView.image = profilePic
+        
+        if (profilePic != UIImage(named: "profilePicGradient")) {
+            profilePicView.layer.borderColor = MyColors.WHITE.cgColor
+            profilePicView.layer.borderWidth = 3
+            profilePicView.layer.cornerRadius = self.profilePicView.frame.width/2
+        }
 
     }
 

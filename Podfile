@@ -12,6 +12,7 @@ target 'ViewPoint' do
   pod 'ElongationPreview'
   pod 'TwicketSegmentedControl'
   pod 'Presentr'
+  pod 'MessageKit'
   
   # Authentication pods
   pod 'GoogleSignIn'
