@@ -26,6 +26,11 @@
 		B114AD3622408E2300319479 /* SurveyQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD3522408E2200319479 /* SurveyQuestionCell.swift */; };
 		B114AD3A2240928100319479 /* SurveyQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B114AD392240928000319479 /* SurveyQuestionCell.xib */; };
 		B114AD3D2240BDF700319479 /* TopicDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD3C2240BDF700319479 /* TopicDatabase.swift */; };
+		B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */; };
+		B1B2A8F62248A12100E3766C /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F32248A11E00E3766C /* Channel.swift */; };
+		B1B2A8F72248A12100E3766C /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F42248A11F00E3766C /* DatabaseRepresentation.swift */; };
+		B1B2A8F82248A12100E3766C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F52248A12100E3766C /* Message.swift */; };
+		B1B2A8FA2248A3F500E3766C /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F92248A3F500E3766C /* UICollectionView+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +55,11 @@
 		B114AD3522408E2200319479 /* SurveyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuestionCell.swift; sourceTree = "<group>"; };
 		B114AD392240928000319479 /* SurveyQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyQuestionCell.xib; sourceTree = "<group>"; };
 		B114AD3C2240BDF700319479 /* TopicDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDatabase.swift; sourceTree = "<group>"; };
+		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		B1B2A8F42248A11F00E3766C /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
+		B1B2A8F52248A12100E3766C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B1B2A8F92248A3F500E3766C /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
 		DB61583ED81DD1FDD94CCF07 /* Pods-ViewPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewPoint.debug.xcconfig"; path = "Target Support Files/Pods-ViewPoint/Pods-ViewPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		F517DAEBC88B6202FA45B091 /* Pods_ViewPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				B114AD32223F522900319479 /* Controller */,
-				B114AD31223F521300319479 /* View */,
+				B114AD31223F521300319479 /* Views */,
 				B114AD30223F51A000319479 /* Model */,
 				B114ACFE223AE7E400319479 /* Assets.xcassets */,
 				B114AD03223AE7E400319479 /* Info.plist */,
@@ -127,8 +137,8 @@
 		B114AD29223F38D600319479 /* TopicPreviewCell */ = {
 			isa = PBXGroup;
 			children = (
-				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
 				B114AD2A223F38EE00319479 /* TopicPreviewCell.xib */,
+				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
 			);
 			name = TopicPreviewCell;
 			path = "New Group1";
@@ -143,7 +153,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B114AD31223F521300319479 /* View */ = {
+		B114AD31223F521300319479 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				B114ACFB223AE7DF00319479 /* Main.storyboard */,
@@ -152,7 +162,7 @@
 				B114AD24223F387600319479 /* SurveyCell */,
 				B114AD3B2240AA9C00319479 /* SurveyQuestionCell */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B114AD32223F522900319479 /* Controller */ = {
@@ -164,6 +174,11 @@
 				B114AD0D223E0A4900319479 /* ProfileViewController.swift */,
 				B114AD21223F371F00319479 /* TopicsViewController.swift */,
 				B114AD20223F371F00319479 /* TopicDetailViewController.swift */,
+				B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */,
+				B1B2A8F32248A11E00E3766C /* Channel.swift */,
+				B1B2A8F42248A11F00E3766C /* DatabaseRepresentation.swift */,
+				B1B2A8F52248A12100E3766C /* Message.swift */,
+				B1B2A8F92248A3F500E3766C /* UICollectionView+Additions.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -361,13 +376,18 @@
 				B114ACFA223AE7DF00319479 /* LogInViewController.swift in Sources */,
 				B114AD0C223C9C7900319479 /* DashboardViewController.swift in Sources */,
 				B114AD3D2240BDF700319479 /* TopicDatabase.swift in Sources */,
+				B1B2A8F62248A12100E3766C /* Channel.swift in Sources */,
+				B1B2A8FA2248A3F500E3766C /* UICollectionView+Additions.swift in Sources */,
 				B114AD0E223E0A4A00319479 /* ProfileViewController.swift in Sources */,
 				B114AD2D223F38EF00319479 /* TopicPreviewCell.swift in Sources */,
 				B114AD10223E21E500319479 /* Global.swift in Sources */,
 				B114ACF8223AE7DF00319479 /* AppDelegate.swift in Sources */,
 				B114AD23223F371F00319479 /* TopicsViewController.swift in Sources */,
+				B1B2A8F72248A12100E3766C /* DatabaseRepresentation.swift in Sources */,
 				B114AD3622408E2300319479 /* SurveyQuestionCell.swift in Sources */,
 				B114AD22223F371F00319479 /* TopicDetailViewController.swift in Sources */,
+				B1B2A8F82248A12100E3766C /* Message.swift in Sources */,
+				B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */,
 				B114AD26223F389000319479 /* SurveyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

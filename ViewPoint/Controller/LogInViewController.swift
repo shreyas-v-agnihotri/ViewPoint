@@ -68,7 +68,9 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     // Present a sign-in with Google window
     @IBAction func googleSignIn(sender: AnyObject) {
+        SVProgressHUD.show()
         GIDSignIn.sharedInstance().signIn()
+        SVProgressHUD.dismiss()
     }
     
     
@@ -91,7 +93,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             
             _ = Auth.auth().addStateDidChangeListener { (auth, currentFirebaseUser) in
                 
-                if currentFirebaseUser?.photoURL == nil {
+                if (currentFirebaseUser != nil) && (currentFirebaseUser?.photoURL == nil) {
                     let changeRequest = currentFirebaseUser?.createProfileChangeRequest()
                     let profilePictureSize = UInt(exactly: MyDimensions.profilePicSize)
                     
@@ -111,7 +113,6 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             }
         })
         
-        SVProgressHUD.dismiss()
         performSegue(withIdentifier: "goToDashboard", sender: self)
     }
     
@@ -128,7 +129,6 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     func sign(_ signIn: GIDSignIn?, dismiss viewController: UIViewController?) {
         dismiss(animated: true) {() -> Void in }
     }
-    
     
 }
 

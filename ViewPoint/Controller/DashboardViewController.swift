@@ -28,6 +28,20 @@ class DashboardViewController: UIViewController {
             }
         }
         
+        channelListener = channelReference.addSnapshotListener { querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { change in
+                guard let snapshotChannel = Channel(document: change.document) else {
+                    return
+                }
+                self.channel = snapshotChannel
+            }
+        }
+        
     }
     
     func setProfileButton() {
@@ -95,6 +109,28 @@ class DashboardViewController: UIViewController {
 
     }
     
+    
+    private let db = Firestore.firestore()
+    private var channelReference: CollectionReference {
+        return db.collection("channels")
+    }
+    private var channelListener: ListenerRegistration?
+    var channel = Channel(name: "test_channel")
+    
+
+    
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        
+        channelReference.addDocument(data: channel.representation) { error in
+            if let e = error {
+                print("Error saving channel: \(e.localizedDescription)")
+            }
+        }
+        
+        let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }
 

@@ -56,5 +56,4 @@ class ProfileViewController: UIViewController {
         performSegue(withIdentifier: "goToLogIn", sender: self)
         
     }
-
 }
