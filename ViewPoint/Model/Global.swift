@@ -63,6 +63,10 @@ struct MyAnimations {
     
 }
 
+protocol DatabaseRepresentation {
+    var representation: [String: Any] { get }
+}
+
 func computeDetailViewAdjustment(statusBarHeight: CGFloat) -> Int {
     
     var modelDependentDetailViewAdjustment = 0
@@ -75,15 +79,18 @@ func computeDetailViewAdjustment(statusBarHeight: CGFloat) -> Int {
 func computeSurveyFontSize() -> (CGFloat, CGFloat) {
     
     let height = MyDimensions.screenHeight
+    let questionSize = height * 0.03
+    let answerSize = min(questionSize - 1, 20)
+    return (questionSize, answerSize)
     
-    if height == 480 { return (16, 15) }  // 2G, 3G, 3GS, 4, 4S
-    if height == 568 { return (17, 16) }  // 5, 5S, 5C, SE
-    if height == 667 { return (18, 17) }  // 6, 6S, 7, 8
-    if height == 736 { return (21, 18) }  // 6+, 6S+, 7+, 8+
-    if height == 812 { return (23, 19) }  // X, XS
-    if height == 896 { return (25, 20) }  // XR, XS Max
-    if height > 896 { return (25, 20) }   // Any larger device
-    else { return (16, 15) }              // Any smaller device
+//    if height == 480 { return (16, 15) }  // 2G, 3G, 3GS, 4, 4S
+//    if height == 568 { return (17, 16) }  // 5, 5S, 5C, SE
+//    if height == 667 { return (18, 17) }  // 6, 6S, 7, 8
+//    if height == 736 { return (21, 18) }  // 6+, 6S+, 7+, 8+
+//    if height == 812 { return (23, 19) }  // X, XS
+//    if height == 896 { return (25, 20) }  // XR, XS Max
+//    if height > 896 { return (25, 20) }   // Any larger device
+//    else { return (16, 15) }              // Any smaller device
     
 }
 

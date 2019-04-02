@@ -148,6 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				B114AD0F223E21E500319479 /* Global.swift */,
+				B1B2A8F52248A12100E3766C /* Message.swift */,
+				B1B2A8F32248A11E00E3766C /* Channel.swift */,
+				B1B2A8F42248A11F00E3766C /* DatabaseRepresentation.swift */,
 				B114AD3C2240BDF700319479 /* TopicDatabase.swift */,
 			);
 			path = Model;
@@ -175,9 +178,6 @@
 				B114AD21223F371F00319479 /* TopicsViewController.swift */,
 				B114AD20223F371F00319479 /* TopicDetailViewController.swift */,
 				B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */,
-				B1B2A8F32248A11E00E3766C /* Channel.swift */,
-				B1B2A8F42248A11F00E3766C /* DatabaseRepresentation.swift */,
-				B1B2A8F52248A12100E3766C /* Message.swift */,
 				B1B2A8F92248A3F500E3766C /* UICollectionView+Additions.swift */,
 			);
 			path = Controller;

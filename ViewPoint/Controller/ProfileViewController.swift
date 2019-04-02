@@ -19,8 +19,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // view.layer.contents = #imageLiteral(resourceName: "verticalGradient").cgImage
-
         // Do any additional setup after loading the view.
         profilePicView.image = profilePic
         
