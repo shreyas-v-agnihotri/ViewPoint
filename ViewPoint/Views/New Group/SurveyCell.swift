@@ -43,12 +43,13 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
                 
             let questionCell: SurveyQuestionCell = Bundle.main.loadNibNamed("SurveyQuestionCell", owner: self, options: nil)?.first as! SurveyQuestionCell
             
-            questionCell.questionLabel.text = question.question
+            questionCell.questionLabel.text = question.questionText
             questionCell.questionLabel.font = UIFont(name: MyFont.normal, size: MyFont.questionFontSize)
             questionCell.pageControl.isHidden = true
 
             let options = ["Yes", "No"]
             let frame = CGRect(x: MyDimensions.screenWidth * (1-MyDimensions.answerChoiceWidthRatio) / 2, y: 0, width: MyDimensions.screenWidth * MyDimensions.answerChoiceWidthRatio, height: questionCell.segmentedControlView.frame.height)
+            
             let segmentedControl = TwicketSegmentedControl(frame: frame)
             segmentedControl.setSegmentItems(options)
             segmentedControl.segmentsBackgroundColor = MyColors.TRANSPARENT_WHITE
@@ -58,6 +59,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
             segmentedControl.font = UIFont(name: MyFont.medium, size: MyFont.answerFontSize)!
             segmentedControl.backgroundColor = UIColor.clear
             segmentedControl.isSliderShadowHidden = true
+            
             questionCell.segmentedControlView.addSubview(segmentedControl)
             
             questionCells.append(questionCell)
@@ -75,7 +77,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: cellWidth * CGFloat(questionCells.count), height: cellHeight)
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
-        
+
         for i in 0 ..< questionCells.count {
             questionCells[i].frame = CGRect(x: cellWidth * CGFloat(i), y: 0, width: cellWidth, height: cellHeight)
             scrollView.addSubview(questionCells[i])

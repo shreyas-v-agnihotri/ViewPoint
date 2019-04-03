@@ -102,7 +102,7 @@ extension ElongationDetailViewController {
 // MARK: - TableView 📚
 
 extension ElongationDetailViewController {
-
+    
     /// :nodoc:
     open override func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
         return headerView?.intrinsicContentSize.height ?? 0

@@ -18,11 +18,12 @@ final class TopicsViewController: ElongationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
-        // tableView.backgroundColor = MyColors.GRAY
+        // view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
         
-//        tableView.bounces = false
-//        tableView.alwaysBounceVertical = false
+        tableView.backgroundColor = UIColor.black
+        
+        tableView.bounces = false
+        tableView.alwaysBounceVertical = false
         
         tableView.register(UINib(nibName: "TopicPreviewCell", bundle: nil), forCellReuseIdentifier: "topic")
     }
@@ -56,6 +57,7 @@ final class TopicsViewController: ElongationViewController {
         cell.countryLabel?.text = topic.category
         cell.aboutTitleLabel?.text = topic.title
         cell.aboutDescriptionLabel?.text = topic.title
+        cell.bottomViewHeight.constant = CGFloat(MyDimensions.bottomViewHeight)
     }
     
 }

@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController {
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+            print("Error signing out: %@", signOutError)
             return
         }
         

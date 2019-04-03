@@ -254,6 +254,8 @@ open class TwicketSegmentedControl: UIControl {
             let location = panGesture.location(in: self)
             sliderView.center.x = location.x - correction
         case .possible: ()
+        @unknown default:
+            fatalError()
         }
     }
 

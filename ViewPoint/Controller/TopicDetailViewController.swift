@@ -14,9 +14,12 @@ final class TopicDetailViewController: ElongationDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
-        tableView.backgroundColor = MyColors.BLUE
-        // tableView.isScrollEnabled = false
+        tableView.isScrollEnabled = false
+                
+//        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
+        tableView.backgroundColor = MyColors.WHITE
+        
+//        tableView.frame = CGRect(x: 0, y: 0, width: MyDimensions.screenWidth, height: 100)
         
         tableView.register(UINib(nibName: "SurveyCell", bundle: nil), forCellReuseIdentifier: "survey")
     }

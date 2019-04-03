@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topic" rowHeight="223" id="Tn3-op-5hs" userLabel="Elongation Cell" customClass="TopicPreviewCell" customModule="ViewPoint" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="223"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topic" rowHeight="190" id="Tn3-op-5hs" userLabel="Elongation Cell" customClass="TopicPreviewCell" customModule="ViewPoint" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tn3-op-5hs" id="sUs-Of-qXM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="189.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0T-KW-iBk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="223"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="amF-U1-Frc">
-                                <rect key="frame" x="15" y="78" width="345" height="67.5"/>
+                                <rect key="frame" x="15" y="61.5" width="345" height="67.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3s-0p-oMT">
                                         <rect key="frame" x="148.5" y="0.0" width="48.5" height="33"/>
@@ -39,9 +39,9 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="223" id="Ywc-LN-JZc"/>
+                            <constraint firstAttribute="height" constant="190" id="Ywc-LN-JZc"/>
                             <constraint firstItem="amF-U1-Frc" firstAttribute="centerY" secondItem="p0T-KW-iBk" secondAttribute="centerY" id="bxZ-Pn-K7c"/>
                             <constraint firstItem="amF-U1-Frc" firstAttribute="left" secondItem="p0T-KW-iBk" secondAttribute="left" constant="15" id="jcw-FC-Dra"/>
                             <constraint firstAttribute="right" secondItem="amF-U1-Frc" secondAttribute="right" constant="15" id="zxW-NE-4iJ"/>
@@ -119,6 +119,7 @@
                 <outlet property="aboutDescriptionLabel" destination="9JG-NB-o3g" id="d6L-Ng-SnV"/>
                 <outlet property="aboutTitleLabel" destination="O3s-0p-oMT" id="cdr-gO-YZR"/>
                 <outlet property="bottomView" destination="p0T-KW-iBk" id="5eD-2O-DJw"/>
+                <outlet property="bottomViewHeight" destination="Ywc-LN-JZc" id="o78-nj-WNs"/>
                 <outlet property="bottomViewHeightConstraint" destination="Ywc-LN-JZc" id="4V7-Sq-Xxn"/>
                 <outlet property="bottomViewTopConstraint" destination="RjD-hT-LRq" id="bh4-rN-U5s"/>
                 <outlet property="countryLabel" destination="99c-0B-Lao" id="TYv-WI-7yG"/>
@@ -131,7 +132,7 @@
                 <outlet property="topViewHeightConstraint" destination="PaE-fU-5mo" id="0UG-6C-Yxt"/>
                 <outlet property="topViewTopConstraint" destination="UWS-jp-FQE" id="4Tg-Qb-knG"/>
             </connections>
-            <point key="canvasLocation" x="92" y="54.422788605697157"/>
+            <point key="canvasLocation" x="92" y="39.580209895052477"/>
         </tableViewCell>
     </objects>
 </document>

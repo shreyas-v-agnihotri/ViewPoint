@@ -13,17 +13,17 @@ struct TopicDatabase {
     static var iOSvsAndroidSurvey: [SurveyQuestion] {
         
         let question1 = SurveyQuestion(
-            question: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+            questionText: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
             answerChoice1: "Yes",
             answerChoice2: "No"
         )
         let question2 = SurveyQuestion(
-            question: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+            questionText: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
             answerChoice1: "Yes",
             answerChoice2: "No"
         )
         let question3 = SurveyQuestion(
-            question: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+            questionText: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
             answerChoice1: "Yes",
             answerChoice2: "No"
         )
@@ -65,7 +65,8 @@ struct TopicDatabase {
             iOSvsAndroid,
             marijuana,
             abortion,
-            healthCare
+            healthCare,
+            iOSvsAndroid
             // Dogs vs Cats
             // Gun Control
             // Minimum Wage
@@ -91,12 +92,12 @@ struct Topic {
 
 struct SurveyQuestion {
     
-    let question: String
+    let questionText: String
     let answerChoice1: String
     let answerChoice2: String
     
-    init(question: String, answerChoice1: String, answerChoice2: String) {
-        self.question = question
+    init(questionText: String, answerChoice1: String, answerChoice2: String) {
+        self.questionText = questionText
         self.answerChoice1 = answerChoice1
         self.answerChoice2 = answerChoice2
     }

@@ -18,13 +18,15 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     @IBOutlet weak var cloudsViewLeading: NSLayoutConstraint!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        GIDSignIn.sharedInstance()?.delegate = self
-        GIDSignIn.sharedInstance()?.uiDelegate = self
         
         SVProgressHUD.show(withStatus: "Attempting automatic sign in...")
+
+        super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.signInSilently()
+        
         SVProgressHUD.dismiss()
         
         designButton(button: signInButton)

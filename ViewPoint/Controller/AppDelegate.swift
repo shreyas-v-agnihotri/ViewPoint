@@ -73,6 +73,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarFontSize)!]
         UINavigationBar.appearance().isTranslucent = false
         
+//        // Add shadow under navigation bar -> doesn't seem to work
+//        UINavigationBar.appearance().layer.masksToBounds = false
+//        UINavigationBar.appearance().layer.shadowColor = UIColor.lightGray.cgColor
+//        UINavigationBar.appearance().layer.shadowOpacity = 0.8
+//        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 0, height: 2.0)
+//        UINavigationBar.appearance().layer.shadowRadius = 2
+        
     }
     
     func setupElongationConfig() {

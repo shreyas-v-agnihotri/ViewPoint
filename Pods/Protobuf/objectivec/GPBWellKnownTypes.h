@@ -37,9 +37,9 @@
 #endif
 
 #if GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS
- #import <Protobuf/Any.pbobjc.h>
- #import <Protobuf/Duration.pbobjc.h>
- #import <Protobuf/Timestamp.pbobjc.h>
+ #import <protobuf/Any.pbobjc.h>///</Any.pbobjc.h><protobuf/Any.pbobjc.h>
+ #import <protobuf/Duration.pbobjc.h>///</Duration.pbobjc.h>
+#import <protobuf/Timestamp.pbobjc.h>///</Timestamp.pbobjc.h><protobuf/Timestamp.pbobjc.h>
 #else
  #import "google/protobuf/Any.pbobjc.h"
  #import "google/protobuf/Duration.pbobjc.h"

@@ -287,8 +287,6 @@ private extension ElongationViewController {
 
     private func setupTableView() {
         tableView.separatorStyle = .none
-        tableView.layer.borderColor = UIColor.clear.cgColor
-        tableView.layer.borderWidth = 0
     }
 
     private func setupTapGesture() {
@@ -317,7 +315,7 @@ extension ElongationViewController {
         guard config.customSeparatorEnabled else { return }
         cell.hideSeparator(expanded, animated: expanded)
         let numberOfRowsInSection = tableView.numberOfRows(inSection: indexPath.section)
-        if indexPath.row == 0 || indexPath.row == numberOfRowsInSection - 1 {
+        if indexPath.row == 0 || indexPath.row == (numberOfRowsInSection - 1) {
             let separator = indexPath.row == 0 ? cell.topSeparatorLine : cell.bottomSeparatorLine
             separator?.backgroundColor = UIColor.clear
         } else {
@@ -329,6 +327,7 @@ extension ElongationViewController {
     /// :nodoc:
     open override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard shouldExpand else { return }
+        
         DispatchQueue.main.async {
             self.expandedIndexPath = indexPath
             self.openDetailView(for: indexPath)

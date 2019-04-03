@@ -28,7 +28,6 @@
 		B114AD3D2240BDF700319479 /* TopicDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD3C2240BDF700319479 /* TopicDatabase.swift */; };
 		B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */; };
 		B1B2A8F62248A12100E3766C /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F32248A11E00E3766C /* Channel.swift */; };
-		B1B2A8F72248A12100E3766C /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F42248A11F00E3766C /* DatabaseRepresentation.swift */; };
 		B1B2A8F82248A12100E3766C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F52248A12100E3766C /* Message.swift */; };
 		B1B2A8FA2248A3F500E3766C /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F92248A3F500E3766C /* UICollectionView+Additions.swift */; };
 /* End PBXBuildFile section */
@@ -57,7 +56,6 @@
 		B114AD3C2240BDF700319479 /* TopicDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDatabase.swift; sourceTree = "<group>"; };
 		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
-		B1B2A8F42248A11F00E3766C /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
 		B1B2A8F52248A12100E3766C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B1B2A8F92248A3F500E3766C /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
 		DB61583ED81DD1FDD94CCF07 /* Pods-ViewPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewPoint.debug.xcconfig"; path = "Target Support Files/Pods-ViewPoint/Pods-ViewPoint.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,8 +125,8 @@
 		B114AD24223F387600319479 /* SurveyCell */ = {
 			isa = PBXGroup;
 			children = (
-				B114AD25223F389000319479 /* SurveyCell.swift */,
 				B114AD33223F536F00319479 /* SurveyCell.xib */,
+				B114AD25223F389000319479 /* SurveyCell.swift */,
 			);
 			name = SurveyCell;
 			path = "New Group";
@@ -150,7 +148,6 @@
 				B114AD0F223E21E500319479 /* Global.swift */,
 				B1B2A8F52248A12100E3766C /* Message.swift */,
 				B1B2A8F32248A11E00E3766C /* Channel.swift */,
-				B1B2A8F42248A11F00E3766C /* DatabaseRepresentation.swift */,
 				B114AD3C2240BDF700319479 /* TopicDatabase.swift */,
 			);
 			path = Model;
@@ -186,8 +183,8 @@
 		B114AD3B2240AA9C00319479 /* SurveyQuestionCell */ = {
 			isa = PBXGroup;
 			children = (
-				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
 				B114AD392240928000319479 /* SurveyQuestionCell.xib */,
+				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
 			);
 			path = SurveyQuestionCell;
 			sourceTree = "<group>";
@@ -227,6 +224,7 @@
 				TargetAttributes = {
 					B114ACF3223AE7DF00319479 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -383,7 +381,6 @@
 				B114AD10223E21E500319479 /* Global.swift in Sources */,
 				B114ACF8223AE7DF00319479 /* AppDelegate.swift in Sources */,
 				B114AD23223F371F00319479 /* TopicsViewController.swift in Sources */,
-				B1B2A8F72248A12100E3766C /* DatabaseRepresentation.swift in Sources */,
 				B114AD3622408E2300319479 /* SurveyQuestionCell.swift in Sources */,
 				B114AD22223F371F00319479 /* TopicDetailViewController.swift in Sources */,
 				B1B2A8F82248A12100E3766C /* Message.swift in Sources */,
@@ -545,7 +542,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shreyasagnihotri.viewPoint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -565,7 +562,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shreyasagnihotri.viewPoint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

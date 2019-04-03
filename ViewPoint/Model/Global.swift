@@ -34,8 +34,8 @@ struct MyDimensions {
     static let statusBarHeight = UIApplication.shared.statusBarFrame.height
     
     static let topViewHeight = 190
-    static let bottomViewHeight = 223
-    static let detailViewHeight = Int(screenHeight) - Int(statusBarHeight) - topViewHeight - bottomViewHeight // - computeDetailViewAdjustment(statusBarHeight: statusBarHeight)
+    static let bottomViewHeight = min(screenHeight / 4, 210)
+    static let detailViewHeight = Int(screenHeight) - topViewHeight - Int(bottomViewHeight)
     
     static let answerChoiceWidthRatio = CGFloat(0.7)
     
@@ -58,8 +58,8 @@ struct MyFont {
 struct MyAnimations {
     
     static let cloudsDuration = 6.0
-    static let openTopicPreview = 0.5
-    static let closeTopicPreview = 0.5
+    static let openTopicPreview = 0.6
+    static let closeTopicPreview = 0.6
     
 }
 
