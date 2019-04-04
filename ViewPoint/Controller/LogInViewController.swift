@@ -97,9 +97,10 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 
                 if (currentFirebaseUser != nil) && (currentFirebaseUser?.photoURL == nil) {
                     let changeRequest = currentFirebaseUser?.createProfileChangeRequest()
-                    let profilePictureSize = UInt(exactly: MyDimensions.profilePicSize)
                     
-                    if let googleImageURL = googleUser.profile.imageURL(withDimension: profilePictureSize!) {
+//                    let profilePictureSize = UInt(exactly: MyDimensions.profilePicSize)
+                    
+                    if let googleImageURL = googleUser.profile.imageURL(withDimension: UInt(MyDimensions.profilePicSize)) {
                         changeRequest?.photoURL = googleImageURL
                         print("\n\(googleImageURL)\n")
                     }
