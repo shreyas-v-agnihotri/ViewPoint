@@ -75,7 +75,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eyeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="JT1-0x-63c">
-                                                <rect key="frame" x="82.666666666666671" y="0.0" width="248.66666666666663" height="150"/>
+                                                <rect key="frame" x="82.666666666666671" y="10" width="248.66666666666663" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="KuY-Gq-Nlh"/>
                                                 </constraints>
@@ -83,7 +83,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="9IF-22-5vr" firstAttribute="top" secondItem="JT1-0x-63c" secondAttribute="bottom" constant="20" id="1Tc-Zd-Cuy"/>
+                                            <constraint firstItem="9IF-22-5vr" firstAttribute="top" secondItem="JT1-0x-63c" secondAttribute="bottom" constant="10" id="1Tc-Zd-Cuy"/>
                                             <constraint firstAttribute="bottom" secondItem="9IF-22-5vr" secondAttribute="bottom" id="HK6-Pg-BTM"/>
                                             <constraint firstAttribute="height" constant="220" id="LlD-mI-kox"/>
                                             <constraint firstItem="9IF-22-5vr" firstAttribute="centerX" secondItem="FT9-Yg-KhJ" secondAttribute="centerX" id="dTg-0C-wLs"/>

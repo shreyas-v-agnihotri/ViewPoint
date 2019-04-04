@@ -34,8 +34,8 @@ struct MyDimensions {
     static let statusBarHeight = UIApplication.shared.statusBarFrame.height
     
     static let topViewHeight = 190
-    static let bottomViewHeight = min(screenHeight / 4, 210)
-    static let detailViewHeight = Int(screenHeight) - topViewHeight - Int(bottomViewHeight)
+    static let bottomViewHeight = screenHeight / 3.5
+    static let detailViewHeight = Int(screenHeight) - topViewHeight - Int(bottomViewHeight) - Int(statusBarHeight)
     
     static let answerChoiceWidthRatio = CGFloat(0.7)
     
@@ -79,7 +79,7 @@ func computeDetailViewAdjustment(statusBarHeight: CGFloat) -> Int {
 func computeSurveyFontSize() -> (CGFloat, CGFloat) {
     
     let height = MyDimensions.screenHeight
-    let questionSize = height * 0.03
+    let questionSize = min(height * 0.03, 24)
     let answerSize = min(questionSize - 1, 20)
     return (questionSize, answerSize)
     

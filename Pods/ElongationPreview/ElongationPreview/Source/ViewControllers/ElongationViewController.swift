@@ -317,7 +317,7 @@ extension ElongationViewController {
         let numberOfRowsInSection = tableView.numberOfRows(inSection: indexPath.section)
         if indexPath.row == 0 || indexPath.row == (numberOfRowsInSection - 1) {
             let separator = indexPath.row == 0 ? cell.topSeparatorLine : cell.bottomSeparatorLine
-            separator?.backgroundColor = UIColor.clear
+            separator?.layer.borderWidth = 0
         } else {
             cell.topSeparatorLine?.backgroundColor = config.separatorColor
             cell.bottomSeparatorLine?.backgroundColor = config.separatorColor

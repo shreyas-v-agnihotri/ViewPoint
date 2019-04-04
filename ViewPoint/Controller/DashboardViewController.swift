@@ -94,8 +94,6 @@ class DashboardViewController: UIViewController {
             customPresenter.transitionType = .coverVerticalFromTop
             customPresenter.dismissOnSwipe = true
             customPresenter.cornerRadius = MyDimensions.profileViewRadius
-//            customPresenter.blurBackground = true
-//            customPresenter.blurStyle = UIBlurEffect.Style.dark
             return customPresenter
         }()
         

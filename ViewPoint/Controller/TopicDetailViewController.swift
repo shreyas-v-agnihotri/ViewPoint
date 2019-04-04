@@ -14,14 +14,16 @@ final class TopicDetailViewController: ElongationDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.isScrollEnabled = false
-                
-//        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
-        tableView.backgroundColor = MyColors.WHITE
+        // Disable scrolling (but not horizontal within the survey view)
+        self.view.gestureRecognizers?.removeAll()
+//        tableView.isScrollEnabled = false
         
-//        tableView.frame = CGRect(x: 0, y: 0, width: MyDimensions.screenWidth, height: 100)
+//        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
+        tableView.backgroundColor = UIColor.clear
         
         tableView.register(UINib(nibName: "SurveyCell", bundle: nil), forCellReuseIdentifier: "survey")
+        
+
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
