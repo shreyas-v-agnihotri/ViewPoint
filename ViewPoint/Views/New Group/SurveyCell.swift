@@ -46,6 +46,12 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
             questionCell.questionLabel.text = question.questionText
             questionCell.questionLabel.font = UIFont(name: MyFont.normal, size: MyFont.questionFontSize)
             questionCell.pageControl.isHidden = true
+            
+            questionCell.background.layer.masksToBounds = false
+            questionCell.background.layer.shadowColor = UIColor.darkGray.cgColor
+            questionCell.background.layer.shadowOffset = CGSize(width: 0, height: -2)
+            questionCell.background.layer.shadowRadius = 2
+            questionCell.background.layer.shadowOpacity = 0.6
 
             let options = ["Yes", "No"]
             let frame = CGRect(x: MyDimensions.screenWidth * (1-MyDimensions.answerChoiceWidthRatio) / 2, y: 0, width: MyDimensions.screenWidth * MyDimensions.answerChoiceWidthRatio, height: questionCell.segmentedControlView.frame.height)
@@ -59,6 +65,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
             segmentedControl.font = UIFont(name: MyFont.medium, size: MyFont.answerFontSize)!
             segmentedControl.backgroundColor = UIColor.clear
             segmentedControl.isSliderShadowHidden = true
+            segmentedControl.move(to: -1)   // Hides it on default
             
             questionCell.segmentedControlView.addSubview(segmentedControl)
             

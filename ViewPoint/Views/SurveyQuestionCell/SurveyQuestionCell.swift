@@ -13,5 +13,6 @@ class SurveyQuestionCell: UITableViewCell {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var segmentedControlView: UIView!
-        
+    @IBOutlet weak var background: UIImageView!
+    
 }

@@ -22,6 +22,14 @@ class DashboardViewController: UIViewController {
         
         setProfileButton()
         
+        self.navigationController?.navigationBar.layer.masksToBounds = false
+        self.navigationController?.navigationBar.layer.shadowColor = UIColor.darkGray.cgColor
+        self.navigationController?.navigationBar.layer.shadowOpacity = 0.6
+        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        self.navigationController?.navigationBar.layer.shadowRadius = 2
+        self.navigationController?.navigationBar.layer.borderColor = UIColor.clear.cgColor
+        self.navigationController?.navigationBar.layer.borderWidth = 0
+                
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let currentFirebaseUser = user {
                 self.updateUserImage(user: currentFirebaseUser)
@@ -30,7 +38,7 @@ class DashboardViewController: UIViewController {
         
         channelListener = channelReference.addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
-                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
+                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
                 return
             }
             
@@ -94,6 +102,15 @@ class DashboardViewController: UIViewController {
             customPresenter.transitionType = .coverVerticalFromTop
             customPresenter.dismissOnSwipe = true
             customPresenter.cornerRadius = MyDimensions.profileViewRadius
+            
+//            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.darkGray, shadowOpacity: 0.6, shadowOffset: CGSize(width: 0, height: 2.0), shadowRadius: 2)
+            
+//            customPresenter.backgroundColor = MyColors.BLUE
+//            customPresenter.backgroundOpacity = 0.6
+
+//            customPresenter.blurBackground = true
+//            customPresenter.blurStyle = UIBlurEffect.Style.light
+            
             return customPresenter
         }()
         

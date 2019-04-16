@@ -19,7 +19,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     override func viewDidLoad() {
         
-        SVProgressHUD.show(withStatus: "Attempting automatic sign in...")
+//        SVProgressHUD.show(withStatus: "Attempting automatic sign in...")
 
         super.viewDidLoad()
         
@@ -27,7 +27,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.signInSilently()
         
-        SVProgressHUD.dismiss()
+//        SVProgressHUD.dismiss()
         
         designButton(button: signInButton)
     }
@@ -70,9 +70,9 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     // Present a sign-in with Google window
     @IBAction func googleSignIn(sender: AnyObject) {
-        SVProgressHUD.show()
+//        SVProgressHUD.show()
         GIDSignIn.sharedInstance().signIn()
-        SVProgressHUD.dismiss()
+//        SVProgressHUD.dismiss()
     }
     
     
@@ -97,9 +97,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 
                 if (currentFirebaseUser != nil) && (currentFirebaseUser?.photoURL == nil) {
                     let changeRequest = currentFirebaseUser?.createProfileChangeRequest()
-                    
-//                    let profilePictureSize = UInt(exactly: MyDimensions.profilePicSize)
-                    
+                                        
                     if let googleImageURL = googleUser.profile.imageURL(withDimension: UInt(MyDimensions.profilePicSize)) {
                         changeRequest?.photoURL = googleImageURL
                         print("\n\(googleImageURL)\n")

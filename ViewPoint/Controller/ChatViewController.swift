@@ -33,8 +33,9 @@ import MessageInputBar
 import FirebaseFirestore
 
 final class ChatViewController: MessagesViewController {
+    
+    let db = Firestore.firestore()
 
-    private let db = Firestore.firestore()
     private var reference: CollectionReference?
 
     private var messages: [Message] = []
@@ -61,18 +62,22 @@ final class ChatViewController: MessagesViewController {
     }
 
     override func viewDidLoad() {
+        
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.prompt = "John Smith"
+        
 //        guard let id = channel.id else {
 //            navigationController?.popViewController(animated: true)
 //            return
 //        }
+        
+        view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
         
         let id = "hQo9yFPhRu98LbvvWiTX"
 
         reference = db.collection(["channels", id, "thread"].joined(separator: "/"))
 
         super.viewDidLoad()
-
-        navigationItem.largeTitleDisplayMode = .never
 
         maintainPositionOnKeyboardFrameChanged = true
         messageInputBar.inputTextView.tintColor = MyColors.PURPLE
@@ -155,8 +160,14 @@ extension ChatViewController: MessagesDisplayDelegate {
                          in messagesCollectionView: MessagesCollectionView) -> UIColor {
 
         // 1
-        return isFromCurrentSender(message: message) ? MyColors.PURPLE : MyColors.GRAY
+        return isFromCurrentSender(message: message) ? MyColors.BLUE : MyColors.LIGHT_GRAY
     }
+    
+//    func textColor(for message: MessageType, at indexPath: IndexPath,
+//                   in messagesCollectionView: MessagesCollectionView) -> UIColor {
+//        
+//        return MyColors.WHITE
+//    }
 
     func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,
                              in messagesCollectionView: MessagesCollectionView) -> Bool {
@@ -173,18 +184,19 @@ extension ChatViewController: MessagesDisplayDelegate {
         // 3
         return .bubbleTail(corner, .curved)
     }
+    
 }
 
 // MARK: - MessagesLayoutDelegate
 
 extension ChatViewController: MessagesLayoutDelegate {
-
-    func avatarSize(for message: MessageType, at indexPath: IndexPath,
-                    in messagesCollectionView: MessagesCollectionView) -> CGSize {
-
-        // 1
-        return .zero
-    }
+//
+//    func avatarSize(for message: MessageType, at indexPath: IndexPath,
+//                    in messagesCollectionView: MessagesCollectionView) -> CGSize {
+//
+//        // 1
+//        return .zero
+//    }
 
     func footerViewSize(for message: MessageType, at indexPath: IndexPath,
                         in messagesCollectionView: MessagesCollectionView) -> CGSize {
@@ -207,18 +219,12 @@ extension ChatViewController: MessagesLayoutDelegate {
 extension ChatViewController: MessagesDataSource {
     
 
-    
-
     // 1
     func currentSender() -> Sender {
         return Sender(id: user.uid, displayName: "John")
     }
 
-    // 2
-//    func numberOfMessages(in messagesCollectionView: MessagesCollectionView) -> Int {
-//        return messages.count
-//    }
-    
+    // 2    
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }

@@ -18,16 +18,16 @@ final class TopicsViewController: ElongationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
+        tableView.backgroundColor = MyColors.WHITE
+
+        navigationItem.largeTitleDisplayMode = .never
         
-        tableView.backgroundColor = UIColor.black
-        
-        tableView.bounces = false
-        tableView.alwaysBounceVertical = false
+//        tableView.bounces = false
+//        tableView.alwaysBounceVertical = false
         
         tableView.register(UINib(nibName: "TopicPreviewCell", bundle: nil), forCellReuseIdentifier: "topic")
     }
-
+    
     override func openDetailView(for indexPath: IndexPath) {
         guard let topicDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "topicDetailViewController") as? TopicDetailViewController else { return }
         expand(viewController: topicDetailViewController)

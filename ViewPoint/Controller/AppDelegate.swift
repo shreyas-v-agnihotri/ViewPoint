@@ -18,9 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+//        // Hot reloading with Injection III
+//        #if DEBUG
+//            Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")!.load()
+//        #endif
+
         // Set up cloud database and third-party sign ins
         FirebaseApp.configure()
-        // let database = Firestore.firestore()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
 
         customizeNavBar()
@@ -68,18 +72,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func customizeNavBar() {
         
-        // Customize navigation bar (set gradient background, set font, make opaque)
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarFontSize)!]
+        let backgroundImage = imageWithGradient(startColor: MyColors.PURPLE, endColor: MyColors.BLUE, size: CGSize(width: UIScreen.main.bounds.size.width, height: 1))
+        UINavigationBar.appearance().barTintColor = UIColor(patternImage: backgroundImage!)
+        
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.demiBold, size: MyFont.navBarLargeFontSize)!]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarSmallFontSize)!]
         UINavigationBar.appearance().isTranslucent = false
+
         
-//        // Add shadow under navigation bar -> doesn't seem to work
-//        UINavigationBar.appearance().layer.masksToBounds = false
-//        UINavigationBar.appearance().layer.shadowColor = UIColor.lightGray.cgColor
-//        UINavigationBar.appearance().layer.shadowOpacity = 0.8
-//        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 0, height: 2.0)
-//        UINavigationBar.appearance().layer.shadowRadius = 2
+    // Customize navigation bar (set gradient background, set font, make opaque)
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarFontSize)!]
         
+    }
+    
+    func imageWithGradient(startColor:UIColor, endColor:UIColor, size:CGSize, horizontally:Bool = true) -> UIImage? {
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+        if horizontally {
+            gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+            gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        } else {
+            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        }
+        
+        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
+        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
     
     func setupElongationConfig() {

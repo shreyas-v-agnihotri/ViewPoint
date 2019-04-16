@@ -15,7 +15,8 @@ struct MyColors {
     static let WHITE = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)              // #ffffff
     static let PURPLE = UIColor(red:0.64, green:0.45, blue:1.00, alpha:1.0)             // #a472ff
     static let BLUE = UIColor(red:0.51, green:0.56, blue:1.00, alpha:1.0)               // #838eff
-    static let GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)               // #40514e
+    static let LIGHT_GRAY = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1)           // #f0f0f0
+    static let DARK_GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)          // #40514e
     static let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
     
 }
@@ -34,7 +35,7 @@ struct MyDimensions {
     static let statusBarHeight = UIApplication.shared.statusBarFrame.height
     
     static let topViewHeight = 190
-    static let bottomViewHeight = screenHeight / 3.5
+    static let bottomViewHeight = screenHeight / 4.5
     static let detailViewHeight = Int(screenHeight) - topViewHeight - Int(bottomViewHeight) - Int(statusBarHeight)
     
     static let answerChoiceWidthRatio = CGFloat(0.7)
@@ -47,10 +48,12 @@ struct MyFont {
 
     static let normal = "Avenir Next"
     static let medium = "AvenirNext-Medium"
+    static let demiBold = "AvenirNext-DemiBold"
     
     static let topicPreviewTitleKern = 2
     
-    static let navBarFontSize = CGFloat(20)
+    static let navBarLargeFontSize = CGFloat(40)
+    static let navBarSmallFontSize = CGFloat(20)
     static let (questionFontSize, answerFontSize) = computeSurveyFontSize()
 
 }
@@ -67,30 +70,12 @@ protocol DatabaseRepresentation {
     var representation: [String: Any] { get }
 }
 
-func computeDetailViewAdjustment(statusBarHeight: CGFloat) -> Int {
-    
-    var modelDependentDetailViewAdjustment = 0
-    if statusBarHeight > 20 {
-        modelDependentDetailViewAdjustment = Int(statusBarHeight)
-    }
-    return modelDependentDetailViewAdjustment
-}
-
 func computeSurveyFontSize() -> (CGFloat, CGFloat) {
     
     let height = MyDimensions.screenHeight
     let questionSize = min(height * 0.03, 24)
     let answerSize = min(questionSize - 1, 20)
     return (questionSize, answerSize)
-    
-//    if height == 480 { return (16, 15) }  // 2G, 3G, 3GS, 4, 4S
-//    if height == 568 { return (17, 16) }  // 5, 5S, 5C, SE
-//    if height == 667 { return (18, 17) }  // 6, 6S, 7, 8
-//    if height == 736 { return (21, 18) }  // 6+, 6S+, 7+, 8+
-//    if height == 812 { return (23, 19) }  // X, XS
-//    if height == 896 { return (25, 20) }  // XR, XS Max
-//    if height > 896 { return (25, 20) }   // Any larger device
-//    else { return (16, 15) }              // Any smaller device
     
 }
 

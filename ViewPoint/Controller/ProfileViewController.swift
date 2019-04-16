@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
         profilePicView.image = profilePic
         
         if (profilePic != UIImage(named: "profilePicGradient")) {
-            profilePicView.layer.borderColor = MyColors.WHITE.cgColor
+            profilePicView.layer.borderColor = MyColors.PURPLE.cgColor
             profilePicView.layer.borderWidth = 3
             profilePicView.layer.cornerRadius = self.profilePicView.frame.width/2
         }

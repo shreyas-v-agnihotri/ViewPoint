@@ -18,12 +18,12 @@ struct TopicDatabase {
             answerChoice2: "No"
         )
         let question2 = SurveyQuestion(
-            questionText: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+            questionText: "My very nice mother just baked me nine pies.",
             answerChoice1: "Yes",
             answerChoice2: "No"
         )
         let question3 = SurveyQuestion(
-            questionText: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+            questionText: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
             answerChoice1: "Yes",
             answerChoice2: "No"
         )
