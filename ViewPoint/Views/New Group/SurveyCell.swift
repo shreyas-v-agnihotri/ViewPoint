@@ -44,7 +44,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
             let questionCell: SurveyQuestionCell = Bundle.main.loadNibNamed("SurveyQuestionCell", owner: self, options: nil)?.first as! SurveyQuestionCell
             
             questionCell.questionLabel.text = question.questionText
-            questionCell.questionLabel.font = UIFont(name: MyFont.normal, size: MyFont.questionFontSize)
+            questionCell.questionLabel.font = UIFont(name: MyFont.regular, size: MyFont.questionFontSize)
             questionCell.pageControl.isHidden = true
             
             questionCell.background.layer.masksToBounds = false

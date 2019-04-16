@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="3qO-Wx-qaW" kind="relationship" relationship="rootViewController" id="UdK-5o-LgW"/>
+                        <segue destination="4SV-FS-TEK" kind="relationship" relationship="rootViewController" id="TAy-1j-eNy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVe-Gy-SXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -165,6 +165,55 @@
             </objects>
             <point key="canvasLocation" x="2658" y="-246"/>
         </scene>
+        <!--Debates-->
+        <scene sceneID="yXU-fG-Nmp">
+            <objects>
+                <tableViewController title="Debates" id="4SV-FS-TEK" customClass="DashboardViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VsV-Ud-Q9u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XFb-VJ-3EB">
+                            <rect key="frame" x="0.0" y="72" width="414" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Test Chat">
+                                <color key="titleColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonPressed:" destination="4SV-FS-TEK" eventType="touchUpInside" id="LaJ-2S-FSY"/>
+                            </connections>
+                        </button>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1bP-mz-IuP">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1bP-mz-IuP" id="E9u-M6-h4i">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4SV-FS-TEK" id="7kZ-J2-2Yv"/>
+                            <outlet property="delegate" destination="4SV-FS-TEK" id="8an-v4-290"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Debates" largeTitleDisplayMode="always" id="pGq-Ph-bNq">
+                        <barButtonItem key="backBarButtonItem" title=" " id="XAJ-VX-LcV"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AOG-Ga-enI">
+                            <connections>
+                                <segue destination="l2W-La-EIZ" kind="show" identifier="goToTopics" id="PBZ-uT-ACQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="37h-yA-qT2" kind="show" identifier="goToProfile" id="Dby-8Q-iiY"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Qx-1j-pwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1735" y="-246"/>
+        </scene>
         <!--Topic Detail View Controller-->
         <scene sceneID="hM7-6d-q9x">
             <objects>
@@ -179,64 +228,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIs-SC-ffu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2657" y="467"/>
-        </scene>
-        <!--Debates-->
-        <scene sceneID="6WV-TA-lRC">
-            <objects>
-                <viewController title="Debates" id="3qO-Wx-qaW" customClass="DashboardViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QfO-Sy-fHd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="urh-WT-RAD">
-                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chat" rowHeight="100" id="q4B-Au-wmx">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q4B-Au-wmx" id="2qv-S3-eDw">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFb-VJ-3EB">
-                                <rect key="frame" x="154" y="380" width="66" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Test Chat">
-                                    <color key="titleColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="3qO-Wx-qaW" eventType="touchUpInside" id="sTF-He-b88"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="urh-WT-RAD" secondAttribute="bottom" id="3Sa-J4-HLi"/>
-                            <constraint firstItem="urh-WT-RAD" firstAttribute="top" secondItem="DJS-rQ-NMF" secondAttribute="top" id="5bU-sB-RCQ"/>
-                            <constraint firstItem="urh-WT-RAD" firstAttribute="trailing" secondItem="DJS-rQ-NMF" secondAttribute="trailing" id="YVp-ap-S82"/>
-                            <constraint firstItem="urh-WT-RAD" firstAttribute="leading" secondItem="DJS-rQ-NMF" secondAttribute="leading" id="cV4-PE-rF0"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="DJS-rQ-NMF"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Debates" largeTitleDisplayMode="always" id="8gz-mM-Q4L">
-                        <barButtonItem key="backBarButtonItem" title=" " id="7yd-LM-gIY"/>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="wBX-FG-HIh">
-                            <connections>
-                                <segue destination="l2W-La-EIZ" kind="show" identifier="goToTopics" id="LBj-rM-doo"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="37h-yA-qT2" kind="presentation" identifier="goToProfile" id="hWy-gj-PA1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Zj-vb-Wcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1708.6956521739132" y="-246.42857142857142"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="vXS-yS-za1">

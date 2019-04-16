@@ -18,10 +18,12 @@ final class TopicsViewController: ElongationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.backgroundColor = MyColors.WHITE
+        view.layer.backgroundColor = MyColors.WHITE.cgColor
+//        tableView.backgroundColor = MyColors.WHITE
 
         navigationItem.largeTitleDisplayMode = .never
-        
+        view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
+
 //        tableView.bounces = false
 //        tableView.alwaysBounceVertical = false
         

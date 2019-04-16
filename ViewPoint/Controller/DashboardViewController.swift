@@ -13,7 +13,7 @@ import Kingfisher
 import AlamofireImage
 import Presentr
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UITableViewController {
     
     var profilePic: UIImage = UIImage(named: "profilePicWhite")!    // Default profile pic
     
@@ -21,6 +21,8 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
         
         setProfileButton()
+        
+        navigationItem.largeTitleDisplayMode = .never
         
         self.navigationController?.navigationBar.layer.masksToBounds = false
         self.navigationController?.navigationBar.layer.shadowColor = UIColor.darkGray.cgColor

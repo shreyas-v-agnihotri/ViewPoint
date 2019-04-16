@@ -46,14 +46,15 @@ struct MyDimensions {
 
 struct MyFont {
 
-    static let normal = "Avenir Next"
+    static let light = "AvenirNext-UltraLight"
+    static let regular = "AvenirNext-Regular"
     static let medium = "AvenirNext-Medium"
     static let demiBold = "AvenirNext-DemiBold"
     
     static let topicPreviewTitleKern = 2
     
-    static let navBarLargeFontSize = CGFloat(40)
-    static let navBarSmallFontSize = CGFloat(20)
+    static let navBarSmallFontSize = CGFloat(22)
+    static let navBarLargeFontSize = CGFloat(32)
     static let (questionFontSize, answerFontSize) = computeSurveyFontSize()
 
 }

@@ -64,14 +64,15 @@ final class ChatViewController: MessagesViewController {
     override func viewDidLoad() {
         
         navigationItem.largeTitleDisplayMode = .always
-        navigationItem.prompt = "John Smith"
+//        navigationItem.prompt = "John Smith"
+        view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
         
 //        guard let id = channel.id else {
 //            navigationController?.popViewController(animated: true)
 //            return
 //        }
         
-        view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
+
         
         let id = "hQo9yFPhRu98LbvvWiTX"
 
