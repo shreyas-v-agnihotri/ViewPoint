@@ -174,7 +174,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XFb-VJ-3EB">
-                            <rect key="frame" x="0.0" y="72" width="414" height="30"/>
+                            <rect key="frame" x="0.0" y="128" width="414" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Test Chat">
                                 <color key="titleColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -184,11 +184,11 @@
                             </connections>
                         </button>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="debate" id="1bP-mz-IuP">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="debate" rowHeight="100" id="1bP-mz-IuP">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1bP-mz-IuP" id="E9u-M6-h4i">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -238,7 +238,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk5-cg-EtJ" userLabel="Sign Out Button">
-                                <rect key="frame" x="114.66666666666669" y="588" width="185" height="60"/>
+                                <rect key="frame" x="114.66666666666669" y="568" width="185" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="99T-dj-ftF"/>
                                     <constraint firstAttribute="width" constant="185" id="CAq-mH-ODg"/>
@@ -259,7 +259,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8B-gZ-Ru3">
-                                <rect key="frame" x="185" y="282" width="44" height="36"/>
+                                <rect key="frame" x="185" y="292" width="44" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="VKh-YV-IcZ"/>
                                     <constraint firstAttribute="height" constant="36" id="uSj-bP-Sdg"/>
@@ -276,10 +276,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Qk5-cg-EtJ" firstAttribute="centerX" secondItem="Obv-f1-yUA" secondAttribute="centerX" id="SMj-ag-Dwr"/>
-                            <constraint firstItem="Vc2-Ji-G6w" firstAttribute="top" secondItem="L8B-gZ-Ru3" secondAttribute="bottom" constant="30" id="Ubo-Ds-VUM"/>
+                            <constraint firstItem="Vc2-Ji-G6w" firstAttribute="top" secondItem="L8B-gZ-Ru3" secondAttribute="bottom" constant="20" id="Ubo-Ds-VUM"/>
                             <constraint firstItem="Vc2-Ji-G6w" firstAttribute="centerX" secondItem="Obv-f1-yUA" secondAttribute="centerX" id="hoA-R2-cEy"/>
                             <constraint firstItem="L8B-gZ-Ru3" firstAttribute="centerX" secondItem="Obv-f1-yUA" secondAttribute="centerX" id="mEg-gn-yuN"/>
-                            <constraint firstItem="Qk5-cg-EtJ" firstAttribute="top" secondItem="Vc2-Ji-G6w" secondAttribute="bottom" constant="40" id="upv-G8-D7g"/>
+                            <constraint firstItem="Qk5-cg-EtJ" firstAttribute="top" secondItem="Vc2-Ji-G6w" secondAttribute="bottom" constant="20" id="upv-G8-D7g"/>
                             <constraint firstItem="Vc2-Ji-G6w" firstAttribute="centerY" secondItem="Obv-f1-yUA" secondAttribute="centerY" id="zre-ss-AnA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AfH-1p-zOZ"/>
