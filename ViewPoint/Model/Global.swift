@@ -25,6 +25,7 @@ struct MyDimensions {
     
     static let profilePicSize = 500         // Request 500x500 image from Google profile
     static let navBarButtonSize = 30        // Use smaller images for nav bar
+    static let navBarBackButtonSize = 25
     
     static let buttonCornerRadius = CGFloat(20)
     static let buttonBorderWidth = CGFloat(2)
@@ -37,6 +38,7 @@ struct MyDimensions {
     static let topViewHeight = 190
     static let bottomViewHeight = screenHeight / 4.5
     static let detailViewHeight = Int(screenHeight) - topViewHeight - Int(bottomViewHeight) - Int(statusBarHeight)
+    static let separatorHeight = 0.5
     
     static let answerChoiceWidthRatio = CGFloat(0.7)
     
@@ -53,8 +55,8 @@ struct MyFont {
     
     static let topicPreviewTitleKern = 2
     
-    static let navBarSmallFontSize = CGFloat(22)
-    static let navBarLargeFontSize = CGFloat(32)
+    static let navBarSmallFontSize = 22
+    static let navBarLargeFontSize = 32
     static let (questionFontSize, answerFontSize) = computeSurveyFontSize()
 
 }

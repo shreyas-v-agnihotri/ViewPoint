@@ -14,7 +14,8 @@ final class TopicPreviewCell: ElongationCell {
     @IBOutlet var topImageView: UIImageView!
     @IBOutlet var localityLabel: UILabel!
     @IBOutlet var countryLabel: UILabel!
-
+    @IBOutlet weak var imageOverlay: UIView!
+    
     @IBOutlet var aboutTitleLabel: UILabel!
     @IBOutlet var aboutDescriptionLabel: UILabel!
     

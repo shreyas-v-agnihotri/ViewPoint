@@ -56,6 +56,9 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DPn-yJ-78f">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
                                         <color key="backgroundColor" red="0.52865175289999999" green="0.90654074630000003" blue="0.95629221200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAE-et-flO" userLabel="Image Overlay">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
@@ -123,6 +126,7 @@
                 <outlet property="bottomViewHeightConstraint" destination="Ywc-LN-JZc" id="4V7-Sq-Xxn"/>
                 <outlet property="bottomViewTopConstraint" destination="RjD-hT-LRq" id="bh4-rN-U5s"/>
                 <outlet property="countryLabel" destination="99c-0B-Lao" id="TYv-WI-7yG"/>
+                <outlet property="imageOverlay" destination="VAE-et-flO" id="jaf-IK-XMV"/>
                 <outlet property="localityLabel" destination="SCD-5B-3Ps" id="EAG-bl-q3t"/>
                 <outlet property="parallaxViewCenterConstraint" destination="11A-QJ-Ys1" id="eWl-bG-mJ3"/>
                 <outlet property="parallaxViewHeightConstraint" destination="HUV-h1-pKi" id="sgj-Ug-gvY"/>

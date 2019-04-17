@@ -31,6 +31,7 @@ import Firebase
 import MessageKit
 import MessageInputBar
 import FirebaseFirestore
+import Presentr
 
 final class ChatViewController: MessagesViewController {
     
@@ -43,10 +44,12 @@ final class ChatViewController: MessagesViewController {
 
     private let user: User
     private let channel: Channel
+    private let opponentImage: UIImage
 
-    init(user: User, channel: Channel) {
+    init(user: User, channel: Channel, opponentImage: UIImage) {
         self.user = user
         self.channel = channel
+        self.opponentImage = opponentImage
         super.init(nibName: nil, bundle: nil)
 
         title = channel.name
@@ -60,19 +63,26 @@ final class ChatViewController: MessagesViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func infoPressed() {
+        
+    }
 
     override func viewDidLoad() {
         
         navigationItem.largeTitleDisplayMode = .always
+        
 //        navigationItem.prompt = "John Smith"
         view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
+        
+        setOpponentProfileButton()
         
 //        guard let id = channel.id else {
 //            navigationController?.popViewController(animated: true)
 //            return
 //        }
         
-
+        
         
         let id = "hQo9yFPhRu98LbvvWiTX"
 
@@ -115,26 +125,6 @@ final class ChatViewController: MessagesViewController {
         }
     }
 
-    private func insertNewMessage(_ message: Message) {
-        guard !messages.contains(message) else {
-            return
-        }
-
-        messages.append(message)
-        messages.sort()
-
-        let isLatestMessage = messages.firstIndex(of: message) == (messages.count - 1)
-        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
-
-        messagesCollectionView.reloadData()
-
-        if shouldScrollToBottom {
-            DispatchQueue.main.async {
-                self.messagesCollectionView.scrollToBottom(animated: true)
-            }
-        }
-    }
-
     private func handleDocumentChange(_ change: DocumentChange) {
         guard let message = Message(document: change.document) else {
             return
@@ -148,6 +138,80 @@ final class ChatViewController: MessagesViewController {
             break
         }
     }
+    
+    private func insertNewMessage(_ message: Message) {
+        guard !messages.contains(message) else {
+            return
+        }
+        
+        messages.append(message)
+        messages.sort()
+        
+        let isLatestMessage = messages.firstIndex(of: message) == (messages.count - 1)
+        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
+        
+        messagesCollectionView.reloadData()
+        
+        if shouldScrollToBottom {
+            DispatchQueue.main.async {
+                self.messagesCollectionView.scrollToBottom(animated: true)
+            }
+        }
+    }
+    
+    func setOpponentProfileButton() {
+        
+        let opponentProfileButton = UIButton(type: .custom)
+        opponentProfileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: .touchUpInside)
+        
+        let buttonSize = CGFloat(MyDimensions.navBarButtonSize)
+        let profilePicScaled = opponentImage.af_imageAspectScaled(toFit: CGSize(width: buttonSize, height: buttonSize))
+        opponentProfileButton.setImage(profilePicScaled, for: .normal)
+        
+        opponentProfileButton.layer.cornerRadius = buttonSize/2
+        opponentProfileButton.layer.borderWidth = MyDimensions.profileButtonBorderWidth
+        opponentProfileButton.layer.borderColor = MyColors.WHITE.cgColor
+        
+        let profileBarButton = UIBarButtonItem(customView: opponentProfileButton)
+        let opponentName = UIBarButtonItem(title: "John Smithers", style: .plain, target: self, action: #selector(self.profileButtonPressed))
+
+        self.navigationItem.rightBarButtonItems = [profileBarButton, opponentName]
+        
+    }
+    
+    @objc func profileButtonPressed(sender: UIButton!) {
+        
+        // performSegue(withIdentifier: "goToProfile", sender: self)
+        
+        let presenter: Presentr = {
+            
+            let customPresenter = Presentr(presentationType: .popup)
+            customPresenter.transitionType = .coverVerticalFromTop
+            customPresenter.dismissOnSwipe = true
+            customPresenter.cornerRadius = MyDimensions.profileViewRadius
+            
+            //            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.darkGray, shadowOpacity: 0.6, shadowOffset: CGSize(width: 0, height: 2.0), shadowRadius: 2)
+            
+            //            customPresenter.backgroundColor = MyColors.BLUE
+            //            customPresenter.backgroundOpacity = 0.6
+            
+            //            customPresenter.blurBackground = true
+            //            customPresenter.blurStyle = UIBlurEffect.Style.light
+            
+            return customPresenter
+        }()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let profileViewController: ProfileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        
+        if (self.opponentImage != UIImage(named: "profilePicWhite")) {
+            profileViewController.profilePic = self.opponentImage
+        }
+        
+        customPresentViewController(presenter, viewController: profileViewController, animated: true, completion: nil)
+    }
+
 
 }
 
@@ -267,11 +331,5 @@ extension ChatViewController: MessageInputBarDelegate {
         // 3
         inputBar.inputTextView.text = ""
     }
-
-}
-
-// MARK: - UIImagePickerControllerDelegate
-
-extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 }

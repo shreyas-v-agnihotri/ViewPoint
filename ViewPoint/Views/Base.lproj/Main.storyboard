@@ -184,7 +184,7 @@
                             </connections>
                         </button>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1bP-mz-IuP">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="debate" id="1bP-mz-IuP">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1bP-mz-IuP" id="E9u-M6-h4i">
@@ -251,7 +251,7 @@
                                     <action selector="signOutPressed:" destination="37h-yA-qT2" eventType="touchUpInside" id="0Xb-nG-y3G"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vc2-Ji-G6w">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicGradient" translatesAutoresizingMaskIntoConstraints="NO" id="Vc2-Ji-G6w">
                                 <rect key="frame" x="107" y="348" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Uou-te-p7S"/>
@@ -298,6 +298,7 @@
         <image name="clouds" width="500" height="73.333335876464844"/>
         <image name="eyeIcon" width="200" height="200"/>
         <image name="googleLogo" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="profilePicGradient" width="500" height="500"/>
         <image name="verticalGradient" width="200" height="200"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

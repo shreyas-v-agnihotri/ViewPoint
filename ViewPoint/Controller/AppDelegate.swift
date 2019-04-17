@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import ElongationPreview
+import AlamofireImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -77,14 +78,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         
-        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarLargeFontSize)!]
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarSmallFontSize)!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: CGFloat(MyFont.navBarLargeFontSize))!]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: CGFloat(MyFont.navBarSmallFontSize))!]
         UINavigationBar.appearance().isTranslucent = false
 
         
     // Customize navigation bar (set gradient background, set font, make opaque)
 //        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
 //        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarFontSize)!]
+        
+        let backArrow = UIImage(named: "left-arrow")?.withRenderingMode(.alwaysOriginal)
+        let backButtonSize = CGFloat(MyDimensions.navBarBackButtonSize)
+        let backArrowScaled = backArrow?.af_imageAspectScaled(toFit: CGSize(width: backButtonSize, height: backButtonSize))
+        
+        UINavigationBar.appearance().backIndicatorImage = backArrowScaled
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backArrowScaled
         
     }
     
@@ -117,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         config.bottomViewHeight = CGFloat(MyDimensions.bottomViewHeight)
         config.bottomViewOffset = 0
         config.parallaxFactor = 100
-        config.separatorHeight = 0.5
+        config.separatorHeight = CGFloat(MyDimensions.separatorHeight)
         config.separatorColor = MyColors.WHITE
         
         // Set durations for presenting/dismissing detail screen

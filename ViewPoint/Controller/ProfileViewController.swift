@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import GoogleSignIn
-import SVProgressHUD
 
 class ProfileViewController: UIViewController {
     
@@ -29,7 +28,27 @@ class ProfileViewController: UIViewController {
         }
 
     }
+    
+    //    convenience init(image: UIImage) {
+    //        self.init()
+    //
+    //        profilePic = image
+    //        profilePicView.image = profilePic
+    //    }
 
+    
+//    init(image: UIImage) {
+//        super.init(nibName: nil, bundle: nil)
+//        
+//        profilePic = image
+//        profilePicView.image = profilePic
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
+    
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -37,7 +56,7 @@ class ProfileViewController: UIViewController {
     @IBAction func signOutPressed(_ sender: Any) {
         
         print("\nAttempting to sign out\n")
-        SVProgressHUD.show(withStatus: "Signing out...")
+//        SVProgressHUD.show(withStatus: "Signing out...")
         
         GIDSignIn.sharedInstance()?.signOut()
         
@@ -49,7 +68,7 @@ class ProfileViewController: UIViewController {
         }
         
         print("\nSigned out\n")
-        SVProgressHUD.dismiss()
+//        SVProgressHUD.dismiss()
         
         performSegue(withIdentifier: "goToLogIn", sender: self)
         

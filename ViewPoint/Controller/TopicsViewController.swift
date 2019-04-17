@@ -18,15 +18,16 @@ final class TopicsViewController: ElongationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.layer.backgroundColor = MyColors.WHITE.cgColor
-//        tableView.backgroundColor = MyColors.WHITE
+        tableView.backgroundColor = UIColor.black
 
-        navigationItem.largeTitleDisplayMode = .never
-        view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
+//        navigationItem.largeTitleDisplayMode = .never
 
 //        tableView.bounces = false
 //        tableView.alwaysBounceVertical = false
         
+        // Add action for search later
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+
         tableView.register(UINib(nibName: "TopicPreviewCell", bundle: nil), forCellReuseIdentifier: "topic")
     }
     

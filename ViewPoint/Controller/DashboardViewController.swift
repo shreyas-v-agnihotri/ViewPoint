@@ -12,17 +12,25 @@ import GoogleSignIn
 import Kingfisher
 import AlamofireImage
 import Presentr
+import NVActivityIndicatorView
 
-class DashboardViewController: UITableViewController {
+class DashboardViewController: UITableViewController, NVActivityIndicatorViewable {
     
     var profilePic: UIImage = UIImage(named: "profilePicWhite")!    // Default profile pic
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.stopAnimating(nil)
+        }
+        
         setProfileButton()
         
-        navigationItem.largeTitleDisplayMode = .never
+//        navigationItem.largeTitleDisplayMode = .never
+        view.layer.backgroundColor = MyColors.WHITE.cgColor
         
         self.navigationController?.navigationBar.layer.masksToBounds = false
         self.navigationController?.navigationBar.layer.shadowColor = UIColor.darkGray.cgColor
@@ -58,8 +66,8 @@ class DashboardViewController: UITableViewController {
         
         let profileButton = UIButton(type: .custom)
         profileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: .touchUpInside)
-        let buttonSize = CGFloat(MyDimensions.navBarButtonSize)
         
+        let buttonSize = CGFloat(MyDimensions.navBarButtonSize)
         let profilePicScaled = profilePic.af_imageAspectScaled(toFit: CGSize(width: buttonSize, height: buttonSize))
         profileButton.setImage(profilePicScaled, for: .normal)
         
@@ -134,18 +142,15 @@ class DashboardViewController: UITableViewController {
     private var channelListener: ListenerRegistration?
     var channel = Channel(name: "test_channel")
     
-
-    
-    
     @IBAction func buttonPressed(_ sender: Any) {
         
-        channelReference.addDocument(data: channel.representation) { error in
-            if let e = error {
-                print("Error saving channel: \(e.localizedDescription)")
-            }
-        }
+//        channelReference.addDocument(data: channel.representation) { error in
+//            if let e = error {
+//                print("Error saving channel: \(e.localizedDescription)")
+//            }
+//        }
         
-        let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel)
+        let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel, opponentImage: self.profilePic)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

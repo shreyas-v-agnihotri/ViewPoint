@@ -6,13 +6,13 @@ target 'ViewPoint' do
   use_frameworks!
 
   # UI and Networking Pods
-  pod 'SVProgressHUD'
   pod 'Kingfisher'
   pod 'AlamofireImage'
   pod 'ElongationPreview'
   pod 'TwicketSegmentedControl'
   pod 'Presentr'
   pod 'MessageKit'
+  pod 'NVActivityIndicatorView'
   
   # Authentication pods
   pod 'GoogleSignIn'

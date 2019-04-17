@@ -120,9 +120,11 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - NVActivityIndicatorView (4.6.1):
+    - NVActivityIndicatorView/Presenter (= 4.6.1)
+  - NVActivityIndicatorView/Presenter (4.6.1)
   - Presentr (1.9)
   - Protobuf (3.7.0)
-  - SVProgressHUD (2.2.5)
   - TwicketSegmentedControl (0.1.2)
 
 DEPENDENCIES:
@@ -134,8 +136,8 @@ DEPENDENCIES:
   - GoogleSignIn
   - Kingfisher
   - MessageKit
+  - NVActivityIndicatorView
   - Presentr
-  - SVProgressHUD
   - TwicketSegmentedControl
 
 SPEC REPOS:
@@ -163,9 +165,9 @@ SPEC REPOS:
     - MessageInputBar
     - MessageKit
     - nanopb
+    - NVActivityIndicatorView
     - Presentr
     - Protobuf
-    - SVProgressHUD
     - TwicketSegmentedControl
 
 SPEC CHECKSUMS:
@@ -192,11 +194,11 @@ SPEC CHECKSUMS:
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: ae059eb6ac51a15dacc917127381d8add56ca378
+PODFILE CHECKSUM: 3536bb97a10888415db1bdde7dc0a0bca5cc8ab1
 
 COCOAPODS: 1.6.1

@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import GoogleSignIn
-import SVProgressHUD
 
 class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     

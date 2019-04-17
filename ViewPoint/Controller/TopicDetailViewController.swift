@@ -16,7 +16,13 @@ final class TopicDetailViewController: ElongationDetailViewController {
         
         // Disable scrolling (but not horizontal within the survey view)
         self.view.gestureRecognizers?.removeAll()
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.closeView))
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        self.view.addGestureRecognizer(swipeDown)
 //        tableView.isScrollEnabled = false
+        
+        view.layer.backgroundColor = MyColors.WHITE.cgColor
         
 //        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
         tableView.backgroundColor = UIColor.clear
@@ -24,6 +30,11 @@ final class TopicDetailViewController: ElongationDetailViewController {
         tableView.register(UINib(nibName: "SurveyCell", bundle: nil), forCellReuseIdentifier: "survey")
         
 
+    }
+    
+    @objc func closeView(gesture: UIGestureRecognizer) {
+        print("swipe detected")
+        dismiss(animated: true, completion: nil)
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
