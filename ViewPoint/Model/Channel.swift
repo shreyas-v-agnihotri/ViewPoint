@@ -51,8 +51,9 @@ struct Channel {
   
 }
 
-extension Channel: DatabaseRepresentation {
-  
+//extension Channel: DatabaseRepresentation {
+extension Channel {
+
   var representation: [String : Any] {
     var rep = ["name": name]
     

@@ -41,6 +41,7 @@ struct MyDimensions {
     static let separatorHeight = 0.5
     
     static let answerChoiceWidthRatio = CGFloat(0.7)
+    static let segmentedControlHeight = 40
     
     static let profileViewRadius = CGFloat(30)
 
@@ -69,9 +70,9 @@ struct MyAnimations {
     
 }
 
-protocol DatabaseRepresentation {
-    var representation: [String: Any] { get }
-}
+//protocol DatabaseRepresentation {
+//    var representation: [String: Any] { get }
+//}
 
 func computeSurveyFontSize() -> (CGFloat, CGFloat) {
     

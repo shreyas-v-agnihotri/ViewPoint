@@ -29,25 +29,6 @@ class ProfileViewController: UIViewController {
 
     }
     
-    //    convenience init(image: UIImage) {
-    //        self.init()
-    //
-    //        profilePic = image
-    //        profilePicView.image = profilePic
-    //    }
-
-    
-//    init(image: UIImage) {
-//        super.init(nibName: nil, bundle: nil)
-//        
-//        profilePic = image
-//        profilePicView.image = profilePic
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)

@@ -34,28 +34,28 @@ struct TopicDatabase {
     static var iOSvsAndroid = Topic(
         title: "iOS vs Android",
         category: "Technology",
-        imageName: "iOSvsAndroid",
+        identifier: "iOSvsAndroid",
         survey: iOSvsAndroidSurvey
     )
     
     static var marijuana = Topic(
         title: "Legalizing Marijuana",
         category: "Public Policy",
-        imageName: "marijuana",
+        identifier: "marijuana",
         survey: iOSvsAndroidSurvey
     )
     
     static var abortion = Topic(
         title: "Abortion",
         category: "Public Policy",
-        imageName: "abortion",
+        identifier: "abortion",
         survey: iOSvsAndroidSurvey
     )
     
     static var healthCare = Topic(
         title: "Health Care",
         category: "Public Policy",
-        imageName: "healthCare",
+        identifier: "healthCare",
         survey: iOSvsAndroidSurvey
     )
     
@@ -66,7 +66,10 @@ struct TopicDatabase {
             marijuana,
             abortion,
             healthCare,
-            iOSvsAndroid
+            iOSvsAndroid,
+            marijuana,
+            abortion,
+            healthCare
             // Dogs vs Cats
             // Gun Control
             // Minimum Wage
@@ -79,13 +82,13 @@ struct Topic {
     
     let title: String
     let category: String
-    let imageName: String
+    let identifier: String
     let survey: [SurveyQuestion]
     
-    init(title: String, category: String, imageName: String, survey: [SurveyQuestion]) {
+    init(title: String, category: String, identifier: String, survey: [SurveyQuestion]) {
         self.title = title
         self.category = category
-        self.imageName = imageName
+        self.identifier = identifier
         self.survey = survey
     }
 }

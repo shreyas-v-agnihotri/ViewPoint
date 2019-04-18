@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
 //        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarFontSize)!]
         
-        let backArrow = UIImage(named: "left-arrow")?.withRenderingMode(.alwaysOriginal)
+        let backArrow = UIImage(named: "leftArrow")?.withRenderingMode(.alwaysOriginal)
         let backButtonSize = CGFloat(MyDimensions.navBarBackButtonSize)
         let backArrowScaled = backArrow?.af_imageAspectScaled(toFit: CGSize(width: backButtonSize, height: backButtonSize))
         

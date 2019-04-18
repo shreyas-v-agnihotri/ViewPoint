@@ -8,13 +8,13 @@
 
 import UIKit
 import ElongationPreview
-import TwicketSegmentedControl
 
 final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     var topic: Topic = TopicDatabase.topicList[0]   // Defaults to first topic; changed on init
+    var topicDetailVC: TopicDetailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "topicDetailViewController") as! TopicDetailViewController
     
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -43,31 +43,8 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
                 
             let questionCell: SurveyQuestionCell = Bundle.main.loadNibNamed("SurveyQuestionCell", owner: self, options: nil)?.first as! SurveyQuestionCell
             
-            questionCell.questionLabel.text = question.questionText
-            questionCell.questionLabel.font = UIFont(name: MyFont.regular, size: MyFont.questionFontSize)
-            questionCell.pageControl.isHidden = true
-            
-            questionCell.background.layer.masksToBounds = false
-            questionCell.background.layer.shadowColor = UIColor.darkGray.cgColor
-            questionCell.background.layer.shadowOffset = CGSize(width: 0, height: -2)
-            questionCell.background.layer.shadowRadius = 2
-            questionCell.background.layer.shadowOpacity = 0.6
-
-            let options = ["Yes", "No"]
-            let frame = CGRect(x: MyDimensions.screenWidth * (1-MyDimensions.answerChoiceWidthRatio) / 2, y: 0, width: MyDimensions.screenWidth * MyDimensions.answerChoiceWidthRatio, height: questionCell.segmentedControlView.frame.height)
-            
-            let segmentedControl = TwicketSegmentedControl(frame: frame)
-            segmentedControl.setSegmentItems(options)
-            segmentedControl.segmentsBackgroundColor = MyColors.TRANSPARENT_WHITE
-            segmentedControl.sliderBackgroundColor = MyColors.WHITE
-            segmentedControl.highlightTextColor = MyColors.BLUE
-            segmentedControl.defaultTextColor = MyColors.WHITE
-            segmentedControl.font = UIFont(name: MyFont.medium, size: MyFont.answerFontSize)!
-            segmentedControl.backgroundColor = UIColor.clear
-            segmentedControl.isSliderShadowHidden = true
-            segmentedControl.move(to: -1)   // Hides it on default
-            
-            questionCell.segmentedControlView.addSubview(segmentedControl)
+            questionCell.customInit(question: question, answerOptions: ["Yes", "No"])
+            questionCell.surveyCell = self
             
             questionCells.append(questionCell)
         }
@@ -84,11 +61,29 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: cellWidth * CGFloat(questionCells.count), height: cellHeight)
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isScrollEnabled = false
+        scrollView.bounces = false
+        scrollView.alwaysBounceHorizontal = false
 
         for i in 0 ..< questionCells.count {
             questionCells[i].frame = CGRect(x: cellWidth * CGFloat(i), y: 0, width: cellWidth, height: cellHeight)
             scrollView.addSubview(questionCells[i])
         }
+    }
+    
+    func scrollToNextQuestion() {
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+            if CGFloat(self.scrollView.contentOffset.x) / CGFloat(MyDimensions.screenWidth) == CGFloat(self.topic.survey.count-1) {
+                
+                self.topicDetailVC.findDebate()
+                return
+            }
+            
+            self.scrollView.setContentOffset(CGPoint(x: self.scrollView.contentOffset.x + MyDimensions.screenWidth, y: 0), animated: true)
+            print("scrolled")
+        }
+        
     }
 
 }

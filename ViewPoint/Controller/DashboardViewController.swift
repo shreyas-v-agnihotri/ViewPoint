@@ -103,8 +103,6 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
 
     
     @objc func profileButtonPressed(sender: UIButton!) {
-    
-        // performSegue(withIdentifier: "goToProfile", sender: self)
         
         let presenter: Presentr = {
 
@@ -113,13 +111,7 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
             customPresenter.dismissOnSwipe = true
             customPresenter.cornerRadius = MyDimensions.profileViewRadius
             
-//            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.darkGray, shadowOpacity: 0.6, shadowOffset: CGSize(width: 0, height: 2.0), shadowRadius: 2)
-            
-//            customPresenter.backgroundColor = MyColors.BLUE
-//            customPresenter.backgroundOpacity = 0.6
-
-//            customPresenter.blurBackground = true
-//            customPresenter.blurStyle = UIBlurEffect.Style.light
+            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.darkGray, shadowOpacity: 0.6, shadowOffset: CGSize(width: 0, height: 2.0), shadowRadius: 2)
             
             return customPresenter
         }()
@@ -137,7 +129,7 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     
     private let db = Firestore.firestore()
     private var channelReference: CollectionReference {
-        return db.collection("channels")
+        return db.collection("chats")
     }
     private var channelListener: ListenerRegistration?
     var channel = Channel(name: "test_channel")

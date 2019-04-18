@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import NVActivityIndicatorView
 
-class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
+class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate, NVActivityIndicatorViewable {
     
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var cloudsView: UIImageView!
@@ -18,7 +19,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     override func viewDidLoad() {
         
-//        SVProgressHUD.show(withStatus: "Attempting automatic sign in...")
+        startAnimating()
 
         super.viewDidLoad()
         
@@ -26,9 +27,9 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.signInSilently()
         
-//        SVProgressHUD.dismiss()
-        
         designButton(button: signInButton)
+        
+        stopAnimating()
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -39,35 +39,36 @@ struct Message: MessageType {
   let sender: Sender
   
   var kind: MessageKind {
-    if let image = image {
-      return .photo(image as! MediaItem)
-    } else {
+//    if let image = image {
+//      return .photo(image as! MediaItem)
+//    } else
+//    {
       return .text(content)
-    }
+//    }
   }
     
   var messageId: String {
     return id ?? UUID().uuidString
   }
   
-  var image: UIImage? = nil
-  var downloadURL: URL? = nil
+//  var image: UIImage? = nil
+//  var downloadURL: URL? = nil
     
   
   init(user: User, content: String) {
-    sender = Sender(id: user.uid, displayName: "John")
+    sender = Sender(id: user.uid, displayName: user.displayName ?? "ViewPoint User")
     self.content = content
     sentDate = Date()
     id = nil
   }
   
-  init(user: User, image: UIImage) {
-    sender = Sender(id: user.uid, displayName: "John")
-    self.image = image
-    content = ""
-    sentDate = Date()
-    id = nil
-  }
+//  init(user: User, image: UIImage) {
+//    sender = Sender(id: user.uid, displayName: user.displayName ?? "ViewPoint User")
+//    self.image = image
+//    content = ""
+//    sentDate = Date()
+//    id = nil
+//  }
   
   init?(document: QueryDocumentSnapshot) {
     
@@ -90,7 +91,7 @@ struct Message: MessageType {
     
     if let content = data["content"] as? String {
       self.content = content
-      downloadURL = nil
+//      downloadURL = nil
     }
 //    else if let urlString = data["url"] as? String, let url = URL(string: urlString) {
 //      downloadURL = url
@@ -103,8 +104,9 @@ struct Message: MessageType {
   
 }
 
-extension Message: DatabaseRepresentation {
-  
+//extension Message: DatabaseRepresentation {
+extension Message {
+
   var representation: [String : Any] {
     var rep: [String : Any] = [
       "created": sentDate,
@@ -112,11 +114,12 @@ extension Message: DatabaseRepresentation {
       "senderName": sender.displayName
     ]
     
-    if let url = downloadURL {
-      rep["url"] = url.absoluteString
-    } else {
+//    if let url = downloadURL {
+//      rep["url"] = url.absoluteString
+//    }
+//    else {
       rep["content"] = content
-    }
+//    }
     
     return rep
   }

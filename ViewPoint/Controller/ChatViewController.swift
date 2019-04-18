@@ -72,7 +72,6 @@ final class ChatViewController: MessagesViewController {
         
         navigationItem.largeTitleDisplayMode = .always
         
-//        navigationItem.prompt = "John Smith"
         view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
         
         setOpponentProfileButton()
@@ -86,7 +85,7 @@ final class ChatViewController: MessagesViewController {
         
         let id = "hQo9yFPhRu98LbvvWiTX"
 
-        reference = db.collection(["channels", id, "thread"].joined(separator: "/"))
+        reference = db.collection(["chats", id, "messages"].joined(separator: "/"))
 
         super.viewDidLoad()
 

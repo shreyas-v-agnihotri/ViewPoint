@@ -46,21 +46,13 @@ final class TopicsViewController: ElongationViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
         super.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
         guard let cell = cell as? TopicPreviewCell else { return }
         
         let topic = topicList[indexPath.row]
+        cell.customInit(topic: topic)
         
-        let spacedTitle = NSMutableAttributedString(string: topic.title, attributes: [
-            NSAttributedString.Key.kern: MyFont.topicPreviewTitleKern,
-        ])
-        
-        cell.topImageView?.image = UIImage(named: topic.imageName)
-        cell.localityLabel?.attributedText = spacedTitle
-        cell.countryLabel?.text = topic.category
-        cell.aboutTitleLabel?.text = topic.title
-        cell.aboutDescriptionLabel?.text = topic.title
-        cell.bottomViewHeight.constant = CGFloat(MyDimensions.bottomViewHeight)
     }
     
 }
