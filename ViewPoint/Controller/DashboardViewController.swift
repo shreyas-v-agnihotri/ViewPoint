@@ -16,7 +16,7 @@ import NVActivityIndicatorView
 
 class DashboardViewController: UITableViewController, NVActivityIndicatorViewable {
     
-    var profilePic: UIImage = UIImage(named: "profilePicWhite")!    // Default profile pic
+    var profilePic: UIImage = UIImage(named: "defaultProfilePic")!    // Default profile pic
     
     private let db = Firestore.firestore()
     private var channelReference: CollectionReference {
@@ -127,9 +127,9 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
         
         let profileVC: ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         
-        if (self.profilePic != UIImage(named: "profilePicWhite")) {
+//        if (self.profilePic != UIImage(named: "profilePicWhite")) {
             profileVC.profilePic = self.profilePic
-        }
+//        }
         
         customPresentViewController(presenter, viewController: profileVC, animated: true, completion: nil)
 
@@ -143,7 +143,7 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
 //            }
 //        }
         
-        let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel, opponentImage: self.profilePic)
+        let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel, opponentImage: UIImage(named: "defaultProfilePic")!)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -152,7 +152,7 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
         cell.nameLabel.text = "John Smithers"
         cell.messageLabel.text = "weed is good for u bro. just rip a fat doink once in a while."
         cell.topicLabel.text = "Legalizing Marijuana"
-        cell.profileImage.image = UIImage(named: "profilePicGradient")!
+        cell.profileImage.image = UIImage(named: "defaultProfilePic")!
         return cell
     }
     

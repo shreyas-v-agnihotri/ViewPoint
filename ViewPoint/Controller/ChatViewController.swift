@@ -197,9 +197,9 @@ final class ChatViewController: MessagesViewController {
         
         let profileViewController: ProfileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         
-        if (self.opponentImage != UIImage(named: "profilePicWhite")) {
+//        if (self.opponentImage != UIImage(named: "profilePicWhite")) {
             profileViewController.profilePic = self.opponentImage
-        }
+//        }
         
         customPresentViewController(presenter, viewController: profileViewController, animated: true, completion: nil)
     }

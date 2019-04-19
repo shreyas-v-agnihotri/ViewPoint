@@ -13,7 +13,7 @@ import GoogleSignIn
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profilePicView: UIImageView!
-    var profilePic: UIImage = UIImage(named: "profilePicGradient")!
+    var profilePic: UIImage = UIImage(named: "defaultProfilePic")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +21,11 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
         profilePicView.image = profilePic
         
-        if (profilePic != UIImage(named: "profilePicGradient")) {
-            profilePicView.layer.borderColor = MyColors.PURPLE.cgColor
-            profilePicView.layer.borderWidth = 3
-            profilePicView.layer.cornerRadius = self.profilePicView.frame.width/2
-        }
+//        if (profilePic != UIImage(named: "defaultProfilePic")) {
+//            profilePicView.layer.borderColor = MyColors.PURPLE.cgColor
+//            profilePicView.layer.borderWidth = 3
+//            profilePicView.layer.cornerRadius = self.profilePicView.frame.width/2
+//        }
 
     }
     

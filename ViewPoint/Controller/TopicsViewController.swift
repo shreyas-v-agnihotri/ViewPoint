@@ -26,9 +26,21 @@ final class TopicsViewController: ElongationViewController {
 //        tableView.alwaysBounceVertical = false
         
         // Add action for search later
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
-
+        
+        let searchButton = UIButton(type: .custom)
+        searchButton.addTarget(self, action: #selector(self.searchButtonPressed), for: .touchUpInside)
+        let searchIcon = UIImage(named: "search")!
+        let searchButtonSize = CGFloat(MyDimensions.navBarSearchButtonSize)
+        let searchIconScaled = searchIcon.af_imageAspectScaled(toFit: CGSize(width: searchButtonSize, height: searchButtonSize))
+        searchButton.setImage(searchIconScaled, for: .normal)
+        let searchBarButton = UIBarButtonItem(customView: searchButton)
+        self.navigationItem.rightBarButtonItem = searchBarButton
+        
         tableView.register(UINib(nibName: "TopicPreviewCell", bundle: nil), forCellReuseIdentifier: "topic")
+    }
+    
+    @objc func searchButtonPressed() {
+        
     }
     
     override func openDetailView(for indexPath: IndexPath) {

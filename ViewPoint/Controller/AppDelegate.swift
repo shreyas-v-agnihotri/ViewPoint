@@ -80,9 +80,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: CGFloat(MyFont.navBarSmallFontSize))!]
         UINavigationBar.appearance().isTranslucent = false
         
-        let backArrow = UIImage(named: "leftArrow")?.withRenderingMode(.alwaysOriginal)
+        let backArrow = UIImage(named: "leftArrow")!
         let backButtonSize = CGFloat(MyDimensions.navBarBackButtonSize)
-        let backArrowScaled = backArrow?.af_imageAspectScaled(toFit: CGSize(width: backButtonSize, height: backButtonSize))
+        let backArrowScaled = backArrow.af_imageAspectScaled(toFit: CGSize(width: backButtonSize, height: backButtonSize))
         
         UINavigationBar.appearance().backIndicatorImage = backArrowScaled
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backArrowScaled

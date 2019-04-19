@@ -25,7 +25,8 @@ struct MyDimensions {
     
     static let profilePicSize = 500         // Request 500x500 image from Google profile
     static let navBarButtonSize = 30        // Use smaller images for nav bar
-    static let navBarBackButtonSize = 25
+    static let navBarBackButtonSize = 23
+    static let navBarSearchButtonSize = 20
     
     static let buttonCornerRadius = CGFloat(20)
     static let buttonBorderWidth = CGFloat(2)
