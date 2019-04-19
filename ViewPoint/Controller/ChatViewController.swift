@@ -89,9 +89,9 @@ final class ChatViewController: MessagesViewController {
         super.viewDidLoad()
 
         maintainPositionOnKeyboardFrameChanged = true
-        messageInputBar.inputTextView.tintColor = MyColors.PURPLE
-        messageInputBar.sendButton.setTitleColor(MyColors.PURPLE, for: .normal)
-
+        
+        designMessageInputBar()
+        
         messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -109,6 +109,45 @@ final class ChatViewController: MessagesViewController {
         }
 
     }
+    
+    func designMessageInputBar() {
+        messageInputBar.inputTextView.tintColor = MyColors.PURPLE
+        messageInputBar.sendButton.setTitleColor(MyColors.PURPLE, for: .normal)
+        messageInputBar.inputTextView.layer.cornerRadius = 16.0
+        
+        messageInputBar.isTranslucent = true
+        messageInputBar.separatorLine.isHidden = true
+        messageInputBar.inputTextView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
+        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
+        messageInputBar.inputTextView.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
+        messageInputBar.inputTextView.layer.borderWidth = 1.0
+        messageInputBar.inputTextView.layer.masksToBounds = true
+        messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        
+        
+        //        messageInputBar.setRightStackViewWidthConstant(to: 36, animated: false)
+        //        messageInputBar.sendButton.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
+        //        messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        //        messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
+        //        messageInputBar.sendButton.image = #imageLiteral(resourceName: "ic_up")
+        //        messageInputBar.sendButton.title = nil
+        //        messageInputBar.sendButton.imageView?.layer.cornerRadius = 16
+        //        messageInputBar.textViewPadding.right = -38
+        // This just adds some more flare
+        //        messageInputBar.sendButton
+        //            .onEnabled { item in
+        //                UIView.animate(withDuration: 0.3, animations: {
+        //                    item.imageView?.backgroundColor = .primaryColor
+        //                })
+        //            }.onDisabled { item in
+        //                UIView.animate(withDuration: 0.3, animations: {
+        //                    item.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
+        //                })
+        //        }
+    }
+    
 
     // MARK: - Helpers
 
@@ -239,34 +278,26 @@ extension ChatViewController: MessagesDisplayDelegate {
 
     func messageStyle(for message: MessageType, at indexPath: IndexPath,
                       in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-
-//        let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
-//
-//        // 3
-//        return .bubbleTail(corner, .curved)
         
         return .bubble
 
     }
-    
+
 }
 
 // MARK: - MessagesLayoutDelegate
 
 extension ChatViewController: MessagesLayoutDelegate {
-//
-//    func avatarSize(for message: MessageType, at indexPath: IndexPath,
-//                    in messagesCollectionView: MessagesCollectionView) -> CGSize {
-//
-//        // 1
-//        return .zero
-//    }
+    
+    func headerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return CGSize(width: 0, height: 5)
+    }
 
     func footerViewSize(for message: MessageType, at indexPath: IndexPath,
                         in messagesCollectionView: MessagesCollectionView) -> CGSize {
 
         // 2
-        return CGSize(width: 0, height: 10)
+        return CGSize(width: 0, height: 5)
     }
 
     func heightForLocation(message: MessageType, at indexPath: IndexPath,
