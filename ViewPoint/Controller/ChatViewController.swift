@@ -1,31 +1,3 @@
-/// Copyright (c) 2018 Razeware LLC
-///
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-///
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-///
-/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
-/// distribute, sublicense, create a derivative work, and/or sell copies of the
-/// Software in any work that is designed, intended, or marketed for pedagogical or
-/// instructional purposes related to programming, coding, application development,
-/// or information technology.  Permission for such use, copying, modification,
-/// merger, publication, distribution, sublicensing, creation of derivative works,
-/// or sale is expressly withheld.
-///
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-
 import UIKit
 import Firebase
 import MessageKit
@@ -60,13 +32,8 @@ final class ChatViewController: MessagesViewController {
         messageListener?.remove()
     }
 
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func infoPressed() {
-        
     }
 
     override func viewDidLoad() {
@@ -76,6 +43,7 @@ final class ChatViewController: MessagesViewController {
         view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
         
         setOpponentProfileButton()
+        configureMessageCollectionView()
         
 //        guard let id = channel.id else {
 //            navigationController?.popViewController(animated: true)
@@ -87,7 +55,8 @@ final class ChatViewController: MessagesViewController {
         reference = db.collection(["chats", id, "messages"].joined(separator: "/"))
 
         super.viewDidLoad()
-
+        
+        scrollsToBottomOnKeyboardBeginsEditing = true
         maintainPositionOnKeyboardFrameChanged = true
         
         designMessageInputBar()
@@ -110,6 +79,37 @@ final class ChatViewController: MessagesViewController {
 
     }
     
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return false }
+        return messages[indexPath.section].sender == messages[indexPath.section - 1].sender
+    }
+    
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section + 1 < messages.count else { return false }
+        return messages[indexPath.section].sender == messages[indexPath.section + 1].sender
+    }
+    
+    
+    func configureMessageCollectionView() {
+        let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
+        layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 8)
+        
+        // Hide the outgoing avatar and adjust the label alignment to line up with the messages
+        layout?.setMessageOutgoingAvatarSize(.zero)
+        layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
+        layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
+        
+        // Set outgoing avatar to overlap with the message bubble
+        layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 18, bottom: 17.5, right: 0)))
+        layout?.setMessageIncomingAvatarSize(CGSize(width: 30, height: 30))
+        layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -17.5, left: -18, bottom: 17.5, right: 18))
+        
+        layout?.setMessageIncomingAccessoryViewSize(CGSize(width: 30, height: 30))
+        layout?.setMessageIncomingAccessoryViewPadding(HorizontalEdgeInsets(left: 8, right: 0))
+        layout?.setMessageOutgoingAccessoryViewSize(CGSize(width: 30, height: 30))
+        layout?.setMessageOutgoingAccessoryViewPadding(HorizontalEdgeInsets(left: 0, right: 8))
+    }
+    
     func designMessageInputBar() {
         messageInputBar.inputTextView.tintColor = MyColors.PURPLE
         messageInputBar.sendButton.setTitleColor(MyColors.PURPLE, for: .normal)
@@ -127,25 +127,24 @@ final class ChatViewController: MessagesViewController {
         messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
         
-        //        messageInputBar.setRightStackViewWidthConstant(to: 36, animated: false)
-        //        messageInputBar.sendButton.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
-        //        messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-        //        messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
-        //        messageInputBar.sendButton.image = #imageLiteral(resourceName: "ic_up")
-        //        messageInputBar.sendButton.title = nil
-        //        messageInputBar.sendButton.imageView?.layer.cornerRadius = 16
-        //        messageInputBar.textViewPadding.right = -38
-        // This just adds some more flare
-        //        messageInputBar.sendButton
-        //            .onEnabled { item in
-        //                UIView.animate(withDuration: 0.3, animations: {
-        //                    item.imageView?.backgroundColor = .primaryColor
-        //                })
-        //            }.onDisabled { item in
-        //                UIView.animate(withDuration: 0.3, animations: {
-        //                    item.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
-        //                })
-        //        }
+        messageInputBar.setRightStackViewWidthConstant(to: 36, animated: false)
+        messageInputBar.sendButton.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
+        messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
+        messageInputBar.sendButton.image = UIImage(named: "upArrow")!
+        messageInputBar.sendButton.title = nil
+        messageInputBar.sendButton.imageView?.layer.cornerRadius = 16
+        messageInputBar.textViewPadding.right = -38
+        messageInputBar.sendButton
+            .onEnabled { item in
+                UIView.animate(withDuration: 0.3, animations: {
+                    item.imageView?.backgroundColor = MyColors.BLUE
+                })
+            }.onDisabled { item in
+                UIView.animate(withDuration: 0.3, animations: {
+                    item.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
+                })
+        }
     }
     
 
@@ -197,50 +196,27 @@ final class ChatViewController: MessagesViewController {
     
     func setOpponentProfileButton() {
         
-        let opponentProfileButton = UIButton(type: .custom)
+        let opponentProfileButton = createBarButton(image: opponentImage, size: MyDimensions.navBarProfileButtonSize)
+        addProfileBorder(profileButton: opponentProfileButton)
         opponentProfileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: .touchUpInside)
+        let opponentProfileBarButton = UIBarButtonItem(customView: opponentProfileButton)
         
-        let buttonSize = CGFloat(MyDimensions.navBarButtonSize)
-        let profilePicScaled = opponentImage.af_imageAspectScaled(toFit: CGSize(width: buttonSize, height: buttonSize))
-        opponentProfileButton.setImage(profilePicScaled, for: .normal)
-        
-        opponentProfileButton.layer.cornerRadius = buttonSize/2
-        opponentProfileButton.layer.borderWidth = MyDimensions.profileButtonBorderWidth
-        opponentProfileButton.layer.borderColor = MyColors.WHITE.cgColor
-        
-        let profileBarButton = UIBarButtonItem(customView: opponentProfileButton)
-        
-        let opponentName = UIBarButtonItem(title: "John Smithers", style: .plain, target: self, action: #selector(self.profileButtonPressed))
+        let opponentNameBarButton = UIBarButtonItem(title: "John Smithers", style: .plain, target: self, action: #selector(self.profileButtonPressed))
 
-        self.navigationItem.rightBarButtonItems = [profileBarButton, opponentName]
+        self.navigationItem.rightBarButtonItems = [opponentProfileBarButton, opponentNameBarButton]
         
     }
     
     @objc func profileButtonPressed(sender: UIButton!) {
         
-        // performSegue(withIdentifier: "goToProfile", sender: self)
+        let profileVC: ProfileViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         
-        let presenter: Presentr = {
-            
-            let customPresenter = Presentr(presentationType: .popup)
-            customPresenter.transitionType = .coverVerticalFromTop
-            customPresenter.dismissOnSwipe = true
-            customPresenter.cornerRadius = MyDimensions.profileViewRadius
-            
-            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.darkGray, shadowOpacity: 0.6, shadowOffset: CGSize(width: 0, height: 2.0), shadowRadius: 2)
-            
-            return customPresenter
-        }()
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
-        let profileViewController: ProfileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-        
-//        if (self.opponentImage != UIImage(named: "profilePicWhite")) {
-            profileViewController.profilePic = self.opponentImage
-//        }
-        
-        customPresentViewController(presenter, viewController: profileViewController, animated: true, completion: nil)
+        customPresentViewController(
+            profileVC.present(image: self.opponentImage),
+            viewController: profileVC,
+            animated: true,
+            completion: nil
+        )
     }
 
 
@@ -251,30 +227,25 @@ final class ChatViewController: MessagesViewController {
 // MARK: - MessagesDisplayDelegate
 
 extension ChatViewController: MessagesDisplayDelegate {
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        
+        avatarView.isHidden = isNextMessageSameSender(at: indexPath)
+        avatarView.image = opponentImage
+
+    }
 
     func backgroundColor(for message: MessageType, at indexPath: IndexPath,
                          in messagesCollectionView: MessagesCollectionView) -> UIColor {
-
-        // 1
-        
-//        let horizontalGradient = UIImage(named: "horizontalGradient")!
-//        let scaledGradient = horizontalGradient.af_imageAspectScaled(toFit: CGSize(width: MyDimensions.screenWidth, height: MyDimensions.screenHeight))
         
         return isFromCurrentSender(message: message) ? MyColors.BLUE : MyColors.LIGHT_GRAY
     }
-    
-//    func textColor(for message: MessageType, at indexPath: IndexPath,
-//                   in messagesCollectionView: MessagesCollectionView) -> UIColor {
-//        
-//        return MyColors.WHITE
+
+//    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,
+//                             in messagesCollectionView: MessagesCollectionView) -> Bool {
+//
+//        return false
 //    }
-
-    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,
-                             in messagesCollectionView: MessagesCollectionView) -> Bool {
-
-        // 2
-        return false
-    }
 
     func messageStyle(for message: MessageType, at indexPath: IndexPath,
                       in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
@@ -288,23 +259,23 @@ extension ChatViewController: MessagesDisplayDelegate {
 // MARK: - MessagesLayoutDelegate
 
 extension ChatViewController: MessagesLayoutDelegate {
+
+//    func heightForLocation(message: MessageType, at indexPath: IndexPath,
+//                           with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+//
+//        return 0
+//    }
     
-    func headerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return CGSize(width: 0, height: 5)
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        if isFromCurrentSender(message: message) {
+            return !isPreviousMessageSameSender(at: indexPath) ? 12 : 0.5
+        } else {
+            return !isPreviousMessageSameSender(at: indexPath) ? (12 + 17.5) : 0.5
+        }
     }
-
-    func footerViewSize(for message: MessageType, at indexPath: IndexPath,
-                        in messagesCollectionView: MessagesCollectionView) -> CGSize {
-
-        // 2
-        return CGSize(width: 0, height: 5)
-    }
-
-    func heightForLocation(message: MessageType, at indexPath: IndexPath,
-                           with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-
-        // 3
-        return 0
+    
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return (!isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message)) ? 16 : 0.5
     }
 }
 

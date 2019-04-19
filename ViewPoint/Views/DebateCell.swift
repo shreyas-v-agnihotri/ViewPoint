@@ -21,11 +21,18 @@ class DebateCell: UITableViewCell {
         topicLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
 
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+//
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
+    
+    func customInit(profileImage: UIImage, topic: String, name: String, message: String) {
+        self.profileImage.image = profileImage
+        self.topicLabel.text = topic
+        self.nameLabel.text = name
+        self.messageLabel.text = message
     }
     
 }

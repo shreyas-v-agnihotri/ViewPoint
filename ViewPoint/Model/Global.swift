@@ -24,7 +24,7 @@ struct MyColors {
 struct MyDimensions {
     
     static let profilePicSize = 500         // Request 500x500 image from Google profile
-    static let navBarButtonSize = 30        // Use smaller images for nav bar
+    static let navBarProfileButtonSize = 30        // Use smaller images for nav bar
     static let navBarBackButtonSize = 23
     static let navBarSearchButtonSize = 20
     
@@ -71,10 +71,6 @@ struct MyAnimations {
     
 }
 
-//protocol DatabaseRepresentation {
-//    var representation: [String: Any] { get }
-//}
-
 func computeSurveyFontSize() -> (CGFloat, CGFloat) {
     
     let height = MyDimensions.screenHeight
@@ -82,5 +78,22 @@ func computeSurveyFontSize() -> (CGFloat, CGFloat) {
     let answerSize = min(questionSize - 1, 20)
     return (questionSize, answerSize)
     
+}
+
+func createBarButton(image: UIImage, size: Int) -> UIButton {
+    
+    let button = UIButton(type: .custom)
+    
+    let buttonSize = CGFloat(size)
+    let imageScaled = image.af_imageAspectScaled(toFit: CGSize(width: buttonSize, height: buttonSize))
+    button.setImage(imageScaled, for: .normal)
+    
+    return button
+}
+
+func addProfileBorder(profileButton: UIButton) {
+    profileButton.layer.cornerRadius = CGFloat(MyDimensions.navBarProfileButtonSize/2)
+    profileButton.layer.borderWidth = MyDimensions.profileButtonBorderWidth
+    profileButton.layer.borderColor = MyColors.WHITE.cgColor
 }
 

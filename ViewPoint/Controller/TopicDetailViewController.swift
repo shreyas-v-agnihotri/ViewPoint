@@ -23,16 +23,15 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         self.view.addGestureRecognizer(swipeDown)
         
-        tableView.showsVerticalScrollIndicator = false
-        
-        view.layer.backgroundColor = MyColors.WHITE.cgColor
-        
-//        view.layer.contents = #imageLiteral(resourceName: "horizontalGradient").cgImage
-        tableView.backgroundColor = UIColor.clear
-        
-        tableView.register(UINib(nibName: "SurveyCell", bundle: nil), forCellReuseIdentifier: "survey")
-        
+        configureTableView()
 
+    }
+    
+    func configureTableView() {
+        tableView.showsVerticalScrollIndicator = false
+        view.layer.backgroundColor = MyColors.WHITE.cgColor
+        tableView.backgroundColor = UIColor.clear
+        tableView.register(UINib(nibName: "SurveyCell", bundle: nil), forCellReuseIdentifier: "survey")
     }
     
     @objc func closeView(gesture: UIGestureRecognizer) {

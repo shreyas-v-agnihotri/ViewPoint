@@ -18,25 +18,20 @@ final class TopicsViewController: ElongationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setSearchButton()
+        configureTableView()
+    }
+    
+    func configureTableView() {
         tableView.backgroundColor = UIColor.black
+        tableView.register(UINib(nibName: "TopicPreviewCell", bundle: nil), forCellReuseIdentifier: "topic")
+    }
 
-//        navigationItem.largeTitleDisplayMode = .never
-
-//        tableView.bounces = false
-//        tableView.alwaysBounceVertical = false
-        
-        // Add action for search later
-        
-        let searchButton = UIButton(type: .custom)
+    func setSearchButton() {
+        let searchButton = createBarButton(image: UIImage(named: "search")!, size: MyDimensions.navBarSearchButtonSize)
         searchButton.addTarget(self, action: #selector(self.searchButtonPressed), for: .touchUpInside)
-        let searchIcon = UIImage(named: "search")!
-        let searchButtonSize = CGFloat(MyDimensions.navBarSearchButtonSize)
-        let searchIconScaled = searchIcon.af_imageAspectScaled(toFit: CGSize(width: searchButtonSize, height: searchButtonSize))
-        searchButton.setImage(searchIconScaled, for: .normal)
         let searchBarButton = UIBarButtonItem(customView: searchButton)
         self.navigationItem.rightBarButtonItem = searchBarButton
-        
-        tableView.register(UINib(nibName: "TopicPreviewCell", bundle: nil), forCellReuseIdentifier: "topic")
     }
     
     @objc func searchButtonPressed() {

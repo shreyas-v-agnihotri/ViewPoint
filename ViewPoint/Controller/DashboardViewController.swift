@@ -31,23 +31,12 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
         tableView.register(UINib(nibName: "DebateCell", bundle: nil), forCellReuseIdentifier: "debate")
         
         startAnimating()
-        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             self.stopAnimating(nil)
         }
         
         setProfileButton()
-        
-//        navigationItem.largeTitleDisplayMode = .never
-        view.layer.backgroundColor = MyColors.WHITE.cgColor
-        
-        self.navigationController?.navigationBar.layer.masksToBounds = false
-        self.navigationController?.navigationBar.layer.shadowColor = UIColor.darkGray.cgColor
-        self.navigationController?.navigationBar.layer.shadowOpacity = 0.6
-        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        self.navigationController?.navigationBar.layer.shadowRadius = 2
-        self.navigationController?.navigationBar.layer.borderColor = UIColor.clear.cgColor
-        self.navigationController?.navigationBar.layer.borderWidth = 0
+        setNavBarShadow()
         
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let currentFirebaseUser = user {
@@ -71,22 +60,25 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
         
     }
     
+    func setNavBarShadow() {
+        let navBar = self.navigationController!.navigationBar.layer
+        navBar.masksToBounds = false
+        navBar.shadowColor = UIColor.darkGray.cgColor
+        navBar.shadowOpacity = 0.6
+        navBar.shadowOffset = CGSize(width: 0, height: 2.0)
+        navBar.shadowRadius = 2
+        navBar.borderColor = UIColor.clear.cgColor
+        navBar.borderWidth = 0
+    }
+    
     func setProfileButton() {
         
-        let profileButton = UIButton(type: .custom)
+        let profileButton = createBarButton(image: profilePic, size: MyDimensions.navBarProfileButtonSize)
+        addProfileBorder(profileButton: profileButton)
         profileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: .touchUpInside)
-        
-        let buttonSize = CGFloat(MyDimensions.navBarButtonSize)
-        let profilePicScaled = profilePic.af_imageAspectScaled(toFit: CGSize(width: buttonSize, height: buttonSize))
-        profileButton.setImage(profilePicScaled, for: .normal)
-        
-        profileButton.layer.cornerRadius = buttonSize/2
-        profileButton.layer.borderWidth = MyDimensions.profileButtonBorderWidth
-        profileButton.layer.borderColor = MyColors.WHITE.cgColor
-        
         let profileBarButton = UIBarButtonItem(customView: profileButton)
-        self.navigationItem.leftBarButtonItem = profileBarButton
         
+        self.navigationItem.leftBarButtonItem = profileBarButton
     }
     
     func updateUserImage(user: User) {
@@ -113,25 +105,15 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     
     @objc func profileButtonPressed(sender: Any) {
         
-        let presenter: Presentr = {
-
-            let customPresenter = Presentr(presentationType: .popup)
-            customPresenter.transitionType = .coverVerticalFromTop
-            customPresenter.dismissOnSwipe = true
-            customPresenter.cornerRadius = MyDimensions.profileViewRadius
-            
-            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.darkGray, shadowOpacity: 0.6, shadowOffset: CGSize(width: 0, height: 2.0), shadowRadius: 2)
-            
-            return customPresenter
-        }()
-        
         let profileVC: ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         
-//        if (self.profilePic != UIImage(named: "profilePicWhite")) {
-            profileVC.profilePic = self.profilePic
-//        }
+        customPresentViewController(
+            profileVC.present(image: self.profilePic),
+            viewController: profileVC,
+            animated: true,
+            completion: nil
+        )
         
-        customPresentViewController(presenter, viewController: profileVC, animated: true, completion: nil)
 
     }
     
@@ -148,11 +130,15 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
-        cell.nameLabel.text = "John Smithers"
-        cell.messageLabel.text = "weed is good for u bro. just rip a fat doink once in a while."
-        cell.topicLabel.text = "Legalizing Marijuana"
-        cell.profileImage.image = UIImage(named: "defaultProfilePic")!
+        cell.customInit(
+            profileImage: UIImage(named: "defaultProfilePic")!,
+            topic: "Legalizing Marijuana",
+            name: "John Smithers",
+            message: "weed is good for u bro. just rip a fat doink once in a while."
+        )
+
         return cell
     }
     

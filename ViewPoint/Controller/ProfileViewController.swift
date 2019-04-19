@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import Presentr
 
 class ProfileViewController: UIViewController {
     
@@ -20,15 +21,28 @@ class ProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         profilePicView.image = profilePic
-        
-//        if (profilePic != UIImage(named: "defaultProfilePic")) {
-//            profilePicView.layer.borderColor = MyColors.PURPLE.cgColor
-//            profilePicView.layer.borderWidth = 3
-//            profilePicView.layer.cornerRadius = self.profilePicView.frame.width/2
-//        }
 
     }
     
+    func present(image: UIImage) -> Presentr {
+        
+        self.profilePic = image
+        
+        let presenter: Presentr = {
+            
+            let customPresenter = Presentr(presentationType: .popup)
+            customPresenter.transitionType = .coverVerticalFromTop
+            customPresenter.dismissOnSwipe = true
+            customPresenter.cornerRadius = MyDimensions.profileViewRadius
+            
+            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.darkGray, shadowOpacity: 0.6, shadowOffset: CGSize(width: 0, height: 2.0), shadowRadius: 2)
+            
+            return customPresenter
+        }()
+        
+        return presenter
+        
+    }
     
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
