@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 
 final class TopicDetailViewController: ElongationDetailViewController, NVActivityIndicatorViewable {
     
-    var answerChoices = [Int]()
+    var selectedAnswers = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,15 +57,15 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     }
     
     func addAnswer(choice: Int) {
-        answerChoices.append(choice)
+        selectedAnswers.append(choice)
     }
     
     func findDebate() {
         
         startAnimating(
-            message: "Looking for opposing ViewPoints..." + "\n\(answerChoices)",
+            message: "Looking for opposing ViewPoints..." + "\n\(selectedAnswers)",
             messageFont: UIFont(name: MyFont.regular, size: CGFloat(MyFont.navBarSmallFontSize)),
-            type: .orbit
+            type: .ballScaleMultiple
         )
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {

@@ -18,8 +18,17 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     
     var profilePic: UIImage = UIImage(named: "profilePicWhite")!    // Default profile pic
     
+    private let db = Firestore.firestore()
+    private var channelReference: CollectionReference {
+        return db.collection("chats")
+    }
+    private var channelListener: ListenerRegistration?
+    var channel = Channel(name: "test_channel")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(UINib(nibName: "DebateCell", bundle: nil), forCellReuseIdentifier: "debate")
         
         startAnimating()
         
@@ -39,26 +48,26 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
         self.navigationController?.navigationBar.layer.shadowRadius = 2
         self.navigationController?.navigationBar.layer.borderColor = UIColor.clear.cgColor
         self.navigationController?.navigationBar.layer.borderWidth = 0
-                
+        
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let currentFirebaseUser = user {
                 self.updateUserImage(user: currentFirebaseUser)
             }
         }
         
-        channelListener = channelReference.addSnapshotListener { querySnapshot, error in
-            guard let snapshot = querySnapshot else {
-                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
-                return
-            }
-            
-            snapshot.documentChanges.forEach { change in
-                guard let snapshotChannel = Channel(document: change.document) else {
-                    return
-                }
-                self.channel = snapshotChannel
-            }
-        }
+//        channelListener = channelReference.addSnapshotListener { querySnapshot, error in
+//            guard let snapshot = querySnapshot else {
+//                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
+//                return
+//            }
+//
+//            snapshot.documentChanges.forEach { change in
+//                guard let snapshotChannel = Channel(document: change.document) else {
+//                    return
+//                }
+//                self.channel = snapshotChannel
+//            }
+//        }
         
     }
     
@@ -81,7 +90,7 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     }
     
     func updateUserImage(user: User) {
-        
+                
         if let photoURL = user.photoURL {
 
             let profilePicRadius = CGFloat(MyDimensions.profilePicSize/2)
@@ -102,7 +111,7 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     }
 
     
-    @objc func profileButtonPressed(sender: UIButton!) {
+    @objc func profileButtonPressed(sender: Any) {
         
         let presenter: Presentr = {
 
@@ -116,25 +125,17 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
             return customPresenter
         }()
         
-        let profileViewController: ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        let profileVC: ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         
         if (self.profilePic != UIImage(named: "profilePicWhite")) {
-            profileViewController.profilePic = self.profilePic
+            profileVC.profilePic = self.profilePic
         }
         
-        customPresentViewController(presenter, viewController: profileViewController, animated: true, completion: nil)
+        customPresentViewController(presenter, viewController: profileVC, animated: true, completion: nil)
 
     }
     
-    
-    private let db = Firestore.firestore()
-    private var channelReference: CollectionReference {
-        return db.collection("chats")
-    }
-    private var channelListener: ListenerRegistration?
-    var channel = Channel(name: "test_channel")
-    
-    @IBAction func buttonPressed(_ sender: Any) {
+    @IBAction func chatButtonPressed(_ sender: Any) {
         
 //        channelReference.addDocument(data: channel.representation) { error in
 //            if let e = error {
@@ -144,6 +145,27 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
         
         let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel, opponentImage: self.profilePic)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
+        cell.nameLabel.text = "John Smithers"
+        cell.messageLabel.text = "weed is good for u bro. just rip a fat doink once in a while."
+        cell.topicLabel.text = "Legalizing Marijuana"
+        cell.profileImage.image = UIImage(named: "profilePicGradient")!
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chatButtonPressed(self)
     }
     
 }

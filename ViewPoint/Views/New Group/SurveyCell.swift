@@ -13,6 +13,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    
     var topic: Topic = TopicDatabase.topicList[0]   // Defaults to first topic; changed on init
     var topicDetailVC: TopicDetailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "topicDetailViewController") as! TopicDetailViewController
     
@@ -73,7 +74,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     
     func scrollToNextQuestion() {
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.35) {
             if CGFloat(self.scrollView.contentOffset.x) / CGFloat(MyDimensions.screenWidth) == CGFloat(self.topic.survey.count-1) {
                 
                 self.topicDetailVC.findDebate()
@@ -81,7 +82,6 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
             }
             
             self.scrollView.setContentOffset(CGPoint(x: self.scrollView.contentOffset.x + MyDimensions.screenWidth, y: 0), animated: true)
-            print("scrolled")
         }
         
     }

@@ -26,6 +26,8 @@
 		B114AD3622408E2300319479 /* SurveyQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD3522408E2200319479 /* SurveyQuestionCell.swift */; };
 		B114AD3A2240928100319479 /* SurveyQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B114AD392240928000319479 /* SurveyQuestionCell.xib */; };
 		B114AD3D2240BDF700319479 /* TopicDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD3C2240BDF700319479 /* TopicDatabase.swift */; };
+		B1719A422269235F00E1E33C /* DebateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1719A402269235E00E1E33C /* DebateCell.swift */; };
+		B1719A432269235F00E1E33C /* DebateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1719A412269235E00E1E33C /* DebateCell.xib */; };
 		B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */; };
 		B1B2A8F62248A12100E3766C /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F32248A11E00E3766C /* Channel.swift */; };
 		B1B2A8F82248A12100E3766C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F52248A12100E3766C /* Message.swift */; };
@@ -54,6 +56,8 @@
 		B114AD3522408E2200319479 /* SurveyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuestionCell.swift; sourceTree = "<group>"; };
 		B114AD392240928000319479 /* SurveyQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyQuestionCell.xib; sourceTree = "<group>"; };
 		B114AD3C2240BDF700319479 /* TopicDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDatabase.swift; sourceTree = "<group>"; };
+		B1719A402269235E00E1E33C /* DebateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebateCell.swift; path = ViewPoint/Views/DebateCell.swift; sourceTree = SOURCE_ROOT; };
+		B1719A412269235E00E1E33C /* DebateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DebateCell.xib; path = ViewPoint/Views/DebateCell.xib; sourceTree = SOURCE_ROOT; };
 		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		B1B2A8F52248A12100E3766C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			children = (
 				B114ACFB223AE7DF00319479 /* Main.storyboard */,
 				B114AD00223AE7E400319479 /* LaunchScreen.storyboard */,
+				B1719A44226924DB00E1E33C /* DebateCell */,
 				B114AD29223F38D600319479 /* TopicPreviewCell */,
 				B114AD24223F387600319479 /* SurveyCell */,
 				B114AD3B2240AA9C00319479 /* SurveyQuestionCell */,
@@ -187,6 +192,15 @@
 				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
 			);
 			path = SurveyQuestionCell;
+			sourceTree = "<group>";
+		};
+		B1719A44226924DB00E1E33C /* DebateCell */ = {
+			isa = PBXGroup;
+			children = (
+				B1719A402269235E00E1E33C /* DebateCell.swift */,
+				B1719A412269235E00E1E33C /* DebateCell.xib */,
+			);
+			path = DebateCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +268,7 @@
 				B114AD02223AE7E400319479 /* LaunchScreen.storyboard in Resources */,
 				B114AD3A2240928100319479 /* SurveyQuestionCell.xib in Resources */,
 				B114AD2C223F38EF00319479 /* TopicPreviewCell.xib in Resources */,
+				B1719A432269235F00E1E33C /* DebateCell.xib in Resources */,
 				B114AD34223F536F00319479 /* SurveyCell.xib in Resources */,
 				B114AD0A223B697100319479 /* GoogleService-Info.plist in Resources */,
 				B114ACFF223AE7E400319479 /* Assets.xcassets in Resources */,
@@ -371,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1719A422269235F00E1E33C /* DebateCell.swift in Sources */,
 				B114ACFA223AE7DF00319479 /* LogInViewController.swift in Sources */,
 				B114AD0C223C9C7900319479 /* DashboardViewController.swift in Sources */,
 				B114AD3D2240BDF700319479 /* TopicDatabase.swift in Sources */,

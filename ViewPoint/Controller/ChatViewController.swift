@@ -32,6 +32,7 @@ import MessageKit
 import MessageInputBar
 import FirebaseFirestore
 import Presentr
+import AlamofireImage
 
 final class ChatViewController: MessagesViewController {
     
@@ -80,8 +81,6 @@ final class ChatViewController: MessagesViewController {
 //            navigationController?.popViewController(animated: true)
 //            return
 //        }
-        
-        
         
         let id = "hQo9yFPhRu98LbvvWiTX"
 
@@ -132,7 +131,6 @@ final class ChatViewController: MessagesViewController {
         switch change.type {
         case .added:
             insertNewMessage(message)
-
         default:
             break
         }
@@ -172,6 +170,7 @@ final class ChatViewController: MessagesViewController {
         opponentProfileButton.layer.borderColor = MyColors.WHITE.cgColor
         
         let profileBarButton = UIBarButtonItem(customView: opponentProfileButton)
+        
         let opponentName = UIBarButtonItem(title: "John Smithers", style: .plain, target: self, action: #selector(self.profileButtonPressed))
 
         self.navigationItem.rightBarButtonItems = [profileBarButton, opponentName]
@@ -189,13 +188,7 @@ final class ChatViewController: MessagesViewController {
             customPresenter.dismissOnSwipe = true
             customPresenter.cornerRadius = MyDimensions.profileViewRadius
             
-            //            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.darkGray, shadowOpacity: 0.6, shadowOffset: CGSize(width: 0, height: 2.0), shadowRadius: 2)
-            
-            //            customPresenter.backgroundColor = MyColors.BLUE
-            //            customPresenter.backgroundOpacity = 0.6
-            
-            //            customPresenter.blurBackground = true
-            //            customPresenter.blurStyle = UIBlurEffect.Style.light
+            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.darkGray, shadowOpacity: 0.6, shadowOffset: CGSize(width: 0, height: 2.0), shadowRadius: 2)
             
             return customPresenter
         }()
@@ -224,6 +217,10 @@ extension ChatViewController: MessagesDisplayDelegate {
                          in messagesCollectionView: MessagesCollectionView) -> UIColor {
 
         // 1
+        
+//        let horizontalGradient = UIImage(named: "horizontalGradient")!
+//        let scaledGradient = horizontalGradient.af_imageAspectScaled(toFit: CGSize(width: MyDimensions.screenWidth, height: MyDimensions.screenHeight))
+        
         return isFromCurrentSender(message: message) ? MyColors.BLUE : MyColors.LIGHT_GRAY
     }
     
@@ -243,10 +240,13 @@ extension ChatViewController: MessagesDisplayDelegate {
     func messageStyle(for message: MessageType, at indexPath: IndexPath,
                       in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
 
-        let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+//        let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+//
+//        // 3
+//        return .bubbleTail(corner, .curved)
+        
+        return .bubble
 
-        // 3
-        return .bubbleTail(corner, .curved)
     }
     
 }
@@ -266,7 +266,7 @@ extension ChatViewController: MessagesLayoutDelegate {
                         in messagesCollectionView: MessagesCollectionView) -> CGSize {
 
         // 2
-        return CGSize(width: 0, height: 8)
+        return CGSize(width: 0, height: 10)
     }
 
     func heightForLocation(message: MessageType, at indexPath: IndexPath,

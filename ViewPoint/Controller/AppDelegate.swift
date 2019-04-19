@@ -76,16 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let backgroundImage = imageWithGradient(startColor: MyColors.PURPLE, endColor: MyColors.BLUE, size: CGSize(width: UIScreen.main.bounds.size.width, height: 1))
         UINavigationBar.appearance().barTintColor = UIColor(patternImage: backgroundImage!)
         
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
-        
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: CGFloat(MyFont.navBarLargeFontSize))!]
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: CGFloat(MyFont.navBarSmallFontSize))!]
         UINavigationBar.appearance().isTranslucent = false
-
-        
-    // Customize navigation bar (set gradient background, set font, make opaque)
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "horizontalGradient")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
-//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: MyFont.navBarFontSize)!]
         
         let backArrow = UIImage(named: "leftArrow")?.withRenderingMode(.alwaysOriginal)
         let backButtonSize = CGFloat(MyDimensions.navBarBackButtonSize)

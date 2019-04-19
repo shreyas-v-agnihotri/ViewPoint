@@ -74,7 +74,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         GIDSignIn.sharedInstance().signIn()
 //        SVProgressHUD.dismiss()
     }
-    
+        
     
     func sign(_ signIn: GIDSignIn!, didSignInFor googleUser: GIDGoogleUser!, withError error: Error!) {
         
@@ -130,6 +130,10 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     func sign(_ signIn: GIDSignIn?, dismiss viewController: UIViewController?) {
         dismiss(animated: true) {() -> Void in }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        stopAnimating()
+//    }
     
 }
 
