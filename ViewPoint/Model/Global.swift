@@ -37,7 +37,7 @@ struct MyDimensions {
     static let statusBarHeight = UIApplication.shared.statusBarFrame.height
     
     static let topViewHeight = 190
-    static let bottomViewHeight = screenHeight / 4.5
+    static let bottomViewHeight = screenHeight / 4
     static let detailViewHeight = Int(screenHeight) - topViewHeight - Int(bottomViewHeight) - Int(statusBarHeight)
     static let separatorHeight = 0.5
     

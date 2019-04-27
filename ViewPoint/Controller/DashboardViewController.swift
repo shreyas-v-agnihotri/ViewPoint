@@ -65,8 +65,8 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
         navBar.masksToBounds = false
         navBar.shadowColor = UIColor.darkGray.cgColor
         navBar.shadowOpacity = 0.6
-        navBar.shadowOffset = CGSize(width: 0, height: 2.0)
-        navBar.shadowRadius = 2
+        navBar.shadowOffset = CGSize(width: 0, height: 3.0)
+        navBar.shadowRadius = 3
         navBar.borderColor = UIColor.clear.cgColor
         navBar.borderWidth = 0
     }
