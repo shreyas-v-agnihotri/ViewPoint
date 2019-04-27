@@ -28,10 +28,10 @@
 		B1719A422269235F00E1E33C /* DebateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1719A402269235E00E1E33C /* DebateCell.swift */; };
 		B1719A432269235F00E1E33C /* DebateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1719A412269235E00E1E33C /* DebateCell.xib */; };
 		B1A327582274C0ED00DCAC58 /* SurveyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1A327572274C0ED00DCAC58 /* SurveyCell.xib */; };
+		B1A3275A2274C2A900DCAC58 /* UIScrollViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A327592274C2A900DCAC58 /* UIScrollViewAdditions.swift */; };
 		B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */; };
 		B1B2A8F62248A12100E3766C /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F32248A11E00E3766C /* Channel.swift */; };
 		B1B2A8F82248A12100E3766C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F52248A12100E3766C /* Message.swift */; };
-		B1B2A8FA2248A3F500E3766C /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F92248A3F500E3766C /* UICollectionView+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,19 +49,19 @@
 		B114AD0F223E21E500319479 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		B114AD20223F371F00319479 /* TopicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailViewController.swift; sourceTree = "<group>"; };
 		B114AD21223F371F00319479 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
-		B114AD25223F389000319479 /* SurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
-		B114AD2A223F38EE00319479 /* TopicPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicPreviewCell.xib; sourceTree = "<group>"; };
-		B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicPreviewCell.swift; sourceTree = "<group>"; };
-		B114AD3522408E2200319479 /* SurveyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuestionCell.swift; sourceTree = "<group>"; };
-		B114AD392240928000319479 /* SurveyQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyQuestionCell.xib; sourceTree = "<group>"; };
+		B114AD25223F389000319479 /* SurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurveyCell.swift; path = "../Views/New Group/SurveyCell.swift"; sourceTree = "<group>"; };
+		B114AD2A223F38EE00319479 /* TopicPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicPreviewCell.xib; path = "New Group1/TopicPreviewCell.xib"; sourceTree = "<group>"; };
+		B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicPreviewCell.swift; path = "../Views/New Group1/TopicPreviewCell.swift"; sourceTree = "<group>"; };
+		B114AD3522408E2200319479 /* SurveyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SurveyQuestionCell.swift; path = ../Views/SurveyQuestionCell/SurveyQuestionCell.swift; sourceTree = "<group>"; };
+		B114AD392240928000319479 /* SurveyQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyQuestionCell.xib; path = SurveyQuestionCell/SurveyQuestionCell.xib; sourceTree = "<group>"; };
 		B114AD3C2240BDF700319479 /* TopicDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDatabase.swift; sourceTree = "<group>"; };
 		B1719A402269235E00E1E33C /* DebateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebateCell.swift; path = ViewPoint/Controller/DebateCell.swift; sourceTree = SOURCE_ROOT; };
 		B1719A412269235E00E1E33C /* DebateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DebateCell.xib; path = ViewPoint/Views/DebateCell/DebateCell.xib; sourceTree = SOURCE_ROOT; };
-		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyCell.xib; sourceTree = "<group>"; };
+		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyCell.xib; path = "New Group/SurveyCell.xib"; sourceTree = "<group>"; };
+		B1A327592274C2A900DCAC58 /* UIScrollViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewAdditions.swift; sourceTree = "<group>"; };
 		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		B1B2A8F52248A12100E3766C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		B1B2A8F92248A3F500E3766C /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
 		DB61583ED81DD1FDD94CCF07 /* Pods-ViewPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewPoint.debug.xcconfig"; path = "Target Support Files/Pods-ViewPoint/Pods-ViewPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		F517DAEBC88B6202FA45B091 /* Pods_ViewPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -126,26 +126,6 @@
 			path = ViewPoint;
 			sourceTree = "<group>";
 		};
-		B114AD24223F387600319479 /* SurveyCell */ = {
-			isa = PBXGroup;
-			children = (
-				B1A327572274C0ED00DCAC58 /* SurveyCell.xib */,
-				B114AD25223F389000319479 /* SurveyCell.swift */,
-			);
-			name = SurveyCell;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		B114AD29223F38D600319479 /* TopicPreviewCell */ = {
-			isa = PBXGroup;
-			children = (
-				B114AD2A223F38EE00319479 /* TopicPreviewCell.xib */,
-				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
-			);
-			name = TopicPreviewCell;
-			path = "New Group1";
-			sourceTree = "<group>";
-		};
 		B114AD30223F51A000319479 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,10 +142,10 @@
 			children = (
 				B114ACFB223AE7DF00319479 /* Main.storyboard */,
 				B114AD00223AE7E400319479 /* LaunchScreen.storyboard */,
-				B1873D87227267CD0071A763 /* DebateCell */,
-				B114AD29223F38D600319479 /* TopicPreviewCell */,
-				B114AD24223F387600319479 /* SurveyCell */,
-				B114AD3B2240AA9C00319479 /* SurveyQuestionCell */,
+				B1719A412269235E00E1E33C /* DebateCell.xib */,
+				B114AD2A223F38EE00319479 /* TopicPreviewCell.xib */,
+				B1A327572274C0ED00DCAC58 /* SurveyCell.xib */,
+				B114AD392240928000319479 /* SurveyQuestionCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,31 +156,17 @@
 				B114ACF7223AE7DF00319479 /* AppDelegate.swift */,
 				B114ACF9223AE7DF00319479 /* LogInViewController.swift */,
 				B114AD0B223C9C7800319479 /* DashboardViewController.swift */,
+				B1719A402269235E00E1E33C /* DebateCell.swift */,
 				B114AD0D223E0A4900319479 /* ProfileViewController.swift */,
 				B114AD21223F371F00319479 /* TopicsViewController.swift */,
+				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
+				B114AD25223F389000319479 /* SurveyCell.swift */,
+				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
 				B114AD20223F371F00319479 /* TopicDetailViewController.swift */,
 				B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */,
-				B1B2A8F92248A3F500E3766C /* UICollectionView+Additions.swift */,
+				B1A327592274C2A900DCAC58 /* UIScrollViewAdditions.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		B114AD3B2240AA9C00319479 /* SurveyQuestionCell */ = {
-			isa = PBXGroup;
-			children = (
-				B114AD392240928000319479 /* SurveyQuestionCell.xib */,
-				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
-			);
-			path = SurveyQuestionCell;
-			sourceTree = "<group>";
-		};
-		B1873D87227267CD0071A763 /* DebateCell */ = {
-			isa = PBXGroup;
-			children = (
-				B1719A412269235E00E1E33C /* DebateCell.xib */,
-				B1719A402269235E00E1E33C /* DebateCell.swift */,
-			);
-			path = DebateCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,12 +357,12 @@
 				B114AD0C223C9C7900319479 /* DashboardViewController.swift in Sources */,
 				B114AD3D2240BDF700319479 /* TopicDatabase.swift in Sources */,
 				B1B2A8F62248A12100E3766C /* Channel.swift in Sources */,
-				B1B2A8FA2248A3F500E3766C /* UICollectionView+Additions.swift in Sources */,
 				B114AD0E223E0A4A00319479 /* ProfileViewController.swift in Sources */,
 				B114AD2D223F38EF00319479 /* TopicPreviewCell.swift in Sources */,
 				B114AD10223E21E500319479 /* Global.swift in Sources */,
 				B114ACF8223AE7DF00319479 /* AppDelegate.swift in Sources */,
 				B114AD23223F371F00319479 /* TopicsViewController.swift in Sources */,
+				B1A3275A2274C2A900DCAC58 /* UIScrollViewAdditions.swift in Sources */,
 				B114AD3622408E2300319479 /* SurveyQuestionCell.swift in Sources */,
 				B114AD22223F371F00319479 /* TopicDetailViewController.swift in Sources */,
 				B1B2A8F82248A12100E3766C /* Message.swift in Sources */,
