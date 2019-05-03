@@ -22,9 +22,10 @@ final class TopicPreviewCell: ElongationCell {
     @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
     
     func customInit(topic: Topic) {
+
         let spacedTitle = NSMutableAttributedString(string: topic.title, attributes: [
             NSAttributedString.Key.kern: MyFont.topicPreviewTitleKern,
-            ])
+        ])
         
         self.topImageView?.image = UIImage(named: topic.identifier)
         self.localityLabel?.attributedText = spacedTitle

@@ -9,8 +9,14 @@
 import ElongationPreview
 import UIKit
 import NVActivityIndicatorView
+import Firebase
 
 final class TopicDetailViewController: ElongationDetailViewController, NVActivityIndicatorViewable {
+    
+    // Default; changed on init
+    let db = Firestore.firestore()
+    var topic: Topic = TopicDatabase.topicList[0]
+    var reference: CollectionReference?
     
     var selectedAnswers = [Int]()
 
@@ -27,6 +33,11 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
 
     }
     
+    func customInit(topic: Topic) {
+        self.topic = topic
+        reference = db.collection(["topics", topic.identifier, "chatRequests"].joined(separator: "/"))
+    }
+    
     func configureTableView() {
         tableView.showsVerticalScrollIndicator = false
         view.layer.backgroundColor = MyColors.WHITE.cgColor
@@ -35,7 +46,6 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     }
     
     @objc func closeView(gesture: UIGestureRecognizer) {
-        print("swipe detected")
         dismiss(animated: true, completion: nil)
     }
 
@@ -44,10 +54,12 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "survey", for: indexPath) as! SurveyCell
-        cell.topic = TopicDatabase.topicList[indexPath.row]
-        cell.pageControl.isHidden = false
-        cell.topicDetailVC = self
+
+        print("\(topic.identifier)")
+        cell.customInit(topic: topic, parentVC: self)
+        
         return cell
     }
     
@@ -67,9 +79,27 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
             type: .ballScaleMultiple
         )
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+        // Probably should add a state change listener to make sure user is not nil
+        let user = Auth.auth().currentUser
+        
+        let requestRepresentation: [String : Any] = [
+            "user": user!.uid,
+            "answers": selectedAnswers
+        ]
+        
+        reference?.addDocument(data: requestRepresentation) { error in
+            if let e = error {
+                print("Error sending message: \(e.localizedDescription)")
+                self.stopAnimating(nil)
+                return
+            }
             self.stopAnimating(nil)
         }
+        
+
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+//            self.stopAnimating(nil)
+//        }
     }
         
 }

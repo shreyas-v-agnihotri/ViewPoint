@@ -58,7 +58,7 @@
 		B1719A402269235E00E1E33C /* DebateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebateCell.swift; path = ViewPoint/Controller/DebateCell.swift; sourceTree = SOURCE_ROOT; };
 		B1719A412269235E00E1E33C /* DebateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DebateCell.xib; path = ViewPoint/Views/DebateCell/DebateCell.xib; sourceTree = SOURCE_ROOT; };
 		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyCell.xib; path = "New Group/SurveyCell.xib"; sourceTree = "<group>"; };
-		B1A327592274C2A900DCAC58 /* UIScrollViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewAdditions.swift; sourceTree = "<group>"; };
+		B1A327592274C2A900DCAC58 /* UIScrollViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIScrollViewAdditions.swift; path = ../Controller/UIScrollViewAdditions.swift; sourceTree = "<group>"; };
 		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		B1B2A8F52248A12100E3766C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -116,6 +116,7 @@
 		B114ACF6223AE7DF00319479 /* ViewPoint */ = {
 			isa = PBXGroup;
 			children = (
+				B1A3275C2274C8DD00DCAC58 /* New Group */,
 				B114AD32223F522900319479 /* Controller */,
 				B114AD31223F521300319479 /* Views */,
 				B114AD30223F51A000319479 /* Model */,
@@ -160,13 +161,20 @@
 				B114AD0D223E0A4900319479 /* ProfileViewController.swift */,
 				B114AD21223F371F00319479 /* TopicsViewController.swift */,
 				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
+				B114AD20223F371F00319479 /* TopicDetailViewController.swift */,
 				B114AD25223F389000319479 /* SurveyCell.swift */,
 				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
-				B114AD20223F371F00319479 /* TopicDetailViewController.swift */,
 				B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */,
-				B1A327592274C2A900DCAC58 /* UIScrollViewAdditions.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		B1A3275C2274C8DD00DCAC58 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				B1A327592274C2A900DCAC58 /* UIScrollViewAdditions.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

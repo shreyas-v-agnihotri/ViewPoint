@@ -132,6 +132,7 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
+        
         cell.customInit(
             profileImage: UIImage(named: "defaultProfilePic")!,
             topic: "Legalizing Marijuana",

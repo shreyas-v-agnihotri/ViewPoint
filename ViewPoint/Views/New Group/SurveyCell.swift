@@ -14,7 +14,8 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    var topic: Topic = TopicDatabase.topicList[0]   // Defaults to first topic; changed on init
+    // Defaults; changed on init
+    var topic: Topic = TopicDatabase.topicList[0]
     var topicDetailVC: TopicDetailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "topicDetailViewController") as! TopicDetailViewController
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -29,6 +30,16 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
         pageControl.numberOfPages = questionCells.count
         pageControl.currentPage = 0
         pageControl.isUserInteractionEnabled = false
+        pageControl.isHidden = false
+    }
+    
+    func addAnswer(choice: Int) {
+        topicDetailVC.addAnswer(choice: choice)
+    }
+    
+    func customInit(topic: Topic, parentVC: TopicDetailViewController) {
+        self.topic = topic
+        self.topicDetailVC = parentVC
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

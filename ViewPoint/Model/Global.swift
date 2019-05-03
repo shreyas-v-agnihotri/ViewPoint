@@ -57,8 +57,13 @@ struct MyFont {
     
     static let topicPreviewTitleKern = 2
     
+    static let navBarSmallFont = MyFont.medium
+    static let navBarLargeFont = MyFont.regular
+    static let opponentNameFont = MyFont.regular
+    
     static let navBarSmallFontSize = 22
-    static let navBarLargeFontSize = 32
+    static let navBarLargeFontSize = 30
+    static let opponentNameSize = 18
     static let (questionFontSize, answerFontSize) = computeSurveyFontSize()
 
 }

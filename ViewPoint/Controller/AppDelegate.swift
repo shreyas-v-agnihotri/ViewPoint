@@ -76,8 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let backgroundImage = imageWithGradient(startColor: MyColors.PURPLE, endColor: MyColors.BLUE, size: CGSize(width: UIScreen.main.bounds.size.width, height: 1))
         UINavigationBar.appearance().barTintColor = UIColor(patternImage: backgroundImage!)
         
-        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: CGFloat(MyFont.navBarLargeFontSize))!]
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.medium, size: CGFloat(MyFont.navBarSmallFontSize))!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.navBarLargeFont, size: CGFloat(MyFont.navBarLargeFontSize))!]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.navBarSmallFont, size: CGFloat(MyFont.navBarSmallFontSize))!]
         UINavigationBar.appearance().isTranslucent = false
         
         let backArrow = UIImage(named: "leftArrow")!

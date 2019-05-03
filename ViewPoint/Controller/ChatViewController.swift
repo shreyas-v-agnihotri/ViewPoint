@@ -50,7 +50,7 @@ final class ChatViewController: MessagesViewController {
 //            return
 //        }
         
-        let id = "hQo9yFPhRu98LbvvWiTX"
+        let id = "test_chat"
 
         reference = db.collection(["chats", id, "messages"].joined(separator: "/"))
 
@@ -151,6 +151,7 @@ final class ChatViewController: MessagesViewController {
     // MARK: - Helpers
 
     private func save(_ message: Message) {
+        
         reference?.addDocument(data: message.representation) { error in
             if let e = error {
                 print("Error sending message: \(e.localizedDescription)")
@@ -202,6 +203,8 @@ final class ChatViewController: MessagesViewController {
         let opponentProfileBarButton = UIBarButtonItem(customView: opponentProfileButton)
         
         let opponentNameBarButton = UIBarButtonItem(title: "John Smithers", style: .plain, target: self, action: #selector(self.profileButtonPressed))
+        opponentNameBarButton.isEnabled = false
+        opponentNameBarButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!], for: .disabled)
 
         self.navigationItem.rightBarButtonItems = [opponentProfileBarButton, opponentNameBarButton]
         

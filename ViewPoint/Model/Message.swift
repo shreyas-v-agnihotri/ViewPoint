@@ -75,7 +75,7 @@ struct Message: MessageType {
     let data = document.data()
     
     guard let timestamp = data["created"] as? Timestamp else {
-        return nil
+      return nil
     }
     guard let senderID = data["senderID"] as? String else {
       return nil

@@ -20,6 +20,8 @@ class SurveyQuestionCell: UITableViewCell, TwicketSegmentedControlDelegate {
     func customInit(question: SurveyQuestion, answerOptions: [String]) {
         
         self.questionLabel.text = question.questionText
+        let options = question.answerChoices
+
         self.questionLabel.font = UIFont(name: MyFont.regular, size: MyFont.questionFontSize)
         self.pageControl.isHidden = true
         
@@ -29,7 +31,6 @@ class SurveyQuestionCell: UITableViewCell, TwicketSegmentedControlDelegate {
         self.background.layer.shadowRadius = 2
         self.background.layer.shadowOpacity = 0.6
         
-        let options = ["Yes", "No"]
         let frame = CGRect(x: MyDimensions.screenWidth * (1-MyDimensions.answerChoiceWidthRatio) / 2, y: 0, width: MyDimensions.screenWidth * MyDimensions.answerChoiceWidthRatio, height: self.segmentedControlView.frame.height)
         
         let segmentedControl = TwicketSegmentedControl(frame: frame)
@@ -50,7 +51,7 @@ class SurveyQuestionCell: UITableViewCell, TwicketSegmentedControlDelegate {
     
     func didSelect(_ segmentIndex: Int) {
         
-        surveyCell.topicDetailVC.addAnswer(choice: segmentIndex)
+        surveyCell.addAnswer(choice: segmentIndex)
         surveyCell.scrollToNextQuestion()
     }
     

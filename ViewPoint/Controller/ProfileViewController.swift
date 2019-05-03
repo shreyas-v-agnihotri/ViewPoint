@@ -32,6 +32,7 @@ class ProfileViewController: UIViewController {
             
             let customPresenter = Presentr(presentationType: .popup)
 //            customPresenter.transitionType = .coverVerticalFromTop
+            
             customPresenter.transitionType = .coverHorizontalFromRight
             customPresenter.dismissOnSwipe = true
             customPresenter.cornerRadius = MyDimensions.profileViewRadius
