@@ -75,29 +75,3 @@ struct TopicDatabase {
         ]
     }
 }
-
-struct Topic {
-    
-    let title: String
-    let category: String
-    let identifier: String
-    let survey: [SurveyQuestion]
-    
-    init(title: String, category: String, identifier: String, survey: [SurveyQuestion]) {
-        self.title = title
-        self.category = category
-        self.identifier = identifier
-        self.survey = survey
-    }
-}
-
-struct SurveyQuestion {
-    
-    let questionText: String
-    let answerChoices: [String]
-    
-    init(questionText: String, answerChoices: [String]) {
-        self.questionText = questionText
-        self.answerChoices = answerChoices
-    }
-}

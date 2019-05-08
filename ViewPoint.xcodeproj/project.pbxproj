@@ -26,6 +26,8 @@
 		B114AD3A2240928100319479 /* SurveyQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B114AD392240928000319479 /* SurveyQuestionCell.xib */; };
 		B114AD3D2240BDF700319479 /* TopicDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114AD3C2240BDF700319479 /* TopicDatabase.swift */; };
 		B15B58B422827D2C00C21867 /* UIScrollViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15B58B322827D2C00C21867 /* UIScrollViewAdditions.swift */; };
+		B15B58B72282AB7500C21867 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15B58B62282AB7500C21867 /* Topic.swift */; };
+		B15B58B92282ABAB00C21867 /* SurveyQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15B58B82282ABAB00C21867 /* SurveyQuestion.swift */; };
 		B1719A422269235F00E1E33C /* DebateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1719A402269235E00E1E33C /* DebateCell.swift */; };
 		B1719A432269235F00E1E33C /* DebateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1719A412269235E00E1E33C /* DebateCell.xib */; };
 		B1A327582274C0ED00DCAC58 /* SurveyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1A327572274C0ED00DCAC58 /* SurveyCell.xib */; };
@@ -56,6 +58,8 @@
 		B114AD392240928000319479 /* SurveyQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyQuestionCell.xib; path = SurveyQuestionCell/SurveyQuestionCell.xib; sourceTree = "<group>"; };
 		B114AD3C2240BDF700319479 /* TopicDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDatabase.swift; sourceTree = "<group>"; };
 		B15B58B322827D2C00C21867 /* UIScrollViewAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIScrollViewAdditions.swift; path = ViewPoint/Extensions/UIScrollViewAdditions.swift; sourceTree = SOURCE_ROOT; };
+		B15B58B62282AB7500C21867 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		B15B58B82282ABAB00C21867 /* SurveyQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuestion.swift; sourceTree = "<group>"; };
 		B1719A402269235E00E1E33C /* DebateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebateCell.swift; path = ViewPoint/Controller/DebateCell.swift; sourceTree = SOURCE_ROOT; };
 		B1719A412269235E00E1E33C /* DebateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DebateCell.xib; path = ViewPoint/Views/DebateCell/DebateCell.xib; sourceTree = SOURCE_ROOT; };
 		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyCell.xib; path = "New Group/SurveyCell.xib"; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				B1B2A8F52248A12100E3766C /* Message.swift */,
 				B1B2A8F32248A11E00E3766C /* Channel.swift */,
 				B114AD3C2240BDF700319479 /* TopicDatabase.swift */,
+				B15B58B62282AB7500C21867 /* Topic.swift */,
+				B15B58B82282ABAB00C21867 /* SurveyQuestion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,9 +379,11 @@
 				B15B58B422827D2C00C21867 /* UIScrollViewAdditions.swift in Sources */,
 				B114AD3622408E2300319479 /* SurveyQuestionCell.swift in Sources */,
 				B114AD22223F371F00319479 /* TopicDetailViewController.swift in Sources */,
+				B15B58B92282ABAB00C21867 /* SurveyQuestion.swift in Sources */,
 				B1B2A8F82248A12100E3766C /* Message.swift in Sources */,
 				B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */,
 				B114AD26223F389000319479 /* SurveyCell.swift in Sources */,
+				B15B58B72282AB7500C21867 /* Topic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

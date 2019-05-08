@@ -57,7 +57,6 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "survey", for: indexPath) as! SurveyCell
 
-        print("\(topic.identifier)")
         cell.customInit(topic: topic, parentVC: self)
         
         return cell
