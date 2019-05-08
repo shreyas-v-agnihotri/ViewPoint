@@ -35,7 +35,7 @@ class SurveyQuestionCell: UITableViewCell, TwicketSegmentedControlDelegate {
         
         let segmentedControl = TwicketSegmentedControl(frame: frame)
         segmentedControl.setSegmentItems(options)
-        segmentedControl.segmentsBackgroundColor = MyColors.TRANSPARENT_WHITE
+        segmentedControl.segmentsBackgroundColor = MyColors.TRANSPARENT_BLACK
         segmentedControl.sliderBackgroundColor = MyColors.WHITE
         segmentedControl.highlightTextColor = MyColors.BLUE
         segmentedControl.defaultTextColor = MyColors.WHITE

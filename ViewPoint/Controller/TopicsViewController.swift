@@ -23,28 +23,43 @@ final class TopicsViewController: ElongationViewController {
         
 //        setSearchButton()
         configureTableView()
-//        searchBar.isTranslucent = true
-//        searchBar.backgroundColor = UIColor.clear
-//        searchBar.barStyle = .blackTranslucent
-//        searchBar.tintColor = MyColors.WHITE
-//        searchBar.barTintColor = MyColors.WHITE
+        
         searchBar.isTranslucent = true
         searchBar.searchBarStyle = .minimal
-        
+
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = MyColors.WHITE
-        
         let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
         glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
         glassIconView?.tintColor = MyColors.WHITE
         
-        self.navigationItem.titleView = searchBar
+        
+        let searchBarView = UIView()
+        searchBarView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 60)
+        searchBar.frame = CGRect(x: -5, y: -10, width: (navigationController?.view.bounds.size.width)!-55, height: 60)
+        searchBarView.addSubview(self.searchBar)
+        
+        self.navigationItem.titleView = searchBarView
+        
         self.extendedLayoutIncludesOpaqueBars = true
 
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        navigationController?.view.setNeedsLayout() // force update layout
+//        navigationController?.view.layoutIfNeeded() // to fix height of the navigation bar
+//    }
     
-    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//
+//
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.searchBarView.addSubview(self.searchBar)
+//
+//        })
+//    }
+//
     
     func configureTableView() {
         tableView.backgroundColor = UIColor.black

@@ -20,32 +20,32 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicGradient" translatesAutoresizingMaskIntoConstraints="NO" id="bTZ-4n-nWl">
-                        <rect key="frame" x="20" y="44.5" width="50" height="50"/>
+                        <rect key="frame" x="17" y="44.5" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="Bcn-tA-Uef"/>
                             <constraint firstAttribute="width" constant="50" id="Eft-34-vsq"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Firstname Lastname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXs-g9-A63">
-                        <rect key="frame" x="85" y="44.5" width="155" height="24"/>
+                        <rect key="frame" x="82" y="44.5" width="155" height="24"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message body..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiG-SX-DC1">
-                        <rect key="frame" x="85" y="73.5" width="155" height="21"/>
+                        <rect key="frame" x="82" y="73.5" width="155" height="21"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Debate Topic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCE-VC-qeS">
-                        <rect key="frame" x="20" y="10.5" width="285" height="24"/>
+                        <rect key="frame" x="17" y="10.5" width="288" height="24"/>
                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mq-2x-DYx">
-                        <rect key="frame" x="250" y="60.5" width="55" height="18"/>
+                        <rect key="frame" x="247" y="60.5" width="58" height="18"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                     <constraint firstItem="9Mq-2x-DYx" firstAttribute="leading" secondItem="OiG-SX-DC1" secondAttribute="trailing" constant="10" id="m2l-Gd-QeU"/>
                     <constraint firstItem="9Mq-2x-DYx" firstAttribute="leading" secondItem="KXs-g9-A63" secondAttribute="trailing" constant="10" id="qCo-gk-DDs"/>
                     <constraint firstItem="bTZ-4n-nWl" firstAttribute="top" secondItem="PCE-VC-qeS" secondAttribute="bottom" constant="10" id="qD6-Ob-fhE"/>
-                    <constraint firstItem="bTZ-4n-nWl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="t4P-Tj-Zt4"/>
+                    <constraint firstItem="bTZ-4n-nWl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="t4P-Tj-Zt4"/>
                     <constraint firstItem="bTZ-4n-nWl" firstAttribute="leading" secondItem="PCE-VC-qeS" secondAttribute="leading" id="uWq-dH-HF3"/>
                 </constraints>
             </tableViewCellContentView>
