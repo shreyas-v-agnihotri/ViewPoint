@@ -18,7 +18,8 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     
     var profilePic: UIImage = UIImage(named: "defaultProfilePic")!    // Default profile pic
     
-    private let db = Firestore.firestore()
+    let db = Firestore.firestore()
+    
     private var channelReference: CollectionReference {
         return db.collection("chats")
     }
@@ -27,6 +28,10 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        db.settings = settings
         
         tableView.register(UINib(nibName: "DebateCell", bundle: nil), forCellReuseIdentifier: "debate")
         
@@ -137,7 +142,7 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
             profileImage: UIImage(named: "defaultProfilePic")!,
             topic: "Legalizing Marijuana",
             name: "John Smithers",
-            message: "weed is good for u bro. just rip a fat doink once in a while."
+            message: "Actually, marijuana has valuable medicinal properties."
         )
 
         return cell

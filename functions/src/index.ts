@@ -1,4 +1,5 @@
 import * as functions from 'firebase-functions';
+import admin from 'firebase-admin';
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -19,6 +20,26 @@ import * as functions from 'firebase-functions';
 //     }
 
 // })
+
+admin.initializeApp({
+    credential: admin.credential.applicationDefault()
+});
+
+var db = admin.firestore();
+
+var chatsRef = db.collection('chats');
+var allChats = chatsRef.get()
+    .then(snapshot => {
+        snapshot.forEach(doc => {
+            console.log(doc.id, '=>', doc.data());
+
+        });
+    })
+    .catch(err => {
+        console.log('Error getting documents', err);
+    });
+
+
 
 exports.messageCreated = functions.firestore
     .document('chats/{chatID}/messages/{messageID}')

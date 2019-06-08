@@ -8,7 +8,7 @@ import AlamofireImage
 
 final class ChatViewController: MessagesViewController {
     
-    let db = Firestore.firestore()
+    private let db = Firestore.firestore()
 
     private var reference: CollectionReference?
 
@@ -25,7 +25,8 @@ final class ChatViewController: MessagesViewController {
         self.opponentImage = opponentImage
         super.init(nibName: nil, bundle: nil)
 
-        title = channel.name
+        title = "Legalizing Marijuana"
+//        title = channel.name
     }
 
     deinit {
@@ -37,6 +38,11 @@ final class ChatViewController: MessagesViewController {
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        db.settings = settings
         
         navigationItem.largeTitleDisplayMode = .always
         
@@ -51,7 +57,6 @@ final class ChatViewController: MessagesViewController {
 //        }
         
         let id = "test_chat"
-
         reference = db.collection(["chats", id, "messages"].joined(separator: "/"))
 
         super.viewDidLoad()

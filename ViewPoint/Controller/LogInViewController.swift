@@ -66,7 +66,6 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         button.layer.borderColor = MyColors.WHITE.cgColor
         
     }
-
     
     // Present a sign-in with Google window
     @IBAction func googleSignIn(sender: AnyObject) {
@@ -74,7 +73,6 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         GIDSignIn.sharedInstance().signIn()
 //        SVProgressHUD.dismiss()
     }
-        
     
     func sign(_ signIn: GIDSignIn!, didSignInFor googleUser: GIDGoogleUser!, withError error: Error!) {
         
