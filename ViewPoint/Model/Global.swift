@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import Firebase
+
+public let db = Firestore.firestore()
 
 // Global color variables
 struct MyColors {
@@ -88,7 +91,6 @@ func computeSurveyFontSize() -> (CGFloat, CGFloat) {
 }
 
 func createBarButton(image: UIImage, size: Int) -> UIButton {
-    
     let button = UIButton(type: .custom)
     
     let buttonSize = CGFloat(size)
@@ -102,5 +104,11 @@ func addProfileBorder(profileButton: UIButton) {
     profileButton.layer.cornerRadius = CGFloat(MyDimensions.navBarProfileButtonSize/2)
     profileButton.layer.borderWidth = MyDimensions.profileButtonBorderWidth
     profileButton.layer.borderColor = MyColors.WHITE.cgColor
+}
+
+func enableFirestoreCache() {
+    let settings = FirestoreSettings()
+    settings.isPersistenceEnabled = true
+    db.settings = settings
 }
 

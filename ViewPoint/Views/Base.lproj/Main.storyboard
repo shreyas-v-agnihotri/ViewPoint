@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="4SV-FS-TEK" kind="relationship" relationship="rootViewController" id="TAy-1j-eNy"/>
+                        <segue destination="GDk-Jg-XzR" kind="relationship" relationship="rootViewController" id="4Df-46-Kxw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVe-Gy-SXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -165,35 +165,53 @@
             </objects>
             <point key="canvasLocation" x="2658" y="-246"/>
         </scene>
-        <!--Debates-->
-        <scene sceneID="yXU-fG-Nmp">
+        <!--My Debates-->
+        <scene sceneID="Lui-4V-8ke">
             <objects>
-                <tableViewController title="Debates" id="4SV-FS-TEK" customClass="DashboardViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VsV-Ud-Q9u">
+                <viewController title="My Debates" id="GDk-Jg-XzR" customClass="DashboardViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="giu-Ey-tae">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Er-cl-Po2">
+                                <rect key="frame" x="0.0" y="140" width="414" height="125"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="pWn-Gr-oUW"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pmB-Px-gDp">
+                                <rect key="frame" x="0.0" y="265" width="414" height="631"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <connections>
-                            <outlet property="dataSource" destination="4SV-FS-TEK" id="7kZ-J2-2Yv"/>
-                            <outlet property="delegate" destination="4SV-FS-TEK" id="8an-v4-290"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="My Debates" largeTitleDisplayMode="always" id="pGq-Ph-bNq">
-                        <barButtonItem key="backBarButtonItem" title=" " id="XAJ-VX-LcV"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AOG-Ga-enI">
+                        <constraints>
+                            <constraint firstItem="2Er-cl-Po2" firstAttribute="trailing" secondItem="1S7-U0-wFl" secondAttribute="trailing" id="2Dz-Fo-f7Y"/>
+                            <constraint firstAttribute="bottom" secondItem="pmB-Px-gDp" secondAttribute="bottom" id="GgW-83-N7n"/>
+                            <constraint firstItem="2Er-cl-Po2" firstAttribute="leading" secondItem="1S7-U0-wFl" secondAttribute="leading" id="KIe-je-ELb"/>
+                            <constraint firstItem="2Er-cl-Po2" firstAttribute="top" secondItem="1S7-U0-wFl" secondAttribute="top" id="ZoS-OX-1dL"/>
+                            <constraint firstItem="pmB-Px-gDp" firstAttribute="trailing" secondItem="1S7-U0-wFl" secondAttribute="trailing" id="dtt-R7-m7O"/>
+                            <constraint firstItem="pmB-Px-gDp" firstAttribute="leading" secondItem="1S7-U0-wFl" secondAttribute="leading" id="hOF-be-7ck"/>
+                            <constraint firstItem="pmB-Px-gDp" firstAttribute="top" secondItem="2Er-cl-Po2" secondAttribute="bottom" id="yTM-l7-V3z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1S7-U0-wFl"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Debates" id="81s-4K-c2T">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8jR-to-xK4">
                             <connections>
-                                <segue destination="l2W-La-EIZ" kind="show" identifier="goToTopics" id="PBZ-uT-ACQ"/>
+                                <segue destination="l2W-La-EIZ" kind="show" identifier="goToTopics" id="AcI-lZ-DVA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="37h-yA-qT2" kind="show" identifier="goToProfile" id="Dby-8Q-iiY"/>
+                        <outlet property="fixedView" destination="2Er-cl-Po2" id="rMd-e6-sCO"/>
+                        <outlet property="tableView" destination="pmB-Px-gDp" id="eEg-VA-3o5"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Qx-1j-pwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S6k-mr-iyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="-246"/>
+            <point key="canvasLocation" x="1756.521739130435" y="-246.42857142857142"/>
         </scene>
         <!--Topic Detail View Controller-->
         <scene sceneID="hM7-6d-q9x">

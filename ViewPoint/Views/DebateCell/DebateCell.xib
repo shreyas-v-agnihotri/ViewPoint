@@ -45,7 +45,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mq-2x-DYx">
-                        <rect key="frame" x="247" y="60.5" width="58" height="18"/>
+                        <rect key="frame" x="247" y="47.5" width="58" height="18"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -55,8 +55,8 @@
                     <constraint firstItem="9Mq-2x-DYx" firstAttribute="trailing" secondItem="PCE-VC-qeS" secondAttribute="trailing" id="0gw-tI-h1i"/>
                     <constraint firstItem="OiG-SX-DC1" firstAttribute="bottom" secondItem="bTZ-4n-nWl" secondAttribute="bottom" id="74e-iC-TUS"/>
                     <constraint firstAttribute="trailing" secondItem="9Mq-2x-DYx" secondAttribute="trailing" constant="15" id="KDN-39-L1k"/>
+                    <constraint firstItem="9Mq-2x-DYx" firstAttribute="centerY" secondItem="KXs-g9-A63" secondAttribute="centerY" id="M7s-4l-qvC"/>
                     <constraint firstItem="OiG-SX-DC1" firstAttribute="leading" secondItem="bTZ-4n-nWl" secondAttribute="trailing" constant="15" id="Poc-6A-6p9"/>
-                    <constraint firstItem="9Mq-2x-DYx" firstAttribute="centerY" secondItem="bTZ-4n-nWl" secondAttribute="centerY" id="RtI-SL-Qvj"/>
                     <constraint firstItem="KXs-g9-A63" firstAttribute="leading" secondItem="bTZ-4n-nWl" secondAttribute="trailing" constant="15" id="UNl-gB-hKm"/>
                     <constraint firstItem="KXs-g9-A63" firstAttribute="top" secondItem="bTZ-4n-nWl" secondAttribute="top" id="l7l-5K-Cto"/>
                     <constraint firstAttribute="bottom" secondItem="bTZ-4n-nWl" secondAttribute="bottom" constant="15" id="lf0-wb-e19"/>

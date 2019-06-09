@@ -15,7 +15,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     
     // Default; changed on init
     let db = Firestore.firestore()
-    var topic: Topic = TopicDatabase.topicList[0]
+    var topic: Topic = TopicDatabase.topicList[0]   // default topic
     var reference: CollectionReference?
     
     var selectedAnswers = [Int]()
@@ -35,7 +35,8 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     
     func customInit(topic: Topic) {
         self.topic = topic
-        reference = db.collection(["topics", topic.identifier, "chatRequests"].joined(separator: "/"))
+        reference = db.collection("requests")
+//        reference = db.collection(["topics", topic.identifier, "chatRequests"].joined(separator: "/"))
     }
     
     func configureTableView() {
@@ -82,6 +83,8 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         let user = Auth.auth().currentUser
         
         let requestRepresentation: [String : Any] = [
+            "created": Date(),
+            "topic": topic.identifier,
             "user": user!.uid,
             "answers": selectedAnswers
         ]
@@ -93,7 +96,9 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
                 return
             }
             self.stopAnimating(nil)
+            self.dismiss(animated: true, completion: nil)
         }
+        
         
 
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {

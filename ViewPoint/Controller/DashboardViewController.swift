@@ -14,8 +14,10 @@ import AlamofireImage
 import Presentr
 import NVActivityIndicatorView
 
-class DashboardViewController: UITableViewController, NVActivityIndicatorViewable {
+class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NVActivityIndicatorViewable {
     
+    @IBOutlet weak var fixedView: UIView!
+    @IBOutlet var tableView: UITableView!
     var profilePic: UIImage = UIImage(named: "defaultProfilePic")!    // Default profile pic
     
     let db = Firestore.firestore()
@@ -29,9 +31,10 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let settings = FirestoreSettings()
-        settings.isPersistenceEnabled = true
-        db.settings = settings
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        enableFirestoreCache()
         
         tableView.register(UINib(nibName: "DebateCell", bundle: nil), forCellReuseIdentifier: "debate")
         
@@ -63,6 +66,13 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
 //            }
 //        }
         
+    }
+    
+    // Deselect selected chat
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = self.tableView.indexPathForSelectedRow{
+            self.tableView.deselectRow(at: index, animated: true)
+        }
     }
     
     func setNavBarShadow() {
@@ -134,7 +144,7 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    /*override*/ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
         
@@ -148,15 +158,15 @@ class DashboardViewController: UITableViewController, NVActivityIndicatorViewabl
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    /*override*/ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    /*override*/ func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*override*/ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         chatButtonPressed(self)
     }
     

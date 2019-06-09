@@ -120,7 +120,7 @@
 		B114ACF6223AE7DF00319479 /* ViewPoint */ = {
 			isa = PBXGroup;
 			children = (
-				B1A3275C2274C8DD00DCAC58 /* New Group */,
+				B1A3275C2274C8DD00DCAC58 /* Customizations */,
 				B114AD32223F522900319479 /* Controller */,
 				B114AD31223F521300319479 /* Views */,
 				B114AD30223F51A000319479 /* Model */,
@@ -175,12 +175,12 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		B1A3275C2274C8DD00DCAC58 /* New Group */ = {
+		B1A3275C2274C8DD00DCAC58 /* Customizations */ = {
 			isa = PBXGroup;
 			children = (
 				B15B58B322827D2C00C21867 /* UIScrollViewAdditions.swift */,
 			);
-			path = "New Group";
+			path = Customizations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

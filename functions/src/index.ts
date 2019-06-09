@@ -1,67 +1,102 @@
 import * as functions from 'firebase-functions';
-import admin from 'firebase-admin';
-
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const onNewMessage = functions.firestore.document('chats/{chatID}/messages/{messageID}').onCreate((snapshot, context) => {
-
-//     // Not necessary, but helps with debugging
-//     const chatID = context.params.chatID
-//     const messageID = context.params.messageID
-//     console.log(`New message ${messageID} in chat ${chatID}`)
-
-//     const messageData = snapshot.data()
-//     if (messageData != null) {
-//         const newContent = addPizzazz(messageData.content)
-//         return snapshot.ref.update({ content: newContent })
-//     } else {
-//         return null;
-//     }
-
-// })
+import * as admin from 'firebase-admin';
 
 admin.initializeApp({
     credential: admin.credential.applicationDefault()
 });
 
-var db = admin.firestore();
+const db = admin.firestore()
 
-var chatsRef = db.collection('chats');
-var allChats = chatsRef.get()
-    .then(snapshot => {
-        snapshot.forEach(doc => {
-            console.log(doc.id, '=>', doc.data());
+const deleteChats = (snapshot: any, doc: any) => {
+    snapshot.ref.delete();
+    doc.ref.delete();
+    console.log('done');
+}
 
+const createChat = (snapshot: any, doc: any) => {
+    console.log("Creating Chat...");
+    db.collection('chats_test').add({users: [ snapshot.get("user"), doc.get("user") ], topic: snapshot.get("topic") })
+        .catch(err => console.log(err))
+        .then((ref) => 
+            {
+                if (ref) {
+                    db.collection(`chats_test/${ref.id}/messages`).add({message: 'hello'})
+                        .catch(err => console.log(err))
+                        .then((reference) => console.log('Added message:', reference))
+                        .catch(() => 'obligatory catch');
+                    deleteChats(snapshot, doc);
+                }
+            }
+        )
+        .catch(() => 'obligatory catch');
+}
+
+export const onNewRequest = functions.firestore.document('requests/{requestID}').onCreate((snapshot, context) => {
+
+    const requestAnswers = snapshot.get("answers");
+
+    db.collection('requests').where("topic", "==", snapshot.get("topic")).orderBy("created").get()
+        .then((querySnapshot) => {
+
+            let found = false;
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                if (found === false && snapshot.get("user") !== doc.get("user") && (JSON.stringify(requestAnswers) !== JSON.stringify(doc.get("answers")))) {
+                    createChat(snapshot, doc);
+                    found = true;
+                    return;
+                }
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
         });
-    })
-    .catch(err => {
-        console.log('Error getting documents', err);
-    });
+
+})
+
+// let p = admin.firestore().collection(`exports/${userUID}/${theSubcollection}`)
+//     .add({ message: messageString })
+//     .then(ref => {
+//         console.log('Added document with ID: ', ref.id)
+// });
 
 
 
-exports.messageCreated = functions.firestore
-    .document('chats/{chatID}/messages/{messageID}')
-    .onCreate((snap, context) => {
+// var allChats = chatsRef.get()
+//     .then(snapshot => {
+//         snapshot.forEach(doc => {
+//             console.log(doc.id, '=>', doc.data());
 
-        const chatID = context.params.chatID
+//         });
+//     })
+//     .catch(err => {
+//         console.log('Error getting documents', err);
+//     });
 
-        // Get an object representing the document
-        // e.g. {'name': 'Marie', 'age': 66}
-        const messageData = snap.data();
 
-        // access a particular field as you would any JS property
-        if (messageData != null) {
-            console.log(messageData.content);
 
-            snap.ref.update
+// exports.messageCreated = functions.firestore
+//     .document('chats/{chatID}/messages/{messageID}')
+//     .onCreate((snap, context) => {
 
-            return snap.ref.update( {content: 'asscheeks'} )
-        } else {
-            return null;
-        }
+//         const chatID = context.params.chatID
 
-        // perform desired operations ...
+//         // Get an object representing the document
+//         // e.g. {'name': 'Marie', 'age': 66}
+//         const messageData = snap.data();
 
-    });
+//         // access a particular field as you would any JS property
+//         if (messageData != null) {
+//             console.log(messageData.content);
+
+//             snap.ref.update
+
+//             return snap.ref.update( {content: 'asscheeks'} )
+//         } else {
+//             return null;
+//         }
+
+//         // perform desired operations ...
+
+//     });
