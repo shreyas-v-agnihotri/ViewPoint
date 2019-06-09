@@ -39,9 +39,9 @@ export const onNewRequest = functions.firestore.document('requests/{requestID}')
         .then((querySnapshot) => {
 
             let found = false;
+
+            // Needs to be improved somehow; forEach will continue through all snapshot results
             querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
                 if (found === false && snapshot.get("user") !== doc.get("user") && (JSON.stringify(requestAnswers) !== JSON.stringify(doc.get("answers")))) {
                     createChat(snapshot, doc);
                     found = true;
@@ -54,49 +54,3 @@ export const onNewRequest = functions.firestore.document('requests/{requestID}')
         });
 
 })
-
-// let p = admin.firestore().collection(`exports/${userUID}/${theSubcollection}`)
-//     .add({ message: messageString })
-//     .then(ref => {
-//         console.log('Added document with ID: ', ref.id)
-// });
-
-
-
-// var allChats = chatsRef.get()
-//     .then(snapshot => {
-//         snapshot.forEach(doc => {
-//             console.log(doc.id, '=>', doc.data());
-
-//         });
-//     })
-//     .catch(err => {
-//         console.log('Error getting documents', err);
-//     });
-
-
-
-// exports.messageCreated = functions.firestore
-//     .document('chats/{chatID}/messages/{messageID}')
-//     .onCreate((snap, context) => {
-
-//         const chatID = context.params.chatID
-
-//         // Get an object representing the document
-//         // e.g. {'name': 'Marie', 'age': 66}
-//         const messageData = snap.data();
-
-//         // access a particular field as you would any JS property
-//         if (messageData != null) {
-//             console.log(messageData.content);
-
-//             snap.ref.update
-
-//             return snap.ref.update( {content: 'asscheeks'} )
-//         } else {
-//             return null;
-//         }
-
-//         // perform desired operations ...
-
-//     });
