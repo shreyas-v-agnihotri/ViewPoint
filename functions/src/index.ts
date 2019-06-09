@@ -39,13 +39,14 @@ export const onNewRequest = functions.firestore.document('requests/{requestID}')
         .then((querySnapshot) => {
 
             let found = false;
+            const BreakException = {};
 
             // Needs to be improved somehow; forEach will continue through all snapshot results
             querySnapshot.forEach((doc) => {
                 if (found === false && snapshot.get("user") !== doc.get("user") && (JSON.stringify(requestAnswers) !== JSON.stringify(doc.get("answers")))) {
                     createChat(snapshot, doc);
                     found = true;
-                    return;
+                    throw BreakException;
                 }
             });
         })

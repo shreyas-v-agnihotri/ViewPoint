@@ -72,6 +72,7 @@
                 <outlet property="messageLabel" destination="OiG-SX-DC1" id="Hxj-IX-NcB"/>
                 <outlet property="nameLabel" destination="KXs-g9-A63" id="oeR-OO-HGv"/>
                 <outlet property="profileImage" destination="bTZ-4n-nWl" id="Aah-bA-bB2"/>
+                <outlet property="timeLabel" destination="9Mq-2x-DYx" id="aMW-zd-uhv"/>
                 <outlet property="topicLabel" destination="PCE-VC-qeS" id="wSp-Qg-uSP"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>

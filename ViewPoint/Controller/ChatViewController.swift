@@ -276,7 +276,7 @@ extension ChatViewController: MessagesLayoutDelegate {
         if isFromCurrentSender(message: message) {
             return !isPreviousMessageSameSender(at: indexPath) ? 12 : 0.5
         } else {
-            return !isPreviousMessageSameSender(at: indexPath) ? (12 + 17.5) : 0.5
+            return !isPreviousMessageSameSender(at: indexPath) ? (12 + 15) : 0.5
         }
     }
     

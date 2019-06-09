@@ -14,6 +14,7 @@ class DebateCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var topicLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,11 +29,12 @@ class DebateCell: UITableViewCell {
 //        // Configure the view for the selected state
 //    }
     
-    func customInit(profileImage: UIImage, topic: String, name: String, message: String) {
+    func customInit(profileImage: UIImage, topic: String, name: String, messagePreview: String, time: String) {
         self.profileImage.image = profileImage
         self.topicLabel.text = topic
         self.nameLabel.text = name
-        self.messageLabel.text = message
+        self.messageLabel.text = messagePreview
+        self.timeLabel.text = time
     }
     
 }

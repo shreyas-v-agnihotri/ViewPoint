@@ -152,7 +152,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             profileImage: UIImage(named: "defaultProfilePic")!,
             topic: "Legalizing Marijuana",
             name: "John Smithers",
-            message: "Actually, marijuana has valuable medicinal properties."
+            messagePreview: "Actually, marijuana has valuable medicinal properties.",
+            time: "02:42"
         )
 
         return cell
