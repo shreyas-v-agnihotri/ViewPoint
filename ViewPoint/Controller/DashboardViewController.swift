@@ -49,6 +49,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                 print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
                 return
             }
+            print("chat listener triggered")
             snapshot.documentChanges.forEach { change in
                 self.handleDocumentChange(change)
             }
@@ -162,27 +163,37 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
         
         let channel = channels[indexPath.row]
-        
-        KingfisherManager.shared.retrieveImage(with: URL(string: channel.opponent.imageURL)!) { result in
-            switch result {
-            case .success(let value):
+        var message: Any = "New debate!"
+        db.collection("chats/\(channel.id)/messages").order(by: "created").getDocuments { (querySnapshot, error) in
+            guard let snapshot = querySnapshot else {
+                print("Error finding channel messages: \(error?.localizedDescription ?? "No error description")")
+                return
+            }
+            if (!snapshot.isEmpty) {
+                message = snapshot.documents[snapshot.documents.count-1].data()["content"]!
                 
-                cell.customInit(
-                    profileImage: value.image.af_imageRounded(withCornerRadius: CGFloat(MyDimensions.profilePicSize/2)),
-                    topic: channel.topic,
-                    name: channel.opponent.name,
-                    messagePreview: "Actually, marijuana has valuable medicinal properties.",
-                    time: "02:42"
-                )
-            case .failure(let error):
-                print(error)
-                cell.customInit(
-                    profileImage: UIImage(named: "defaultProfilePic")!,
-                    topic: channel.topic,
-                    name: channel.opponent.name,
-                    messagePreview: "Actually, marijuana has valuable medicinal properties.",
-                    time: "02:42"
-                )
+                KingfisherManager.shared.retrieveImage(with: URL(string: channel.opponent.imageURL)!) { result in
+                    switch result {
+                    case .success(let value):
+                        
+                        cell.customInit(
+                            profileImage: value.image.af_imageRounded(withCornerRadius: CGFloat(MyDimensions.profilePicSize/2)),
+                            topic: channel.topic,
+                            name: channel.opponent.name,
+                            messagePreview: message as! String,
+                            time: "02:42"
+                        )
+                    case .failure(let error):
+                        print(error)
+                        cell.customInit(
+                            profileImage: UIImage(named: "defaultProfilePic")!,
+                            topic: channel.topic,
+                            name: channel.opponent.name,
+                            messagePreview: message as! String,
+                            time: "02:42"
+                        )
+                    }
+                }
             }
         }
 
