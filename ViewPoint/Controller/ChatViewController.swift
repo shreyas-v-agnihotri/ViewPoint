@@ -25,8 +25,7 @@ final class ChatViewController: MessagesViewController {
         self.opponentImage = opponentImage
         super.init(nibName: nil, bundle: nil)
 
-        title = "\(channel.topic) "
-//        title = channel.name
+        title = channel.topic
     }
 
     deinit {
@@ -205,7 +204,7 @@ final class ChatViewController: MessagesViewController {
         opponentProfileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: .touchUpInside)
         let opponentProfileBarButton = UIBarButtonItem(customView: opponentProfileButton)
         
-        let opponentNameBarButton = UIBarButtonItem(title: "John Smithers", style: .plain, target: self, action: #selector(self.profileButtonPressed))
+        let opponentNameBarButton = UIBarButtonItem(title: channel.opponent.name, style: .plain, target: self, action: #selector(self.profileButtonPressed))
         opponentNameBarButton.isEnabled = false
         opponentNameBarButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!], for: .disabled)
 

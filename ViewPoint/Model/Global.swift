@@ -23,13 +23,13 @@ struct MyColors {
     static let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
     static let TRANSPARENT_BLACK = UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.1)
 
-    
 }
 
 struct MyDimensions {
     
     static let profilePicSize = 500         // Request 500x500 image from Google profile
     static let navBarProfileButtonSize = 30        // Use smaller images for nav bar
+    static let debateCellProfilePicSize = 50
     static let navBarBackButtonSize = 23
     static let navBarSearchButtonSize = 20
     

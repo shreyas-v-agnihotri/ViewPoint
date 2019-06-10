@@ -44,44 +44,15 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
-//        channelListener = channelReference.addSnapshotListener { querySnapshot, error in
-//            guard let snapshot = querySnapshot else {
-//                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
-//                return
-//            }
-//
-//            snapshot.documentChanges.forEach { change in
-//                guard let snapshotChannel = Channel(document: change.document) else {
-//                    return
-//                }
-//                self.channel = snapshotChannel
-//            }
-//        }
-        
-//        channelListener = db.collection("chats").whereField("users", arrayContains: Auth.auth().currentUser?.uid as Any)
-//            .addSnapshotListener { querySnapshot, error in
-//                guard let snapshot = querySnapshot else {
-//                    print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
-//                    return
-//                }
-//                print(snapshot)
-//                snapshot.documentChanges.forEach { change in
-//                    self.handleDocumentChange(change)
-//                }
-//        }
-        
         channelListener = db.collection("chats").addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
                 print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
                 return
             }
-            print("Snapshots: \(snapshot.documents.count)")
             snapshot.documentChanges.forEach { change in
-                print("handling change")
                 self.handleDocumentChange(change)
             }
         }
-
     }
     
     deinit {
@@ -99,7 +70,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let channel = Channel(document: change.document)
         
-        print("change type: \(change.type)")
         switch change.type {
             case .added:
                 addChannel(channel)
@@ -118,7 +88,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         channels.append(channel)
-        
         tableView.reloadData()
     }
     
@@ -188,30 +157,34 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
-//    @IBAction func chatButtonPressed(_ sender: Any) {
-//
-////        channelReference.addDocument(data: channel.representation) { error in
-////            if let e = error {
-////                print("Error saving channel: \(e.localizedDescription)")
-////            }
-////        }
-//
-//        let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel, opponentImage: UIImage(named: "defaultProfilePic")!)
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
         
         let channel = channels[indexPath.row]
-        cell.customInit(
-            profileImage: UIImage(named: "defaultProfilePic")!,
-            topic: channel.topic,
-            name: "John Smithers",
-            messagePreview: "Actually, marijuana has valuable medicinal properties.",
-            time: "02:42"
-        )
+        
+        KingfisherManager.shared.retrieveImage(with: URL(string: channel.opponent.imageURL)!) { result in
+            switch result {
+            case .success(let value):
+                
+                cell.customInit(
+                    profileImage: value.image.af_imageRounded(withCornerRadius: CGFloat(MyDimensions.profilePicSize/2)),
+                    topic: channel.topic,
+                    name: channel.opponent.name,
+                    messagePreview: "Actually, marijuana has valuable medicinal properties.",
+                    time: "02:42"
+                )
+            case .failure(let error):
+                print(error)
+                cell.customInit(
+                    profileImage: UIImage(named: "defaultProfilePic")!,
+                    topic: channel.topic,
+                    name: channel.opponent.name,
+                    messagePreview: "Actually, marijuana has valuable medicinal properties.",
+                    time: "02:42"
+                )
+            }
+        }
 
         return cell
     }
@@ -226,8 +199,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        chatButtonPressed(self)
+        let currentCell = tableView.cellForRow(at: indexPath) as! DebateCell
         let channel = channels[indexPath.row]
-        let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel, opponentImage: UIImage(named: "defaultProfilePic")!)
+        let vc = ChatViewController(
+            user: Auth.auth().currentUser!,
+            channel: channel,
+            opponentImage: currentCell.profileImage.image!
+        )
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

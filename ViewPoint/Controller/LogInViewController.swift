@@ -93,7 +93,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             
             _ = Auth.auth().addStateDidChangeListener { (auth, currentFirebaseUser) in
                 
-                if (currentFirebaseUser != nil) && (currentFirebaseUser?.photoURL == nil) {
+                if (currentFirebaseUser != nil) {
                     let changeRequest = currentFirebaseUser?.createProfileChangeRequest()
                                         
                     if let googleImageURL = googleUser.profile.imageURL(withDimension: UInt(MyDimensions.profilePicSize)) {
@@ -103,16 +103,18 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                     changeRequest?.commitChanges { (error) in
                         if let error = error {
                             print("\nFailed to save Photo URL: \(error)\n")
+                            self.performSegue(withIdentifier: "goToDashboard", sender: self)
                         }
                         else {
                             print("\nSaved photo URL\n")
+                            self.performSegue(withIdentifier: "goToDashboard", sender: self)
                         }
                     }
                 }
             }
         })
         
-        performSegue(withIdentifier: "goToDashboard", sender: self)
+        
     }
     
     

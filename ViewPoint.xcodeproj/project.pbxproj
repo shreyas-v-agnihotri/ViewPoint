@@ -163,14 +163,14 @@
 				B114ACF7223AE7DF00319479 /* AppDelegate.swift */,
 				B114ACF9223AE7DF00319479 /* LogInViewController.swift */,
 				B114AD0B223C9C7800319479 /* DashboardViewController.swift */,
-				B1719A402269235E00E1E33C /* DebateCell.swift */,
 				B114AD0D223E0A4900319479 /* ProfileViewController.swift */,
 				B114AD21223F371F00319479 /* TopicsViewController.swift */,
-				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
 				B114AD20223F371F00319479 /* TopicDetailViewController.swift */,
+				B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */,
+				B1719A402269235E00E1E33C /* DebateCell.swift */,
+				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
 				B114AD25223F389000319479 /* SurveyCell.swift */,
 				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
-				B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

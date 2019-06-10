@@ -7,7 +7,7 @@ admin.initializeApp({
 
 const db = admin.firestore()
 
-const deleteChats = (snapshot: any, doc: any) => {
+const deleteRequests = (snapshot: any, doc: any) => {
     snapshot.ref.delete();
     doc.ref.delete();
     console.log('done');
@@ -15,7 +15,7 @@ const deleteChats = (snapshot: any, doc: any) => {
 
 const createChat = (snapshot: any, doc: any) => {
     console.log("Creating Chat...");
-    db.collection('chats').add({users: [ snapshot.get("user"), doc.get("user") ], topic: snapshot.get("topic") })
+    db.collection('chats').add({users: [ snapshot.get("user"), doc.get("user") ], userNames: [snapshot.get("userName"), doc.get("userName")], userPhotoURLs: [snapshot.get("userPhotoURL"), doc.get("userPhotoURL")], topic: snapshot.get("topic") })
         .catch(err => console.log(err))
         .then((ref) => 
             {
@@ -24,7 +24,7 @@ const createChat = (snapshot: any, doc: any) => {
                     //     .catch(err => console.log(err))
                     //     .then((reference) => console.log('Added message:', reference))
                     //     .catch(() => 'obligatory catch');
-                    deleteChats(snapshot, doc);
+                    deleteRequests(snapshot, doc);
                 }
             }
         )

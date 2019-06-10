@@ -27,35 +27,68 @@
 /// THE SOFTWARE.
 
 import FirebaseFirestore
+import FirebaseAuth
+import Kingfisher
 
 struct Channel {
   
-  let id: String
-  let topic: String
-  let users: [String]
-
-  init(document: QueryDocumentSnapshot) {
-    let data = document.data()
-    
-    self.topic = data["topic"] as! String
-    self.users = data["users"] as! [String]
-    self.id = document.documentID
-
-  }
+    let id: String
+    let topic: String
+    let currentUser: ChatParticipant
+    let opponent: ChatParticipant
   
+    init(document: QueryDocumentSnapshot) {
+        let data = document.data()
+    
+        self.topic = data["topic"] as! String
+        self.id = document.documentID
+        
+        let user = Auth.auth().currentUser!
+        let users = data["users"] as! [String]
+        
+        var currentUserIndex = -1
+        for index in 0...(users.count-1) {
+            if users[index] == user.uid {
+                currentUserIndex = index
+            }
+        }
+        let opponentIndex = users.count - 1 - currentUserIndex
+        
+        self.currentUser = ChatParticipant(
+            index: currentUserIndex,
+            ids: data["users"] as! [String],
+            names: data["userNames"] as! [String],
+            imageURLs: data["userPhotoURLs"] as! [String]
+        )
+        
+        self.opponent = ChatParticipant(
+            index: opponentIndex,
+            ids: data["users"] as! [String],
+            names: data["userNames"] as! [String],
+            imageURLs: data["userPhotoURLs"] as! [String]
+        )
+    }
+  
+}
+
+class ChatParticipant {
+    let id: String
+    let name: String
+    var imageURL: String
+    
+    init(index: Int, ids: [String], names: [String], imageURLs: [String]) {
+        self.id = ids[index]
+        self.name = names[index]
+        self.imageURL = imageURLs[index]
+
+    }
 }
 
 //extension Channel: DatabaseRepresentation {
 extension Channel {
 
   var representation: [String : Any] {
-    var rep = ["topic": topic]
-    
-//    if let id = id {
-      rep["id"] = id
-//    }
-    
-    return rep
+    return ["topic": topic, "id": id]
   }
   
 }
