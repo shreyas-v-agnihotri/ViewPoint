@@ -63,7 +63,7 @@
 		B15B58B82282ABAB00C21867 /* SurveyQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuestion.swift; sourceTree = "<group>"; };
 		B1719A402269235E00E1E33C /* DebateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebateCell.swift; path = ViewPoint/Controller/Cells/DebateCell.swift; sourceTree = SOURCE_ROOT; };
 		B1719A412269235E00E1E33C /* DebateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DebateCell.xib; path = ViewPoint/Views/DebateCell/DebateCell.xib; sourceTree = SOURCE_ROOT; };
-		B182AD7522AEFB6E001EDE24 /* DateAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateAdditions.swift; path = ViewPoint/Model/DateAdditions.swift; sourceTree = SOURCE_ROOT; };
+		B182AD7522AEFB6E001EDE24 /* DateAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateAdditions.swift; path = ViewPoint/Customizations/DateAdditions.swift; sourceTree = SOURCE_ROOT; };
 		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyCell.xib; path = "New Group/SurveyCell.xib"; sourceTree = "<group>"; };
 		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
