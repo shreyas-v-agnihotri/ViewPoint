@@ -27,41 +27,68 @@
 /// THE SOFTWARE.
 
 import FirebaseFirestore
+import FirebaseAuth
+import Kingfisher
 
 struct Channel {
   
-  let id: String?
-  let name: String
+    let id: String
+    let topic: String
+    let currentUser: ChatParticipant
+    let opponent: ChatParticipant
   
-  init(name: String) {
-    id = nil
-    self.name = name
-  }
-  
-  init?(document: QueryDocumentSnapshot) {
-    let data = document.data()
+    init(document: QueryDocumentSnapshot) {
+        let data = document.data()
     
-    guard let name = data["name"] as? String else {
-      return nil
+        self.topic = data["topic"] as! String
+        self.id = document.documentID
+        
+        let user = Auth.auth().currentUser!
+        let users = data["users"] as! [String]
+        
+        var currentUserIndex = -1
+        for index in 0...(users.count-1) {
+            if users[index] == user.uid {
+                currentUserIndex = index
+            }
+        }
+        let opponentIndex = users.count - 1 - currentUserIndex
+        
+        self.currentUser = ChatParticipant(
+            index: currentUserIndex,
+            ids: data["users"] as! [String],
+            names: data["userNames"] as! [String],
+            imageURLs: data["userPhotoURLs"] as! [String]
+        )
+        
+        self.opponent = ChatParticipant(
+            index: opponentIndex,
+            ids: data["users"] as! [String],
+            names: data["userNames"] as! [String],
+            imageURLs: data["userPhotoURLs"] as! [String]
+        )
     }
-    
-    id = document.documentID
-    self.name = name
-  }
   
+}
+
+class ChatParticipant {
+    let id: String
+    let name: String
+    var imageURL: String
+    
+    init(index: Int, ids: [String], names: [String], imageURLs: [String]) {
+        self.id = ids[index]
+        self.name = names[index]
+        self.imageURL = imageURLs[index]
+
+    }
 }
 
 //extension Channel: DatabaseRepresentation {
 extension Channel {
 
   var representation: [String : Any] {
-    var rep = ["name": name]
-    
-    if let id = id {
-      rep["id"] = id
-    }
-    
-    return rep
+    return ["topic": topic, "id": id]
   }
   
 }
@@ -73,7 +100,7 @@ extension Channel: Comparable {
   }
   
   static func < (lhs: Channel, rhs: Channel) -> Bool {
-    return lhs.name < rhs.name
+    return lhs.topic < rhs.topic
   }
 
 }

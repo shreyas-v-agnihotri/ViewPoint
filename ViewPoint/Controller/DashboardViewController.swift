@@ -21,12 +21,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var profilePic: UIImage = UIImage(named: "defaultProfilePic")!    // Default profile pic
     
     let db = Firestore.firestore()
-    
-    private var channelReference: CollectionReference {
-        return db.collection("chats")
-    }
+    private var channels = [Channel]()
+
     private var channelListener: ListenerRegistration?
-    var channel = Channel(name: "test_channel")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +35,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.register(UINib(nibName: "DebateCell", bundle: nil), forCellReuseIdentifier: "debate")
         
-        startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            self.stopAnimating(nil)
-        }
-        
         setProfileButton()
         setNavBarShadow()
         
@@ -52,20 +44,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
-//        channelListener = channelReference.addSnapshotListener { querySnapshot, error in
-//            guard let snapshot = querySnapshot else {
-//                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
-//                return
-//            }
-//
-//            snapshot.documentChanges.forEach { change in
-//                guard let snapshotChannel = Channel(document: change.document) else {
-//                    return
-//                }
-//                self.channel = snapshotChannel
-//            }
-//        }
-        
+        channelListener = db.collection("chats").addSnapshotListener { querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
+                return
+            }
+            snapshot.documentChanges.forEach { change in
+                self.handleDocumentChange(change)
+            }
+        }
+    }
+    
+    deinit {
+        channelListener?.remove()
     }
     
     // Deselect selected chat
@@ -73,6 +64,40 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         if let index = self.tableView.indexPathForSelectedRow{
             self.tableView.deselectRow(at: index, animated: true)
         }
+    }
+    
+    func handleDocumentChange(_ change: DocumentChange) {
+        
+        let channel = Channel(document: change.document)
+        
+        switch change.type {
+            case .added:
+                addChannel(channel)
+            case .modified:
+                return
+            case .removed:
+                removeChannel(channel)
+            @unknown default:
+                return
+            }
+    }
+    
+    private func addChannel(_ channel: Channel) {
+        guard !channels.contains(channel) else {
+            return
+        }
+        
+        channels.append(channel)
+        tableView.reloadData()
+    }
+    
+    private func removeChannel(_ channel: Channel) {
+        guard let index = channels.firstIndex(of: channel) else {
+            return
+        }
+        
+        channels.remove(at: index)
+        tableView.reloadData()
     }
     
     func setNavBarShadow() {
@@ -132,43 +157,56 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
-    @IBAction func chatButtonPressed(_ sender: Any) {
-        
-//        channelReference.addDocument(data: channel.representation) { error in
-//            if let e = error {
-//                print("Error saving channel: \(e.localizedDescription)")
-//            }
-//        }
-        
-        let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel, opponentImage: UIImage(named: "defaultProfilePic")!)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    /*override*/ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
         
-        cell.customInit(
-            profileImage: UIImage(named: "defaultProfilePic")!,
-            topic: "Legalizing Marijuana",
-            name: "John Smithers",
-            messagePreview: "Actually, marijuana has valuable medicinal properties.",
-            time: "02:42"
-        )
+        let channel = channels[indexPath.row]
+        
+        KingfisherManager.shared.retrieveImage(with: URL(string: channel.opponent.imageURL)!) { result in
+            switch result {
+            case .success(let value):
+                
+                cell.customInit(
+                    profileImage: value.image.af_imageRounded(withCornerRadius: CGFloat(MyDimensions.profilePicSize/2)),
+                    topic: channel.topic,
+                    name: channel.opponent.name,
+                    messagePreview: "Actually, marijuana has valuable medicinal properties.",
+                    time: "02:42"
+                )
+            case .failure(let error):
+                print(error)
+                cell.customInit(
+                    profileImage: UIImage(named: "defaultProfilePic")!,
+                    topic: channel.topic,
+                    name: channel.opponent.name,
+                    messagePreview: "Actually, marijuana has valuable medicinal properties.",
+                    time: "02:42"
+                )
+            }
+        }
 
         return cell
     }
     
-    /*override*/ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return channels.count
     }
     
-    /*override*/ func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
     
-    /*override*/ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        chatButtonPressed(self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        chatButtonPressed(self)
+        let currentCell = tableView.cellForRow(at: indexPath) as! DebateCell
+        let channel = channels[indexPath.row]
+        let vc = ChatViewController(
+            user: Auth.auth().currentUser!,
+            channel: channel,
+            opponentImage: currentCell.profileImage.image!
+        )
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

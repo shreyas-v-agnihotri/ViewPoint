@@ -44,7 +44,7 @@ struct TopicDatabase {
     )
     
     static var abortion = Topic(
-        title: "Abortion",
+        title: "Abortion Rights",
         category: "Public Policy",
         identifier: "abortion",
         survey: testSurvey

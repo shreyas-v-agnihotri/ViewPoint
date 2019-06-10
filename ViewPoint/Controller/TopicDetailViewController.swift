@@ -73,6 +73,8 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     
     func findDebate() {
         
+        print("sending request")
+        
         startAnimating(
             message: "Looking for opposing ViewPoints..." + "\n\(selectedAnswers)",
             messageFont: UIFont(name: MyFont.regular, size: CGFloat(MyFont.navBarSmallFontSize)),
@@ -84,8 +86,10 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         
         let requestRepresentation: [String : Any] = [
             "created": Date(),
-            "topic": topic.identifier,
+            "topic": topic.title,
             "user": user!.uid,
+            "userName": user!.displayName as Any,
+            "userPhotoURL": user!.photoURL?.absoluteString as Any,
             "answers": selectedAnswers
         ]
         

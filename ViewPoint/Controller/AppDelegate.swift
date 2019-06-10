@@ -86,7 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().backIndicatorImage = backArrowScaled
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backArrowScaled
-        
     }
     
     func imageWithGradient(startColor:UIColor, endColor:UIColor, size:CGSize, horizontally:Bool = true) -> UIImage? {
