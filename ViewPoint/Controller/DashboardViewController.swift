@@ -22,6 +22,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let db = Firestore.firestore()
     private var channels = [Channel]()
+    
+    var channelsRendered = 0
 
     private var channelListener: ListenerRegistration?
     
@@ -59,6 +61,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             snapshot.documentChanges.forEach { change in
                 self.handleChannelChange(change)
             }
+            if (self.channels.isEmpty) {
+                self.stopAnimating()
+                self.channelsRendered = 0
+            }
         }
         
     }
@@ -95,7 +101,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             return
         }
         channels.append(channel)
-
+        channels.sort()
         
         guard let index = channels.firstIndex(of: channel) else {
             return
@@ -110,7 +116,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         channels[index] = channel
-        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .right)
+        channels.sort()
+        
+        tableView.reloadData()
+        
+//        animate all rows sliding out and new versions coming in
+//        let range = NSMakeRange(0, self.tableView.numberOfSections)
+//        let sections = NSIndexSet(indexesIn: range)
+//        self.tableView.reloadSections(sections as IndexSet, with: .right)
     }
     
     private func removeChannel(_ channel: Channel) {
@@ -119,6 +132,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         channels.remove(at: index)
+
         tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
     }
     
@@ -185,43 +199,65 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
         
         let channel = channels[indexPath.row]
-        var recentMessage: Any = "New debate!"
-        db.collection("chats/\(channel.id)/messages").order(by: "created").getDocuments { (querySnapshot, error) in
+        
+        db.document("chats/\(channel.id)").getDocument { (querySnapshot, error) in
             guard let snapshot = querySnapshot else {
                 print("Error finding channel messages: \(error?.localizedDescription ?? "No error description")")
                 return
             }
-            if (!snapshot.isEmpty) {
-                recentMessage = snapshot.documents[snapshot.documents.count-1].data()["content"]!
-                
-                KingfisherManager.shared.retrieveImage(with: URL(string: channel.opponent.imageURL)!) { result in
-                    switch result {
-                    case .success(let value):
-                        
-                        cell.customInit(
-                            profileImage: value.image.af_imageRounded(withCornerRadius: CGFloat(MyDimensions.profilePicSize/2)),
-                            topic: channel.topic,
-                            name: channel.opponent.name,
-                            messagePreview: recentMessage as! String,
-                            time: "02:42"
-                        )
-                    case .failure(let error):
-                        print(error)
-                        cell.customInit(
-                            profileImage: UIImage(named: "defaultProfilePic")!,
-                            topic: channel.topic,
-                            name: channel.opponent.name,
-                            messagePreview: recentMessage as! String,
-                            time: "02:42"
-                        )
-                    }
+            
+            let recentMessage = snapshot.data()!["messagePreview"] as Any
+            let timestamp = snapshot.data()!["timestamp"] as! Timestamp
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm a"
+            
+            let recentMessageTime = formatter.string(from: timestamp.dateValue())
+            
+            KingfisherManager.shared.retrieveImage(with: URL(string: channel.opponent.imageURL)!) { result in
+                switch result {
                     
-                    if (indexPath.row == self.channels.count-1) {
-                        self.stopAnimating()
-                    }
+                case .success(let value):
+                    cell.customInit(
+                        profileImage: value.image.af_imageRounded(withCornerRadius: CGFloat(MyDimensions.profilePicSize/2)),
+                        topic: channel.topic,
+                        name: channel.opponent.name,
+                        messagePreview: recentMessage as! String,
+                        time: recentMessageTime
+                    )
+                case .failure(let error):
+                    print(error)
+                    cell.customInit(
+                        profileImage: UIImage(named: "defaultProfilePic")!,
+                        topic: channel.topic,
+                        name: channel.opponent.name,
+                        messagePreview: recentMessage as! String,
+                        time: recentMessageTime
+                    )
+                }
+                
+                self.channelsRendered += 1
+                if (self.channelsRendered == self.channels.count-1) {
+                    self.stopAnimating()
+                    self.channelsRendered = 0
                 }
             }
+            
         }
+
+        
+//        var recentMessage: Any = "New debate!"
+//        db.collection("chats/\(channel.id)/messages").order(by: "created").getDocuments { (querySnapshot, error) in
+//            guard let snapshot = querySnapshot else {
+//                print("Error finding channel messages: \(error?.localizedDescription ?? "No error description")")
+//                return
+//            }
+//            if (!snapshot.isEmpty) {
+//                recentMessage = snapshot.documents[snapshot.documents.count-1].data()["content"]!
+//
+//
+//            }
+//        }
 
         return cell
     }

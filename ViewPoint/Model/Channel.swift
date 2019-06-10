@@ -36,12 +36,16 @@ struct Channel {
     let topic: String
     let currentUser: ChatParticipant
     let opponent: ChatParticipant
+    let timestamp: Date
   
     init(document: QueryDocumentSnapshot) {
         let data = document.data()
     
         self.topic = data["topic"] as! String
         self.id = document.documentID
+        
+        let channelTimestamp = data["timestamp"] as! Timestamp
+        self.timestamp = channelTimestamp.dateValue()
         
         let user = Auth.auth().currentUser!
         let users = data["users"] as! [String]
@@ -100,7 +104,7 @@ extension Channel: Comparable {
   }
   
   static func < (lhs: Channel, rhs: Channel) -> Bool {
-    return lhs.topic < rhs.topic
+    return lhs.timestamp > rhs.timestamp
   }
 
 }

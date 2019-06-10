@@ -15,7 +15,15 @@ const deleteRequests = (snapshot: any, doc: any) => {
 
 const createChat = (snapshot: any, doc: any) => {
     console.log("Creating Chat...");
-    db.collection('chats').add({users: [ snapshot.get("user"), doc.get("user") ], userNames: [snapshot.get("userName"), doc.get("userName")], userPhotoURLs: [snapshot.get("userPhotoURL"), doc.get("userPhotoURL")], topic: snapshot.get("topic") })
+    db.collection('chats').add(
+        {
+            users: [ snapshot.get("user"), doc.get("user") ], 
+            userNames: [snapshot.get("userName"), doc.get("userName")], 
+            userPhotoURLs: [snapshot.get("userPhotoURL"), doc.get("userPhotoURL")], 
+            topic: snapshot.get("topic"),
+            messagePreview: "New debate!",
+            timestamp: admin.firestore.FieldValue.serverTimestamp()
+        })
         .catch(err => console.log(err))
         .then((ref) => 
             {

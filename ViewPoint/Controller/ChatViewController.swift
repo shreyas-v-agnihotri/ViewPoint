@@ -162,8 +162,8 @@ final class ChatViewController: MessagesViewController {
         }
         
         db.document("chats/\(channel.id)").updateData([
-            "newestMessageContent": message.content,
-            "newestMessageTimestamp": message.sentDate
+            "messagePreview": message.content,
+            "timestamp": message.sentDate
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
@@ -234,8 +234,6 @@ final class ChatViewController: MessagesViewController {
             completion: nil
         )
     }
-
-
 }
 
 
