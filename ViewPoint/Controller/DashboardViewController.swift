@@ -28,6 +28,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startAnimating(
+            message: "Loading your chats...",
+            messageFont: UIFont(name: MyFont.regular, size: CGFloat(MyFont.navBarSmallFontSize)),
+            type: .ballScaleMultiple,
+            backgroundColor: MyColors.LOADING_BLACK
+        )
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -49,11 +56,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                 print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
                 return
             }
-            print("chat listener triggered")
             snapshot.documentChanges.forEach { change in
-                self.handleDocumentChange(change)
+                self.handleChannelChange(change)
             }
         }
+        
     }
     
     deinit {
@@ -67,7 +74,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func handleDocumentChange(_ change: DocumentChange) {
+    func handleChannelChange(_ change: DocumentChange) {
         
         let channel = Channel(document: change.document)
         
@@ -75,7 +82,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             case .added:
                 addChannel(channel)
             case .modified:
-                return
+                updateChannel(channel)
             case .removed:
                 removeChannel(channel)
             @unknown default:
@@ -87,9 +94,23 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         guard !channels.contains(channel) else {
             return
         }
-        
         channels.append(channel)
-        tableView.reloadData()
+
+        
+        guard let index = channels.firstIndex(of: channel) else {
+            return
+        }
+        
+        tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .right)
+    }
+    
+    private func updateChannel(_ channel: Channel) {
+        guard let index = channels.firstIndex(of: channel) else {
+            return
+        }
+        
+        channels[index] = channel
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .right)
     }
     
     private func removeChannel(_ channel: Channel) {
@@ -98,7 +119,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         channels.remove(at: index)
-        tableView.reloadData()
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
     }
     
     func setNavBarShadow() {
@@ -158,19 +179,20 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
         
         let channel = channels[indexPath.row]
-        var message: Any = "New debate!"
+        var recentMessage: Any = "New debate!"
         db.collection("chats/\(channel.id)/messages").order(by: "created").getDocuments { (querySnapshot, error) in
             guard let snapshot = querySnapshot else {
                 print("Error finding channel messages: \(error?.localizedDescription ?? "No error description")")
                 return
             }
             if (!snapshot.isEmpty) {
-                message = snapshot.documents[snapshot.documents.count-1].data()["content"]!
+                recentMessage = snapshot.documents[snapshot.documents.count-1].data()["content"]!
                 
                 KingfisherManager.shared.retrieveImage(with: URL(string: channel.opponent.imageURL)!) { result in
                     switch result {
@@ -180,7 +202,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                             profileImage: value.image.af_imageRounded(withCornerRadius: CGFloat(MyDimensions.profilePicSize/2)),
                             topic: channel.topic,
                             name: channel.opponent.name,
-                            messagePreview: message as! String,
+                            messagePreview: recentMessage as! String,
                             time: "02:42"
                         )
                     case .failure(let error):
@@ -189,9 +211,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                             profileImage: UIImage(named: "defaultProfilePic")!,
                             topic: channel.topic,
                             name: channel.opponent.name,
-                            messagePreview: message as! String,
+                            messagePreview: recentMessage as! String,
                             time: "02:42"
                         )
+                    }
+                    
+                    if (indexPath.row == self.channels.count-1) {
+                        self.stopAnimating()
                     }
                 }
             }

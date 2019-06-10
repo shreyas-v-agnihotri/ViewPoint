@@ -159,9 +159,20 @@ final class ChatViewController: MessagesViewController {
                 print("Error sending message: \(e.localizedDescription)")
                 return
             }
-
-            self.messagesCollectionView.scrollToBottom()
         }
+        
+        db.document("chats/\(channel.id)").updateData([
+            "newestMessageContent": message.content,
+            "newestMessageTimestamp": message.sentDate
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+        self.messagesCollectionView.scrollToBottom()
     }
 
     private func handleDocumentChange(_ change: DocumentChange) {
