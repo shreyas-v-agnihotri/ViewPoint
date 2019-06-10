@@ -30,23 +30,17 @@ import FirebaseFirestore
 
 struct Channel {
   
-  let id: String?
-  let name: String
-  
-  init(name: String) {
-    id = nil
-    self.name = name
-  }
-  
-  init?(document: QueryDocumentSnapshot) {
+  let id: String
+  let topic: String
+  let users: [String]
+
+  init(document: QueryDocumentSnapshot) {
     let data = document.data()
     
-    guard let name = data["name"] as? String else {
-      return nil
-    }
-    
-    id = document.documentID
-    self.name = name
+    self.topic = data["topic"] as! String
+    self.users = data["users"] as! [String]
+    self.id = document.documentID
+
   }
   
 }
@@ -55,11 +49,11 @@ struct Channel {
 extension Channel {
 
   var representation: [String : Any] {
-    var rep = ["name": name]
+    var rep = ["topic": topic]
     
-    if let id = id {
+//    if let id = id {
       rep["id"] = id
-    }
+//    }
     
     return rep
   }
@@ -73,7 +67,7 @@ extension Channel: Comparable {
   }
   
   static func < (lhs: Channel, rhs: Channel) -> Bool {
-    return lhs.name < rhs.name
+    return lhs.topic < rhs.topic
   }
 
 }

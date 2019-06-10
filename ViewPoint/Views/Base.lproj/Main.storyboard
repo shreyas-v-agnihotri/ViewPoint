@@ -165,10 +165,10 @@
             </objects>
             <point key="canvasLocation" x="2658" y="-246"/>
         </scene>
-        <!--My Debates-->
+        <!-- -->
         <scene sceneID="Lui-4V-8ke">
             <objects>
-                <viewController title="My Debates" id="GDk-Jg-XzR" customClass="DashboardViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title=" " id="GDk-Jg-XzR" customClass="DashboardViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="giu-Ey-tae">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

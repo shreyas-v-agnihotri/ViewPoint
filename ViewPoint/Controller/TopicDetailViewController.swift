@@ -84,7 +84,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         
         let requestRepresentation: [String : Any] = [
             "created": Date(),
-            "topic": topic.identifier,
+            "topic": topic.title,
             "user": user!.uid,
             "answers": selectedAnswers
         ]

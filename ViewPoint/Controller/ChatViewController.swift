@@ -25,7 +25,7 @@ final class ChatViewController: MessagesViewController {
         self.opponentImage = opponentImage
         super.init(nibName: nil, bundle: nil)
 
-        title = "Legalizing Marijuana"
+        title = "\(channel.topic) "
 //        title = channel.name
     }
 
@@ -54,7 +54,7 @@ final class ChatViewController: MessagesViewController {
 //            return
 //        }
         
-        let id = "test_chat"
+        let id = channel.id
         reference = db.collection(["chats", id, "messages"].joined(separator: "/"))
 
         super.viewDidLoad()
