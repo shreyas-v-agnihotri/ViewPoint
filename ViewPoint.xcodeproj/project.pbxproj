@@ -52,16 +52,16 @@
 		B114AD0F223E21E500319479 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		B114AD20223F371F00319479 /* TopicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailViewController.swift; sourceTree = "<group>"; };
 		B114AD21223F371F00319479 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
-		B114AD25223F389000319479 /* SurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurveyCell.swift; path = "../Views/New Group/SurveyCell.swift"; sourceTree = "<group>"; };
+		B114AD25223F389000319479 /* SurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
 		B114AD2A223F38EE00319479 /* TopicPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicPreviewCell.xib; path = "New Group1/TopicPreviewCell.xib"; sourceTree = "<group>"; };
-		B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicPreviewCell.swift; path = "../Views/New Group1/TopicPreviewCell.swift"; sourceTree = "<group>"; };
-		B114AD3522408E2200319479 /* SurveyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SurveyQuestionCell.swift; path = ../Views/SurveyQuestionCell/SurveyQuestionCell.swift; sourceTree = "<group>"; };
+		B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicPreviewCell.swift; sourceTree = "<group>"; };
+		B114AD3522408E2200319479 /* SurveyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuestionCell.swift; sourceTree = "<group>"; };
 		B114AD392240928000319479 /* SurveyQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyQuestionCell.xib; path = SurveyQuestionCell/SurveyQuestionCell.xib; sourceTree = "<group>"; };
 		B114AD3C2240BDF700319479 /* TopicDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDatabase.swift; sourceTree = "<group>"; };
 		B15B58B322827D2C00C21867 /* UIScrollViewAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIScrollViewAdditions.swift; path = ViewPoint/Extensions/UIScrollViewAdditions.swift; sourceTree = SOURCE_ROOT; };
 		B15B58B62282AB7500C21867 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		B15B58B82282ABAB00C21867 /* SurveyQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuestion.swift; sourceTree = "<group>"; };
-		B1719A402269235E00E1E33C /* DebateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebateCell.swift; path = ViewPoint/Controller/DebateCell.swift; sourceTree = SOURCE_ROOT; };
+		B1719A402269235E00E1E33C /* DebateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebateCell.swift; path = ViewPoint/Controller/Cells/DebateCell.swift; sourceTree = SOURCE_ROOT; };
 		B1719A412269235E00E1E33C /* DebateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DebateCell.xib; path = ViewPoint/Views/DebateCell/DebateCell.xib; sourceTree = SOURCE_ROOT; };
 		B182AD7522AEFB6E001EDE24 /* DateAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateAdditions.swift; path = ViewPoint/Model/DateAdditions.swift; sourceTree = SOURCE_ROOT; };
 		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyCell.xib; path = "New Group/SurveyCell.xib"; sourceTree = "<group>"; };
@@ -163,18 +163,34 @@
 			isa = PBXGroup;
 			children = (
 				B114ACF7223AE7DF00319479 /* AppDelegate.swift */,
+				B182AD7722AF0325001EDE24 /* View Controllers */,
+				B182AD7822AF033F001EDE24 /* Cells */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B182AD7722AF0325001EDE24 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				B114ACF9223AE7DF00319479 /* LogInViewController.swift */,
 				B114AD0B223C9C7800319479 /* DashboardViewController.swift */,
 				B114AD0D223E0A4900319479 /* ProfileViewController.swift */,
 				B114AD21223F371F00319479 /* TopicsViewController.swift */,
 				B114AD20223F371F00319479 /* TopicDetailViewController.swift */,
 				B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B182AD7822AF033F001EDE24 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				B1719A402269235E00E1E33C /* DebateCell.swift */,
 				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
 				B114AD25223F389000319479 /* SurveyCell.swift */,
 				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
 			);
-			path = Controller;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B1A3275C2274C8DD00DCAC58 /* Customizations */ = {
