@@ -118,12 +118,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         channels[index] = channel
         channels.sort()
         
-        tableView.reloadData()
+//        tableView.reloadData()
         
-//        animate all rows sliding out and new versions coming in
-//        let range = NSMakeRange(0, self.tableView.numberOfSections)
-//        let sections = NSIndexSet(indexesIn: range)
-//        self.tableView.reloadSections(sections as IndexSet, with: .right)
+        // Animate all rows in section at once
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        self.tableView.reloadSections(sections as IndexSet, with: .fade)
     }
     
     private func removeChannel(_ channel: Channel) {
@@ -208,11 +208,26 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             
             let recentMessage = snapshot.data()!["messagePreview"] as Any
             let timestamp = snapshot.data()!["timestamp"] as! Timestamp
+            let recentMessageDate = timestamp.dateValue()
             
             let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm a"
+            var recentMessageTimeLabel: String
             
-            let recentMessageTime = formatter.string(from: timestamp.dateValue())
+            if (recentMessageDate.isInToday) {
+                formatter.dateFormat = "hh:mm a"
+                recentMessageTimeLabel = formatter.string(from: recentMessageDate)
+            }
+            else if (recentMessageDate.isInYesterday) {
+                recentMessageTimeLabel = "Yesterday"
+            }
+            else if (recentMessageDate.isInThisWeek) {
+                formatter.dateFormat = "EEEE"
+                recentMessageTimeLabel = formatter.string(from: recentMessageDate)
+            }
+            else {
+                formatter.dateFormat = "MMM d"
+                recentMessageTimeLabel = formatter.string(from: recentMessageDate)
+            }
             
             KingfisherManager.shared.retrieveImage(with: URL(string: channel.opponent.imageURL)!) { result in
                 switch result {
@@ -223,7 +238,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                         topic: channel.topic,
                         name: channel.opponent.name,
                         messagePreview: recentMessage as! String,
-                        time: recentMessageTime
+                        time: recentMessageTimeLabel
                     )
                 case .failure(let error):
                     print(error)
@@ -232,7 +247,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                         topic: channel.topic,
                         name: channel.opponent.name,
                         messagePreview: recentMessage as! String,
-                        time: recentMessageTime
+                        time: recentMessageTimeLabel
                     )
                 }
                 
@@ -244,20 +259,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             
         }
-
-        
-//        var recentMessage: Any = "New debate!"
-//        db.collection("chats/\(channel.id)/messages").order(by: "created").getDocuments { (querySnapshot, error) in
-//            guard let snapshot = querySnapshot else {
-//                print("Error finding channel messages: \(error?.localizedDescription ?? "No error description")")
-//                return
-//            }
-//            if (!snapshot.isEmpty) {
-//                recentMessage = snapshot.documents[snapshot.documents.count-1].data()["content"]!
-//
-//
-//            }
-//        }
 
         return cell
     }

@@ -75,7 +75,7 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
     
     override func openDetailView(for indexPath: IndexPath) {
         
-//        searchBar.resignFirstResponder()
+        searchBar.resignFirstResponder()
 //        searchBar.showsCancelButton = false
 //        searchBar.text = ""
         
