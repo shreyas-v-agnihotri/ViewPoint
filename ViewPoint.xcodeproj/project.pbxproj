@@ -31,6 +31,8 @@
 		B1719A422269235F00E1E33C /* DebateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1719A402269235E00E1E33C /* DebateCell.swift */; };
 		B1719A432269235F00E1E33C /* DebateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1719A412269235E00E1E33C /* DebateCell.xib */; };
 		B182AD7622AEFB6F001EDE24 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B182AD7522AEFB6E001EDE24 /* DateExtension.swift */; };
+		B182AD7B22AF6DB6001EDE24 /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B182AD7922AF6DB6001EDE24 /* RequestCell.swift */; };
+		B182AD7C22AF6DB6001EDE24 /* RequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B182AD7A22AF6DB6001EDE24 /* RequestCell.xib */; };
 		B1A327582274C0ED00DCAC58 /* SurveyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1A327572274C0ED00DCAC58 /* SurveyCell.xib */; };
 		B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */; };
 		B1B2A8F62248A12100E3766C /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F32248A11E00E3766C /* Channel.swift */; };
@@ -64,6 +66,8 @@
 		B1719A402269235E00E1E33C /* DebateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebateCell.swift; path = ViewPoint/Controller/Cells/DebateCell.swift; sourceTree = SOURCE_ROOT; };
 		B1719A412269235E00E1E33C /* DebateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DebateCell.xib; path = ViewPoint/Views/DebateCell/DebateCell.xib; sourceTree = SOURCE_ROOT; };
 		B182AD7522AEFB6E001EDE24 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = ViewPoint/Customizations/DateExtension.swift; sourceTree = SOURCE_ROOT; };
+		B182AD7922AF6DB6001EDE24 /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestCell.swift; path = ../../Views/RequestCell.swift; sourceTree = "<group>"; };
+		B182AD7A22AF6DB6001EDE24 /* RequestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestCell.xib; sourceTree = "<group>"; };
 		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyCell.xib; path = "New Group/SurveyCell.xib"; sourceTree = "<group>"; };
 		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				B114AD2A223F38EE00319479 /* TopicPreviewCell.xib */,
 				B1A327572274C0ED00DCAC58 /* SurveyCell.xib */,
 				B114AD392240928000319479 /* SurveyQuestionCell.xib */,
+				B182AD7A22AF6DB6001EDE24 /* RequestCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				B1719A402269235E00E1E33C /* DebateCell.swift */,
+				B182AD7922AF6DB6001EDE24 /* RequestCell.swift */,
 				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
 				B114AD25223F389000319479 /* SurveyCell.swift */,
 				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
@@ -269,6 +275,7 @@
 				B114AD2C223F38EF00319479 /* TopicPreviewCell.xib in Resources */,
 				B1719A432269235F00E1E33C /* DebateCell.xib in Resources */,
 				B114AD0A223B697100319479 /* GoogleService-Info.plist in Resources */,
+				B182AD7C22AF6DB6001EDE24 /* RequestCell.xib in Resources */,
 				B114ACFF223AE7E400319479 /* Assets.xcassets in Resources */,
 				B114ACFD223AE7DF00319479 /* Main.storyboard in Resources */,
 				B1A327582274C0ED00DCAC58 /* SurveyCell.xib in Resources */,
@@ -402,6 +409,7 @@
 				B182AD7622AEFB6F001EDE24 /* DateExtension.swift in Sources */,
 				B1B2A8F82248A12100E3766C /* Message.swift in Sources */,
 				B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */,
+				B182AD7B22AF6DB6001EDE24 /* RequestCell.swift in Sources */,
 				B114AD26223F389000319479 /* SurveyCell.swift in Sources */,
 				B15B58B72282AB7500C21867 /* Topic.swift in Sources */,
 			);

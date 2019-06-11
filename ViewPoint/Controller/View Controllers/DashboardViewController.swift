@@ -16,6 +16,7 @@ import NVActivityIndicatorView
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NVActivityIndicatorViewable {
     
+    @IBOutlet weak var pendingChatTableView: UITableView!
     @IBOutlet weak var pendingChatLabel: UILabel!
     @IBOutlet weak var dataView: UIView!
     @IBOutlet weak var fixedView: UIView!
@@ -39,12 +40,15 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             backgroundColor: MyColors.LOADING_BLACK
         )
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         enableFirestoreCache()
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        pendingChatTableView.delegate = self
+        pendingChatTableView.dataSource = self
+        
         tableView.register(UINib(nibName: "DebateCell", bundle: nil), forCellReuseIdentifier: "debate")
+        pendingChatTableView.register(UINib(nibName: "RequestCell", bundle: nil), forCellReuseIdentifier: "pendingChat")
         
         setProfileButton()
         setNavBarShadow()
@@ -69,19 +73,16 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
-        dataView.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
         
-        
-        dataView.layer.masksToBounds = false
-        dataView.layer.shadowColor = UIColor.darkGray.cgColor
-        dataView.layer.shadowOpacity = 0.6
-        dataView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        dataView.layer.shadowRadius = 6
-        dataView.layer.cornerRadius = 5
-        
-        dataView.layer.shadowPath = UIBezierPath(rect: CGRect(x: dataView.bounds.minX, y: dataView.bounds.minY, width: dataView.bounds.width*9/10, height: dataView.bounds.height)).cgPath
-        dataView.layer.shouldRasterize = true
-        dataView.layer.rasterizationScale = UIScreen.main.scale
+//        dataView.layer.masksToBounds = false
+//        dataView.layer.shadowColor = UIColor.darkGray.cgColor
+//        dataView.layer.shadowOpacity = 0.6
+//        dataView.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        dataView.layer.shadowRadius = 6
+//        dataView.layer.cornerRadius = 5
+//        dataView.layer.shadowPath = UIBezierPath(rect: CGRect(x: dataView.bounds.minX, y: dataView.bounds.minY, width: dataView.bounds.width*9/10, height: dataView.bounds.height)).cgPath
+//        dataView.layer.shouldRasterize = true
+//        dataView.layer.rasterizationScale = UIScreen.main.scale
         
         pendingChatLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
     }
@@ -206,8 +207,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             animated: true,
             completion: nil
         )
-        
-
     }
     
     
@@ -299,6 +298,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         )
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
     
 }
 
