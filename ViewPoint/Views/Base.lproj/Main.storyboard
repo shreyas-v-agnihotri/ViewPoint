@@ -174,7 +174,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KrD-LY-txP">
-                                <rect key="frame" x="41.333333333333343" y="69" width="331.33333333333326" height="41"/>
+                                <rect key="frame" x="0.0" y="69" width="414" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0ZE-9R-ZAs"/>
                                 </constraints>
@@ -192,10 +192,10 @@
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyB-z2-qR2">
-                                <rect key="frame" x="0.0" y="119" width="414" height="777"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="782"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="npB-ke-gwv">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="777"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="782"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -217,9 +217,9 @@
                             <constraint firstAttribute="bottom" secondItem="cBS-pU-EEo" secondAttribute="bottom" id="KOe-OH-JQ2"/>
                             <constraint firstItem="fyB-z2-qR2" firstAttribute="leading" secondItem="Ivg-ea-m8L" secondAttribute="leading" id="OzF-dj-jcY"/>
                             <constraint firstItem="cBS-pU-EEo" firstAttribute="trailing" secondItem="Ivg-ea-m8L" secondAttribute="trailing" id="VNJ-aR-hZE"/>
-                            <constraint firstItem="fyB-z2-qR2" firstAttribute="top" secondItem="KrD-LY-txP" secondAttribute="bottom" constant="10" id="dX6-Fk-his"/>
+                            <constraint firstItem="fyB-z2-qR2" firstAttribute="top" secondItem="KrD-LY-txP" secondAttribute="bottom" constant="5" id="dX6-Fk-his"/>
                             <constraint firstItem="KrD-LY-txP" firstAttribute="top" secondItem="Ivg-ea-m8L" secondAttribute="top" constant="25" id="e89-uh-PiI"/>
-                            <constraint firstItem="KrD-LY-txP" firstAttribute="width" secondItem="Qdl-NU-5fY" secondAttribute="width" multiplier="0.8" id="gs4-OC-AKc"/>
+                            <constraint firstItem="KrD-LY-txP" firstAttribute="width" secondItem="Qdl-NU-5fY" secondAttribute="width" id="gs4-OC-AKc"/>
                             <constraint firstItem="cBS-pU-EEo" firstAttribute="top" secondItem="KrD-LY-txP" secondAttribute="bottom" constant="20" id="vhO-66-2zn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ivg-ea-m8L"/>

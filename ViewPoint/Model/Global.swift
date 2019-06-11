@@ -23,6 +23,7 @@ struct MyColors {
     static let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
     static let TRANSPARENT_BLACK = UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.1)
     static let LOADING_BLACK = UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.9)
+    static let DISABLED_BLACK =  UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.4)
 
 }
 
@@ -67,11 +68,12 @@ struct MyFont {
     static let navBarLargeFont = MyFont.regular
     static let opponentNameFont = MyFont.regular
     static let pageControlFont = MyFont.regular
+    static let pageControlSelectedFont = MyFont.demiBold
     
     static let navBarSmallFontSize = 22
     static let navBarLargeFontSize = 30
     static let opponentNameSize = 18
-    static let pageControlSize = 17
+    static let pageControlSize = 22
     static let (questionFontSize, answerFontSize) = computeSurveyFontSize()
 
 }

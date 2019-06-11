@@ -25,9 +25,9 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        segmentedControl.tintColor = MyColors.PURPLE
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MyColors.PURPLE, NSAttributedString.Key.font: UIFont(name: MyFont.pageControlFont, size: CGFloat(MyFont.pageControlSize))!], for: .normal)
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.pageControlFont, size: CGFloat(MyFont.pageControlSize))!], for: .highlighted)
+        segmentedControl.tintColor = UIColor.clear
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(patternImage: UIImage(named: "horizontalGradient")!), NSAttributedString.Key.font: UIFont(name: MyFont.pageControlSelectedFont, size: CGFloat(MyFont.pageControlSize))!], for: .selected)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MyColors.DISABLED_BLACK, NSAttributedString.Key.font: UIFont(name: MyFont.pageControlFont, size: CGFloat(MyFont.pageControlSize))!], for: .normal)
         
         viewpointsTableView.delegate = self
         viewpointsTableView.dataSource = self
@@ -110,11 +110,5 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
         return cell
 
     }
-    
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if (indexPath.row % 2 == 1) {
-//            cell.backgroundColor = MyColors.TRANSPARENT_BLACK
-//        }
-//    }
     
 }
