@@ -10,7 +10,7 @@ const db = admin.firestore()
 const deleteRequests = (snapshot: any, doc: any) => {
     snapshot.ref.delete();
     doc.ref.delete();
-    console.log('done');
+    console.log('done deleting');
 }
 
 const createChat = (snapshot: any, doc: any) => {
@@ -25,17 +25,7 @@ const createChat = (snapshot: any, doc: any) => {
             timestamp: admin.firestore.FieldValue.serverTimestamp()
         })
         .catch(err => console.log(err))
-        .then((ref) => 
-            {
-                if (ref) {
-                    // db.collection(`chats/${ref.id}/messages`).add({message: 'hello'})
-                    //     .catch(err => console.log(err))
-                    //     .then((reference) => console.log('Added message:', reference))
-                    //     .catch(() => 'obligatory catch');
-                    deleteRequests(snapshot, doc);
-                }
-            }
-        )
+        .then(() => deleteRequests(snapshot, doc))
         .catch(() => 'obligatory catch');
 }
 
