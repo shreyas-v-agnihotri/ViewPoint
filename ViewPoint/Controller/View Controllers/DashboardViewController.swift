@@ -43,7 +43,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             backgroundColor: MyColors.LOADING_BLACK
         )
         
-        enableFirestoreCache()
+//        enableFirestoreCache()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -95,6 +95,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         pendingChatTableView.showsVerticalScrollIndicator = true
         pendingChatLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.stopAnimating()
+        }
     }
     
     deinit {
@@ -290,7 +294,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
                 
                 self.channelsRendered += 1
-                if (self.channelsRendered == self.channels.count-1) {
+                
+                if (self.channelsRendered == self.channels.count) {
                     self.stopAnimating()
                     self.channelsRendered = 0
                 }
@@ -323,6 +328,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let vc = ChatViewController(
             user: Auth.auth().currentUser!,
             channel: channel,
+            userImage: profilePic,
             opponentImage: currentCell.profileImage.image!
         )
         self.navigationController?.pushViewController(vc, animated: true)

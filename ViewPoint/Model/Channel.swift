@@ -34,9 +34,14 @@ struct Channel {
   
     let id: String
     let topic: String
+    let questions: [String]
+    let user1Answers: [String]
+    let user2Answers: [String]
     let currentUser: ChatParticipant
     let opponent: ChatParticipant
     let timestamp: Date
+    var currentUserIndex: Int
+    var opponentIndex: Int
   
     init(document: QueryDocumentSnapshot) {
         let data = document.data()
@@ -50,13 +55,13 @@ struct Channel {
         let user = Auth.auth().currentUser!
         let users = data["users"] as! [String]
         
-        var currentUserIndex = -1
+        currentUserIndex = -1
         for index in 0...(users.count-1) {
             if users[index] == user.uid {
                 currentUserIndex = index
             }
         }
-        let opponentIndex = users.count - 1 - currentUserIndex
+        opponentIndex = users.count - 1 - currentUserIndex
         
         self.currentUser = ChatParticipant(
             index: currentUserIndex,
@@ -71,6 +76,10 @@ struct Channel {
             names: data["userNames"] as! [String],
             imageURLs: data["userPhotoURLs"] as! [String]
         )
+        
+        self.questions = data["questions"] as! [String]
+        self.user1Answers = data["user1Answers"] as! [String]
+        self.user2Answers = data["user2Answers"] as! [String]
     }
   
 }
@@ -89,13 +98,13 @@ class ChatParticipant {
 }
 
 //extension Channel: DatabaseRepresentation {
-extension Channel {
-
-  var representation: [String : Any] {
-    return ["topic": topic, "id": id]
-  }
-  
-}
+//extension Channel {
+//
+//  var representation: [String : Any] {
+//    return ["topic": topic, "id": id]
+//  }
+//
+//}
 
 extension Channel: Comparable {
   

@@ -98,7 +98,6 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                         
                     if let googleImageURL = googleUser.profile.imageURL(withDimension: UInt(MyDimensions.profilePicSize)) {
                         changeRequest?.photoURL = googleImageURL
-                        print("\n\(googleImageURL)\n")
                     }
                     changeRequest?.commitChanges { (error) in
                         if let error = error {
@@ -106,7 +105,6 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                             self.performSegue(withIdentifier: "goToDashboard", sender: self)
                         }
                         else {
-                            print("\nSaved photo URL\n")
                             self.performSegue(withIdentifier: "goToDashboard", sender: self)
                         }
                     }

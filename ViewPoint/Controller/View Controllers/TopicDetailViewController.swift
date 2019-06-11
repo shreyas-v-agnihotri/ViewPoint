@@ -18,7 +18,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     var topic: Topic = TopicDatabase.topicList[0]   // default topic
     var reference: CollectionReference?
     
-    var selectedAnswers = [Int]()
+    var selectedAnswers = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         return CGFloat(MyDimensions.detailViewHeight)
     }
     
-    func addAnswer(choice: Int) {
+    func addAnswer(choice: String) {
         selectedAnswers.append(choice)
     }
     
@@ -82,13 +82,19 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         // Probably should add a state change listener to make sure user is not nil
         let user = Auth.auth().currentUser
         
+        var questions = [String]()
+        for surveyQuestion in topic.survey {
+            questions.append(surveyQuestion.questionText)
+        }
+        
         let requestRepresentation: [String : Any] = [
             "created": Date(),
             "topic": topic.title,
             "user": user!.uid,
             "userName": user!.displayName as Any,
             "userPhotoURL": user!.photoURL?.absoluteString as Any,
-            "answers": selectedAnswers
+            "answers": selectedAnswers,
+            "questions": questions
         ]
         
         reference?.addDocument(data: requestRepresentation) { error in

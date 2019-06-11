@@ -17,7 +17,10 @@ const createChat = (snapshot: any, doc: any) => {
     console.log("Creating Chat...");
     db.collection('chats').add(
         {
-            users: [ snapshot.get("user"), doc.get("user") ], 
+            users: [ snapshot.get("user"), doc.get("user") ],
+            questions: snapshot.get("questions"),    // Only store questions for one person; they should be the same
+            user1Answers: snapshot.get("answers"),
+            user2Answers: doc.get("answers"), 
             userNames: [snapshot.get("userName"), doc.get("userName")], 
             userPhotoURLs: [snapshot.get("userPhotoURL"), doc.get("userPhotoURL")], 
             topic: snapshot.get("topic"),

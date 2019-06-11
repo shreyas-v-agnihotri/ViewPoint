@@ -17,11 +17,13 @@ final class ChatViewController: MessagesViewController {
 
     private let user: User
     private let channel: Channel
+    private let userImage: UIImage
     private let opponentImage: UIImage
 
-    init(user: User, channel: Channel, opponentImage: UIImage) {
+    init(user: User, channel: Channel, userImage: UIImage, opponentImage: UIImage) {
         self.user = user
         self.channel = channel
+        self.userImage = userImage
         self.opponentImage = opponentImage
         super.init(nibName: nil, bundle: nil)
 
@@ -225,11 +227,19 @@ final class ChatViewController: MessagesViewController {
     
     @objc func profileButtonPressed(sender: UIButton!) {
         
-        let profileVC: ProfileViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        let opponentProfileVC: OpponentProfileViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OpponentProfileViewController") as! OpponentProfileViewController
         
         customPresentViewController(
-            profileVC.present(image: self.opponentImage),
-            viewController: profileVC,
+            opponentProfileVC.present(
+                userImage: self.userImage,
+                opponentImage: self.opponentImage,
+                questions: self.channel.questions,
+                user1Answers: self.channel.user1Answers,
+                user2Answers: self.channel.user2Answers,
+                userIndex: channel.currentUserIndex,
+                opponentIndex: channel.opponentIndex
+            ),
+            viewController: opponentProfileVC,
             animated: true,
             completion: nil
         )
@@ -301,7 +311,7 @@ extension ChatViewController: MessagesDataSource {
 
     // 1
     func currentSender() -> Sender {
-        return Sender(id: user.uid, displayName: "John")
+        return Sender(id: user.uid, displayName: user.displayName ?? "ViewPoint User")
     }
 
     // 2    

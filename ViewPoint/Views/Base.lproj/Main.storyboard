@@ -165,6 +165,76 @@
             </objects>
             <point key="canvasLocation" x="2658" y="-246"/>
         </scene>
+        <!--Opponent Profile View Controller-->
+        <scene sceneID="cgb-8D-2Ev">
+            <objects>
+                <viewController storyboardIdentifier="OpponentProfileViewController" id="k3J-Sk-3Oz" customClass="OpponentProfileViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qdl-NU-5fY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KrD-LY-txP">
+                                <rect key="frame" x="41.333333333333343" y="69" width="331.33333333333326" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="0ZE-9R-ZAs"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="ViewPoints"/>
+                                    <segment title="Settings"/>
+                                </segments>
+                                <color key="tintColor" red="0.64313725490196072" green="0.44705882352941173" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="pageChanged:" destination="k3J-Sk-3Oz" eventType="valueChanged" id="7af-VI-VdP"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBS-pU-EEo">
+                                <rect key="frame" x="0.0" y="129" width="414" height="767"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyB-z2-qR2">
+                                <rect key="frame" x="0.0" y="119" width="414" height="777"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="npB-ke-gwv">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="777"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.6705882353" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="npB-ke-gwv" firstAttribute="top" secondItem="fyB-z2-qR2" secondAttribute="top" id="5ju-EN-3lF"/>
+                                    <constraint firstItem="npB-ke-gwv" firstAttribute="leading" secondItem="fyB-z2-qR2" secondAttribute="leading" id="JCV-QV-0fP"/>
+                                    <constraint firstAttribute="trailing" secondItem="npB-ke-gwv" secondAttribute="trailing" id="xa7-5j-SCE"/>
+                                    <constraint firstAttribute="bottom" secondItem="npB-ke-gwv" secondAttribute="bottom" id="xyc-sA-Vca"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KrD-LY-txP" firstAttribute="centerX" secondItem="Qdl-NU-5fY" secondAttribute="centerX" id="4KH-0x-hdf"/>
+                            <constraint firstItem="cBS-pU-EEo" firstAttribute="leading" secondItem="Ivg-ea-m8L" secondAttribute="leading" id="7Pm-Gy-6Z1"/>
+                            <constraint firstAttribute="bottom" secondItem="fyB-z2-qR2" secondAttribute="bottom" id="9ic-lB-J7O"/>
+                            <constraint firstItem="fyB-z2-qR2" firstAttribute="trailing" secondItem="Ivg-ea-m8L" secondAttribute="trailing" id="CBV-Do-hYw"/>
+                            <constraint firstAttribute="bottom" secondItem="cBS-pU-EEo" secondAttribute="bottom" id="KOe-OH-JQ2"/>
+                            <constraint firstItem="fyB-z2-qR2" firstAttribute="leading" secondItem="Ivg-ea-m8L" secondAttribute="leading" id="OzF-dj-jcY"/>
+                            <constraint firstItem="cBS-pU-EEo" firstAttribute="trailing" secondItem="Ivg-ea-m8L" secondAttribute="trailing" id="VNJ-aR-hZE"/>
+                            <constraint firstItem="fyB-z2-qR2" firstAttribute="top" secondItem="KrD-LY-txP" secondAttribute="bottom" constant="10" id="dX6-Fk-his"/>
+                            <constraint firstItem="KrD-LY-txP" firstAttribute="top" secondItem="Ivg-ea-m8L" secondAttribute="top" constant="25" id="e89-uh-PiI"/>
+                            <constraint firstItem="KrD-LY-txP" firstAttribute="width" secondItem="Qdl-NU-5fY" secondAttribute="width" multiplier="0.8" id="gs4-OC-AKc"/>
+                            <constraint firstItem="cBS-pU-EEo" firstAttribute="top" secondItem="KrD-LY-txP" secondAttribute="bottom" constant="20" id="vhO-66-2zn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ivg-ea-m8L"/>
+                    </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="KrD-LY-txP" id="LOa-2w-fs9"/>
+                        <outlet property="settingsView" destination="cBS-pU-EEo" id="8uz-FA-Jq4"/>
+                        <outlet property="viewpointsTableView" destination="npB-ke-gwv" id="7Fh-dP-c1D"/>
+                        <outlet property="viewpointsView" destination="fyB-z2-qR2" id="Cbd-sN-S1e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pxS-eY-xTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3563.7681159420295" y="-246.42857142857142"/>
+        </scene>
         <!-- -->
         <scene sceneID="Lui-4V-8ke">
             <objects>
@@ -267,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6k-mr-iyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756.521739130435" y="-246.42857142857142"/>
+            <point key="canvasLocation" x="1725" y="-246"/>
         </scene>
         <!--Topic Detail View Controller-->
         <scene sceneID="hM7-6d-q9x">

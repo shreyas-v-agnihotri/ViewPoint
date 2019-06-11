@@ -33,7 +33,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
         pageControl.isHidden = false
     }
     
-    func addAnswer(choice: Int) {
+    func addAnswer(choice: String) {
         topicDetailVC.addAnswer(choice: choice)
     }
     
@@ -55,7 +55,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
                 
             let questionCell: SurveyQuestionCell = Bundle.main.loadNibNamed("SurveyQuestionCell", owner: self, options: nil)?.first as! SurveyQuestionCell
             
-            questionCell.customInit(question: question, answerOptions: ["Yes", "No"])
+            questionCell.customInit(question: question)
             questionCell.surveyCell = self
             
             questionCells.append(questionCell)

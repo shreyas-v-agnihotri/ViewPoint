@@ -33,6 +33,9 @@
 		B182AD7622AEFB6F001EDE24 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B182AD7522AEFB6E001EDE24 /* DateExtension.swift */; };
 		B182AD7B22AF6DB6001EDE24 /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B182AD7922AF6DB6001EDE24 /* RequestCell.swift */; };
 		B182AD7C22AF6DB6001EDE24 /* RequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B182AD7A22AF6DB6001EDE24 /* RequestCell.xib */; };
+		B182AD7E22B045E4001EDE24 /* OpponentProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B182AD7D22B045E3001EDE24 /* OpponentProfileViewController.swift */; };
+		B182AD8122B053E7001EDE24 /* ViewpointsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B182AD7F22B053E7001EDE24 /* ViewpointsTableViewCell.swift */; };
+		B182AD8222B053E7001EDE24 /* ViewpointsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B182AD8022B053E7001EDE24 /* ViewpointsTableViewCell.xib */; };
 		B1A327582274C0ED00DCAC58 /* SurveyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1A327572274C0ED00DCAC58 /* SurveyCell.xib */; };
 		B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */; };
 		B1B2A8F62248A12100E3766C /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F32248A11E00E3766C /* Channel.swift */; };
@@ -68,6 +71,9 @@
 		B182AD7522AEFB6E001EDE24 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = ViewPoint/Customizations/DateExtension.swift; sourceTree = SOURCE_ROOT; };
 		B182AD7922AF6DB6001EDE24 /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestCell.swift; path = ../../Views/RequestCell.swift; sourceTree = "<group>"; };
 		B182AD7A22AF6DB6001EDE24 /* RequestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestCell.xib; sourceTree = "<group>"; };
+		B182AD7D22B045E3001EDE24 /* OpponentProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentProfileViewController.swift; sourceTree = "<group>"; };
+		B182AD7F22B053E7001EDE24 /* ViewpointsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewpointsTableViewCell.swift; path = ../../Views/ViewpointsTableViewCell.swift; sourceTree = "<group>"; };
+		B182AD8022B053E7001EDE24 /* ViewpointsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewpointsTableViewCell.xib; sourceTree = "<group>"; };
 		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyCell.xib; path = "New Group/SurveyCell.xib"; sourceTree = "<group>"; };
 		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 				B1A327572274C0ED00DCAC58 /* SurveyCell.xib */,
 				B114AD392240928000319479 /* SurveyQuestionCell.xib */,
 				B182AD7A22AF6DB6001EDE24 /* RequestCell.xib */,
+				B182AD8022B053E7001EDE24 /* ViewpointsTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +190,7 @@
 				B114AD21223F371F00319479 /* TopicsViewController.swift */,
 				B114AD20223F371F00319479 /* TopicDetailViewController.swift */,
 				B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */,
+				B182AD7D22B045E3001EDE24 /* OpponentProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -195,6 +203,7 @@
 				B114AD2B223F38EF00319479 /* TopicPreviewCell.swift */,
 				B114AD25223F389000319479 /* SurveyCell.swift */,
 				B114AD3522408E2200319479 /* SurveyQuestionCell.swift */,
+				B182AD7F22B053E7001EDE24 /* ViewpointsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -279,6 +288,7 @@
 				B114ACFF223AE7E400319479 /* Assets.xcassets in Resources */,
 				B114ACFD223AE7DF00319479 /* Main.storyboard in Resources */,
 				B1A327582274C0ED00DCAC58 /* SurveyCell.xib in Resources */,
+				B182AD8222B053E7001EDE24 /* ViewpointsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B182AD7E22B045E4001EDE24 /* OpponentProfileViewController.swift in Sources */,
 				B1719A422269235F00E1E33C /* DebateCell.swift in Sources */,
 				B114ACFA223AE7DF00319479 /* LogInViewController.swift in Sources */,
 				B114AD0C223C9C7900319479 /* DashboardViewController.swift in Sources */,
@@ -410,6 +421,7 @@
 				B1B2A8F82248A12100E3766C /* Message.swift in Sources */,
 				B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */,
 				B182AD7B22AF6DB6001EDE24 /* RequestCell.swift in Sources */,
+				B182AD8122B053E7001EDE24 /* ViewpointsTableViewCell.swift in Sources */,
 				B114AD26223F389000319479 /* SurveyCell.swift in Sources */,
 				B15B58B72282AB7500C21867 /* Topic.swift in Sources */,
 			);
