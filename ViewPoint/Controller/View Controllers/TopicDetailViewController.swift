@@ -57,9 +57,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "survey", for: indexPath) as! SurveyCell
-
         cell.customInit(topic: topic, parentVC: self)
-        
         return cell
     }
     
@@ -76,7 +74,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         print("sending request")
         
         startAnimating(
-            message: "Looking for opposing ViewPoints..." + "\n\(selectedAnswers)",
+            message: "Sending your debate request...",
             messageFont: UIFont(name: MyFont.regular, size: CGFloat(MyFont.navBarSmallFontSize)),
             type: .ballScaleMultiple
         )
@@ -103,11 +101,6 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
             self.dismiss(animated: true, completion: nil)
         }
         
-        
-
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
-//            self.stopAnimating(nil)
-//        }
     }
         
 }

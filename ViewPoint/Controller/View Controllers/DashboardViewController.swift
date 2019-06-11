@@ -94,7 +94,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         pendingChatTableView.showsVerticalScrollIndicator = true
-
         pendingChatLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
     }
     
@@ -241,6 +240,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         db.document("chats/\(channel.id)").getDocument { (querySnapshot, error) in
             guard let snapshot = querySnapshot else {
                 print("Error finding channel messages: \(error?.localizedDescription ?? "No error description")")
+                self.stopAnimating()
                 return
             }
             

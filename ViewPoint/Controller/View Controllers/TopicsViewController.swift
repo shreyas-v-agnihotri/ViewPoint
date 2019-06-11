@@ -67,7 +67,7 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
         
         let searchBarView = UIView()
         searchBarView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 60)
-        searchBar.frame = CGRect(x: -5, y: -10, width: (navigationController?.view.bounds.size.width)!-55, height: 60)
+        searchBar.frame = CGRect(x: -5, y: -10, width: (navigationController?.view.bounds.size.width)!-(navigationController?.view.bounds.size.width)!/6.8, height: 60)
         searchBarView.addSubview(self.searchBar)
         
         self.navigationItem.titleView = searchBarView
