@@ -16,6 +16,8 @@ import NVActivityIndicatorView
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NVActivityIndicatorViewable {
     
+    @IBOutlet weak var pendingChatLabel: UILabel!
+    @IBOutlet weak var dataView: UIView!
     @IBOutlet weak var fixedView: UIView!
     @IBOutlet var tableView: UITableView!
     var profilePic: UIImage = UIImage(named: "defaultProfilePic")!    // Default profile pic
@@ -67,6 +69,21 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
+        dataView.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
+        
+        
+        dataView.layer.masksToBounds = false
+        dataView.layer.shadowColor = UIColor.darkGray.cgColor
+        dataView.layer.shadowOpacity = 0.6
+        dataView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        dataView.layer.shadowRadius = 6
+        dataView.layer.cornerRadius = 5
+        
+        dataView.layer.shadowPath = UIBezierPath(rect: CGRect(x: dataView.bounds.minX, y: dataView.bounds.minY, width: dataView.bounds.width*9/10, height: dataView.bounds.height)).cgPath
+        dataView.layer.shouldRasterize = true
+        dataView.layer.rasterizationScale = UIScreen.main.scale
+        
+        pendingChatLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
     }
     
     deinit {
@@ -141,8 +158,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         navBar.masksToBounds = false
         navBar.shadowColor = UIColor.darkGray.cgColor
         navBar.shadowOpacity = 0.6
-        navBar.shadowOffset = CGSize(width: 0, height: 3.0)
-        navBar.shadowRadius = 3
+        navBar.shadowOffset = CGSize(width: 0, height: 3)
+        navBar.shadowRadius = 8
         navBar.borderColor = UIColor.clear.cgColor
         navBar.borderWidth = 0
     }
