@@ -25,10 +25,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let db = Firestore.firestore()
     private var channels = [Channel]()
+    private var requests = [String]()
     
     var channelsRendered = 0
 
     private var channelListener: ListenerRegistration?
+    private var requestListener: ListenerRegistration?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,22 +76,31 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
+        requestListener = db.collection("requests").whereField("user", isEqualTo: Auth.auth().currentUser!.uid).addSnapshotListener { querySnapshot, error in
+            
+            guard let snapshot = querySnapshot else {
+                print("Error listening for request updates: \(error?.localizedDescription ?? "No error description")")
+                return
+            }
+            
+            var currentRequests: [String] = []
+            snapshot.documents.forEach { document in
+                currentRequests.append(document.data()["topic"] as! String)
+            }
+            self.requests = currentRequests
+            self.pendingChatTableView.reloadData()
+            
+            self.pendingChatLabel.text = String(snapshot.documents.count)
+        }
         
-//        dataView.layer.masksToBounds = false
-//        dataView.layer.shadowColor = UIColor.darkGray.cgColor
-//        dataView.layer.shadowOpacity = 0.6
-//        dataView.layer.shadowOffset = CGSize(width: 0, height: 2)
-//        dataView.layer.shadowRadius = 6
-//        dataView.layer.cornerRadius = 5
-//        dataView.layer.shadowPath = UIBezierPath(rect: CGRect(x: dataView.bounds.minX, y: dataView.bounds.minY, width: dataView.bounds.width*9/10, height: dataView.bounds.height)).cgPath
-//        dataView.layer.shouldRasterize = true
-//        dataView.layer.rasterizationScale = UIScreen.main.scale
-        
+        pendingChatTableView.showsVerticalScrollIndicator = true
+
         pendingChatLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
     }
     
     deinit {
         channelListener?.remove()
+        requestListener?.remove()
     }
     
     // Deselect selected chat
@@ -134,14 +146,17 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         channels[index] = channel
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .right)
+        
+        tableView.moveRow(at: IndexPath(row: index, section: 0), to: IndexPath(row: 0, section: 0))
         channels.sort()
         
 //        tableView.reloadData()
         
         // Animate all rows in section at once
-        let range = NSMakeRange(0, self.tableView.numberOfSections)
-        let sections = NSIndexSet(indexesIn: range)
-        self.tableView.reloadSections(sections as IndexSet, with: .fade)
+//        let range = NSMakeRange(0, self.tableView.numberOfSections)
+//        let sections = NSIndexSet(indexesIn: range)
+//        self.tableView.reloadSections(sections as IndexSet, with: .fade)
     }
     
     private func removeChannel(_ channel: Channel) {
@@ -212,6 +227,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if (tableView == self.pendingChatTableView) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "pendingChat", for: indexPath) as! RequestCell
+            let request = requests[indexPath.row]
+            cell.customInit(topic: request)
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "debate", for: indexPath) as! DebateCell
         
         let channel = channels[indexPath.row]
@@ -280,15 +302,24 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (tableView == self.pendingChatTableView) {
+            return requests.count
+        }
         return channels.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (tableView == self.pendingChatTableView) {
+            return 40
+        }
         return 110
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        chatButtonPressed(self)
+        if (tableView == self.pendingChatTableView) {
+            return
+        }
         let currentCell = tableView.cellForRow(at: indexPath) as! DebateCell
         let channel = channels[indexPath.row]
         let vc = ChatViewController(
