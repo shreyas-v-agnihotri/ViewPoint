@@ -317,9 +317,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        chatButtonPressed(self)
-        if (tableView == self.pendingChatTableView) {
-            return
-        }
+
         let currentCell = tableView.cellForRow(at: indexPath) as! DebateCell
         let channel = channels[indexPath.row]
         let vc = ChatViewController(
