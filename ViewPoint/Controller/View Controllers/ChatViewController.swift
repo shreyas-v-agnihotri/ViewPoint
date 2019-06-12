@@ -151,6 +151,13 @@ final class ChatViewController: MessagesViewController {
         }
     }
     
+//    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+//        if !isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message) {
+//            return NSAttributedString(string: "Delivered", attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+//        }
+//        return nil
+//    }
+    
 
     // MARK: - Helpers
 
@@ -291,16 +298,19 @@ extension ChatViewController: MessagesLayoutDelegate {
 //    }
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        
         if isFromCurrentSender(message: message) {
             return !isPreviousMessageSameSender(at: indexPath) ? 12 : 0.5
         } else {
-            return !isPreviousMessageSameSender(at: indexPath) ? (12 + 15) : 0.5
+            return !isPreviousMessageSameSender(at: indexPath) ? (12 + 8) : 0.5
         }
     }
     
     func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return (!isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message)) ? 12 : 0.5
     }
+    
+    
 }
 
 
