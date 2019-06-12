@@ -151,14 +151,13 @@ final class ChatViewController: MessagesViewController {
         }
     }
     
-//    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-//        if !isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message) {
-//            return NSAttributedString(string: "Delivered", attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
-//        }
-//        return nil
-//    }
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if !isPreviousMessageSameSender(at: indexPath)/* && isFromCurrentSender(message: message)*/ {
+            return NSAttributedString(string: "Delivered", attributes: [NSAttributedString.Key.font: UIFont(name: Avenir.regular, size: CGFloat(MyFont.opponentNameSize))!])
+        }
+        return nil
+    }
     
-
     // MARK: - Helpers
 
     private func save(_ message: Message) {
@@ -176,8 +175,6 @@ final class ChatViewController: MessagesViewController {
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
             }
         }
         
@@ -270,6 +267,10 @@ extension ChatViewController: MessagesDisplayDelegate {
                          in messagesCollectionView: MessagesCollectionView) -> UIColor {
         
         return isFromCurrentSender(message: message) ? MyColors.BLUE : MyColors.LIGHT_GRAY
+    }
+    
+    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ? MyColors.WHITE : MyColors.DARK_GRAY
     }
 
 //    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,

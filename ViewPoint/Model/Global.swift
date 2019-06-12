@@ -55,25 +55,32 @@ struct MyDimensions {
 
 }
 
-struct MyFont {
-
+struct Avenir {
     static let light = "AvenirNext-UltraLight"
     static let regular = "AvenirNext-Regular"
     static let medium = "AvenirNext-Medium"
     static let demiBold = "AvenirNext-DemiBold"
+}
+
+struct MyFont {
     
     static let topicPreviewTitleKern = 2
     
-    static let navBarSmallFont = MyFont.medium
-    static let navBarLargeFont = MyFont.regular
-    static let opponentNameFont = MyFont.regular
-    static let pageControlFont = MyFont.regular
-    static let pageControlSelectedFont = MyFont.demiBold
+    static let answerFont = Avenir.medium
+    static let loadingFont = Avenir.regular
+    static let questionFont = Avenir.regular
+    static let navBarSmallFont = Avenir.medium
+    static let navBarLargeFont = Avenir.regular
+    static let opponentNameFont = Avenir.regular
+    static let pageControlFont = Avenir.regular
+    static let pageControlSelectedFont = Avenir.demiBold
+    static let messageFont = Avenir.regular
     
     static let navBarSmallFontSize = 22
     static let navBarLargeFontSize = 30
     static let opponentNameSize = 18
     static let pageControlSize = 22
+    static let messageSize = 17
     static let (questionFontSize, answerFontSize) = computeSurveyFontSize()
 
 }

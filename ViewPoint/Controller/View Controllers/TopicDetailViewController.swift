@@ -75,7 +75,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         
         startAnimating(
             message: "Sending your debate request...",
-            messageFont: UIFont(name: MyFont.regular, size: CGFloat(MyFont.navBarSmallFontSize)),
+            messageFont: UIFont(name: MyFont.loadingFont, size: CGFloat(MyFont.navBarSmallFontSize)),
             type: .ballScaleMultiple
         )
         

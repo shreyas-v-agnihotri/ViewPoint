@@ -37,10 +37,8 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
 
         viewpointsView.clipsToBounds = true
         settingsView.clipsToBounds = true
-
         viewpointsView.layer.cornerRadius = MyDimensions.profileViewRadius
         settingsView.layer.cornerRadius = MyDimensions.profileViewRadius
-        
         viewpointsView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         settingsView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         

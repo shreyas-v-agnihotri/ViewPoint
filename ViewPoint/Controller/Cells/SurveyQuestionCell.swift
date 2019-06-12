@@ -23,7 +23,7 @@ class SurveyQuestionCell: UITableViewCell, TwicketSegmentedControlDelegate {
         self.questionLabel.text = question.questionText
         options = question.answerChoices
 
-        self.questionLabel.font = UIFont(name: MyFont.regular, size: MyFont.questionFontSize)
+        self.questionLabel.font = UIFont(name: MyFont.questionFont, size: MyFont.questionFontSize)
         self.pageControl.isHidden = true
         
 //        self.background.layer.masksToBounds = false
@@ -40,7 +40,7 @@ class SurveyQuestionCell: UITableViewCell, TwicketSegmentedControlDelegate {
         segmentedControl.sliderBackgroundColor = MyColors.WHITE
         segmentedControl.highlightTextColor = MyColors.BLUE
         segmentedControl.defaultTextColor = MyColors.WHITE
-        segmentedControl.font = UIFont(name: MyFont.medium, size: MyFont.answerFontSize)!
+        segmentedControl.font = UIFont(name: MyFont.answerFont, size: MyFont.answerFontSize)!
         segmentedControl.backgroundColor = UIColor.clear
         segmentedControl.isSliderShadowHidden = true
         segmentedControl.move(to: -1)   // No selection on default

@@ -27,18 +27,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     private var channels = [Channel]()
     private var requests = [String]()
     
+//    private let refreshControl = UIRefreshControl()
+    
     var channelsRendered = 0
 
     private var channelListener: ListenerRegistration?
     private var requestListener: ListenerRegistration?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         startAnimating(
             message: "Loading your chats...",
-            messageFont: UIFont(name: MyFont.regular, size: CGFloat(MyFont.navBarSmallFontSize)),
+            messageFont: UIFont(name: MyFont.loadingFont, size: CGFloat(MyFont.navBarSmallFontSize)),
             type: .ballScaleMultiple,
             backgroundColor: MyColors.LOADING_BLACK
         )
@@ -47,6 +48,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+//        tableView.refreshControl = refreshControl
+//        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        
         pendingChatTableView.delegate = self
         pendingChatTableView.dataSource = self
         
@@ -112,6 +117,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tableView.deselectRow(at: index, animated: true)
         }
     }
+    
+//    @objc func refreshData(_ sender: Any) {
+//        tableView.reloadData()
+//        refreshControl.endRefreshing()
+//    }
     
     func handleChannelChange(_ change: DocumentChange) {
         
