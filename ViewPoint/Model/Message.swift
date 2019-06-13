@@ -53,10 +53,7 @@ struct Message: MessageType {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: MyFont.messageFont, size: CGFloat(MyFont.messageSize))!]
         )
         return .attributedText(attributed)
-        
-        
 
-        
     }
     
     var messageId: String {

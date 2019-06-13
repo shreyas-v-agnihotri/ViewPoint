@@ -39,13 +39,14 @@ final class ChatViewController: MessagesViewController {
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         enableFirestoreCache()
         
         navigationItem.largeTitleDisplayMode = .always
         
-        view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and tableview
+        // Disables automatic title collapse by breaking connection between navbar and table view
+        view.addSubview(UIView())
+        super.viewDidLoad()
+
         
         setOpponentProfileButton()
         configureMessageCollectionView()
@@ -317,8 +318,6 @@ extension ChatViewController: MessagesLayoutDelegate {
     func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return (!isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message)) ? 12 : 0.5
     }
-    
-    
 }
 
 
@@ -326,25 +325,20 @@ extension ChatViewController: MessagesLayoutDelegate {
 
 extension ChatViewController: MessagesDataSource {
     
-
-    // 1
     func currentSender() -> Sender {
         return Sender(id: user.uid, displayName: user.displayName ?? "ViewPoint User")
     }
 
-    // 2    
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
 
-    // 3
     func messageForItem(at indexPath: IndexPath,
                         in messagesCollectionView: MessagesCollectionView) -> MessageType {
 
         return messages[indexPath.section]
     }
 
-    // 4
     func cellTopLabelAttributedText(for message: MessageType,
                                     at indexPath: IndexPath) -> NSAttributedString? {
 
@@ -365,13 +359,8 @@ extension ChatViewController: MessageInputBarDelegate {
 
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
 
-        // 1
         let message = Message(user: user, content: text)
-
-        // 2
         save(message)
-
-        // 3
         inputBar.inputTextView.text = ""
     }
 
