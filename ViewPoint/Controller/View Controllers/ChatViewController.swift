@@ -45,7 +45,7 @@ final class ChatViewController: MessagesViewController {
         
         navigationItem.largeTitleDisplayMode = .always
         
-        view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and table view
+        view.addSubview(UIView())   // Disables automatic title collapse by breaking connection between navbar and tableview
         
         setOpponentProfileButton()
         configureMessageCollectionView()
@@ -57,8 +57,6 @@ final class ChatViewController: MessagesViewController {
         
         let id = channel.id
         reference = db.collection(["chats", id, "messages"].joined(separator: "/"))
-
-        super.viewDidLoad()
         
         scrollsToBottomOnKeyboardBeginsEditing = true
         maintainPositionOnKeyboardFrameChanged = true
@@ -80,7 +78,6 @@ final class ChatViewController: MessagesViewController {
                 self.handleDocumentChange(change)
             }
         }
-
     }
     
     func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
@@ -100,11 +97,14 @@ final class ChatViewController: MessagesViewController {
         
         // Hide the outgoing avatar and adjust the label alignment to line up with the messages
         layout?.setMessageOutgoingAvatarSize(.zero)
+        
+//        layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 22)))
         layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-        layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
         
         // Set outgoing avatar to overlap with the message bubble
+//        layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 29, bottom: 17.5, right: 0)))
         layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 18, bottom: 17.5, right: 0)))
+        
         layout?.setMessageIncomingAvatarSize(CGSize(width: 30, height: 30))
         layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -17.5, left: -18, bottom: 17.5, right: 18))
         
@@ -130,7 +130,6 @@ final class ChatViewController: MessagesViewController {
         messageInputBar.inputTextView.layer.masksToBounds = true
         messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
-        
         messageInputBar.setRightStackViewWidthConstant(to: 36, animated: false)
         messageInputBar.sendButton.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
@@ -152,11 +151,24 @@ final class ChatViewController: MessagesViewController {
     }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        if !isPreviousMessageSameSender(at: indexPath)/* && isFromCurrentSender(message: message)*/ {
-            return NSAttributedString(string: "Delivered", attributes: [NSAttributedString.Key.font: UIFont(name: Avenir.regular, size: CGFloat(MyFont.opponentNameSize))!])
+        
+        if indexPath.section == 0 {
+            return NSAttributedString(
+                string: "",
+                attributes: [NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY, NSAttributedString.Key.font: UIFont(name: Avenir.regular, size: CGFloat(MyFont.timeLabelSize))!])
+        }
+        if !isPreviousMessageSameSender(at: indexPath) {
+            return NSAttributedString(
+                string: dateToLabel(date: message.sentDate),
+                attributes: [NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY, NSAttributedString.Key.font: UIFont(name: Avenir.regular, size: CGFloat(MyFont.timeLabelSize))!])
         }
         return nil
     }
+    
+//    func messagePadding(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIEdgeInsets {
+//
+//        return (indexPath.section == 0) ? UIEdgeInsets(top: 25, left: 0, bottom: 0, right: 0) : .zero
+//    }
     
     // MARK: - Helpers
 
@@ -269,14 +281,8 @@ extension ChatViewController: MessagesDisplayDelegate {
         return isFromCurrentSender(message: message) ? MyColors.BLUE : MyColors.LIGHT_GRAY
     }
     
-    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? MyColors.WHITE : MyColors.DARK_GRAY
-    }
-
-//    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,
-//                             in messagesCollectionView: MessagesCollectionView) -> Bool {
-//
-//        return false
+//    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+//        return isFromCurrentSender(message: message) ? MyColors.WHITE : MyColors.DARK_GRAY
 //    }
 
     func messageStyle(for message: MessageType, at indexPath: IndexPath,
@@ -300,10 +306,11 @@ extension ChatViewController: MessagesLayoutDelegate {
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         
+//        if (indexPath.section == 0) { return CGFloat(MyFont.timeLabelSize + 21) }
         if isFromCurrentSender(message: message) {
-            return !isPreviousMessageSameSender(at: indexPath) ? 12 : 0.5
+            return !isPreviousMessageSameSender(at: indexPath) ? CGFloat(MyFont.timeLabelSize + 11) : 0.5
         } else {
-            return !isPreviousMessageSameSender(at: indexPath) ? (12 + 8) : 0.5
+            return !isPreviousMessageSameSender(at: indexPath) ? CGFloat(MyFont.timeLabelSize + 27) : 0.5
         }
     }
     

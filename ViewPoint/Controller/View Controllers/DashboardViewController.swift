@@ -259,27 +259,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             
             let recentMessage = snapshot.data()!["messagePreview"] as Any
+            
             let timestamp = snapshot.data()!["timestamp"] as! Timestamp
-            let recentMessageDate = timestamp.dateValue()
-            
-            let formatter = DateFormatter()
-            var recentMessageTimeLabel: String
-            
-            if (recentMessageDate.isInToday) {
-                formatter.dateFormat = "hh:mm a"
-                recentMessageTimeLabel = formatter.string(from: recentMessageDate)
-            }
-            else if (recentMessageDate.isInYesterday) {
-                recentMessageTimeLabel = "Yesterday"
-            }
-            else if (recentMessageDate.isInThisWeek) {
-                formatter.dateFormat = "EEEE"
-                recentMessageTimeLabel = formatter.string(from: recentMessageDate)
-            }
-            else {
-                formatter.dateFormat = "MMM d"
-                recentMessageTimeLabel = formatter.string(from: recentMessageDate)
-            }
+            let recentMessageTimeLabel: String = dateToLabel(date: timestamp.dateValue())
             
             KingfisherManager.shared.retrieveImage(with: URL(string: channel.opponent.imageURL)!) { result in
                 switch result {

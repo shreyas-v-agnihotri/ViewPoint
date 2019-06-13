@@ -81,6 +81,7 @@ struct MyFont {
     static let opponentNameSize = 18
     static let pageControlSize = 22
     static let messageSize = 17
+    static let timeLabelSize = 13
     static let (questionFontSize, answerFontSize) = computeSurveyFontSize()
 
 }
@@ -122,5 +123,26 @@ func enableFirestoreCache() {
     let settings = FirestoreSettings()
     settings.isPersistenceEnabled = true
     db.settings = settings
+}
+
+func dateToLabel(date: Date) -> String {
+    
+    let formatter = DateFormatter()
+    
+    if (date.isInToday) {
+        formatter.dateFormat = "hh:mm a"
+        return formatter.string(from: date)
+    }
+    else if (date.isInYesterday) {
+        return "Yesterday"
+    }
+    else if (date.isInThisWeek) {
+        formatter.dateFormat = "EEEE"
+        return formatter.string(from: date)
+    }
+    else {
+        formatter.dateFormat = "MMM d"
+        return formatter.string(from: date)
+    }
 }
 
