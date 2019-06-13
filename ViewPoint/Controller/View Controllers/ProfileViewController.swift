@@ -10,9 +10,12 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import Presentr
+import NVActivityIndicatorView
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var profilePicView: UIImageView!
     var profilePic: UIImage = UIImage(named: "defaultProfilePic")!
     
@@ -21,7 +24,20 @@ class ProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         profilePicView.image = profilePic
-
+        
+//        profilePicView.layer.borderColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!).cgColor
+//        profilePicView.layer.borderWidth = 5
+//        profilePicView.layer.cornerRadius = 100
+//        signOutButton.setTitleColor(UIColor(patternImage: UIImage(named: "horizontalGradient")!), for: .normal)
+        
+        signOutButton.setTitleColor(MyColors.WHITE, for: .normal)
+        signOutButton.setBackgroundImage(UIImage(named: "horizontalGradient"), for: .normal)
+        signOutButton.clipsToBounds = true
+        signOutButton.layer.cornerRadius = 30
+//        signOutButton.layer.borderWidth = 1
+//        signOutButton.layer.borderColor = UIColor.clear.cgColor
+        
+        nameLabel.text = Auth.auth().currentUser?.displayName
     }
     
     func present(image: UIImage) -> Presentr {
@@ -46,26 +62,29 @@ class ProfileViewController: UIViewController {
         
     }
     
-    @IBAction func backButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func backButtonPressed(_ sender: Any) {
+//        dismiss(animated: true, completion: nil)
+//    }
     
     @IBAction func signOutPressed(_ sender: Any) {
         
-        print("\nAttempting to sign out\n")
-//        SVProgressHUD.show(withStatus: "Signing out...")
+        startAnimating(
+            message: "Signing out...",
+            messageFont: UIFont(name: MyFont.loadingFont, size: CGFloat(MyFont.navBarSmallFontSize)),
+            type: .ballScaleMultiple,
+            backgroundColor: MyColors.LOADING_BLACK
+        )
         
         GIDSignIn.sharedInstance()?.signOut()
-        
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
+            stopAnimating()
             return
         }
         
-        print("\nSigned out\n")
-//        SVProgressHUD.dismiss()
+        stopAnimating()
         
         performSegue(withIdentifier: "goToLogIn", sender: self)
         

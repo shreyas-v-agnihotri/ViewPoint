@@ -11,6 +11,10 @@ import Presentr
 
 class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var reportUserButton: UIButton!
+    @IBOutlet weak var blockUserButton: UIButton!
+    @IBOutlet weak var opponentNameLabel: UILabel!
+    @IBOutlet weak var opponentImageView: UIImageView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var viewpointsView: UIView!
     @IBOutlet weak var settingsView: UIView!
@@ -21,6 +25,7 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
     var questions: [String] = []
     var userAnswers: [String] = []
     var opponentAnswers: [String] = []
+    var opponentName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +47,18 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
         viewpointsView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         settingsView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
+        blockUserButton.setTitleColor(MyColors.WHITE, for: .normal)
+        blockUserButton.setBackgroundImage(UIImage(named: "horizontalGradient"), for: .normal)
+        blockUserButton.clipsToBounds = true
+        blockUserButton.layer.cornerRadius = 30
+        
+        reportUserButton.setTitleColor(MyColors.WHITE, for: .normal)
+        reportUserButton.setBackgroundImage(UIImage(named: "horizontalGradient"), for: .normal)
+        reportUserButton.clipsToBounds = true
+        reportUserButton.layer.cornerRadius = 30
+        
+        opponentImageView.image = opponentImage
+        opponentNameLabel.text = opponentName
     }
     
     @IBAction func pageChanged(_ sender: Any) {
@@ -64,10 +81,11 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
         return answers
     }
     
-    func present(userImage: UIImage, opponentImage: UIImage, questions: [String], user1Answers: [String], user2Answers: [String], userIndex: Int, opponentIndex: Int) -> Presentr {
+    func present(userImage: UIImage, opponentImage: UIImage, opponentName: String, questions: [String], user1Answers: [String], user2Answers: [String], userIndex: Int, opponentIndex: Int) -> Presentr {
         
         self.userImage = userImage
         self.opponentImage = opponentImage
+        self.opponentName = opponentName
         self.questions = questions
         (self.userAnswers, self.opponentAnswers) = matchUserToAnswers(userIndex: userIndex, opponentIndex: opponentIndex, user1Answers: user1Answers, user2Answers: user2Answers)
         
@@ -109,4 +127,11 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
 
     }
     
+    @IBAction func reportUserPressed(_ sender: Any) {
+        print("\n\nReport user\n\n")
+    }
+    
+    @IBAction func blockUserPressed(_ sender: Any) {
+        print("\n\nBlock user\n\n")
+    }
 }

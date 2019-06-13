@@ -250,6 +250,7 @@ final class ChatViewController: MessagesViewController {
             opponentProfileVC.present(
                 userImage: self.userImage,
                 opponentImage: self.opponentImage,
+                opponentName: self.channel.opponent.name,
                 questions: self.channel.questions,
                 user1Answers: self.channel.user1Answers,
                 user2Answers: self.channel.user2Answers,
@@ -262,8 +263,6 @@ final class ChatViewController: MessagesViewController {
         )
     }
 }
-
-
 
 // MARK: MessagesDisplayDelegate
 
