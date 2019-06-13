@@ -19,14 +19,9 @@ final class TopicPreviewCell: ElongationCell {
     @IBOutlet var aboutTitleLabel: UILabel!
     @IBOutlet var aboutDescriptionLabel: UILabel!
     
-    @IBOutlet weak var closeButton: UIButton!
-    
     @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
     
     func customInit(topic: Topic) {
-        
-        closeButton.isEnabled = false
-        closeButton.isHidden = true
 
         let spacedTitle = NSMutableAttributedString(string: topic.title, attributes: [
             NSAttributedString.Key.kern: MyFont.topicPreviewTitleKern,
@@ -38,16 +33,6 @@ final class TopicPreviewCell: ElongationCell {
         self.aboutTitleLabel?.text = topic.title
         self.aboutDescriptionLabel?.text = topic.title
         self.bottomViewHeight.constant = CGFloat(MyDimensions.bottomViewHeight)
-    }
-
-    // @IBOutlet var topImageViewTopConstraint: NSLayoutConstraint!
-    
-    func hideCloseButton() {
-        closeButton.isHidden = true
-    }
-    
-    func showCloseButton() {
-        closeButton.isHidden = false
     }
     
 }

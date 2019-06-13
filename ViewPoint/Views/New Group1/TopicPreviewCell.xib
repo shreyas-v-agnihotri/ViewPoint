@@ -81,27 +81,10 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KE2-fB-061">
-                                                <rect key="frame" x="328" y="8" width="39" height="33"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="33" id="E2s-Uf-R8i"/>
-                                                    <constraint firstAttribute="width" constant="39" id="ehY-Dn-EWb"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Close">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="closePressed:" destination="Tn3-op-5hs" eventType="touchUpInside" id="w6p-bu-O6k"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="KE2-fB-061" secondAttribute="trailing" constant="8" id="2lg-jb-XwB"/>
                                             <constraint firstItem="aXe-Sf-wBw" firstAttribute="centerX" secondItem="VAE-et-flO" secondAttribute="centerX" id="Cf0-NV-BR5"/>
-                                            <constraint firstItem="KE2-fB-061" firstAttribute="top" secondItem="VAE-et-flO" secondAttribute="top" constant="8" id="WfE-D1-Sr3"/>
                                             <constraint firstItem="aXe-Sf-wBw" firstAttribute="centerY" secondItem="VAE-et-flO" secondAttribute="centerY" id="lmc-LV-zNV"/>
                                         </constraints>
                                     </view>
@@ -147,7 +130,6 @@
                 <outlet property="bottomViewHeight" destination="Ywc-LN-JZc" id="o78-nj-WNs"/>
                 <outlet property="bottomViewHeightConstraint" destination="Ywc-LN-JZc" id="4V7-Sq-Xxn"/>
                 <outlet property="bottomViewTopConstraint" destination="RjD-hT-LRq" id="bh4-rN-U5s"/>
-                <outlet property="closeButton" destination="KE2-fB-061" id="Cwx-yq-mDi"/>
                 <outlet property="countryLabel" destination="99c-0B-Lao" id="TYv-WI-7yG"/>
                 <outlet property="imageOverlay" destination="VAE-et-flO" id="jaf-IK-XMV"/>
                 <outlet property="localityLabel" destination="SCD-5B-3Ps" id="EAG-bl-q3t"/>

@@ -78,10 +78,7 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
         searchBar.resignFirstResponder()
 //        searchBar.showsCancelButton = false
 //        searchBar.text = ""
-        
-        let currentCell = tableView.cellForRow(at: indexPath) as! TopicPreviewCell
-        currentCell.showCloseButton()
-        
+                
         guard let topicDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "topicDetailViewController") as? TopicDetailViewController else { return }
         
         let topic = topicList[indexPath.row]
