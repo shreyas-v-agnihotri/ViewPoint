@@ -265,7 +265,7 @@ final class ChatViewController: MessagesViewController {
 
 
 
-// MARK: - MessagesDisplayDelegate
+// MARK: MessagesDisplayDelegate
 
 extension ChatViewController: MessagesDisplayDelegate {
     
@@ -295,7 +295,7 @@ extension ChatViewController: MessagesDisplayDelegate {
 
 }
 
-// MARK: - MessagesLayoutDelegate
+// MARK: MessagesLayoutDelegate
 
 extension ChatViewController: MessagesLayoutDelegate {
 
@@ -321,7 +321,7 @@ extension ChatViewController: MessagesLayoutDelegate {
 }
 
 
-// MARK: - MessagesDataSource
+// MARK: MessagesDataSource
 
 extension ChatViewController: MessagesDataSource {
     
