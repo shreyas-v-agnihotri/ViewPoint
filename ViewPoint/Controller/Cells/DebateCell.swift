@@ -20,7 +20,10 @@ class DebateCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         topicLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
-
+        
+        profileImage.layer.borderColor = MyColors.PURPLE.cgColor
+        profileImage.layer.cornerRadius = profileImage.bounds.width/2
+//        self.markRead()
     }
 //
 //    override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,6 +38,20 @@ class DebateCell: UITableViewCell {
         self.nameLabel.text = name
         self.messageLabel.text = messagePreview
         self.timeLabel.text = time
+    }
+    
+    func markUnread() {
+//        profileImage.layer.borderWidth = 4
+        nameLabel.font = UIFont(name: MyFont.unreadFont, size: nameLabel.font.pointSize)
+        messageLabel.font = UIFont(name: MyFont.unreadFont, size: messageLabel.font.pointSize)
+        timeLabel.font = UIFont(name: MyFont.unreadFont, size: timeLabel.font.pointSize)
+    }
+    
+    func markRead() {
+        profileImage.layer.borderWidth = 0
+        nameLabel.font = UIFont(name: MyFont.messageFont, size: nameLabel.font.pointSize)
+        messageLabel.font = UIFont(name: MyFont.messageFont, size: messageLabel.font.pointSize)
+        timeLabel.font = UIFont(name: MyFont.messageFont, size: timeLabel.font.pointSize)
     }
     
 }

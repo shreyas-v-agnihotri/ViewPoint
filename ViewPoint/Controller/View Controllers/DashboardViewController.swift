@@ -159,9 +159,18 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         channels[index] = channel
+        
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .right)
+                
+        if (self.navigationController?.visibleViewController is ChatViewController) {
+            print("Not marking message unread")
+        } else {
+            let updatedCell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! DebateCell
+            updatedCell.markUnread()
+        }
         
         tableView.moveRow(at: IndexPath(row: index, section: 0), to: IndexPath(row: 0, section: 0))
+        
         channels.sort()
         
 //        tableView.reloadData()
@@ -315,13 +324,15 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        chatButtonPressed(self)
 
-        let currentCell = tableView.cellForRow(at: indexPath) as! DebateCell
+        let selectedCell = tableView.cellForRow(at: indexPath) as! DebateCell
+        selectedCell.markRead()
+        
         let channel = channels[indexPath.row]
         let vc = ChatViewController(
             user: Auth.auth().currentUser!,
             channel: channel,
             userImage: profilePic,
-            opponentImage: currentCell.profileImage.image!
+            opponentImage: selectedCell.profileImage.image!
         )
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -150,7 +150,6 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                         print("Error fetching remote instance ID: \(error)")
                     } else if let result = result {
                         
-                        print(result.token)
                         let tokenRepresentation = ["token": result.token]
                     Firestore.firestore().document("notificationTokens/\(currentFirebaseUser!.uid)").setData(tokenRepresentation)
                     }

@@ -213,6 +213,15 @@ final class ChatViewController: MessagesViewController {
         }
         
         messagesCollectionView.reloadData()
+        
+        let isLatestMessage = messages.firstIndex(of: message) == (messages.count - 1)
+        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
+        
+        if shouldScrollToBottom {
+            DispatchQueue.main.async {
+                self.messagesCollectionView.scrollToBottom(animated: true)
+            }
+        }
     }
     
     func setOpponentProfileButton() {

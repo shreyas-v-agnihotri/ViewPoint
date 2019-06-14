@@ -75,6 +75,7 @@ struct MyFont {
     static let pageControlFont = Avenir.regular
     static let pageControlSelectedFont = Avenir.demiBold
     static let messageFont = Avenir.regular
+    static let unreadFont = Avenir.medium
     
     static let navBarSmallFontSize = 22
     static let navBarLargeFontSize = 30
