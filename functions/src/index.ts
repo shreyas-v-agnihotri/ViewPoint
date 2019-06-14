@@ -35,20 +35,43 @@ const createChat = (snapshot: any, doc: any) => {
 export const onNewRequest = functions.firestore.document('requests/{requestID}').onCreate((snapshot, context) => {
 
     const requestAnswers = snapshot.get("answers");
+    const topic = snapshot.get("topic");
 
-    db.collection('requests').where("topic", "==", snapshot.get("topic")).orderBy("created").get()
+    db.collection('requests').where("topic", "==", topic).orderBy("created").get()
         .then((querySnapshot) => {
 
             let found = false;
-            const BreakException = {};
+            const BreakException = "Sike! It worked";
 
             // Needs to be improved somehow; forEach will continue through all snapshot results
             querySnapshot.forEach((doc) => {
-                if (found === false && snapshot.get("user") !== doc.get("user") && (JSON.stringify(requestAnswers) !== JSON.stringify(doc.get("answers")))) {
-                    createChat(snapshot, doc);
-                    found = true;
-                    throw BreakException;
-                }
+
+                const sender = snapshot.get("user");
+                const otherUser = doc.get("user");
+                db.collection('chats').where("topic", "==", topic).where("users", "array-contains", sender).get()
+                    .then((chatsSnapshot) => {
+
+                        let chatsWithOtherUser = 0;
+                        chatsSnapshot.forEach((chat) => {
+
+                            const users = chat.get("users");
+                            if(users.includes(otherUser)) {
+                                chatsWithOtherUser += 1;
+                            }
+                        });
+
+                        if (chatsWithOtherUser === 0) {
+                            if (found === false && sender !== otherUser && (JSON.stringify(requestAnswers) !== JSON.stringify(doc.get("answers")))) {
+                                createChat(snapshot, doc);
+                                found = true;
+                                throw BreakException;
+                            }
+                        }
+                    })
+                    .catch((error) => {
+                        console.log("Error getting chats: ", error);
+                    });
+
             });
         })
         .catch((error) => {
@@ -81,7 +104,7 @@ export const sendNotification = functions.firestore.document('chats/{chatID}/mes
                         notification: {
                             title: `${senderName} (${topic})`,
                             body: `${content}`,
-                            badge: '1'
+                            // badge: '1'
                         }
                     };
 

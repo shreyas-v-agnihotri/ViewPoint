@@ -85,7 +85,6 @@ final class ChatViewController: MessagesViewController {
         return messages[indexPath.section].sender == messages[indexPath.section + 1].sender
     }
     
-    
     func configureMessageCollectionView() {
         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
         layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 8)
@@ -165,6 +164,7 @@ final class ChatViewController: MessagesViewController {
         reference?.addDocument(data: message.representation) { error in
             if let e = error {
                 print("Error sending message: \(e.localizedDescription)")
+                // Add something for message send failure
                 return
             }
         }
