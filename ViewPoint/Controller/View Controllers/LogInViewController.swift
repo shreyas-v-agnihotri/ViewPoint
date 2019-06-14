@@ -17,7 +17,11 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     @IBOutlet weak var cloudsView: UIImageView!
     @IBOutlet weak var cloudsViewLeading: NSLayoutConstraint!
     
+//    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
+        
+        signInButton.isEnabled = false
         
         startAnimating()
 
@@ -25,7 +29,10 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self
+        
         GIDSignIn.sharedInstance()?.signInSilently()
+        
+        signInButton.isEnabled = true
         
         designButton(button: signInButton)
         
@@ -94,6 +101,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             _ = Auth.auth().addStateDidChangeListener { (auth, currentFirebaseUser) in
                 
                 if (currentFirebaseUser != nil) {
+                    
                     let changeRequest = currentFirebaseUser?.createProfileChangeRequest()
                                         
                     if let googleImageURL = googleUser.profile.imageURL(withDimension: UInt(MyDimensions.profilePicSize)) {
@@ -108,7 +116,9 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                             self.performSegue(withIdentifier: "goToDashboard", sender: self)
                         }
                     }
+                    
                 }
+
             }
         })
         
@@ -126,13 +136,28 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     // After Google OAuth2 authentication, close authentication window
     func sign(_ signIn: GIDSignIn?, dismiss viewController: UIViewController?) {
+        
         dismiss(animated: true) {() -> Void in }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        stopAnimating()
-//    }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        _ = Auth.auth().addStateDidChangeListener { (auth, currentFirebaseUser) in
+            if (currentFirebaseUser != nil) {
+                
+                InstanceID.instanceID().instanceID { (result, error) in
+                    if let error = error {
+                        print("Error fetching remote instance ID: \(error)")
+                    } else if let result = result {
+                        
+                        print(result.token)
+                        let tokenRepresentation = ["token": result.token]
+                    Firestore.firestore().document("notificationTokens/\(currentFirebaseUser!.uid)").setData(tokenRepresentation)
+                    }
+                }
+            }
+        }
+    }
 }
 
 

@@ -55,7 +55,7 @@ struct Channel {
         let user = Auth.auth().currentUser!
         let users = data["users"] as! [String]
         
-        currentUserIndex = -1
+        currentUserIndex = 0
         for index in 0...(users.count-1) {
             if users[index] == user.uid {
                 currentUserIndex = index
@@ -90,6 +90,8 @@ class ChatParticipant {
     var imageURL: String
     
     init(index: Int, ids: [String], names: [String], imageURLs: [String]) {
+//        print(ids)
+//        print(index)
         self.id = ids[index]
         self.name = names[index]
         self.imageURL = imageURLs[index]

@@ -74,6 +74,7 @@
 		B182AD7D22B045E3001EDE24 /* OpponentProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentProfileViewController.swift; sourceTree = "<group>"; };
 		B182AD7F22B053E7001EDE24 /* ViewpointsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewpointsTableViewCell.swift; path = ../../Views/ViewpointsTableViewCell.swift; sourceTree = "<group>"; };
 		B182AD8022B053E7001EDE24 /* ViewpointsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewpointsTableViewCell.xib; sourceTree = "<group>"; };
+		B182AD8322B3025D001EDE24 /* ViewPoint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ViewPoint.entitlements; sourceTree = "<group>"; };
 		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyCell.xib; path = "New Group/SurveyCell.xib"; sourceTree = "<group>"; };
 		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 				B114AD31223F521300319479 /* Views */,
 				B114AD30223F51A000319479 /* Model */,
 				B114ACFE223AE7E400319479 /* Assets.xcassets */,
+				B182AD8322B3025D001EDE24 /* ViewPoint.entitlements */,
 				B114AD03223AE7E400319479 /* Info.plist */,
 				B114AD09223B697100319479 /* GoogleService-Info.plist */,
 			);
@@ -253,6 +255,11 @@
 					B114ACF3223AE7DF00319479 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -570,6 +577,8 @@
 			baseConfigurationReference = DB61583ED81DD1FDD94CCF07 /* Pods-ViewPoint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ViewPoint/ViewPoint.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW2D2HF4LQ;
 				INFOPLIST_FILE = viewPoint/Info.plist;
@@ -580,6 +589,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shreyasagnihotri.viewPoint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -590,6 +600,8 @@
 			baseConfigurationReference = 4953687226D395B9B06BE65C /* Pods-ViewPoint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ViewPoint/ViewPoint.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW2D2HF4LQ;
 				INFOPLIST_FILE = viewPoint/Info.plist;
@@ -600,6 +612,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shreyasagnihotri.viewPoint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

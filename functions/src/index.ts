@@ -51,8 +51,55 @@ export const onNewRequest = functions.firestore.document('requests/{requestID}')
                 }
             });
         })
-        .catch(function(error) {
+        .catch((error) => {
             console.log("Error getting documents: ", error);
         });
 
 })
+
+export const sendNotification = functions.firestore.document('chats/{chatID}/messages/{messageID}').onCreate((snapshot, context) => {
+
+    const chatID = context.params.chatID;
+    const senderID = snapshot.get("senderID");
+    const content = snapshot.get("content");
+    
+    db.doc(`chats/${chatID}`).get().then((chatSnapshot) => {
+        const users = chatSnapshot.get("users");
+        const userNames = chatSnapshot.get("userNames");
+
+        const topic = chatSnapshot.get("topic");
+
+        for (let index = 0; index < users.length; index++) {
+            if (users[index] !== senderID) {
+
+                const senderName = userNames[users.length-1-index];
+
+                db.doc(`notificationTokens/${users[index]}`).get().then((tokenSnapshot) => {
+                    const token = tokenSnapshot.get("token");
+
+                    const payload = {
+                        notification: {
+                            title: `${senderName} (${topic})`,
+                            body: `${content}`,
+                            badge: '1'
+                        }
+                    };
+
+                    admin.messaging().sendToDevice(token, payload).then((response) => {
+                        console.log("Successfully sent notification: ", response);
+                    })
+                    .catch(function(error) {
+                        console.log("Error sending message: ", error);
+                    });
+                })
+                .catch((error) => {
+                    console.log("Error getting notification token: ", error);
+                });
+            }
+        }
+    })
+    .catch((error) => {
+        console.log("Error getting chat: ", error);
+    });
+
+});

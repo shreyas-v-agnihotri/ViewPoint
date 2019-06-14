@@ -51,13 +51,7 @@ final class ChatViewController: MessagesViewController {
         setOpponentProfileButton()
         configureMessageCollectionView()
         
-//        guard let id = channel.id else {
-//            navigationController?.popViewController(animated: true)
-//            return
-//        }
-        
-        let id = channel.id
-        reference = db.collection(["chats", id, "messages"].joined(separator: "/"))
+        reference = db.collection(["chats", channel.id, "messages"].joined(separator: "/"))
         
         scrollsToBottomOnKeyboardBeginsEditing = true
         maintainPositionOnKeyboardFrameChanged = true
@@ -98,15 +92,13 @@ final class ChatViewController: MessagesViewController {
         
         // Hide the outgoing avatar and adjust the label alignment to line up with the messages
         layout?.setMessageOutgoingAvatarSize(.zero)
-        
-//        layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 22)))
+
         layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
         
         // Set outgoing avatar to overlap with the message bubble
-//        layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 29, bottom: 17.5, right: 0)))
         layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 18, bottom: 17.5, right: 0)))
         
-        layout?.setMessageIncomingAvatarSize(CGSize(width: 30, height: 30))
+        layout?.setMessageIncomingAvatarSize(CGSize(width: MyDimensions.navBarProfileButtonSize, height: MyDimensions.navBarProfileButtonSize))
         layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -17.5, left: -18, bottom: 17.5, right: 18))
         
         layout?.setMessageIncomingAccessoryViewSize(CGSize(width: 30, height: 30))
@@ -166,11 +158,6 @@ final class ChatViewController: MessagesViewController {
         return nil
     }
     
-//    func messagePadding(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIEdgeInsets {
-//
-//        return (indexPath.section == 0) ? UIEdgeInsets(top: 25, left: 0, bottom: 0, right: 0) : .zero
-//    }
-    
     // MARK: - Helpers
 
     private func save(_ message: Message) {
@@ -214,17 +201,18 @@ final class ChatViewController: MessagesViewController {
         
         messages.append(message)
         messages.sort()
+        messagesCollectionView.reloadData()
         
         let isLatestMessage = messages.firstIndex(of: message) == (messages.count - 1)
         let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
-        
-        messagesCollectionView.reloadData()
         
         if shouldScrollToBottom {
             DispatchQueue.main.async {
                 self.messagesCollectionView.scrollToBottom(animated: true)
             }
         }
+        
+        messagesCollectionView.reloadData()
     }
     
     func setOpponentProfileButton() {

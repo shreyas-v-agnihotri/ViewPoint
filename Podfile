@@ -21,5 +21,6 @@ target 'ViewPoint' do
   # Database pods
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Messaging'
 
 end

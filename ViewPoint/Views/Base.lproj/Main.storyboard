@@ -200,7 +200,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="nu9-rS-bYQ">
-                                                <rect key="frame" x="0.0" y="402" width="414" height="40"/>
+                                                <rect key="frame" x="20.666666666666657" y="402" width="372.66666666666674" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="hey-4s-q1j"/>
                                                 </constraints>
@@ -209,12 +209,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gPa-GP-BKQ">
-                                                <rect key="frame" x="31" y="677" width="352" height="60"/>
+                                                <rect key="frame" x="31" y="687" width="352" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHD-PS-xFD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="168.66666666666666" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="168.66666666666666" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="6Q0-87-GIT"/>
+                                                            <constraint firstAttribute="height" constant="50" id="6Q0-87-GIT"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                         <state key="normal" title="Block"/>
@@ -223,9 +223,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOi-vX-7eS">
-                                                        <rect key="frame" x="183.66666666666663" y="0.0" width="168.33333333333337" height="60"/>
+                                                        <rect key="frame" x="183.66666666666663" y="0.0" width="168.33333333333337" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="e4q-B3-L8K"/>
+                                                            <constraint firstAttribute="height" constant="50" id="e4q-B3-L8K"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                         <state key="normal" title="Report"/>
@@ -236,7 +236,7 @@
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="21p-RQ-P68"/>
+                                                    <constraint firstAttribute="height" constant="50" id="21p-RQ-P68"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -256,7 +256,7 @@
                                     <constraint firstAttribute="trailing" secondItem="adW-lq-Ubs" secondAttribute="trailing" id="1jP-uJ-ALF"/>
                                     <constraint firstItem="adW-lq-Ubs" firstAttribute="top" secondItem="cBS-pU-EEo" secondAttribute="top" id="2a8-oP-bCD"/>
                                     <constraint firstItem="zvo-if-YxS" firstAttribute="height" secondItem="cBS-pU-EEo" secondAttribute="height" multiplier="0.35" id="NLZ-OJ-Kku"/>
-                                    <constraint firstItem="nu9-rS-bYQ" firstAttribute="width" secondItem="cBS-pU-EEo" secondAttribute="width" id="WUj-3u-qhr"/>
+                                    <constraint firstItem="nu9-rS-bYQ" firstAttribute="width" secondItem="cBS-pU-EEo" secondAttribute="width" multiplier="0.9" id="WUj-3u-qhr"/>
                                     <constraint firstAttribute="bottom" secondItem="adW-lq-Ubs" secondAttribute="bottom" id="nb3-mg-96A"/>
                                     <constraint firstItem="adW-lq-Ubs" firstAttribute="leading" secondItem="cBS-pU-EEo" secondAttribute="leading" id="oyd-He-Dho"/>
                                     <constraint firstItem="gPa-GP-BKQ" firstAttribute="width" secondItem="cBS-pU-EEo" secondAttribute="width" multiplier="0.85" id="wEW-AZ-uuH"/>
@@ -441,9 +441,9 @@
                                 <rect key="frame" x="0.0" y="115.33333333333331" width="414" height="716.66666666666674"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk5-cg-EtJ" userLabel="Sign Out Button">
-                                        <rect key="frame" x="82.666666666666671" y="641.66666666666663" width="248.66666666666663" height="60"/>
+                                        <rect key="frame" x="82.666666666666671" y="651.66666666666663" width="248.66666666666663" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="99T-dj-ftF"/>
+                                            <constraint firstAttribute="height" constant="50" id="99T-dj-ftF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <state key="normal" title="Sign Out">
@@ -454,7 +454,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="AGf-q0-jER">
-                                        <rect key="frame" x="0.0" y="357.33333333333337" width="414" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="357.33333333333337" width="372.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1RZ-hp-o81"/>
                                         </constraints>
@@ -483,7 +483,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NEx-Ci-Gaz" firstAttribute="height" secondItem="Obv-f1-yUA" secondAttribute="height" multiplier="0.8" id="3Bt-Pe-TDK"/>
-                            <constraint firstItem="AGf-q0-jER" firstAttribute="width" secondItem="Obv-f1-yUA" secondAttribute="width" id="JtN-SF-rGg"/>
+                            <constraint firstItem="AGf-q0-jER" firstAttribute="width" secondItem="Obv-f1-yUA" secondAttribute="width" multiplier="0.9" id="JtN-SF-rGg"/>
                             <constraint firstItem="NEx-Ci-Gaz" firstAttribute="centerX" secondItem="Obv-f1-yUA" secondAttribute="centerX" id="OtJ-Rw-Hzj"/>
                             <constraint firstItem="AGf-q0-jER" firstAttribute="centerY" secondItem="Obv-f1-yUA" secondAttribute="centerY" multiplier="1.1" id="TTl-V0-sun"/>
                             <constraint firstItem="AfH-1p-zOZ" firstAttribute="bottom" secondItem="NEx-Ci-Gaz" secondAttribute="bottom" constant="30" id="cNJ-IQ-fVs"/>

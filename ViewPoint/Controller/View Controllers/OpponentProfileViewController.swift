@@ -50,12 +50,12 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
         blockUserButton.setTitleColor(MyColors.WHITE, for: .normal)
         blockUserButton.setBackgroundImage(UIImage(named: "horizontalGradient"), for: .normal)
         blockUserButton.clipsToBounds = true
-        blockUserButton.layer.cornerRadius = 30
+        blockUserButton.layer.cornerRadius = blockUserButton.bounds.height/2
         
         reportUserButton.setTitleColor(MyColors.WHITE, for: .normal)
         reportUserButton.setBackgroundImage(UIImage(named: "horizontalGradient"), for: .normal)
         reportUserButton.clipsToBounds = true
-        reportUserButton.layer.cornerRadius = 30
+        reportUserButton.layer.cornerRadius = reportUserButton.bounds.height/2
         
         opponentImageView.image = opponentImage
         opponentNameLabel.text = opponentName

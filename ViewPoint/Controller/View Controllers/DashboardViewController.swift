@@ -38,7 +38,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         startAnimating(
-            message: "Loading your chats...",
+            message: "Loading your debates...",
             messageFont: UIFont(name: MyFont.loadingFont, size: CGFloat(MyFont.navBarSmallFontSize)),
             type: .ballScaleMultiple,
             backgroundColor: MyColors.LOADING_BLACK
@@ -67,7 +67,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
-        channelListener = db.collection("chats").addSnapshotListener { querySnapshot, error in
+        channelListener = db.collection("chats").whereField("users", arrayContains: Auth.auth().currentUser!.uid).addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
                 print("Error listening for channel updates: \(error?.localizedDescription ?? "No error description")")
                 return
