@@ -214,10 +214,10 @@ final class ChatViewController: MessagesViewController {
         
         messagesCollectionView.reloadData()
         
-        let isLatestMessage = messages.firstIndex(of: message) == (messages.count - 1)
-        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
-        
-        if shouldScrollToBottom {
+        // Double check and scroll to bottom if necessary
+        let isLatest = messages.firstIndex(of: message) == (messages.count - 1)
+        let shouldScroll = messagesCollectionView.isAtBottom && isLatest
+        if shouldScroll {
             DispatchQueue.main.async {
                 self.messagesCollectionView.scrollToBottom(animated: true)
             }
