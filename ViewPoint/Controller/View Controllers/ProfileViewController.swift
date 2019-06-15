@@ -30,10 +30,8 @@ class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
 //        profilePicView.layer.cornerRadius = 100
 //        signOutButton.setTitleColor(UIColor(patternImage: UIImage(named: "horizontalGradient")!), for: .normal)
         
-        signOutButton.setTitleColor(MyColors.WHITE, for: .normal)
-        signOutButton.setBackgroundImage(UIImage(named: "horizontalGradient"), for: .normal)
-        signOutButton.clipsToBounds = true
-        signOutButton.layer.cornerRadius = signOutButton.bounds.height/2
+        customizeButton(button: signOutButton)
+
 //        signOutButton.layer.borderWidth = 1
 //        signOutButton.layer.borderColor = UIColor.clear.cgColor
         

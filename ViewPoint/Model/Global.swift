@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-public let db = Firestore.firestore()
+//public let db = Firestore.firestore()
 
 // Global color variables
 struct MyColors {
@@ -126,11 +126,11 @@ func addProfileBorder(profileButton: UIButton) {
     profileButton.layer.borderColor = MyColors.WHITE.cgColor
 }
 
-func enableFirestoreCache() {
-    let settings = FirestoreSettings()
-    settings.isPersistenceEnabled = true
-    db.settings = settings
-}
+//func enableFirestoreCache() {
+//    let settings = FirestoreSettings()
+//    settings.isPersistenceEnabled = true
+//    Firestore.firestore().settings = settings
+//}
 
 func dateToLabel(date: Date) -> String {
     
@@ -151,5 +151,12 @@ func dateToLabel(date: Date) -> String {
         formatter.dateFormat = "MMM d"
         return formatter.string(from: date)
     }
+}
+
+func customizeButton(button: UIButton) {
+    button.clipsToBounds = true
+    button.setTitleColor(MyColors.WHITE, for: .normal)
+    button.setBackgroundImage(UIImage(named: "horizontalGradient"), for: .normal)
+    button.layer.cornerRadius = button.bounds.height/2
 }
 

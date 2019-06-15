@@ -39,7 +39,7 @@ final class ChatViewController: MessagesViewController {
     }
 
     override func viewDidLoad() {
-        enableFirestoreCache()
+//        enableFirestoreCache()
         
         navigationItem.largeTitleDisplayMode = .always
         

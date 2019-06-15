@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewpointsTableViewCell: UITableViewCell {
+class ViewpointsCell: UITableViewCell {
 
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
@@ -27,6 +27,12 @@ class ViewpointsTableViewCell: UITableViewCell {
         self.userAnswer.text = userAnswer
         self.opponentImageView.image = opponentImage
         self.opponentAnswer.text = opponentAnswer
+        
+//        if (userAnswer != opponentAnswer) {
+//            self.userAnswer.textColor = MyColors.HORIZONTAL_GRADIENT
+//            self.opponentAnswer.textColor = MyColors.HORIZONTAL_GRADIENT
+//        }
+        
     }
     
 }

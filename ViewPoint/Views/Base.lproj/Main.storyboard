@@ -160,6 +160,9 @@
                     </tableView>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="cTM-7I-j5a" kind="show" id="wCq-lF-VpH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjw-OC-Qvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,13 +197,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="767"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicGradient" translatesAutoresizingMaskIntoConstraints="NO" id="zvo-if-YxS">
-                                                <rect key="frame" x="72.666666666666657" y="113.33333333333334" width="268.66666666666674" height="268.66666666666663"/>
+                                                <rect key="frame" x="72.666666666666657" y="56" width="268.66666666666674" height="268.33333333333331"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="zvo-if-YxS" secondAttribute="height" multiplier="1:1" id="VGv-c0-XXl"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="nu9-rS-bYQ">
-                                                <rect key="frame" x="20.666666666666657" y="402" width="372.66666666666674" height="40"/>
+                                                <rect key="frame" x="20.666666666666657" y="344.33333333333331" width="372.66666666666674" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="hey-4s-q1j"/>
                                                 </constraints>
@@ -208,42 +211,41 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gPa-GP-BKQ">
-                                                <rect key="frame" x="31" y="687" width="352" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gPa-GP-BKQ">
+                                                <rect key="frame" x="31" y="622" width="352" height="115"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHD-PS-xFD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="168.66666666666666" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="6Q0-87-GIT"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                                        <state key="normal" title="Block"/>
-                                                        <connections>
-                                                            <action selector="blockUserPressed:" destination="k3J-Sk-3Oz" eventType="touchUpInside" id="LdF-Jq-Uyk"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOi-vX-7eS">
-                                                        <rect key="frame" x="183.66666666666663" y="0.0" width="168.33333333333337" height="50"/>
+                                                        <rect key="frame" x="121" y="0.0" width="110" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="e4q-B3-L8K"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                                        <state key="normal" title="Report"/>
+                                                        <state key="normal" title="Report User"/>
                                                         <connections>
-                                                            <action selector="blockUserPressed:" destination="k3J-Sk-3Oz" eventType="touchUpInside" id="Vrf-K2-e7z"/>
                                                             <action selector="reportUserPressed:" destination="k3J-Sk-3Oz" eventType="touchUpInside" id="IrN-VF-2JS"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHD-PS-xFD">
+                                                        <rect key="frame" x="112" y="65" width="128" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="6Q0-87-GIT"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                                        <state key="normal" title="Leave Debate"/>
+                                                        <connections>
+                                                            <action selector="leaveDebatePressed:" destination="k3J-Sk-3Oz" eventType="touchUpInside" id="5uf-Ru-eOG"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="21p-RQ-P68"/>
+                                                    <constraint firstAttribute="height" constant="115" id="21p-RQ-P68"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="nu9-rS-bYQ" firstAttribute="centerX" secondItem="adW-lq-Ubs" secondAttribute="centerX" id="J4c-bp-ScZ"/>
-                                            <constraint firstItem="nu9-rS-bYQ" firstAttribute="centerY" secondItem="adW-lq-Ubs" secondAttribute="centerY" multiplier="1.1" id="L5h-PM-ech"/>
+                                            <constraint firstItem="nu9-rS-bYQ" firstAttribute="centerY" secondItem="adW-lq-Ubs" secondAttribute="centerY" multiplier="0.95" id="L5h-PM-ech"/>
                                             <constraint firstItem="gPa-GP-BKQ" firstAttribute="centerX" secondItem="adW-lq-Ubs" secondAttribute="centerX" id="epF-yZ-ytD"/>
                                             <constraint firstItem="zvo-if-YxS" firstAttribute="centerX" secondItem="adW-lq-Ubs" secondAttribute="centerX" id="j7g-7l-9ol"/>
                                             <constraint firstItem="nu9-rS-bYQ" firstAttribute="top" secondItem="zvo-if-YxS" secondAttribute="bottom" constant="20" id="jgx-2O-xJe"/>
@@ -296,7 +298,7 @@
                         <viewLayoutGuide key="safeArea" id="Ivg-ea-m8L"/>
                     </view>
                     <connections>
-                        <outlet property="blockUserButton" destination="uHD-PS-xFD" id="qUT-cV-XdN"/>
+                        <outlet property="leaveDebateButton" destination="uHD-PS-xFD" id="Crc-39-IeB"/>
                         <outlet property="opponentImageView" destination="zvo-if-YxS" id="f7I-Xt-ve6"/>
                         <outlet property="opponentNameLabel" destination="nu9-rS-bYQ" id="iOe-Ab-AD9"/>
                         <outlet property="reportUserButton" destination="mOi-vX-7eS" id="n7A-3q-Bl6"/>

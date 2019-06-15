@@ -12,7 +12,7 @@ import Presentr
 class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var reportUserButton: UIButton!
-    @IBOutlet weak var blockUserButton: UIButton!
+    @IBOutlet weak var leaveDebateButton: UIButton!
     @IBOutlet weak var opponentNameLabel: UILabel!
     @IBOutlet weak var opponentImageView: UIImageView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -36,7 +36,7 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
         
         viewpointsTableView.delegate = self
         viewpointsTableView.dataSource = self
-        viewpointsTableView.register(UINib(nibName: "ViewpointsTableViewCell", bundle: nil), forCellReuseIdentifier: "viewpoints")
+        viewpointsTableView.register(UINib(nibName: "ViewpointsCell", bundle: nil), forCellReuseIdentifier: "viewpoints")
         viewpointsTableView.rowHeight = UITableView.automaticDimension
         viewpointsTableView.estimatedRowHeight = 200
 
@@ -47,15 +47,8 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
         viewpointsView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         settingsView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
-        blockUserButton.setTitleColor(MyColors.WHITE, for: .normal)
-        blockUserButton.setBackgroundImage(UIImage(named: "horizontalGradient"), for: .normal)
-        blockUserButton.clipsToBounds = true
-        blockUserButton.layer.cornerRadius = blockUserButton.bounds.height/2
-        
-        reportUserButton.setTitleColor(MyColors.WHITE, for: .normal)
-        reportUserButton.setBackgroundImage(UIImage(named: "horizontalGradient"), for: .normal)
-        reportUserButton.clipsToBounds = true
-        reportUserButton.layer.cornerRadius = reportUserButton.bounds.height/2
+        customizeButton(button: leaveDebateButton)
+        customizeButton(button: reportUserButton)
         
         opponentImageView.image = opponentImage
         opponentNameLabel.text = opponentName
@@ -113,7 +106,7 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "viewpoints", for: indexPath) as! ViewpointsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "viewpoints", for: indexPath) as! ViewpointsCell
         
         cell.customInit(
             question: questions[indexPath.row],
@@ -128,10 +121,12 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
     }
     
     @IBAction func reportUserPressed(_ sender: Any) {
-        print("\n\nReport user\n\n")
+        print("\n\nReport User\n\n")
     }
     
-    @IBAction func blockUserPressed(_ sender: Any) {
-        print("\n\nBlock user\n\n")
+    @IBAction func leaveDebatePressed(_ sender: Any) {
+        print("\n\nLeave Debate\n\n")
     }
+    
+
 }

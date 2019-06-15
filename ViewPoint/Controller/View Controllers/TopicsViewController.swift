@@ -22,7 +22,6 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
         
         configureTableView()
         setSearchBar()
-
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -78,11 +77,14 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
         searchBar.resignFirstResponder()
 //        searchBar.showsCancelButton = false
 //        searchBar.text = ""
+        
+        let selectedCell = tableView.cellForRow(at: indexPath) as! TopicPreviewCell
                 
-        guard let topicDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "topicDetailViewController") as? TopicDetailViewController else { return }
+        let topicDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "topicDetailViewController") as! TopicDetailViewController
         
         let topic = topicList[indexPath.row]
-        topicDetailViewController.customInit(topic: topic)
+        topicDetailViewController.customInit(topic: topic, topicPreviewCell: selectedCell)
+        
         expand(viewController: topicDetailViewController)
     }
     
@@ -93,11 +95,17 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "topic", for: indexPath) as! TopicPreviewCell
         
+//        self.view.addSubview(cell.bottomView)
+        
         let topic = topicList[indexPath.row]
         cell.customInit(topic: topic)
         
         return cell
     }
+    
+//    @objc func researchTopicPressed() {
+//        print("researchTopic")
+//    }
     
 //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //

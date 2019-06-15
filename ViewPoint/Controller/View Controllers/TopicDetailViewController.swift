@@ -28,15 +28,23 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.closeView))
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         self.view.addGestureRecognizer(swipeDown)
-        
+                
         configureTableView()
 
     }
     
-    func customInit(topic: Topic) {
+    func customInit(topic: Topic, topicPreviewCell: TopicPreviewCell) {
         self.topic = topic
+        
+        topicPreviewCell.researchButton.addTarget(self, action:#selector(researchPressed), for: .touchUpInside)
+                
         reference = db.collection("requests")
+//        topicsVC.addChild(self)
 //        reference = db.collection(["topics", topic.identifier, "chatRequests"].joined(separator: "/"))
+    }
+    
+    @objc func researchPressed() {
+        print("research")
     }
     
     func configureTableView() {
