@@ -10,6 +10,7 @@ import ElongationPreview
 import UIKit
 import NVActivityIndicatorView
 import Firebase
+import SafariServices
 
 final class TopicDetailViewController: ElongationDetailViewController, NVActivityIndicatorViewable {
     
@@ -23,28 +24,38 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+//        button.backgroundColor = UIColor.green
+//        button.setTitle("Research", for: .normal)
+//        button.addTarget(self, action: #selector(researchPressed), for: .touchUpInside)
+//        self.view.bringSubviewToFront(button)
+        
         // Disable scrolling, add swipe down to close
         self.view.gestureRecognizers?.removeAll()
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.closeView))
-        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-        self.view.addGestureRecognizer(swipeDown)
-                
+//        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.closeView))
+//        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+//        self.view.addGestureRecognizer(swipeDown)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(research))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
         configureTableView()
 
     }
     
-    func customInit(topic: Topic, topicPreviewCell: TopicPreviewCell) {
+    @objc func research() {
+        let researchURL = URL(string: "http://www.nba.com")!
+        let safari = SFSafariViewController(url: researchURL)
+        present(safari, animated: true, completion: nil)
+    }
+    
+    func customInit(topic: Topic) {
         self.topic = topic
-        
-        topicPreviewCell.researchButton.addTarget(self, action:#selector(researchPressed), for: .touchUpInside)
                 
         reference = db.collection("requests")
 //        topicsVC.addChild(self)
 //        reference = db.collection(["topics", topic.identifier, "chatRequests"].joined(separator: "/"))
-    }
-    
-    @objc func researchPressed() {
-        print("research")
     }
     
     func configureTableView() {

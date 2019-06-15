@@ -161,7 +161,7 @@
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="cTM-7I-j5a" kind="show" id="wCq-lF-VpH"/>
+                        <segue destination="cTM-7I-j5a" kind="show" identifier="goToTopicDetail" id="wCq-lF-VpH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjw-OC-Qvr" userLabel="First Responder" sceneMemberID="firstResponder"/>

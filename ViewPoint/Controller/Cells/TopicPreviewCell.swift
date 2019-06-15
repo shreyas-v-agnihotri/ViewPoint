@@ -18,7 +18,6 @@ final class TopicPreviewCell: ElongationCell {
     
     @IBOutlet var aboutTitleLabel: UILabel!
     @IBOutlet var aboutDescriptionLabel: UILabel!
-    @IBOutlet weak var researchButton: UIButton!
     
     @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
     
@@ -26,6 +25,10 @@ final class TopicPreviewCell: ElongationCell {
         
 //        customizeButton(button: researchTopicButton)
 //        researchTopicButton.addTarget(self, action:#selector(researchTopicPressed), for: .touchUpInside)
+        
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRegistered))
+//        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+//        self.addGestureRecognizer(swipeRight)
 
         let spacedTitle = NSMutableAttributedString(
             string: topic.title,
@@ -39,10 +42,14 @@ final class TopicPreviewCell: ElongationCell {
 //        self.aboutTitleLabel?.text = topic.title
 //        self.aboutDescriptionLabel?.text = topic.title
         
-        self.aboutTitleLabel.text = "Create a Debate Request"
-        self.aboutDescriptionLabel.text = "Survey length: \(topic.survey.count) questions"
+        self.aboutTitleLabel.text = "Research This Topic"
+        self.aboutDescriptionLabel.text = "\u{2190} Swipe left anywhere on the screen"
         
         self.bottomViewHeight.constant = CGFloat(MyDimensions.bottomViewHeight)
     }
-
+    
+//    @objc func swipeRegistered() {
+//        print("hello")
+//    }
+    
 }
