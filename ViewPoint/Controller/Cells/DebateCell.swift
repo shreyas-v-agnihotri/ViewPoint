@@ -19,18 +19,11 @@ class DebateCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        topicLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
+        topicLabel.textColor = MyColors.HORIZONTAL_GRADIENT
         
-        profileImage.layer.borderColor = MyColors.PURPLE.cgColor
-        profileImage.layer.cornerRadius = profileImage.bounds.width/2
-//        self.markRead()
+//        profileImage.layer.borderColor = MyColors.HORIZONTAL_GRADIENT.cgColor
+//        profileImage.layer.cornerRadius = profileImage.bounds.width/2
     }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
     
     func customInit(profileImage: UIImage, topic: String, name: String, messagePreview: String, time: String) {
         self.profileImage.image = profileImage
@@ -42,16 +35,18 @@ class DebateCell: UITableViewCell {
     
     func markUnread() {
 //        profileImage.layer.borderWidth = 4
-        nameLabel.font = UIFont(name: MyFont.unreadFont, size: nameLabel.font.pointSize)
+        nameLabel.font = UIFont(name: MyFont.unreadNameFont, size: nameLabel.font.pointSize)
         messageLabel.font = UIFont(name: MyFont.unreadFont, size: messageLabel.font.pointSize)
         timeLabel.font = UIFont(name: MyFont.unreadFont, size: timeLabel.font.pointSize)
+        timeLabel.textColor = MyColors.HORIZONTAL_GRADIENT
     }
     
     func markRead() {
-        profileImage.layer.borderWidth = 0
+//        profileImage.layer.borderWidth = 0
         nameLabel.font = UIFont(name: MyFont.messageFont, size: nameLabel.font.pointSize)
         messageLabel.font = UIFont(name: MyFont.messageFont, size: messageLabel.font.pointSize)
         timeLabel.font = UIFont(name: MyFont.messageFont, size: timeLabel.font.pointSize)
+        timeLabel.textColor = MyColors.MEDIUM_GRAY
     }
     
 }

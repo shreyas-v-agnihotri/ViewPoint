@@ -19,9 +19,6 @@ class ViewpointsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-//        userAnswer.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
-//        opponentAnswer.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
     }
     
     func customInit(question: String, userImage: UIImage, userAnswer: String, opponentImage: UIImage, opponentAnswer: String) {

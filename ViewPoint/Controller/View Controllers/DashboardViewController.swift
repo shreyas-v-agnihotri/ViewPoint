@@ -99,7 +99,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         pendingChatTableView.showsVerticalScrollIndicator = true
-        pendingChatLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
+        pendingChatLabel.textColor = MyColors.HORIZONTAL_GRADIENT
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.stopAnimating()
@@ -161,7 +161,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         channels[index] = channel
         
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .right)
-                
+        
         if (self.navigationController?.visibleViewController is ChatViewController) {
             print("Not marking message unread")
         } else {

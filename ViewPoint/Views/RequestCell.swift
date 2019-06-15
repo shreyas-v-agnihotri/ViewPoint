@@ -16,7 +16,7 @@ class RequestCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        topicLabel.textColor = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
+        topicLabel.textColor = MyColors.HORIZONTAL_GRADIENT
     }
 
     func customInit(topic: String) {

@@ -16,15 +16,20 @@ public let db = Firestore.firestore()
 struct MyColors {
     
     static let WHITE = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)              // #ffffff
+    
     static let PURPLE = UIColor(red:0.64, green:0.45, blue:1.00, alpha:1.0)             // #a472ff
     static let BLUE = UIColor(red:0.51, green:0.56, blue:1.00, alpha:1.0)               // #838eff
+    static let HORIZONTAL_GRADIENT = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
+
     static let LIGHT_GRAY = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1)           // #f0f0f0
+    static let MEDIUM_GRAY = UIColor(red:0.44, green:0.44, blue:0.47, alpha:1.0)        // #6f7179
     static let DARK_GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)          // #40514e
+    
     static let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
     static let TRANSPARENT_BLACK = UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.1)
-    static let LOADING_BLACK = UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.9)
+    
+    static let LOADING_BLACK = UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.95)
     static let DISABLED_BLACK =  UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.4)
-
 }
 
 struct MyDimensions {
@@ -75,6 +80,7 @@ struct MyFont {
     static let pageControlFont = Avenir.regular
     static let pageControlSelectedFont = Avenir.demiBold
     static let messageFont = Avenir.regular
+    static let unreadNameFont = Avenir.demiBold
     static let unreadFont = Avenir.medium
     
     static let navBarSmallFontSize = 22
