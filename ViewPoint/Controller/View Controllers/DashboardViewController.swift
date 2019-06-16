@@ -13,6 +13,7 @@ import Kingfisher
 import AlamofireImage
 import Presentr
 import NVActivityIndicatorView
+import SafariServices
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NVActivityIndicatorViewable {
     
@@ -239,11 +240,17 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let profileVC: ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         
         customPresentViewController(
-            profileVC.present(image: self.profilePic),
+            profileVC.present(image: self.profilePic, dashboardVC: self),
             viewController: profileVC,
             animated: true,
             completion: nil
         )
+    }
+    
+    func openFeedbackWindow() {
+        let feedbackURL = URL(string: "https://shreyasagnihotri.typeform.com/to/MWeFkf")!
+        let safari = SFSafariViewController(url: feedbackURL)
+        present(safari, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

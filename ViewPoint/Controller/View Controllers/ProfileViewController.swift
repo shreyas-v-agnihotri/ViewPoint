@@ -11,7 +11,7 @@ import Firebase
 import GoogleSignIn
 import Presentr
 import NVActivityIndicatorView
-import SafariServices
+//import SafariServices
 
 class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
     
@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var profilePicView: UIImageView!
     var profilePic: UIImage = UIImage(named: "defaultProfilePic")!
+    var dashboardVC: Any = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +39,9 @@ class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
         nameLabel.text = Auth.auth().currentUser?.displayName
     }
     
-    func present(image: UIImage) -> Presentr {
+    func present(image: UIImage, dashboardVC: DashboardViewController) -> Presentr {
         
+        self.dashboardVC = dashboardVC
         self.profilePic = image
         
         let presenter: Presentr = {
@@ -89,9 +91,14 @@ class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
     }
     
     @IBAction func feedbackPressed(_ sender: Any) {
-        let feedbackURL = URL(string: "https://shreyasagnihotri.typeform.com/to/MWeFkf")!
-        let safari = SFSafariViewController(url: feedbackURL)
-        present(safari, animated: true, completion: nil)
+        
+        let dashboardViewController = dashboardVC as! DashboardViewController
+        
+        self.dismiss(animated: true, completion: dashboardViewController.openFeedbackWindow)
+        
+//        let feedbackURL = URL(string: "https://shreyasagnihotri.typeform.com/to/MWeFkf")!
+//        let safari = SFSafariViewController(url: feedbackURL)
+//        present(safari, animated: true, completion: nil)
         
 //        let alert = UIAlertController(title: "Submit Feedback", message: "Enter a message for the development team below:", preferredStyle: .alert)
 //
