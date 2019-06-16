@@ -56,15 +56,17 @@ struct Channel {
         let users = data["users"] as! [String]
         
         currentUserIndex = 0
-        for index in 0...(users.count-1) {
-            if users[index] == user.uid {
-                currentUserIndex = index
-            }
-        }
-        opponentIndex = users.count - 1 - currentUserIndex
+        
+        let currentUserIndex = users.firstIndex(of: user.uid)
+//        for index in 0...(users.count-1) {
+//            if users[index] == user.uid {
+//                currentUserIndex = index
+//            }
+//        }
+        opponentIndex = users.count - 1 - currentUserIndex!
         
         self.currentUser = ChatParticipant(
-            index: currentUserIndex,
+            index: currentUserIndex!,
             ids: data["users"] as! [String],
             names: data["userNames"] as! [String],
             imageURLs: data["userPhotoURLs"] as! [String]

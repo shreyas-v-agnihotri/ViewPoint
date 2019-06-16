@@ -8,8 +8,9 @@
 
 import UIKit
 import Presentr
+import Firebase
 
-class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource {
+class OpponentProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var reportUserButton: UIButton!
     @IBOutlet weak var leaveDebateButton: UIButton!
@@ -26,6 +27,9 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
     var userAnswers: [String] = []
     var opponentAnswers: [String] = []
     var opponentName: String = ""
+    var chatID: String = ""
+    
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +79,12 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
         return answers
     }
     
-    func present(userImage: UIImage, opponentImage: UIImage, opponentName: String, questions: [String], user1Answers: [String], user2Answers: [String], userIndex: Int, opponentIndex: Int) -> Presentr {
+    func present(chatID: String, userImage: UIImage, opponentImage: UIImage, opponentName: String, questions: [String], user1Answers: [String], user2Answers: [String], userIndex: Int, opponentIndex: Int) -> Presentr {
         
+        self.chatID = chatID
+        self.opponentName = opponentName
         self.userImage = userImage
         self.opponentImage = opponentImage
-        self.opponentName = opponentName
         self.questions = questions
         (self.userAnswers, self.opponentAnswers) = matchUserToAnswers(userIndex: userIndex, opponentIndex: opponentIndex, user1Answers: user1Answers, user2Answers: user2Answers)
         
@@ -126,8 +131,44 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
     }
     
     @IBAction func leaveDebatePressed(_ sender: Any) {
-        print("\n\nLeave Debate\n\n")
         
+        leaveDebate()
+        
+//        var alertController: AlertViewController {
+//            let alertController = AlertViewController(title: "Leave Debate", body: "Are you sure you want to leave the debate? This can't be undone.")
+//            let leaveAction = AlertAction(title: "Leave", style: .destructive) {
+//                self.leaveDebate()
+//            }
+//            alertController.addAction(leaveAction)
+//            return alertController
+//        }
+//
+//        let presenter = Presentr(presentationType: .alert)
+//        presenter.dismissOnSwipe = true
+//        customPresentViewController(presenter, viewController: alertController, animated: true, completion: nil)
+        
+    }
+    
+    func leaveDebate() {
+        
+        let chat = db.collection("chats").document(chatID)
+        chat.getDocument { (snapshot, error) in
+            
+            if (snapshot != nil) {
+                var users = snapshot!.get("users") as! [String];
+                if let index = users.firstIndex(of: Auth.auth().currentUser!.uid) {
+                    users.remove(at: index)
+                }
+                
+                chat.updateData(["users": users])
+                
+                self.dismiss(animated: true)
+            }
+            
+            if (error != nil) {
+                print("error: \(error!)")
+            }
+        }
         
     }
 }

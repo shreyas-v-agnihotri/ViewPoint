@@ -92,6 +92,23 @@ class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
         let feedbackURL = URL(string: "https://shreyasagnihotri.typeform.com/to/MWeFkf")!
         let safari = SFSafariViewController(url: feedbackURL)
         present(safari, animated: true, completion: nil)
+        
+//        let alert = UIAlertController(title: "Submit Feedback", message: "Enter a message for the development team below:", preferredStyle: .alert)
+//
+//        alert.addTextField(configurationHandler: { textField in
+//            textField.placeholder = "Your feedback"
+//        })
+//
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+//            alert.dismiss(animated: true, completion: nil)
+//        }))
+//        alert.addAction(UIAlertAction(title: "Send", style: .default, handler: { action in
+//            if let name = alert.textFields?.first?.text {
+//                print("Your name: \(name)")
+//            }
+//        }))
+//
+//        self.present(alert, animated: true)
     }
     
 }

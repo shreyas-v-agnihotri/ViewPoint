@@ -246,7 +246,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         )
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if (tableView == self.pendingChatTableView) {

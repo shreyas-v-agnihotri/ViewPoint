@@ -245,6 +245,7 @@ final class ChatViewController: MessagesViewController {
         
         customPresentViewController(
             opponentProfileVC.present(
+                chatID: self.channel.id,
                 userImage: self.userImage,
                 opponentImage: self.opponentImage,
                 opponentName: self.channel.opponent.name,
