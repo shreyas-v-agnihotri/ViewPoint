@@ -101,6 +101,17 @@ struct MyAnimations {
     
 }
 
+struct MyLinks {
+    
+    static let feedbackSurvey = "https://forms.gle/jWAWqKuJfEauVAXCA"
+    static let reportSurvey = "https://docs.google.com/forms/d/e/1FAIpQLSdAPiJIzFCxg1tRM23e48BmyJtcvCXHpMISYvh1Fw-Aja-2ZA/viewform?entry.1897410447="
+}
+
+func generateReportURL(userID: String) -> URL {
+    let formAddress = MyLinks.reportSurvey + userID
+    return URL(string: formAddress)!
+}
+
 func computeSurveyFontSize() -> (CGFloat, CGFloat) {
     
     let height = MyDimensions.screenHeight

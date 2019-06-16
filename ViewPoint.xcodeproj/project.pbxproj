@@ -135,8 +135,8 @@
 			children = (
 				B1A3275C2274C8DD00DCAC58 /* Customizations */,
 				B114AD32223F522900319479 /* Controller */,
-				B114AD31223F521300319479 /* Views */,
 				B114AD30223F51A000319479 /* Model */,
+				B114AD31223F521300319479 /* Views */,
 				B114ACFE223AE7E400319479 /* Assets.xcassets */,
 				B182AD8322B3025D001EDE24 /* ViewPoint.entitlements */,
 				B114AD03223AE7E400319479 /* Info.plist */,

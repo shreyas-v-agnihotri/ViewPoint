@@ -5,6 +5,7 @@ import MessageInputBar
 import FirebaseFirestore
 import Presentr
 import AlamofireImage
+import SafariServices
 
 final class ChatViewController: MessagesViewController {
     
@@ -260,6 +261,11 @@ final class ChatViewController: MessagesViewController {
             animated: true,
             completion: nil
         )
+    }
+    
+    func openReportWindow() {
+        let safari = SFSafariViewController(url: generateReportURL(userID: self.channel.getOpponentID()))
+        present(safari, animated: true, completion: nil)
     }
 }
 

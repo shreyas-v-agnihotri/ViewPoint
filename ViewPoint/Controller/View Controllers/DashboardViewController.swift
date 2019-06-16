@@ -248,8 +248,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func openFeedbackWindow() {
-        let feedbackURL = URL(string: "https://shreyasagnihotri.typeform.com/to/MWeFkf")!
-        let safari = SFSafariViewController(url: feedbackURL)
+        let safari = SFSafariViewController(url: URL(string: MyLinks.feedbackSurvey)!)
         present(safari, animated: true, completion: nil)
     }
     

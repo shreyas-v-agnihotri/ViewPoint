@@ -129,29 +129,12 @@ class OpponentProfileViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     @IBAction func reportUserPressed(_ sender: Any) {
-        print("\n\nReport User\n\n")
+        
+        let chatViewController = self.chatVC as! ChatViewController
+        self.dismiss(animated: true, completion: chatViewController.openReportWindow)
     }
     
     @IBAction func leaveDebatePressed(_ sender: Any) {
-        
-        leaveDebate()
-        
-//        var alertController: AlertViewController {
-//            let alertController = AlertViewController(title: "Leave Debate", body: "Are you sure you want to leave the debate? This can't be undone.")
-//            let leaveAction = AlertAction(title: "Leave", style: .destructive) {
-//                self.leaveDebate()
-//            }
-//            alertController.addAction(leaveAction)
-//            return alertController
-//        }
-//
-//        let presenter = Presentr(presentationType: .alert)
-//        presenter.dismissOnSwipe = true
-//        customPresentViewController(presenter, viewController: alertController, animated: true, completion: nil)
-        
-    }
-    
-    func leaveDebate() {
         
         let chat = db.collection("chats").document(chatID)
         chat.getDocument { (snapshot, error) in

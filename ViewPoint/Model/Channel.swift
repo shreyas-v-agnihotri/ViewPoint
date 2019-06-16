@@ -42,6 +42,7 @@ struct Channel {
     let timestamp: Date
     var currentUserIndex: Int
     var opponentIndex: Int
+    var users: [String]
   
     init(document: QueryDocumentSnapshot) {
         let data = document.data()
@@ -53,7 +54,7 @@ struct Channel {
         self.timestamp = channelTimestamp.dateValue()
         
         let user = Auth.auth().currentUser!
-        let users = data["users"] as! [String]
+        self.users = data["users"] as! [String]
         
         currentUserIndex = 0
         
@@ -82,6 +83,10 @@ struct Channel {
         self.questions = data["questions"] as! [String]
         self.user1Answers = data["user1Answers"] as! [String]
         self.user2Answers = data["user2Answers"] as! [String]
+    }
+    
+    func getOpponentID() -> String {
+        return users[opponentIndex]
     }
   
 }
