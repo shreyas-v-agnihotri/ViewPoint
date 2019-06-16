@@ -14,8 +14,9 @@ import AlamofireImage
 import Presentr
 import NVActivityIndicatorView
 import SafariServices
+import EmptyDataSet_Swift
 
-class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NVActivityIndicatorViewable {
+class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NVActivityIndicatorViewable, EmptyDataSetSource, EmptyDataSetDelegate {
     
     @IBOutlet weak var pendingChatTableView: UITableView!
     @IBOutlet weak var pendingChatLabel: UILabel!
@@ -49,6 +50,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         
 //        tableView.refreshControl = refreshControl
 //        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
@@ -119,10 +123,29 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-//    @objc func refreshData(_ sender: Any) {
-//        tableView.reloadData()
-//        refreshControl.endRefreshing()
-//    }
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(
+            string: "No Debates Yet",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY,
+                NSAttributedString.Key.font: UIFont(name: MyFont.navBarSmallFont, size: CGFloat(MyFont.navBarSmallFontSize))!
+            ]
+        )
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(
+            string: "Start by creating a debate request!\n\nWhen opponents with different ViewPoints are found, new debates will automatically be added here.",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY,
+                NSAttributedString.Key.font: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!
+            ]
+        )
+    }
+    
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+        return -(self.view.bounds.height * 0.15)
+    }
     
     func handleChannelChange(_ change: DocumentChange) {
         
@@ -152,6 +175,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .right)
+        tableView.reloadEmptyDataSet()
     }
     
     private func updateChannel(_ channel: Channel) {
@@ -171,15 +195,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         tableView.moveRow(at: IndexPath(row: index, section: 0), to: IndexPath(row: 0, section: 0))
-        
         channels.sort()
-        
-//        tableView.reloadData()
-        
-        // Animate all rows in section at once
-//        let range = NSMakeRange(0, self.tableView.numberOfSections)
-//        let sections = NSIndexSet(indexesIn: range)
-//        self.tableView.reloadSections(sections as IndexSet, with: .fade)
+        tableView.reloadEmptyDataSet()
     }
     
     private func removeChannel(_ channel: Channel) {
@@ -272,6 +289,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                 return
             }
             
+            if (snapshot.data() == nil) { return }
             let recentMessage = snapshot.data()!["messagePreview"] as Any
             
             let timestamp = snapshot.data()!["timestamp"] as! Timestamp

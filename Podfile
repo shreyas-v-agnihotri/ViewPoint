@@ -13,6 +13,7 @@ target 'ViewPoint' do
   pod 'Presentr'
   pod 'MessageKit'
   pod 'NVActivityIndicatorView'
+  pod 'EmptyDataSet-Swift'
   
   # Authentication pods
   pod 'GoogleSignIn'

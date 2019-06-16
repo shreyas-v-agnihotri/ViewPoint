@@ -32,11 +32,11 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         
         GIDSignIn.sharedInstance()?.signInSilently()
         
-        signInButton.isEnabled = true
-        
         designButton(button: signInButton)
         
         stopAnimating()
+        
+        signInButton.isEnabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

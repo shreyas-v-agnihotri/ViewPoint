@@ -6,8 +6,9 @@ import FirebaseFirestore
 import Presentr
 import AlamofireImage
 import SafariServices
+import EmptyDataSet_Swift
 
-final class ChatViewController: MessagesViewController {
+final class ChatViewController: MessagesViewController, EmptyDataSetSource, EmptyDataSetDelegate {
     
     private let db = Firestore.firestore()
 
@@ -63,6 +64,8 @@ final class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.emptyDataSetSource = self
+        messagesCollectionView.emptyDataSetDelegate = self
 
         messageListener = reference?.addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
@@ -75,6 +78,30 @@ final class ChatViewController: MessagesViewController {
             }
         }
     }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(
+            string: "New Debate!",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY,
+                NSAttributedString.Key.font: UIFont(name: MyFont.navBarSmallFont, size: CGFloat(MyFont.navBarSmallFontSize))!
+            ]
+        )
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(
+            string: "Try tapping your opponent's profile image to see how your ViewPoints differ, then send a message!",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY,
+                NSAttributedString.Key.font: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!
+            ]
+        )
+    }
+    
+//    func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+//        return (self.view.bounds.height * 0.4)
+//    }
     
     func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
         guard indexPath.section - 1 >= 0 else { return false }
@@ -148,12 +175,20 @@ final class ChatViewController: MessagesViewController {
         if indexPath.section == 0 {
             return NSAttributedString(
                 string: "",
-                attributes: [NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY, NSAttributedString.Key.font: UIFont(name: Avenir.regular, size: CGFloat(MyFont.timeLabelSize))!])
+                attributes: [
+                    NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY,
+                    NSAttributedString.Key.font: UIFont(name: MyFont.messageFont, size: CGFloat(MyFont.timeLabelSize))!
+                ]
+            )
         }
         if !isPreviousMessageSameSender(at: indexPath) {
             return NSAttributedString(
                 string: dateToLabel(date: message.sentDate),
-                attributes: [NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY, NSAttributedString.Key.font: UIFont(name: Avenir.regular, size: CGFloat(MyFont.timeLabelSize))!])
+                attributes: [
+                    NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY,
+                    NSAttributedString.Key.font: UIFont(name: MyFont.messageFont, size: CGFloat(MyFont.timeLabelSize))!
+                ]
+            )
         }
         return nil
     }
@@ -203,6 +238,7 @@ final class ChatViewController: MessagesViewController {
         messages.append(message)
         messages.sort()
         messagesCollectionView.reloadData()
+        messagesCollectionView.reloadEmptyDataSet()
         
         let isLatestMessage = messages.firstIndex(of: message) == (messages.count - 1)
         let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
@@ -213,16 +249,17 @@ final class ChatViewController: MessagesViewController {
             }
         }
         
-        messagesCollectionView.reloadData()
-        
-        // Double check and scroll to bottom if necessary
-        let isLatest = messages.firstIndex(of: message) == (messages.count - 1)
-        let shouldScroll = messagesCollectionView.isAtBottom && isLatest
-        if shouldScroll {
-            DispatchQueue.main.async {
-                self.messagesCollectionView.scrollToBottom(animated: true)
-            }
-        }
+//        messagesCollectionView.reloadData()
+//        messagesCollectionView.reloadEmptyDataSet()
+//
+//        // Double check and scroll to bottom if necessary
+//        let isLatest = messages.firstIndex(of: message) == (messages.count - 1)
+//        let shouldScroll = messagesCollectionView.isAtBottom && isLatest
+//        if shouldScroll {
+//            DispatchQueue.main.async {
+//                self.messagesCollectionView.scrollToBottom(animated: true)
+//            }
+//        }
     }
     
     func setOpponentProfileButton() {
@@ -234,7 +271,13 @@ final class ChatViewController: MessagesViewController {
         
         let opponentNameBarButton = UIBarButtonItem(title: channel.opponent.name, style: .plain, target: self, action: #selector(self.profileButtonPressed))
         opponentNameBarButton.isEnabled = false
-        opponentNameBarButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!], for: .disabled)
+        opponentNameBarButton.setTitleTextAttributes(
+            [
+                NSAttributedString.Key.foregroundColor: MyColors.WHITE,
+                NSAttributedString.Key.font: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!
+            ],
+            for: .disabled
+        )
 
         self.navigationItem.rightBarButtonItems = [opponentProfileBarButton, opponentNameBarButton]
         
