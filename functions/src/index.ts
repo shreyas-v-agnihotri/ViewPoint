@@ -32,7 +32,7 @@ const createChat = (snapshot: any, doc: any) => {
         .catch(() => 'obligatory catch');
 }
 
-export const onNewRequest = functions.firestore.document('requests/{requestID}').onCreate((snapshot, context) => {
+export const processRequest = functions.firestore.document('requests/{requestID}').onCreate((snapshot, context) => {
 
     const requestAnswers = snapshot.get("answers");
     const topic = snapshot.get("topic");
@@ -104,7 +104,7 @@ export const sendNotification = functions.firestore.document('chats/{chatID}/mes
                         notification: {
                             title: `${senderName} (${topic})`,
                             body: `${content}`,
-                            // badge: '1'
+                            badge: '1'
                         }
                     };
 
