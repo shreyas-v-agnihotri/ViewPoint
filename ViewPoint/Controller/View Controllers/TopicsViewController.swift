@@ -42,10 +42,14 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
             topicList = TopicDatabase.topicList.filter { (topic) -> Bool in
                 topic.contains(query: searchText)
             }
-        } else {
+        }
+        else {
             topicList = TopicDatabase.topicList
         }
         tableView.reloadData()
+        if (!topicList.isEmpty) {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
     }
     
     func configureTableView() {
@@ -57,6 +61,9 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
         searchBar.delegate = self
         searchBar.isTranslucent = true
         searchBar.searchBarStyle = .minimal
+        
+        let clearSearchScaled = UIImage(named: "clearSearch")?.af_imageAspectScaled(toFill: CGSize(width: MyDimensions.clearSearchButtonSize, height: MyDimensions.clearSearchButtonSize))
+        searchBar.setImage(clearSearchScaled, for: .clear, state: .normal)
         
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = MyColors.WHITE
@@ -77,7 +84,7 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
         searchBar.resignFirstResponder()
 //        searchBar.showsCancelButton = false
 //        searchBar.text = ""
-                        
+        
         let topicDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "topicDetailViewController") as! TopicDetailViewController
         
         let topic = topicList[indexPath.row]

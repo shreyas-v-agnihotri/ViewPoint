@@ -26,7 +26,7 @@ struct MyColors {
     static let DARK_GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)          // #40514e
     
     static let TRANSPARENT_WHITE = UIColor(red:0.96, green:0.96, blue:0.96, alpha:0.2)
-    static let TRANSPARENT_BLACK = UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.1)
+    static let TRANSPARENT_BLACK = UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.15)
     
     static let LOADING_BLACK = UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.95)
     static let DISABLED_BLACK =  UIColor(red:0.04, green:0.04, blue:0.04, alpha:0.4)
@@ -39,6 +39,8 @@ struct MyDimensions {
     static let debateCellProfilePicSize = 50
     static let navBarBackButtonSize = 23
     static let navBarSearchButtonSize = 20
+    
+    static let clearSearchButtonSize = 17
     
     static let buttonCornerRadius = CGFloat(20)
     static let buttonBorderWidth = CGFloat(2)
