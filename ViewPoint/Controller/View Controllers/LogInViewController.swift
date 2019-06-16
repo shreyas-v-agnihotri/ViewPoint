@@ -23,7 +23,10 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         
         signInButton.isEnabled = false
         
-        startAnimating()
+        startAnimating(
+            type: .ballScaleMultiple,
+            backgroundColor: MyColors.LOADING_BLACK
+        )
 
         super.viewDidLoad()
         
