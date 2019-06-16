@@ -440,10 +440,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEx-Ci-Gaz">
-                                <rect key="frame" x="0.0" y="115.33333333333331" width="414" height="716.66666666666674"/>
+                                <rect key="frame" x="0.0" y="70.333333333333314" width="414" height="761.66666666666674"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p25-G7-vh6">
+                                        <rect key="frame" x="82.666666666666671" y="641.66666666666663" width="248.66666666666663" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="CPW-uw-ci5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <state key="normal" title="Send Feedback">
+                                            <color key="titleColor" red="0.64313725489999995" green="0.44705882349999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="feedbackPressed:" destination="37h-yA-qT2" eventType="touchUpInside" id="Equ-qU-dic"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk5-cg-EtJ" userLabel="Sign Out Button">
-                                        <rect key="frame" x="82.666666666666671" y="651.66666666666663" width="248.66666666666663" height="50"/>
+                                        <rect key="frame" x="82.666666666666671" y="706.66666666666663" width="248.66666666666663" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="99T-dj-ftF"/>
                                         </constraints>
@@ -456,7 +469,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="AGf-q0-jER">
-                                        <rect key="frame" x="20.666666666666657" y="357.33333333333337" width="372.66666666666674" height="40"/>
+                                        <rect key="frame" x="20.666666666666657" y="402.33333333333337" width="372.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1RZ-hp-o81"/>
                                         </constraints>
@@ -465,7 +478,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicGradient" translatesAutoresizingMaskIntoConstraints="NO" id="Vc2-Ji-G6w">
-                                        <rect key="frame" x="38.333333333333343" y="0.0" width="337.33333333333326" height="337.33333333333331"/>
+                                        <rect key="frame" x="15.666666666666657" y="0.0" width="382.66666666666674" height="382.33333333333331"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Vc2-Ji-G6w" secondAttribute="height" multiplier="1:1" id="lRp-Nn-xGd"/>
                                         </constraints>
@@ -475,19 +488,22 @@
                                 <constraints>
                                     <constraint firstItem="Vc2-Ji-G6w" firstAttribute="top" secondItem="NEx-Ci-Gaz" secondAttribute="top" id="DeN-7M-cdp"/>
                                     <constraint firstItem="AGf-q0-jER" firstAttribute="top" secondItem="Vc2-Ji-G6w" secondAttribute="bottom" constant="20" id="YHg-Sz-4t6"/>
-                                    <constraint firstAttribute="bottom" secondItem="Qk5-cg-EtJ" secondAttribute="bottom" constant="15" id="haa-45-xxb"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qk5-cg-EtJ" secondAttribute="bottom" constant="5" id="haa-45-xxb"/>
+                                    <constraint firstItem="Qk5-cg-EtJ" firstAttribute="top" secondItem="p25-G7-vh6" secondAttribute="bottom" constant="15" id="jfs-4b-PMi"/>
                                     <constraint firstItem="Qk5-cg-EtJ" firstAttribute="centerX" secondItem="NEx-Ci-Gaz" secondAttribute="centerX" id="ozG-Kz-rc2"/>
                                     <constraint firstItem="Vc2-Ji-G6w" firstAttribute="centerX" secondItem="NEx-Ci-Gaz" secondAttribute="centerX" id="uRx-tz-ag7"/>
+                                    <constraint firstItem="p25-G7-vh6" firstAttribute="centerX" secondItem="NEx-Ci-Gaz" secondAttribute="centerX" id="wo4-cb-b9Q"/>
                                     <constraint firstItem="AGf-q0-jER" firstAttribute="centerX" secondItem="NEx-Ci-Gaz" secondAttribute="centerX" id="ziG-4L-s88"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NEx-Ci-Gaz" firstAttribute="height" secondItem="Obv-f1-yUA" secondAttribute="height" multiplier="0.8" id="3Bt-Pe-TDK"/>
+                            <constraint firstItem="NEx-Ci-Gaz" firstAttribute="height" secondItem="Obv-f1-yUA" secondAttribute="height" multiplier="0.85" id="3Bt-Pe-TDK"/>
                             <constraint firstItem="AGf-q0-jER" firstAttribute="width" secondItem="Obv-f1-yUA" secondAttribute="width" multiplier="0.9" id="JtN-SF-rGg"/>
                             <constraint firstItem="NEx-Ci-Gaz" firstAttribute="centerX" secondItem="Obv-f1-yUA" secondAttribute="centerX" id="OtJ-Rw-Hzj"/>
                             <constraint firstItem="AGf-q0-jER" firstAttribute="centerY" secondItem="Obv-f1-yUA" secondAttribute="centerY" multiplier="1.1" id="TTl-V0-sun"/>
+                            <constraint firstItem="p25-G7-vh6" firstAttribute="width" secondItem="Obv-f1-yUA" secondAttribute="width" multiplier="0.6" id="Tfi-KO-j7w"/>
                             <constraint firstItem="AfH-1p-zOZ" firstAttribute="bottom" secondItem="NEx-Ci-Gaz" secondAttribute="bottom" constant="30" id="cNJ-IQ-fVs"/>
                             <constraint firstItem="Qk5-cg-EtJ" firstAttribute="width" secondItem="Obv-f1-yUA" secondAttribute="width" multiplier="0.6" id="rqh-dB-RmA"/>
                             <constraint firstItem="NEx-Ci-Gaz" firstAttribute="width" secondItem="Obv-f1-yUA" secondAttribute="width" id="xl0-5f-iIb"/>
@@ -495,6 +511,7 @@
                         <viewLayoutGuide key="safeArea" id="AfH-1p-zOZ"/>
                     </view>
                     <connections>
+                        <outlet property="feedbackButton" destination="p25-G7-vh6" id="g2a-Yg-AGq"/>
                         <outlet property="nameLabel" destination="AGf-q0-jER" id="0ba-d6-2qO"/>
                         <outlet property="profilePicView" destination="Vc2-Ji-G6w" id="fa4-Vm-u2P"/>
                         <outlet property="signOutButton" destination="Qk5-cg-EtJ" id="pGm-Ky-Vap"/>

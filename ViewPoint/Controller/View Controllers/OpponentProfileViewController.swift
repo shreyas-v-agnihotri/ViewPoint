@@ -58,6 +58,7 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             viewpointsView.isHidden = false
+            viewpointsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             settingsView.isHidden = true
         case 1:
             viewpointsView.isHidden = true
@@ -126,7 +127,7 @@ class OpponentProfileViewController: UIViewController ,UITableViewDelegate, UITa
     
     @IBAction func leaveDebatePressed(_ sender: Any) {
         print("\n\nLeave Debate\n\n")
+        
+        
     }
-    
-
 }

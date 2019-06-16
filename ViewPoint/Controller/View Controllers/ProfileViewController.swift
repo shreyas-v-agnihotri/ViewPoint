@@ -11,9 +11,11 @@ import Firebase
 import GoogleSignIn
 import Presentr
 import NVActivityIndicatorView
+import SafariServices
 
 class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
     
+    @IBOutlet weak var feedbackButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var profilePicView: UIImageView!
@@ -31,9 +33,7 @@ class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
 //        signOutButton.setTitleColor(UIColor(patternImage: UIImage(named: "horizontalGradient")!), for: .normal)
         
         customizeButton(button: signOutButton)
-
-//        signOutButton.layer.borderWidth = 1
-//        signOutButton.layer.borderColor = UIColor.clear.cgColor
+        customizeButton(button: feedbackButton)
         
         nameLabel.text = Auth.auth().currentUser?.displayName
     }
@@ -87,4 +87,11 @@ class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
         performSegue(withIdentifier: "goToLogIn", sender: self)
         
     }
+    
+    @IBAction func feedbackPressed(_ sender: Any) {
+        let feedbackURL = URL(string: "https://shreyasagnihotri.typeform.com/to/MWeFkf")!
+        let safari = SFSafariViewController(url: feedbackURL)
+        present(safari, animated: true, completion: nil)
+    }
+    
 }

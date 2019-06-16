@@ -21,7 +21,7 @@ struct MyColors {
     static let BLUE = UIColor(red:0.51, green:0.56, blue:1.00, alpha:1.0)               // #838eff
     static let HORIZONTAL_GRADIENT = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
 
-    static let LIGHT_GRAY = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1.0)           // #f0f0f0
+    static let LIGHT_GRAY = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1.0)         // #f0f0f0
     static let MEDIUM_GRAY = UIColor(red:0.44, green:0.44, blue:0.47, alpha:1.0)        // #6f7179
     static let DARK_GRAY = UIColor(red:0.25, green:0.32, blue:0.31, alpha:1.0)          // #40514e
     
