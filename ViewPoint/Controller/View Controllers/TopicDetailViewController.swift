@@ -41,7 +41,6 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         self.view.addGestureRecognizer(swipeLeft)
         
         configureTableView()
-
     }
     
     @objc func research() {

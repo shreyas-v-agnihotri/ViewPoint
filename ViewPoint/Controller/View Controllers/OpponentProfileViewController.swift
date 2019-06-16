@@ -28,6 +28,7 @@ class OpponentProfileViewController: UIViewController, UITableViewDelegate, UITa
     var opponentAnswers: [String] = []
     var opponentName: String = ""
     var chatID: String = ""
+    var chatVC: Any = ""
     
     let db = Firestore.firestore()
     
@@ -79,8 +80,9 @@ class OpponentProfileViewController: UIViewController, UITableViewDelegate, UITa
         return answers
     }
     
-    func present(chatID: String, userImage: UIImage, opponentImage: UIImage, opponentName: String, questions: [String], user1Answers: [String], user2Answers: [String], userIndex: Int, opponentIndex: Int) -> Presentr {
+    func present(chatVC: ChatViewController, chatID: String, userImage: UIImage, opponentImage: UIImage, opponentName: String, questions: [String], user1Answers: [String], user2Answers: [String], userIndex: Int, opponentIndex: Int) -> Presentr {
         
+        self.chatVC = chatVC
         self.chatID = chatID
         self.opponentName = opponentName
         self.userImage = userImage
@@ -163,12 +165,13 @@ class OpponentProfileViewController: UIViewController, UITableViewDelegate, UITa
                 chat.updateData(["users": users])
                 
                 self.dismiss(animated: true)
+                let chatViewController = self.chatVC as! ChatViewController
+                chatViewController.navigationController?.popViewController(animated: true)
             }
             
             if (error != nil) {
                 print("error: \(error!)")
             }
         }
-        
     }
 }
