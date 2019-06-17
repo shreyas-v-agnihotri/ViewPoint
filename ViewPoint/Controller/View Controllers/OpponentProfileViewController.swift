@@ -59,6 +59,10 @@ class OpponentProfileViewController: UIViewController, UITableViewDelegate, UITa
         opponentNameLabel.text = opponentName
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        verifyGoogleUser(viewController: self)
+    }
+    
     @IBAction func pageChanged(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:

@@ -173,3 +173,10 @@ func customizeButton(button: UIButton) {
     button.layer.cornerRadius = button.bounds.height/2
 }
 
+func verifyGoogleUser(viewController: UIViewController) {
+    if (Auth.auth().currentUser == nil) {
+        let logInVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController") as! LogInViewController
+        viewController.present(logInVC, animated: true, completion: nil)
+    }
+}
+

@@ -24,7 +24,7 @@ class DebateCell: UITableViewCell {
 //        profileImage.layer.borderColor = MyColors.HORIZONTAL_GRADIENT.cgColor
 //        profileImage.layer.cornerRadius = profileImage.bounds.width/2
     }
-    
+        
     func customInit(profileImage: UIImage, topic: String, name: String, messagePreview: String, time: String) {
         self.profileImage.image = profileImage
         self.topicLabel.text = topic

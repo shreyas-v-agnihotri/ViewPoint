@@ -24,6 +24,10 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
         setSearchBar()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        verifyGoogleUser(viewController: self)
+    }
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
     }

@@ -79,6 +79,10 @@ final class ChatViewController: MessagesViewController, EmptyDataSetSource, Empt
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        verifyGoogleUser(viewController: self)
+    }
+    
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         return NSAttributedString(
             string: "New Debate!",

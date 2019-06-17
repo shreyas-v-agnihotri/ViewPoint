@@ -38,7 +38,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         startAnimating(
             message: "Loading your debates...",
             messageFont: UIFont(name: MyFont.loadingFont, size: CGFloat(MyFont.navBarSmallFontSize)),
@@ -116,11 +116,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         requestListener?.remove()
     }
     
+    @objc func refresh() {
+        tableView.reloadData()
+    }
+    
     // Deselect selected chat
     override func viewWillAppear(_ animated: Bool) {
         if let index = self.tableView.indexPathForSelectedRow{
             self.tableView.deselectRow(at: index, animated: true)
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        verifyGoogleUser(viewController: self)
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {

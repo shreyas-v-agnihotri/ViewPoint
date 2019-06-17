@@ -43,6 +43,10 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         configureTableView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        verifyGoogleUser(viewController: self)
+    }
+    
     @objc func research() {
         let researchURL = URL(string: "http://www.nba.com")!
         let safari = SFSafariViewController(url: researchURL)

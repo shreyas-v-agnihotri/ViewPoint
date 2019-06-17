@@ -39,6 +39,10 @@ class ProfileViewController: UIViewController, NVActivityIndicatorViewable {
         nameLabel.text = Auth.auth().currentUser?.displayName
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        verifyGoogleUser(viewController: self)
+    }
+    
     func present(image: UIImage, dashboardVC: DashboardViewController) -> Presentr {
         
         self.dashboardVC = dashboardVC
