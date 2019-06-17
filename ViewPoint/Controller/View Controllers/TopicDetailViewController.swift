@@ -99,7 +99,8 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         startAnimating(
             message: "Sending your debate request...",
             messageFont: UIFont(name: MyFont.loadingFont, size: CGFloat(MyFont.navBarSmallFontSize)),
-            type: .ballScaleMultiple
+            type: .ballScaleMultiple,
+            backgroundColor: MyColors.LOADING_BLACK
         )
         
         // Probably should add a state change listener to make sure user is not nil

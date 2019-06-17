@@ -102,18 +102,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             self.requests = currentRequests
             self.pendingChatTableView.reloadData()
             
-            if (self.requests.isEmpty && self.channels.isEmpty) {
-                self.pendingChatTableView.isHidden = true
-                self.pendingChatLabel.isHidden = true
-                self.pendingDebatesText.isHidden = true
-                self.dataViewSeparator.isHidden = true
-            } else {
-                self.pendingChatTableView.isHidden = false
-                self.pendingChatLabel.isHidden = false
-                self.pendingDebatesText.isHidden = false
-                self.dataViewSeparator.isHidden = false
-            }
-            self.tableView.reloadEmptyDataSet()
+            self.updateEmptyViews()
             
             self.pendingChatLabel.text = String(snapshot.documents.count)
         }
@@ -140,6 +129,21 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         if let index = self.tableView.indexPathForSelectedRow{
             self.tableView.deselectRow(at: index, animated: true)
         }
+    }
+    
+    func updateEmptyViews() {
+        if (self.requests.isEmpty && self.channels.isEmpty) {
+            self.pendingChatTableView.isHidden = true
+            self.pendingChatLabel.isHidden = true
+            self.pendingDebatesText.isHidden = true
+            self.dataViewSeparator.isHidden = true
+        } else {
+            self.pendingChatTableView.isHidden = false
+            self.pendingChatLabel.isHidden = false
+            self.pendingDebatesText.isHidden = false
+            self.dataViewSeparator.isHidden = false
+        }
+        self.tableView.reloadEmptyDataSet()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -210,7 +214,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .right)
-        tableView.reloadEmptyDataSet()
+        
+        self.updateEmptyViews()
     }
     
     private func updateChannel(_ channel: Channel) {
@@ -231,7 +236,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.moveRow(at: IndexPath(row: index, section: 0), to: IndexPath(row: 0, section: 0))
         channels.sort()
-        tableView.reloadEmptyDataSet()
+        self.updateEmptyViews()
     }
     
     private func removeChannel(_ channel: Channel) {
@@ -243,19 +248,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
         tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
         
-        if (self.requests.isEmpty && self.channels.isEmpty) {
-            self.pendingChatTableView.isHidden = true
-            self.pendingChatLabel.isHidden = true
-            self.pendingDebatesText.isHidden = true
-            self.dataViewSeparator.isHidden = true
-        } else {
-            self.pendingChatTableView.isHidden = false
-            self.pendingChatLabel.isHidden = false
-            self.pendingDebatesText.isHidden = false
-            self.dataViewSeparator.isHidden = false
-        }
-//        self.tableView.reloadEmptyDataSet()
-        tableView.reloadEmptyDataSet()
+        self.updateEmptyViews()
     }
     
     func setNavBarShadow() {

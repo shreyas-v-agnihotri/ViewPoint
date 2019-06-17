@@ -39,10 +39,9 @@ struct MyDimensions {
     static let debateCellProfilePicSize = 50
     static let navBarBackButtonSize = 23
     static let navBarSearchButtonSize = 20
-    
     static let clearSearchButtonSize = 17
     
-    static let emptyStateSpaceHeight = 20
+    static let emptyStateSpaceHeight = 24
     
     static let buttonCornerRadius = CGFloat(20)
     static let buttonBorderWidth = CGFloat(2)
