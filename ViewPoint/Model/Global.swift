@@ -42,6 +42,8 @@ struct MyDimensions {
     
     static let clearSearchButtonSize = 17
     
+    static let emptyStateSpaceHeight = 20
+    
     static let buttonCornerRadius = CGFloat(20)
     static let buttonBorderWidth = CGFloat(2)
     static let profileButtonBorderWidth = CGFloat(1)

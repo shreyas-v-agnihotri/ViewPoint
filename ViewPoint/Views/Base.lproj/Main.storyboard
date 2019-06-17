@@ -407,9 +407,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dataView" destination="2Er-cl-Po2" id="XL2-Mq-jy4"/>
+                        <outlet property="dataViewSeparator" destination="RnN-My-xfn" id="paC-Xb-NYU"/>
                         <outlet property="fixedView" destination="2Er-cl-Po2" id="rMd-e6-sCO"/>
                         <outlet property="pendingChatLabel" destination="hr8-LP-mO5" id="K4F-Jw-Rfc"/>
                         <outlet property="pendingChatTableView" destination="OSs-RV-Bgb" id="EYS-8L-Gxd"/>
+                        <outlet property="pendingDebatesText" destination="rae-fE-WzZ" id="b3b-er-C22"/>
                         <outlet property="tableView" destination="pmB-Px-gDp" id="eEg-VA-3o5"/>
                     </connections>
                 </viewController>

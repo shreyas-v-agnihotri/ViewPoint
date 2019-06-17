@@ -18,6 +18,8 @@ import EmptyDataSet_Swift
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NVActivityIndicatorViewable, EmptyDataSetSource, EmptyDataSetDelegate {
     
+    @IBOutlet weak var dataViewSeparator: UIView!
+    @IBOutlet weak var pendingDebatesText: UILabel!
     @IBOutlet weak var pendingChatTableView: UITableView!
     @IBOutlet weak var pendingChatLabel: UILabel!
     @IBOutlet weak var dataView: UIView!
@@ -100,6 +102,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             self.requests = currentRequests
             self.pendingChatTableView.reloadData()
             
+            if (self.requests.isEmpty && self.channels.isEmpty) {
+                self.pendingChatTableView.isHidden = true
+                self.pendingChatLabel.isHidden = true
+                self.pendingDebatesText.isHidden = true
+                self.dataViewSeparator.isHidden = true
+            } else {
+                self.pendingChatTableView.isHidden = false
+                self.pendingChatLabel.isHidden = false
+                self.pendingDebatesText.isHidden = false
+                self.dataViewSeparator.isHidden = false
+            }
+            self.tableView.reloadEmptyDataSet()
+            
             self.pendingChatLabel.text = String(snapshot.documents.count)
         }
         
@@ -131,6 +146,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         verifyGoogleUser(viewController: self)
     }
     
+    func spaceHeight(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+        return CGFloat(MyDimensions.emptyStateSpaceHeight)
+    }
+    
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         return NSAttributedString(
             string: "No Debates Yet",
@@ -142,8 +161,16 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        
+        let descriptionText: String
+        if (requests.isEmpty) {
+            descriptionText = "Start by creating a debate request!\n\nWhen opponents with different ViewPoints are found, new debates will automatically be added here."
+        } else {
+            descriptionText = "When opponents with different ViewPoints are found, new debates will automatically be added here."
+        }
+        
         return NSAttributedString(
-            string: "Start by creating a debate request!\n\nWhen opponents with different ViewPoints are found, new debates will automatically be added here.",
+            string: descriptionText,
             attributes: [
                 NSAttributedString.Key.foregroundColor: MyColors.DARK_GRAY,
                 NSAttributedString.Key.font: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!
@@ -215,6 +242,20 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         channels.remove(at: index)
 
         tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
+        
+        if (self.requests.isEmpty && self.channels.isEmpty) {
+            self.pendingChatTableView.isHidden = true
+            self.pendingChatLabel.isHidden = true
+            self.pendingDebatesText.isHidden = true
+            self.dataViewSeparator.isHidden = true
+        } else {
+            self.pendingChatTableView.isHidden = false
+            self.pendingChatLabel.isHidden = false
+            self.pendingDebatesText.isHidden = false
+            self.dataViewSeparator.isHidden = false
+        }
+//        self.tableView.reloadEmptyDataSet()
+        tableView.reloadEmptyDataSet()
     }
     
     func setNavBarShadow() {

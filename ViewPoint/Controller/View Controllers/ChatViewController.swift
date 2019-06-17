@@ -83,6 +83,14 @@ final class ChatViewController: MessagesViewController, EmptyDataSetSource, Empt
         verifyGoogleUser(viewController: self)
     }
     
+    func spaceHeight(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+        return CGFloat(MyDimensions.emptyStateSpaceHeight)
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "paperPlane")?.af_imageScaled(to: CGSize(width: 90, height: 90))
+    }
+    
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         return NSAttributedString(
             string: "New Debate!",

@@ -32,9 +32,10 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         
         // Disable scrolling, add swipe down to close
         self.view.gestureRecognizers?.removeAll()
-//        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.closeView))
-//        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-//        self.view.addGestureRecognizer(swipeDown)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.closeView))
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        self.view.addGestureRecognizer(swipeDown)
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(research))
         swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
@@ -53,6 +54,10 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         present(safari, animated: true, completion: nil)
     }
     
+    @objc func closeView(gesture: UIGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func customInit(topic: Topic) {
         self.topic = topic
                 
@@ -66,10 +71,6 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         view.layer.backgroundColor = MyColors.WHITE.cgColor
         tableView.backgroundColor = UIColor.clear
         tableView.register(UINib(nibName: "SurveyCell", bundle: nil), forCellReuseIdentifier: "survey")
-    }
-    
-    @objc func closeView(gesture: UIGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
