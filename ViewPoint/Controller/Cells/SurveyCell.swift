@@ -11,12 +11,14 @@ import ElongationPreview
 
 final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     
+    @IBOutlet weak var questionTitleLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
+//    @IBOutlet weak var pageControl: UIPageControl!
     
     // Defaults; changed on init
     var topic: Topic = TopicDatabase.topicList[0]
     var topicDetailVC: TopicDetailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "topicDetailViewController") as! TopicDetailViewController
+    var totalQuestions = 0
     
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -25,12 +27,15 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
         // scrollView.layer.borderColor = UIColor.clear.cgColor
         
         let questionCells = createQuestionCells()
+        totalQuestions = questionCells.count
         setupQuestionsScrollView(questionCells: questionCells)
         
-        pageControl.numberOfPages = questionCells.count
-        pageControl.currentPage = 0
-        pageControl.isUserInteractionEnabled = false
-        pageControl.isHidden = false
+        questionTitleLabel.text = "Question 1/\(totalQuestions)"
+        questionTitleLabel.font = UIFont(name: MyFont.questionTitleFont, size: MyFont.questionFontSize)
+//        pageControl.numberOfPages = questionCells.count
+//        pageControl.currentPage = 0
+//        pageControl.isUserInteractionEnabled = false
+//        pageControl.isHidden = false
     }
     
     func addAnswer(choice: String) {
@@ -43,8 +48,9 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageNumber = round(scrollView.contentOffset.x/MyDimensions.screenWidth)
-        pageControl.currentPage = Int(pageNumber)
+        let pageNumber = Int(round(scrollView.contentOffset.x/MyDimensions.screenWidth))
+        questionTitleLabel.text = "Question \(pageNumber+1)/\(totalQuestions)"
+//        pageControl.currentPage = Int(pageNumber)
     }
     
     func createQuestionCells() -> [SurveyQuestionCell] {
@@ -85,7 +91,7 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     
     func scrollToNextQuestion() {
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.35) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + MyAnimations.questionScrollTime) {
             if CGFloat(self.scrollView.contentOffset.x) / CGFloat(MyDimensions.screenWidth) == CGFloat(self.topic.survey.count-1) {
                 
                 self.topicDetailVC.findDebate()

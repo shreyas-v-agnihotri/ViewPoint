@@ -23,29 +23,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </scrollView>
-                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="rjU-bm-VLJ">
-                        <rect key="frame" x="157" y="153" width="39" height="37"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGe-EG-EaQ">
+                        <rect key="frame" x="10" y="25" width="333" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="37" id="2Hv-mo-fpj"/>
+                            <constraint firstAttribute="height" constant="35" id="dIz-Zv-DdG"/>
                         </constraints>
-                    </pageControl>
+                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="rjU-bm-VLJ" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leadingMargin" constant="141" id="Bnw-O3-he3"/>
+                    <constraint firstItem="vGe-EG-EaQ" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="10" id="0Ff-Vr-BT9"/>
+                    <constraint firstItem="vGe-EG-EaQ" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" constant="25" id="H1N-GS-4Nd"/>
                     <constraint firstAttribute="trailing" secondItem="fkv-lJ-IRe" secondAttribute="trailing" id="Kqp-E7-E4s"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="rjU-bm-VLJ" secondAttribute="trailing" constant="141" id="KzX-CI-WI9"/>
                     <constraint firstItem="fkv-lJ-IRe" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" id="MfI-EI-Yqc"/>
                     <constraint firstAttribute="bottom" secondItem="fkv-lJ-IRe" secondAttribute="bottom" id="ViN-ud-Cdn"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="rjU-bm-VLJ" secondAttribute="bottom" id="gGP-59-k9g"/>
+                    <constraint firstAttribute="trailing" secondItem="vGe-EG-EaQ" secondAttribute="trailing" constant="10" id="gNs-NS-uro"/>
                     <constraint firstItem="fkv-lJ-IRe" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" id="jG6-B4-7k0"/>
                 </constraints>
             </tableViewCellContentView>
             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="pageControl" destination="rjU-bm-VLJ" id="RPr-n8-Vmv"/>
+                <outlet property="questionTitleLabel" destination="vGe-EG-EaQ" id="QDo-q2-fto"/>
                 <outlet property="scrollView" destination="fkv-lJ-IRe" id="KKp-yo-543"/>
             </connections>
             <point key="canvasLocation" x="-8.8000000000000007" y="15.886699507389164"/>

@@ -284,7 +284,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
                 switch result {
                 case .success(let value):
-                    self.profilePic = value.image
+                    self.profilePic = value.image.af_imageRoundedIntoCircle()
                     self.setProfileButton()
                 case .failure(let error):
                     print(error)

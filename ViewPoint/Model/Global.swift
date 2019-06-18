@@ -74,17 +74,22 @@ struct MyFont {
     
     static let topicPreviewTitleKern = 2
     
-    static let answerFont = Avenir.medium
     static let loadingFont = Avenir.regular
+    
+    static let questionTitleFont = Avenir.demiBold
     static let questionFont = Avenir.regular
+    static let answerFont = Avenir.medium
+    
     static let navBarSmallFont = Avenir.medium
     static let navBarLargeFont = Avenir.regular
     static let opponentNameFont = Avenir.regular
+    
     static let pageControlFont = Avenir.regular
     static let pageControlSelectedFont = Avenir.demiBold
-    static let messageFont = Avenir.regular
+    
     static let unreadNameFont = Avenir.demiBold
     static let unreadFont = Avenir.medium
+    static let messageFont = Avenir.regular
     
     static let navBarSmallFontSize = 22
     static let navBarLargeFontSize = 30
@@ -101,6 +106,7 @@ struct MyAnimations {
     static let cloudsDuration = 6.0
     static let openTopicPreview = 0.6
     static let closeTopicPreview = 0.6
+    static let questionScrollTime = 0.35
     
 }
 

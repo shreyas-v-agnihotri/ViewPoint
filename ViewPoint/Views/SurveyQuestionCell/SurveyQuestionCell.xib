@@ -19,23 +19,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verticalGradient" translatesAutoresizingMaskIntoConstraints="NO" id="9bL-wu-ooe">
-                        <rect key="frame" x="0.0" y="5" width="353" height="229.66666666666666"/>
+                        <rect key="frame" x="0.0" y="0.0" width="353" height="234.66666666666666"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
-                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="0Nl-gx-xLF">
-                        <rect key="frame" x="157" y="197.66666666666666" width="39" height="37"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="37" id="aeJ-iT-oY8"/>
-                        </constraints>
-                    </pageControl>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="oHQ-j0-Q1I" userLabel="Question">
-                        <rect key="frame" x="15" y="15.000000000000007" width="323" height="122.66666666666669"/>
+                        <rect key="frame" x="15" y="65" width="323" height="89.666666666666686"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msd-0L-kfg">
-                        <rect key="frame" x="0.0" y="147.66666666666666" width="353" height="40"/>
+                        <rect key="frame" x="0.0" y="164.66666666666666" width="353" height="40"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="b3a-wX-h2Q"/>
@@ -47,18 +41,15 @@
                     <constraint firstAttribute="trailing" secondItem="9bL-wu-ooe" secondAttribute="trailing" id="42D-Av-cDx"/>
                     <constraint firstAttribute="trailing" secondItem="msd-0L-kfg" secondAttribute="trailing" id="G56-cw-Fwj"/>
                     <constraint firstAttribute="trailing" secondItem="oHQ-j0-Q1I" secondAttribute="trailing" constant="15" id="KO4-Fl-sVO"/>
-                    <constraint firstItem="0Nl-gx-xLF" firstAttribute="top" secondItem="msd-0L-kfg" secondAttribute="bottom" constant="10" id="SmP-20-lR1"/>
-                    <constraint firstItem="9bL-wu-ooe" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" constant="5" id="Vci-dd-5iS"/>
+                    <constraint firstItem="9bL-wu-ooe" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" id="Vci-dd-5iS"/>
                     <constraint firstItem="msd-0L-kfg" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" id="Was-Ad-fmk"/>
                     <constraint firstAttribute="bottom" secondItem="9bL-wu-ooe" secondAttribute="bottom" id="aO9-aI-dhD"/>
                     <constraint firstItem="oHQ-j0-Q1I" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="15" id="bRB-ja-9n7"/>
                     <constraint firstItem="msd-0L-kfg" firstAttribute="top" secondItem="oHQ-j0-Q1I" secondAttribute="bottom" constant="10" id="bil-Aj-bcD"/>
-                    <constraint firstAttribute="trailing" secondItem="0Nl-gx-xLF" secondAttribute="trailing" constant="157" id="eZJ-53-DHq"/>
-                    <constraint firstItem="0Nl-gx-xLF" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="157" id="l2T-Ct-0xf"/>
-                    <constraint firstItem="oHQ-j0-Q1I" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" constant="15" id="r6z-mV-2Vd"/>
+                    <constraint firstItem="oHQ-j0-Q1I" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" constant="65" id="r6z-mV-2Vd"/>
                     <constraint firstItem="msd-0L-kfg" firstAttribute="centerX" secondItem="wMU-A7-NkY" secondAttribute="centerX" id="t3Q-VU-lwx"/>
                     <constraint firstItem="9bL-wu-ooe" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" id="t6C-OY-bf4"/>
-                    <constraint firstAttribute="bottom" secondItem="0Nl-gx-xLF" secondAttribute="bottom" id="xB7-77-Hnp"/>
+                    <constraint firstAttribute="bottom" secondItem="msd-0L-kfg" secondAttribute="bottom" constant="30" id="wsZ-9e-tyG"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,7 +58,6 @@
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="background" destination="9bL-wu-ooe" id="62i-Ss-qsY"/>
-                <outlet property="pageControl" destination="0Nl-gx-xLF" id="YYV-ED-pdy"/>
                 <outlet property="questionLabel" destination="oHQ-j0-Q1I" id="o7h-gX-L5s"/>
                 <outlet property="segmentedControlView" destination="msd-0L-kfg" id="BuJ-2Z-8Hz"/>
             </connections>

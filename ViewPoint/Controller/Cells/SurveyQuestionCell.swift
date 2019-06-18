@@ -12,7 +12,7 @@ import TwicketSegmentedControl
 class SurveyQuestionCell: UITableViewCell, TwicketSegmentedControlDelegate {
 
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var pageControl: UIPageControl!
+//    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var segmentedControlView: UIView!
     @IBOutlet weak var background: UIImageView!
     var surveyCell: SurveyCell = Bundle.main.loadNibNamed("SurveyCell", owner: self, options: nil)?.first as! SurveyCell
@@ -24,13 +24,7 @@ class SurveyQuestionCell: UITableViewCell, TwicketSegmentedControlDelegate {
         options = question.answerChoices
 
         self.questionLabel.font = UIFont(name: MyFont.questionFont, size: MyFont.questionFontSize)
-        self.pageControl.isHidden = true
-        
-//        self.background.layer.masksToBounds = false
-//        self.background.layer.shadowColor = UIColor.darkGray.cgColor
-//        self.background.layer.shadowOffset = CGSize(width: 0, height: -2)
-//        self.background.layer.shadowRadius = 6
-//        self.background.layer.shadowOpacity = 0.6
+//        self.pageControl.isHidden = true
         
         let frame = CGRect(x: MyDimensions.screenWidth * (1-MyDimensions.answerChoiceWidthRatio) / 2, y: 0, width: MyDimensions.screenWidth * MyDimensions.answerChoiceWidthRatio, height: self.segmentedControlView.frame.height)
         
