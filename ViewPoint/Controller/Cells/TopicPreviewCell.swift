@@ -43,7 +43,7 @@ final class TopicPreviewCell: ElongationCell {
 //        self.aboutDescriptionLabel?.text = topic.title
         
         self.aboutTitleLabel.text = "Research This Topic"
-        self.aboutDescriptionLabel.text = "\u{2190} Swipe left anywhere on the screen"
+        self.aboutDescriptionLabel.text = "\u{21E6}  Swipe left anywhere on the screen"
         
         self.bottomViewHeight.constant = CGFloat(MyDimensions.bottomViewHeight)
     }

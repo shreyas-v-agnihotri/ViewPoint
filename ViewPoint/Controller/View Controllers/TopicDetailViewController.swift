@@ -24,22 +24,27 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-//        button.backgroundColor = UIColor.green
-//        button.setTitle("Research", for: .normal)
-//        button.addTarget(self, action: #selector(researchPressed), for: .touchUpInside)
-//        self.view.bringSubviewToFront(button)
-        
-        // Disable scrolling, add swipe down to close
+        // Disable scrolling
         self.view.gestureRecognizers?.removeAll()
         
+        // Add swipe left to research
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(research))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        // Add swipe down to close
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.closeView))
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         self.view.addGestureRecognizer(swipeDown)
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(research))
-        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-        self.view.addGestureRecognizer(swipeLeft)
+        // Add tap to close
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeView))
+        self.view.addGestureRecognizer(tap)
+        
+//        let tapView = UIView(frame: CGRect(x: 0, y: 0, width: Int(MyDimensions.screenWidth), height: MyDimensions.topViewHeight))
+//        tapView.addGestureRecognizer(tap)
+//        self.view.addSubview(tapView)
+//        self.view.bringSubviewToFront(tapView)
         
         configureTableView()
     }
@@ -81,6 +86,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "survey", for: indexPath) as! SurveyCell
         cell.customInit(topic: topic, parentVC: self)
+        
         return cell
     }
     
