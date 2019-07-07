@@ -168,7 +168,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let descriptionText: String
         if (requests.isEmpty) {
-            descriptionText = "Start by creating a debate request!\n\nWhen opponents with different ViewPoints are found, new debates will automatically be added here."
+            descriptionText = "Start by browsing topics and creating a debate request!\n\nWhen opponents with different ViewPoints are found, new debates will automatically be added here."
         } else {
             descriptionText = "When opponents with different ViewPoints are found, new debates will automatically be added here."
         }

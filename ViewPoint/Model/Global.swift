@@ -73,6 +73,7 @@ struct MyFont {
     static let topicPreviewTitleKern = 2
     
     static let loadingFont = Avenir.regular
+    static let onboardingTitleFont = Avenir.demiBold
     
     static let questionTitleFont = Avenir.demiBold
     static let questionFont = Avenir.regular
@@ -89,6 +90,7 @@ struct MyFont {
     static let unreadFont = Avenir.medium
     static let messageFont = Avenir.regular
     
+    static let onboardingTitleFontSize = 26
     static let navBarSmallFontSize = 22
     static let navBarLargeFontSize = 30
     static let opponentNameSize = 18

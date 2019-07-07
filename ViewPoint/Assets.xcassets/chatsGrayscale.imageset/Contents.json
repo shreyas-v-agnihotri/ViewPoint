@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "iOSvsAndroid.jpg",
+      "filename" : "chatsGrayscale.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "iOSvsAndroid@2x.jpg",
+      "filename" : "chatsGrayscale@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "iOSvsAndroid@3x.jpg",
+      "filename" : "chatsGrayscale@3x.png",
       "scale" : "3x"
     }
   ],

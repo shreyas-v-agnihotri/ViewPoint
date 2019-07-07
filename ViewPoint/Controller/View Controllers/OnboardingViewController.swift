@@ -14,25 +14,45 @@ class OnboardingViewController: UIViewController, PaperOnboardingDelegate, Paper
     @IBOutlet weak var skipButton: UIButton!
     
     let pages = [
-        OnboardingItemInfo(informationImage: UIImage(named: "search")!,
+        OnboardingItemInfo(informationImage: UIImage(named: "eyeIcon")!.af_imageScaled(to: CGSize(width: MyDimensions.profilePicSize, height: MyDimensions.profilePicSize)),
                            title: "Welcome to ViewPoint",
-                           description: "A debate platform that matches you with people who disagree with you.",
+                           description: "A chat app that matches you with people who disagree with you!",
                            pageIcon: UIImage(named: "search")!,
-                           color: MyColors.BLUE,
+                           color: MyColors.MEDIUM_GRAY,
                            titleColor: MyColors.WHITE,
                            descriptionColor: MyColors.WHITE,
-                           titleFont: UIFont(name: MyFont.navBarLargeFont, size: CGFloat(MyFont.navBarLargeFontSize))!,
+                           titleFont: UIFont(name: MyFont.onboardingTitleFont, size: CGFloat(MyFont.onboardingTitleFontSize))!,
                            descriptionFont: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!
         ),
-        OnboardingItemInfo(informationImage: UIImage(named: "search")!,
-                           title: "title",
-                           description: "description",
+        OnboardingItemInfo(informationImage: UIImage(named: "topicsGrayscale")!,
+                           title: "Explore Debate Topics",
+                           description: "Browse and research a growing list of controversial debate topics.",
                            pageIcon: UIImage(named: "search")!,
-                           color: MyColors.PURPLE,
+                           color: MyColors.DARK_GRAY,
                            titleColor: MyColors.WHITE,
                            descriptionColor: MyColors.WHITE,
-                           titleFont: UIFont(name: MyFont.navBarLargeFont, size: CGFloat(MyFont.navBarLargeFontSize))!,
-                           descriptionFont: UIFont(name: MyFont.navBarLargeFont, size: CGFloat(MyFont.navBarLargeFontSize))!
+                           titleFont: UIFont(name: MyFont.onboardingTitleFont, size: CGFloat(MyFont.onboardingTitleFontSize))!,
+                           descriptionFont: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!
+        ),
+        OnboardingItemInfo(informationImage: UIImage(named: "surveyGrayscale")!,
+                           title: "Create Debate Requests",
+                           description: "Fill out short surveys on the topics of your choice to help us match you with the right opponents.",
+                           pageIcon: UIImage(named: "search")!,
+                           color: MyColors.MEDIUM_GRAY,
+                           titleColor: MyColors.WHITE,
+                           descriptionColor: MyColors.WHITE,
+                           titleFont: UIFont(name: MyFont.onboardingTitleFont, size: CGFloat(MyFont.onboardingTitleFontSize))!,
+                           descriptionFont: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!
+        ),
+        OnboardingItemInfo(informationImage: UIImage(named: "chatsGrayscale")!,
+                           title: "Start Chatting!",
+                           description: "When we find someone with different survey answers, we’ll automatically create a real-time chat for you and your opponent!",
+                           pageIcon: UIImage(named: "search")!,
+                           color: MyColors.DARK_GRAY,
+                           titleColor: MyColors.WHITE,
+                           descriptionColor: MyColors.WHITE,
+                           titleFont: UIFont(name: MyFont.onboardingTitleFont, size: CGFloat(MyFont.onboardingTitleFontSize))!,
+                           descriptionFont: UIFont(name: MyFont.opponentNameFont, size: CGFloat(MyFont.opponentNameSize))!
         )
     ]
 
