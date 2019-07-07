@@ -106,15 +106,6 @@ class ChatParticipant {
     }
 }
 
-//extension Channel: DatabaseRepresentation {
-//extension Channel {
-//
-//  var representation: [String : Any] {
-//    return ["topic": topic, "id": id]
-//  }
-//
-//}
-
 extension Channel: Comparable {
   
   static func == (lhs: Channel, rhs: Channel) -> Bool {

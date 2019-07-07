@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import Firebase
 
-//public let db = Firestore.firestore()
-
 // Global color variables
 struct MyColors {
     

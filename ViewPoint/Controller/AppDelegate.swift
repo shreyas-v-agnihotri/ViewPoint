@@ -19,11 +19,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+//        let defaults = UserDefaults.standard
+//        if defaults.object(forKey: "isFirstTime") == nil {
+//            defaults.set("No", forKey: "isFirstTime")
+//            defaults.synchronize()
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil) //Write your storyboard name
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
+//            self.window!.rootViewController = viewController
+//            self.window!.makeKeyAndVisible()
+//        }
+        
+//        if !UserDefaults.standard.bool(forKey: "didSee") {
+//            UserDefaults.standard.set(true, forKey: "didSee")
+//            
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "YourViewController")
+//            self.window?.rootViewController = viewController
+//            self.window?.makeKeyAndVisible()
+//        }
+//
+//        return true
 
         // Set up cloud database and third-party sign ins
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        
         
         // Firebase Cloud Messaging (notifications)
         if #available(iOS 10.0, *) {
@@ -80,7 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         -> Bool {
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
     }
-    
     
     // For your app to run on iOS 8 and older, also implement the deprecated application:openURL:sourceApplication:annotation: method.
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {

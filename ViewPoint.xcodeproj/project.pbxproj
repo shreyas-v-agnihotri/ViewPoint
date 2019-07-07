@@ -37,6 +37,7 @@
 		B182AD8122B053E7001EDE24 /* ViewpointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B182AD7F22B053E7001EDE24 /* ViewpointsCell.swift */; };
 		B182AD8222B053E7001EDE24 /* ViewpointsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B182AD8022B053E7001EDE24 /* ViewpointsCell.xib */; };
 		B1A327582274C0ED00DCAC58 /* SurveyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1A327572274C0ED00DCAC58 /* SurveyCell.xib */; };
+		B1AE939F22B8978100B4ABF4 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AE939E22B8978100B4ABF4 /* OnboardingViewController.swift */; };
 		B1B2A8F22248A0EF00E3766C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */; };
 		B1B2A8F62248A12100E3766C /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F32248A11E00E3766C /* Channel.swift */; };
 		B1B2A8F82248A12100E3766C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2A8F52248A12100E3766C /* Message.swift */; };
@@ -76,6 +77,7 @@
 		B182AD8022B053E7001EDE24 /* ViewpointsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewpointsCell.xib; sourceTree = "<group>"; };
 		B182AD8322B3025D001EDE24 /* ViewPoint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ViewPoint.entitlements; sourceTree = "<group>"; };
 		B1A327572274C0ED00DCAC58 /* SurveyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SurveyCell.xib; path = "New Group/SurveyCell.xib"; sourceTree = "<group>"; };
+		B1AE939E22B8978100B4ABF4 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F12248A0EF00E3766C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B1B2A8F32248A11E00E3766C /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		B1B2A8F52248A12100E3766C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		B182AD7722AF0325001EDE24 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B1AE939E22B8978100B4ABF4 /* OnboardingViewController.swift */,
 				B114ACF9223AE7DF00319479 /* LogInViewController.swift */,
 				B114AD0B223C9C7800319479 /* DashboardViewController.swift */,
 				B114AD0D223E0A4900319479 /* ProfileViewController.swift */,
@@ -374,6 +377,7 @@
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -398,6 +402,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -415,6 +420,7 @@
 				B1719A422269235F00E1E33C /* DebateCell.swift in Sources */,
 				B114ACFA223AE7DF00319479 /* LogInViewController.swift in Sources */,
 				B114AD0C223C9C7900319479 /* DashboardViewController.swift in Sources */,
+				B1AE939F22B8978100B4ABF4 /* OnboardingViewController.swift in Sources */,
 				B114AD3D2240BDF700319479 /* TopicDatabase.swift in Sources */,
 				B1B2A8F62248A12100E3766C /* Channel.swift in Sources */,
 				B114AD0E223E0A4A00319479 /* ProfileViewController.swift in Sources */,

@@ -54,7 +54,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     }
     
     @objc func research() {
-        let researchURL = URL(string: "http://www.nba.com")!
+        let researchURL = URL(string: topic.researchLink)!
         let safari = SFSafariViewController(url: researchURL)
         present(safari, animated: true, completion: nil)
     }

@@ -96,7 +96,6 @@ struct Message: MessageType {
   
 }
 
-//extension Message: DatabaseRepresentation {
 extension Message {
 
     var representation: [String : Any] {
@@ -110,7 +109,6 @@ extension Message {
     
         return rep
     }
-  
 }
 
 extension Message: Comparable {

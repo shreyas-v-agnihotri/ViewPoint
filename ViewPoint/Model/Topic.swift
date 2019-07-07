@@ -11,12 +11,14 @@ class Topic {
     let title: String
     let category: String
     let identifier: String
+    let researchLink: String
     let survey: [SurveyQuestion]
     
-    init(title: String, category: String, identifier: String, survey: [SurveyQuestion]) {
+    init(title: String, category: String, identifier: String, researchLink: String, survey: [SurveyQuestion]) {
         self.title = title
         self.category = category
         self.identifier = identifier
+        self.researchLink = researchLink
         self.survey = survey
     }
     

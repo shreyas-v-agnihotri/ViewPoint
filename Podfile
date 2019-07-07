@@ -14,6 +14,7 @@ target 'ViewPoint' do
   pod 'MessageKit'
   pod 'NVActivityIndicatorView'
   pod 'EmptyDataSet-Swift'
+  pod 'paper-onboarding'
   
   # Authentication pods
   pod 'GoogleSignIn'
