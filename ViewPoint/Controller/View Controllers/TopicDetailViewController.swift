@@ -20,7 +20,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     var reference: CollectionReference?
     
     var selectedAnswers = [String]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +41,8 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeView))
         self.view.addGestureRecognizer(tap)
         
+        reference = db.collection("requests")
+        
 //        let tapView = UIView(frame: CGRect(x: 0, y: 0, width: Int(MyDimensions.screenWidth), height: MyDimensions.topViewHeight))
 //        tapView.addGestureRecognizer(tap)
 //        self.view.addSubview(tapView)
@@ -51,6 +53,7 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     
     override func viewDidAppear(_ animated: Bool) {
         verifyGoogleUser(viewController: self)
+        tableView.reloadData()
     }
     
     @objc func research() {
@@ -65,8 +68,9 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     
     func customInit(topic: Topic) {
         self.topic = topic
+        tableView.reloadData()
+        print("reloading table view")
                 
-        reference = db.collection("requests")
 //        topicsVC.addChild(self)
 //        reference = db.collection(["topics", topic.identifier, "chatRequests"].joined(separator: "/"))
     }

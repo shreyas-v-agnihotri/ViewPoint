@@ -89,9 +89,9 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
 //        searchBar.showsCancelButton = false
 //        searchBar.text = ""
         
-        let topicDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "topicDetailViewController") as! TopicDetailViewController
-        
         let topic = topicList[indexPath.row]
+        let topicDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "topicDetailViewController") as! TopicDetailViewController
+
         topicDetailViewController.customInit(topic: topic)
         
         expand(viewController: topicDetailViewController)

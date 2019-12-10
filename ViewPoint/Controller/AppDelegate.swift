@@ -29,17 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //            self.window!.rootViewController = viewController
 //            self.window!.makeKeyAndVisible()
 //        }
-        
-//        if !UserDefaults.standard.bool(forKey: "didSee") {
-//            UserDefaults.standard.set(true, forKey: "didSee")
-//            
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "YourViewController")
-//            self.window?.rootViewController = viewController
-//            self.window?.makeKeyAndVisible()
-//        }
-//
-//        return true
 
         // Set up cloud database and third-party sign ins
         FirebaseApp.configure()
@@ -107,40 +96,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func customizeNavBar() {
-        
+                
+        // Set gradient background for nav bar
         let backgroundImage = imageWithGradient(startColor: MyColors.PURPLE, endColor: MyColors.BLUE, size: CGSize(width: UIScreen.main.bounds.size.width, height: 1))
+        UINavigationBar.appearance().backgroundColor = UIColor(patternImage: backgroundImage!)
         UINavigationBar.appearance().barTintColor = UIColor(patternImage: backgroundImage!)
-        
+        UINavigationBar.appearance().isTranslucent = false
+
+        // Customize text properties
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.navBarLargeFont, size: CGFloat(MyFont.navBarLargeFontSize))!]
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.navBarSmallFont, size: CGFloat(MyFont.navBarSmallFontSize))!]
-        UINavigationBar.appearance().isTranslucent = false
         
+        // Customize back button
         let backArrow = UIImage(named: "leftArrow")!
         let backButtonSize = CGFloat(MyDimensions.navBarBackButtonSize)
         let backArrowScaled = backArrow.af_imageAspectScaled(toFit: CGSize(width: backButtonSize, height: backButtonSize))
-        
         UINavigationBar.appearance().backIndicatorImage = backArrowScaled
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backArrowScaled
-    }
-    
-    func imageWithGradient(startColor:UIColor, endColor:UIColor, size:CGSize, horizontally:Bool = true) -> UIImage? {
         
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
-        if horizontally {
-            gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-            gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        } else {
-            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        // Set gradient background for status bar in iOS 13
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.backgroundColor = UIColor(patternImage: backgroundImage!)
+            
+            navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.navBarLargeFont, size: CGFloat(MyFont.navBarLargeFontSize))!]
+            navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.navBarSmallFont, size: CGFloat(MyFont.navBarSmallFontSize))!]
+
+            navBarAppearance.setBackIndicatorImage(backArrowScaled, transitionMaskImage: backArrowScaled)
+            
+            UINavigationBar.appearance(whenContainedInInstancesOf: [UINavigationController.self]).standardAppearance = navBarAppearance
+            UINavigationBar.appearance(whenContainedInInstancesOf: [UINavigationController.self]).scrollEdgeAppearance = navBarAppearance
         }
-        
-        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
-        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
     }
     
     func setupElongationConfig() {

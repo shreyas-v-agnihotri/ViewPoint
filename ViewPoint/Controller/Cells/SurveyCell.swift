@@ -18,17 +18,15 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     // Defaults; changed on init
     var topic: Topic = TopicDatabase.topicList[0]
     var topicDetailVC: TopicDetailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "topicDetailViewController") as! TopicDetailViewController
-    var totalQuestions = 0
+    var totalQuestions: Int {
+        return topic.survey.count
+    }
     
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
         scrollView.delegate = self
         // scrollView.layer.borderColor = UIColor.clear.cgColor
-        
-        let questionCells = createQuestionCells()
-        totalQuestions = questionCells.count
-        setupQuestionsScrollView(questionCells: questionCells)
         
         questionTitleLabel.text = "Question 1/\(totalQuestions)"
         questionTitleLabel.font = UIFont(name: MyFont.questionTitleFont, size: MyFont.questionFontSize)
@@ -45,6 +43,8 @@ final class SurveyCell: UITableViewCell, UIScrollViewDelegate {
     func customInit(topic: Topic, parentVC: TopicDetailViewController) {
         self.topic = topic
         self.topicDetailVC = parentVC
+        let questionCells = createQuestionCells()
+        setupQuestionsScrollView(questionCells: questionCells)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

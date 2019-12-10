@@ -91,7 +91,6 @@ class OnboardingViewController: UIViewController, PaperOnboardingDelegate, Paper
     }
     
     func onboardingWillTransitonToIndex(_ index: Int) {
-//        skipButton.isHidden = index == pages.count-1 ? false : true
         if (index == pages.count-1) {
             skipButton.isHidden = false
         }

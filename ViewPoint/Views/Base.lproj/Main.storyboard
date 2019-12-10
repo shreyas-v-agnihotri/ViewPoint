@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nph-dv-8Zx">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +11,7 @@
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LogInViewController" id="BYZ-38-t0r" customClass="LogInViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LogInViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +134,7 @@
         <!--Navigation Controller-->
         <scene sceneID="33K-Rh-tXm">
             <objects>
-                <navigationController id="343-rI-lTg" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="343-rI-lTg" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="KQb-hd-Dvp">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -152,7 +150,7 @@
         <!--Topics-->
         <scene sceneID="I5t-z8-nEI">
             <objects>
-                <viewController storyboardIdentifier="TopicsViewController" title="Topics" id="l2W-La-EIZ" customClass="TopicsViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopicsViewController" title="Topics" modalPresentationStyle="fullScreen" id="l2W-La-EIZ" customClass="TopicsViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="VPz-qO-8sM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -171,7 +169,7 @@
         <!--Opponent Profile View Controller-->
         <scene sceneID="cgb-8D-2Ev">
             <objects>
-                <viewController storyboardIdentifier="OpponentProfileViewController" id="k3J-Sk-3Oz" customClass="OpponentProfileViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OpponentProfileViewController" modalPresentationStyle="fullScreen" id="k3J-Sk-3Oz" customClass="OpponentProfileViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qdl-NU-5fY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -315,7 +313,7 @@
         <!-- -->
         <scene sceneID="Lui-4V-8ke">
             <objects>
-                <viewController title=" " id="GDk-Jg-XzR" customClass="DashboardViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title=" " modalPresentationStyle="fullScreen" id="GDk-Jg-XzR" customClass="DashboardViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="giu-Ey-tae">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -422,7 +420,7 @@
         <!--Onboarding View Controller-->
         <scene sceneID="b4f-9v-keu">
             <objects>
-                <viewController storyboardIdentifier="OnboardingViewController" id="Nph-dv-8Zx" customClass="OnboardingViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" modalPresentationStyle="fullScreen" id="Nph-dv-8Zx" customClass="OnboardingViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3DK-Vg-xnp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -458,7 +456,7 @@
         <!--Topic Detail View Controller-->
         <scene sceneID="hM7-6d-q9x">
             <objects>
-                <viewController storyboardIdentifier="topicDetailViewController" id="cTM-7I-j5a" customClass="TopicDetailViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="topicDetailViewController" modalPresentationStyle="fullScreen" id="cTM-7I-j5a" customClass="TopicDetailViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2sL-tO-Zqd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -473,7 +471,7 @@
         <!--Profile View Controller-->
         <scene sceneID="vXS-yS-za1">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="37h-yA-qT2" customClass="ProfileViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" modalPresentationStyle="fullScreen" id="37h-yA-qT2" customClass="ProfileViewController" customModule="ViewPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Obv-f1-yUA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
