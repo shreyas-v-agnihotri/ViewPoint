@@ -18,6 +18,7 @@ struct MyColors {
     static let PURPLE = UIColor(red:0.64, green:0.45, blue:1.00, alpha:1.0)             // #a472ff
     static let BLUE = UIColor(red:0.51, green:0.56, blue:1.00, alpha:1.0)               // #838eff
     static let HORIZONTAL_GRADIENT = UIColor(patternImage: UIImage(named: "horizontalGradient")!)
+    static let FULL_WIDTH_GRADIENT = UIColor(patternImage: imageWithGradient(startColor: MyColors.PURPLE, endColor: MyColors.BLUE, size: CGSize(width: UIScreen.main.bounds.size.width, height: 1))!)
 
     static let LIGHT_GRAY = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1.0)         // #f0f0f0
     static let MEDIUM_GRAY = UIColor(red:0.44, green:0.44, blue:0.47, alpha:1.0)        // #6f7179
@@ -41,8 +42,7 @@ struct MyDimensions {
     
     static let emptyStateSpaceHeight = 24
     
-    static let buttonCornerRadius = CGFloat(20)
-    static let buttonBorderWidth = CGFloat(2)
+    static let signInButtonBorderWidth = CGFloat(2)
     static let profileButtonBorderWidth = CGFloat(1)
     
     static let screenWidth = UIScreen.main.bounds.width
@@ -187,7 +187,7 @@ func verifyGoogleUser(viewController: UIViewController) {
     }
 }
 
-func imageWithGradient(startColor:UIColor, endColor:UIColor, size:CGSize, horizontally:Bool = true) -> UIImage? {
+func imageWithGradient(startColor: UIColor, endColor: UIColor, size: CGSize, horizontally: Bool = true) -> UIImage? {
     
     let gradientLayer = CAGradientLayer()
     gradientLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)

@@ -37,7 +37,7 @@ class OpponentProfileViewController: UIViewController, UITableViewDelegate, UITa
         
         segmentedControl.tintColor = UIColor.clear
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MyColors.HORIZONTAL_GRADIENT, NSAttributedString.Key.font: UIFont(name: MyFont.pageControlSelectedFont, size: CGFloat(MyFont.pageControlSize))!], for: .selected)
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MyColors.DISABLED_BLACK, NSAttributedString.Key.font: UIFont(name: MyFont.pageControlFont, size: CGFloat(MyFont.pageControlSize))!], for: .normal)
+//        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MyColors.DISABLED_BLACK, NSAttributedString.Key.font: UIFont(name: MyFont.pageControlFont, size: CGFloat(MyFont.pageControlSize))!], for: .normal)
         
         viewpointsTableView.delegate = self
         viewpointsTableView.dataSource = self

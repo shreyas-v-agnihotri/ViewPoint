@@ -16,7 +16,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDelegate, Paper
     let pages = [
         OnboardingItemInfo(informationImage: UIImage(named: "eyeIcon")!.af_imageScaled(to: CGSize(width: MyDimensions.profilePicSize, height: MyDimensions.profilePicSize)),
                            title: "Welcome to ViewPoint",
-                           description: "A chat app that matches you with people who disagree with you!",
+                           description: "A chat app that matches you with people with opposing opinions!",
                            pageIcon: UIImage(named: "search")!,
                            color: MyColors.MEDIUM_GRAY,
                            titleColor: MyColors.WHITE,
@@ -58,7 +58,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDelegate, Paper
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         let onboarding = PaperOnboarding()
         onboarding.dataSource = self
         onboarding.delegate = self
@@ -96,4 +96,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDelegate, Paper
         }
     }
     
+    @IBAction func skipButtonPressed(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: "onboarded")
+    }
 }

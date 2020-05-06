@@ -14,7 +14,7 @@ struct TopicDatabase {
     static var immigration = Topic(
         title: "Immigration",
         category: "Public Policy",
-        identifier: "marijuana",
+        identifier: "immigration",
         researchLink: "https://immigration.procon.org/",
         survey: [
             SurveyQuestion(
@@ -98,7 +98,7 @@ struct TopicDatabase {
     static var antiTerrorism = Topic(
         title: "Anti-Terrorism",
         category: "Public Policy",
-        identifier: "marijuana",
+        identifier: "antiTerrorism",
         researchLink: "https://www.isidewith.com/poll/46492877",
         survey: [
             SurveyQuestion(
@@ -115,7 +115,7 @@ struct TopicDatabase {
     static var gunControl = Topic(
         title: "Gun Control",
         category: "Public Policy",
-        identifier: "marijuana",
+        identifier: "gunControl",
         researchLink: "https://gun-control.procon.org/",
         survey: [
             SurveyQuestion(
@@ -132,7 +132,7 @@ struct TopicDatabase {
     static var environmentalism = Topic(
         title: "Environmentalism",
         category: "Public Policy",
-        identifier: "marijuana",
+        identifier: "environmentalism",
         researchLink: "https://climatechange.procon.org/",
         survey: [
             SurveyQuestion(
@@ -153,7 +153,7 @@ struct TopicDatabase {
     static var diet = Topic(
         title: "Diet",
         category: "Lifestyle",
-        identifier: "marijuana",
+        identifier: "diet",
         researchLink: "https://vegetarian.procon.org/",
         survey: [
             SurveyQuestion(
@@ -174,7 +174,7 @@ struct TopicDatabase {
     static var pets = Topic(
         title: "Pets",
         category: "Lifestyle",
-        identifier: "marijuana",
+        identifier: "pets",
         researchLink: "https://www.diffen.com/difference/Cat_vs_Dog",
         survey: [
             SurveyQuestion(
@@ -191,7 +191,7 @@ struct TopicDatabase {
     static var socialMedia = Topic(
         title: "Social Media",
         category: "Technology",
-        identifier: "marijuana",
+        identifier: "socialMedia",
         researchLink: "https://socialnetworking.procon.org/",
         survey: [
             SurveyQuestion(
@@ -212,7 +212,7 @@ struct TopicDatabase {
     static var artificialIntelligence = Topic(
         title: "Artificial Intelligence",
         category: "Technology",
-        identifier: "marijuana",
+        identifier: "artificialIntelligence",
         researchLink: "https://futureoflife.org/background/benefits-risks-of-artificial-intelligence/",
         survey: [
             SurveyQuestion(

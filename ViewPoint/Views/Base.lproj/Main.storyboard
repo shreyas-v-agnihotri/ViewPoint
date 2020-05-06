@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -125,6 +125,7 @@
                         <outlet property="cloudsViewLeading" destination="qaB-fy-6qA" id="aNg-lh-xqk"/>
                         <outlet property="signInButton" destination="AYy-pn-kab" id="QMD-b7-5wF"/>
                         <segue destination="343-rI-lTg" kind="presentation" identifier="goToDashboard" id="ORt-B4-obM"/>
+                        <segue destination="Nph-dv-8Zx" kind="show" identifier="goToOnboarding" id="LJm-6V-axi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -157,6 +158,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tableView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Topics" id="8Jt-Yp-GNL"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="cTM-7I-j5a" kind="show" identifier="goToTopicDetail" id="wCq-lF-VpH"/>
@@ -175,7 +177,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KrD-LY-txP">
-                                <rect key="frame" x="0.0" y="69" width="414" height="41"/>
+                                <rect key="frame" x="20.666666666666657" y="69" width="372.66666666666674" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0ZE-9R-ZAs"/>
                                 </constraints>
@@ -290,7 +292,7 @@
                             <constraint firstItem="cBS-pU-EEo" firstAttribute="trailing" secondItem="Ivg-ea-m8L" secondAttribute="trailing" id="VNJ-aR-hZE"/>
                             <constraint firstItem="fyB-z2-qR2" firstAttribute="top" secondItem="KrD-LY-txP" secondAttribute="bottom" constant="5" id="dX6-Fk-his"/>
                             <constraint firstItem="KrD-LY-txP" firstAttribute="top" secondItem="Ivg-ea-m8L" secondAttribute="top" constant="25" id="e89-uh-PiI"/>
-                            <constraint firstItem="KrD-LY-txP" firstAttribute="width" secondItem="Qdl-NU-5fY" secondAttribute="width" id="gs4-OC-AKc"/>
+                            <constraint firstItem="KrD-LY-txP" firstAttribute="width" secondItem="Qdl-NU-5fY" secondAttribute="width" multiplier="0.9" id="gs4-OC-AKc"/>
                             <constraint firstItem="cBS-pU-EEo" firstAttribute="top" secondItem="KrD-LY-txP" secondAttribute="bottom" constant="20" id="vhO-66-2zn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ivg-ea-m8L"/>
@@ -397,6 +399,7 @@
                         <viewLayoutGuide key="safeArea" id="1S7-U0-wFl"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Debates" id="81s-4K-c2T">
+                        <barButtonItem key="backBarButtonItem" title=" " id="VR6-1z-ZcR"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8jR-to-xK4">
                             <connections>
                                 <segue destination="l2W-La-EIZ" kind="show" identifier="goToTopics" id="AcI-lZ-DVA"/>
@@ -434,7 +437,8 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="Get Started"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="02t-EM-PjQ"/>
+                                    <action selector="skipButtonPressed:" destination="Nph-dv-8Zx" eventType="touchUpInside" id="5ob-cK-T5r"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignUp" id="02t-EM-PjQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -445,13 +449,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GP5-o6-w4X"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Z7Q-dF-bAN"/>
                     <connections>
                         <outlet property="skipButton" destination="EsX-87-L9v" id="Tub-mB-rwL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Mi-jX-SQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1223.1884057971015" y="-246.42857142857142"/>
+            <point key="canvasLocation" x="-1291" y="483"/>
         </scene>
         <!--Topic Detail View Controller-->
         <scene sceneID="hM7-6d-q9x">
@@ -462,11 +467,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tableView>
+                    <navigationItem key="navigationItem" id="vqT-2M-0Le"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIs-SC-ffu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2657" y="467"/>
+            <point key="canvasLocation" x="2658" y="483"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="vXS-yS-za1">
@@ -557,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFb-8j-DoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1222" y="491"/>
+            <point key="canvasLocation" x="-1291" y="-733"/>
         </scene>
     </scenes>
     <resources>

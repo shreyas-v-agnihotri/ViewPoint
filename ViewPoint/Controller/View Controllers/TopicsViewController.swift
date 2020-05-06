@@ -37,6 +37,7 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
         tableView.reloadData()
         
         searchBar.resignFirstResponder()
+        
         searchBar.showsCancelButton = false
         searchBar.text = ""
     }
@@ -65,6 +66,10 @@ final class TopicsViewController: ElongationViewController, UISearchBarDelegate 
         searchBar.delegate = self
         searchBar.isTranslucent = true
         searchBar.searchBarStyle = .minimal
+
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.backgroundColor = MyColors.TRANSPARENT_BLACK
+        }
         
         let clearSearchScaled = UIImage(named: "clearSearch")?.af_imageAspectScaled(toFill: CGSize(width: MyDimensions.clearSearchButtonSize, height: MyDimensions.clearSearchButtonSize))
         searchBar.setImage(clearSearchScaled, for: .clear, state: .normal)

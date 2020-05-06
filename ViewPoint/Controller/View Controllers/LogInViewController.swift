@@ -30,9 +30,9 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
 
         super.viewDidLoad()
         
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self
-        
         GIDSignIn.sharedInstance()?.signInSilently()
         
         designButton(button: signInButton)
@@ -44,6 +44,12 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // Show onboarding slides if first time opened
+        if !UserDefaults.standard.bool(forKey: "onboarded") {
+            self.performSegue(withIdentifier: "goToOnboarding", sender: self)
+        }
+        
         animateClouds(seconds: MyAnimations.cloudsDuration)
     }
 
@@ -71,8 +77,8 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     func designButton(button: UIButton) {
         
         button.backgroundColor = MyColors.TRANSPARENT_WHITE
-        button.layer.cornerRadius = MyDimensions.buttonCornerRadius
-        button.layer.borderWidth = MyDimensions.buttonBorderWidth
+        button.layer.cornerRadius = button.bounds.height/2
+        button.layer.borderWidth = MyDimensions.signInButtonBorderWidth
         button.layer.borderColor = MyColors.WHITE.cgColor
         
     }

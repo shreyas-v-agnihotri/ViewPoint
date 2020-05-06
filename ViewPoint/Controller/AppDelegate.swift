@@ -20,19 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        let defaults = UserDefaults.standard
-//        if defaults.object(forKey: "isFirstTime") == nil {
-//            defaults.set("No", forKey: "isFirstTime")
-//            defaults.synchronize()
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil) //Write your storyboard name
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
-//            self.window!.rootViewController = viewController
-//            self.window!.makeKeyAndVisible()
-//        }
-
         // Set up cloud database and third-party sign ins
         FirebaseApp.configure()
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
         // Firebase Cloud Messaging (notifications)
         if #available(iOS 10.0, *) {
@@ -98,9 +87,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func customizeNavBar() {
                 
         // Set gradient background for nav bar
-        let backgroundImage = imageWithGradient(startColor: MyColors.PURPLE, endColor: MyColors.BLUE, size: CGSize(width: UIScreen.main.bounds.size.width, height: 1))
-        UINavigationBar.appearance().backgroundColor = UIColor(patternImage: backgroundImage!)
-        UINavigationBar.appearance().barTintColor = UIColor(patternImage: backgroundImage!)
+        UINavigationBar.appearance().backgroundColor = MyColors.FULL_WIDTH_GRADIENT
+        UINavigationBar.appearance().barTintColor = MyColors.FULL_WIDTH_GRADIENT
         UINavigationBar.appearance().isTranslucent = false
 
         // Customize text properties
@@ -119,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let navBarAppearance = UINavigationBarAppearance()
             
             navBarAppearance.configureWithOpaqueBackground()
-            navBarAppearance.backgroundColor = UIColor(patternImage: backgroundImage!)
+            navBarAppearance.backgroundColor = MyColors.FULL_WIDTH_GRADIENT
             
             navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.navBarLargeFont, size: CGFloat(MyFont.navBarLargeFontSize))!]
             navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColors.WHITE, NSAttributedString.Key.font: UIFont(name: MyFont.navBarSmallFont, size: CGFloat(MyFont.navBarSmallFontSize))!]

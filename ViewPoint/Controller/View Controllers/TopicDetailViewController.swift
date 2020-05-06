@@ -68,11 +68,6 @@ final class TopicDetailViewController: ElongationDetailViewController, NVActivit
     
     func customInit(topic: Topic) {
         self.topic = topic
-        tableView.reloadData()
-        print("reloading table view")
-                
-//        topicsVC.addChild(self)
-//        reference = db.collection(["topics", topic.identifier, "chatRequests"].joined(separator: "/"))
     }
     
     func configureTableView() {
